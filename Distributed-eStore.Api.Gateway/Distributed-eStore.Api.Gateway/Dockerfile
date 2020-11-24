@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
 WORKDIR /app
 COPY ./src/DShop.Api/bin/docker .
 ENV ASPNETCORE_URLS http://*:5000
