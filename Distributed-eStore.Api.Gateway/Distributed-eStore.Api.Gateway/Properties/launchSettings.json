@@ -2,28 +2,15 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:56356",
-      "sslPort": 44318
+    "iis": {
+      "applicationUrl": "http://localhost/Distributed-eStore.Api.Gateway",
+      "sslPort": 0
     }
   },
-  "$schema": "http://json.schemastore.org/launchsettings.json",
-  "profiles": "Distributed_eStore.Api.Gateway": {
+  "profiles": {
+    "Start": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": "true",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "publishAllPorts": true,
-      "useSSL": true
+      "ErrorString": "After parsing a value an unexpected character was encountered: :. Path 'profiles', line 11, position 46."
     }
   }
 }
