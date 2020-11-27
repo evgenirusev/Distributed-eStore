@@ -22,11 +22,6 @@ namespace Distributed_eStore.Api.Gateway
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment() || env.EnvironmentName == "local")
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
