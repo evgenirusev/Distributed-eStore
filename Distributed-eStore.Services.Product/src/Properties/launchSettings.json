@@ -1,0 +1,16 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Distributed-eStore.Services.Product",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "Start": {
+      "commandName": "Project",
+      "ErrorString": "After parsing a value an unexpected character was encountered: :. Path 'profiles', line 11, position 46."
+    }
+  }
+}
