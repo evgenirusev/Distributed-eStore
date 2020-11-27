@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed-eStore.Api.Gateway", "src\Distributed-eStore.Api.Gateway.csproj", "{000FF3BB-6B4A-443C-BE68-14AAC771086D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,7 +14,24 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Debug|x64.Build.0 = Debug|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Debug|x86.Build.0 = Debug|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Release|x64.ActiveCfg = Release|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Release|x64.Build.0 = Release|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Release|x86.ActiveCfg = Release|Any CPU
+		{000FF3BB-6B4A-443C-BE68-14AAC771086D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {384C822D-174E-474E-BBB7-07CD207726CE}
 	EndGlobalSection
 EndGlobal
