@@ -5,7 +5,7 @@ COPY ./src/*.csproj .
 RUN dotnet restore
 
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish Distributed-eStore.Services.Product.sln -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS build
 WORKDIR /app
