@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  api-gateway:
+    image: evgenirusev1/distributed.estore.api.gateway
+    restart: always
+    ports:
+      - '5000:5000'
+    networks:
+      - distributed-estore
+
+  product-service:
+    image: evgenirusev1/distributed.estore.services.product
+    restart: always
+    ports:
+      - '5001:5000'
+    networks:
+      - distributed-estore
+
+networks:
+  distributed-estore:
+    name: distributed-estore-network
+    external: true
