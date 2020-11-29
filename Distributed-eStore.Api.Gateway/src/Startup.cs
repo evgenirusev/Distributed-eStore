@@ -1,8 +1,8 @@
+using DistributedEStore.Common.Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Distributed_eStore.Api.Gateway
 {
@@ -17,6 +17,7 @@ namespace Distributed_eStore.Api.Gateway
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddConsul();
             services.AddControllers();
         }
 

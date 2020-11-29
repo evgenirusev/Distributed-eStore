@@ -5,6 +5,11 @@
     <RootNamespace>Distributed_eStore.Api.Gateway</RootNamespace>
     <UserSecretsId>c7e4babb-c367-4389-b7f2-0d3fb7c8b8ca</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Distributed-eStore.Comon\Distributed-eStore.Comon.csproj" />
+  </ItemGroup>
 
 </Project>
