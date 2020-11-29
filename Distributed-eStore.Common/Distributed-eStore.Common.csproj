@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Distributed_eStore.Comon</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Distributed_eStore.Common</RootNamespace>
   </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Autofac">
