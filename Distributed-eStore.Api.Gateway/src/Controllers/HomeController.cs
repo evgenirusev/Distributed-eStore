@@ -4,21 +4,12 @@ using System.Threading.Tasks;
 
 namespace Distributed_eStore.Api.Gateway.Controllers
 {
-    [Route("")]
+    // TODO: extract commonalities in one more level of abstraction - call it something like BaseController : ControllerBase
+    [Route("[controller]")]
+    [ApiController]
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Index() => Ok("Distributed-eStore Home Page");
-
-        [HttpGet]
-        public async Task<IActionResult> CallProductService()
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("http://localhost:5001");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            return Ok(responseBody);
-        }
+        public IActionResult Index() => Ok("Distributed-eStore Home PAAAAAGE");
     }
 }
