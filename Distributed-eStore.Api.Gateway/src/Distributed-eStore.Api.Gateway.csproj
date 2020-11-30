@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Distributed_eStore.Api.Gateway</RootNamespace>
+    <RootNamespace>DistributedEStore.Api.Gateway</RootNamespace>
     <UserSecretsId>c7e4babb-c367-4389-b7f2-0d3fb7c8b8ca</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <NoWin32Manifest>true</NoWin32Manifest>

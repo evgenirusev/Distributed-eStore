@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Distributed_eStore.Services.Product
+namespace DistributedEStore.Services.Product
 {
     public class Program
     {

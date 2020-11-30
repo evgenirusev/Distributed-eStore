@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Distributed_eStore.Api.Gateway
+namespace DistributedEStore.Api.Gateway
 {
     public class Program
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Distributed_eStore.Services.Product.Controllers
+namespace DistributedEStore.Services.Product.Controllers
 {
     [Route("")]
     public class HomeController : ControllerBase

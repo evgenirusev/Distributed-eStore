@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Distributed_eStore.Services.Product
+namespace DistributedEStore.Services.Product
 {
     public class Startup
     {

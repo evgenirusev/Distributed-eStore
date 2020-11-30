@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Distributed_eStore.Api.Gateway.Controllers
+namespace DistributedEStore.Api.Gateway.Controllers
 {
     // TODO: extract commonalities in one more level of abstraction - call it something like BaseController : ControllerBase
     [Route("[controller]")]
