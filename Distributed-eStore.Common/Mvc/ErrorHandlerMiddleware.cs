@@ -1,12 +1,12 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using DShop.Common.Types;
+using DistributedEStore.Common.Types;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace DShop.Common.Mvc
+namespace DistributedEStore.Common.Mvc
 {
     public class ErrorHandlerMiddleware
     {
@@ -40,7 +40,7 @@ namespace DShop.Common.Mvc
             var message = "There was an error.";
             switch(exception)
             {
-                case DShopException e:
+                case DistributedEStoreException e:
                     errorCode = e.Code;
                     message = e.Message;
                     break;

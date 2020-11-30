@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace DShop.Common
+namespace DistributedEStore.Common
 {
     public interface IInitializer
     {

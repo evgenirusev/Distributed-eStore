@@ -1,6 +1,6 @@
 using System;
 
-namespace DShop.Common.Mvc
+namespace DistributedEStore.Common.Mvc
 {
     public class ServiceId : IServiceId
     {

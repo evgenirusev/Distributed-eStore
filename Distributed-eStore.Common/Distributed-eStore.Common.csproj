@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Distributed_eStore.Common</RootNamespace>
+    <RootNamespace>Distributed-eStore.Common</RootNamespace>
   </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Autofac">

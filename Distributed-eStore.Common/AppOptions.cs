@@ -1,4 +1,4 @@
-namespace DShop.Common
+namespace DistributedEStore.Common
 {
     public class AppOptions
     {

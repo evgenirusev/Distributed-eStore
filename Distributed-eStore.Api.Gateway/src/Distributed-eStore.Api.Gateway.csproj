@@ -11,5 +11,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Distributed-eStore.Common\Distributed-eStore.Common.csproj" />
   </ItemGroup>
-
 </Project>
