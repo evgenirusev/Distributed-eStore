@@ -11,6 +11,10 @@ using Autofac.Extensions.DependencyInjection;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Common.Dispatchers;
 using System;
+using DistributedEStore.Common.Mvc;
+using DistributedEStore.Common;
+using Consul;
+using Microsoft.Extensions.Hosting;
 
 namespace DistributedEStore.Api.Gateway
 {
@@ -27,8 +31,10 @@ namespace DistributedEStore.Api.Gateway
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddCustomMvc();
             services.AddConsul();
             services.AddControllers();
+
             services.RegisterServiceForwarder<IProductsService>("products-service");
 
             var builder = new ContainerBuilder();
@@ -42,14 +48,27 @@ namespace DistributedEStore.Api.Gateway
             return new AutofacServiceProvider(Container);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IStartupInitializer startupInitializer,
+            IConsulClient client, IHostApplicationLifetime applicationLifetime)
         {
             app.UseHttpsRedirection();
-            app.UseRouting();
+            app.UseRabbitMq();
+            app.UseAllForwardedHeaders();
+            app.UseServiceId();
+
+            var consulServiceId = app.UseConsul();
+            applicationLifetime.ApplicationStopped.Register(() => 
+            { 
+                client.Agent.ServiceDeregister(consulServiceId); 
+                Container.Dispose(); 
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            startupInitializer.InitializeAsync();
         }
     }
 }
