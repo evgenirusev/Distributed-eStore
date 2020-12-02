@@ -17,7 +17,7 @@ namespace DistributedEStore.Services.Product
 {
     public class Startup
     {
-        public IContainer Container { get; private set; }
+        private IServiceCollection services;
 
         public Startup(IConfiguration configuration)
         {
@@ -26,21 +26,20 @@ namespace DistributedEStore.Services.Product
 
         public IConfiguration Configuration { get; }
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddCustomMvc();
             services.AddConsul();
             services.AddControllers();
+        }
 
-            var builder = new ContainerBuilder();
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
             builder.Populate(services);
             builder.AddRabbitMq();
             builder.AddDispatchers();
-
-            Container = builder.Build();
-            return new AutofacServiceProvider(Container);
         }
 
         public void Configure(IApplicationBuilder app, IStartupInitializer startupInitializer,
@@ -56,7 +55,6 @@ namespace DistributedEStore.Services.Product
             applicationLifetime.ApplicationStopped.Register(() =>
             {
                 client.Agent.ServiceDeregister(consulServiceId);
-                Container.Dispose();
             });
 
             app.UseEndpoints(endpoints =>

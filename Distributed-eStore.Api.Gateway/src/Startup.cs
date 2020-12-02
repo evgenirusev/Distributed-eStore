@@ -1,6 +1,5 @@
 using DistributedEStore.Common.Consul;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DistributedEStore.Common.RestEase;
@@ -15,37 +14,40 @@ using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common;
 using Consul;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
+using System.Text;
+using System.Net;
+using System.IO;
 
 namespace DistributedEStore.Api.Gateway
 {
     public class Startup
     {
-        public IContainer Container { get; private set; }
+        private IServiceCollection services;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;  
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddCustomMvc();
             services.AddConsul();
             services.AddControllers();
-
             services.RegisterServiceForwarder<IProductsService>("products-service");
+            this.services = services;
+        }
 
-            var builder = new ContainerBuilder();
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
             builder.Populate(services);
             builder.AddRabbitMq();
             builder.AddDispatchers();
-
-            Container = builder.Build();
-            return new AutofacServiceProvider(Container);
         }
 
         public void Configure(IApplicationBuilder app, IStartupInitializer startupInitializer,
@@ -59,8 +61,7 @@ namespace DistributedEStore.Api.Gateway
             var consulServiceId = app.UseConsul();
             applicationLifetime.ApplicationStopped.Register(() => 
             { 
-                client.Agent.ServiceDeregister(consulServiceId); 
-                Container.Dispose(); 
+                client.Agent.ServiceDeregister(consulServiceId);
             });
 
             app.UseEndpoints(endpoints =>
