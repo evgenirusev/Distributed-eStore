@@ -5,7 +5,7 @@ ADD Distributed-eStore.Api.Gateway Distributed-eStore.Api.Gateway
 ADD Distributed-eStore.Common Distributed-eStore.Common
 
 WORKDIR /app/Distributed-eStore.Api.Gateway
-RUN dotnet restore Distributed-eStore.Api.Gateway.sln
+RUN dotnet restore Distributed-eStore.Api.Gateway.slns
 RUN dotnet publish Distributed-eStore.Api.Gateway.sln -c Release -o publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS build
