@@ -1,22 +1,6 @@
 version: "3.8"
 
 services:
-  api-gateway:
-    image: evgenirusev1/distributed.estore.api.gateway
-    restart: always
-    ports:
-      - '5000:80'
-    networks:
-      - distributed-estore
-
-  product-service:
-    image: evgenirusev1/distributed.estore.services.product
-    restart: always
-    ports:
-      - '5001:80'
-    networks:
-      - distributed-estore
-
   # infra
   consul:
     image: consul
@@ -29,6 +13,7 @@ services:
     volumes:
       - consul:/consul/data
 
+  # infra
   fabio:
     image: fabiolb/fabio
     container_name: fabio
@@ -41,6 +26,7 @@ services:
     - 9998:9998
     - 9999:9999
 
+  # infra
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
@@ -52,6 +38,25 @@ services:
       - distributed-estore
     volumes: 
       - rabbitmq:/var/lib/rabbitmq
+
+  # microservice
+  api-gateway:
+    image: evgenirusev1/distributed.estore.api.gateway
+    restart: always
+    ports:
+      - '5000:80'
+    networks:
+      - distributed-estore
+
+  # microservice
+  product-service:
+    image: evgenirusev1/distributed.estore.services.product
+    restart: always
+    ports:
+      - '5001:80'
+    networks:
+      - distributed-estore
+
 
 networks:
   distributed-estore:

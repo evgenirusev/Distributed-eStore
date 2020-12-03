@@ -7,7 +7,6 @@ using DistributedEStore.Common.Dispatchers;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,8 +30,11 @@ namespace DistributedEStore.Services.Product
             services.AddCustomMvc();
             services.AddConsul();
             services.AddControllers();
+            // ConfigureContainer depends on this (temporary hack for Autofac)
+            this.services = services;
         }
 
+        // has hidden dependency anti pattern - this.services must be set from ConfigureServices
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
@@ -57,6 +59,7 @@ namespace DistributedEStore.Services.Product
                 client.Agent.ServiceDeregister(consulServiceId);
             });
 
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

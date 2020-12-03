@@ -9,15 +9,10 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Common.Dispatchers;
-using System;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common;
 using Consul;
 using Microsoft.Extensions.Hosting;
-using System.Net.Http;
-using System.Text;
-using System.Net;
-using System.IO;
 
 namespace DistributedEStore.Api.Gateway
 {

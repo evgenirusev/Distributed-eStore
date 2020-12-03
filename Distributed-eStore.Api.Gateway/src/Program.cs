@@ -8,7 +8,8 @@ namespace DistributedEStore.Api.Gateway
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).UseServiceProviderFactory(new AutofacServiceProviderFactory())
+            CreateHostBuilder(args)
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .Build()
                 .Run();
         }
