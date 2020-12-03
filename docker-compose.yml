@@ -17,7 +17,49 @@ services:
     networks:
       - distributed-estore
 
+  # infra
+  consul:
+    image: consul
+    container_name: consul
+    restart: always
+    ports:
+      - 8500:8500
+    networks:
+      - distributed-estore
+    volumes:
+      - consul:/consul/data
+
+  fabio:
+    image: fabiolb/fabio
+    container_name: fabio
+    restart: always
+    environment:
+    - FABIO_REGISTRY_CONSUL_ADDR=consul:8500
+    networks:
+      - distributed-estore
+    ports:
+    - 9998:9998
+    - 9999:9999
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - distributed-estore
+    volumes: 
+      - rabbitmq:/var/lib/rabbitmq
+
 networks:
   distributed-estore:
     name: distributed-estore-network
     external: true
+
+volumes:
+  consul:
+    driver: local
+  rabbitmq:
+    driver: local
