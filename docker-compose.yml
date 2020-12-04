@@ -45,6 +45,10 @@ services:
     restart: always
     ports:
       - '5000:80'
+    depends_on:
+      - "consul"
+      - "fabio"
+      - "rabbitmq"
     networks:
       - distributed-estore
 
@@ -54,9 +58,12 @@ services:
     restart: always
     ports:
       - '5001:80'
+    depends_on:
+      - "consul"
+      - "fabio"
+      - "rabbitmq"
     networks:
       - distributed-estore
-
 
 networks:
   distributed-estore:
