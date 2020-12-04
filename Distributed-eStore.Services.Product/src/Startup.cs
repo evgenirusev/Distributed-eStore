@@ -16,6 +16,7 @@ namespace DistributedEStore.Services.Product
 {
     public class Startup
     {
+        // note - remove this later on
         private IServiceCollection services;
 
         public Startup(IConfiguration configuration)
@@ -30,8 +31,7 @@ namespace DistributedEStore.Services.Product
             services.AddCustomMvc();
             services.AddConsul();
             services.AddControllers();
-            // ConfigureContainer depends on this (temporary hack for Autofac)
-            // services.AddMvc(options => options.EnableEndpointRouting = false);
+            // note - remove this later ons
             this.services = services;
         }
 
@@ -53,9 +53,7 @@ namespace DistributedEStore.Services.Product
             app.UseHttpsRedirection();
             app.UseErrorHandler();
 
-            // app.UseMvc();
             app.UseRouting();
-
             app.UseEndpoints(routes =>
             {
                 routes.MapControllers();

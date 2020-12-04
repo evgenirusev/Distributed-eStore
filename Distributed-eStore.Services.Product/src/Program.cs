@@ -9,12 +9,7 @@ namespace DistributedEStore.Services.Product
     {
         public static void Main(string[] args)
         {
-            //CreateHostBuilder(args)
-            //    .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-            //    .Build()
-            //    .Run();
-
-            var host = Host.CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args)
                    .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                    .ConfigureWebHostDefaults(webHostBuilder => {
                        webHostBuilder
@@ -22,9 +17,8 @@ namespace DistributedEStore.Services.Product
                         .UseIISIntegration()
                         .UseStartup<Startup>();
                    })
-                   .Build();
-
-            host.Run();
+                   .Build()
+                   .Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

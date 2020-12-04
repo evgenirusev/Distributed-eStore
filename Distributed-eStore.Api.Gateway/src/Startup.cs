@@ -18,6 +18,7 @@ namespace DistributedEStore.Api.Gateway
 {
     public class Startup
     {
+        // note - remove this later on
         private IServiceCollection services;
 
         public Startup(IConfiguration configuration)
@@ -33,14 +34,16 @@ namespace DistributedEStore.Api.Gateway
             services.AddConsul();
             services.AddControllers();
             services.RegisterServiceForwarder<IProductsService>("products-service");
-            this.services = services;
+            // note - remove this later on
+            //this.services = services;
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
-            builder.Populate(services);
+            // note - removed because kestrel exception
+            // builder.Populate(services);
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }
@@ -59,9 +62,10 @@ namespace DistributedEStore.Api.Gateway
                 client.Agent.ServiceDeregister(consulServiceId);
             });
 
-            app.UseEndpoints(endpoints =>
+            app.UseRouting();
+            app.UseEndpoints(routes =>
             {
-                endpoints.MapControllers();
+                routes.MapControllers();
             });
 
             startupInitializer.InitializeAsync();
