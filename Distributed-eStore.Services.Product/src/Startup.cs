@@ -31,6 +31,7 @@ namespace DistributedEStore.Services.Product
             services.AddConsul();
             services.AddControllers();
             // ConfigureContainer depends on this (temporary hack for Autofac)
+            // services.AddMvc(options => options.EnableEndpointRouting = false);
             this.services = services;
         }
 
@@ -39,7 +40,8 @@ namespace DistributedEStore.Services.Product
         {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
-            builder.Populate(services);
+            // note - removed this because of kestrel exception
+            // builder.Populate(services);
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }
@@ -47,22 +49,26 @@ namespace DistributedEStore.Services.Product
         public void Configure(IApplicationBuilder app, IStartupInitializer startupInitializer,
             IConsulClient client, IHostApplicationLifetime applicationLifetime)
         {
-            app.UseHttpsRedirection();
-            // TODO: subscribe to channels for commands
-            app.UseRabbitMq();
             app.UseAllForwardedHeaders();
+            app.UseHttpsRedirection();
+            app.UseErrorHandler();
+
+            // app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(routes =>
+            {
+                routes.MapControllers();
+            });
+
+            // note - subscribe for commands
+            app.UseRabbitMq();
             app.UseServiceId();
 
             var consulServiceId = app.UseConsul();
             applicationLifetime.ApplicationStopped.Register(() =>
             {
                 client.Agent.ServiceDeregister(consulServiceId);
-            });
-
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
             });
 
             startupInitializer.InitializeAsync();

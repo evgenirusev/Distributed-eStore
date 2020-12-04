@@ -16,8 +16,6 @@ namespace DistributedEStore.Services.Product.Controllers
         [HttpGet]
         public async Task<ActionResult<PagedResult<ProductDto>>> Get([FromQuery] BrowseProducts query)
         {
-            await new HttpClient().PostAsync("https://qwer.requestcatcher.com/", new StringContent("sad", Encoding.UTF8, "application/json"));
-
             return Ok("hi from ProductsController - Get endpoint");
         }
     }
