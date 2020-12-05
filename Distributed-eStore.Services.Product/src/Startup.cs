@@ -4,6 +4,7 @@ using DistributedEStore.Common;
 using DistributedEStore.Common.Consul;
 using DistributedEStore.Common.Dispatchers;
 using DistributedEStore.Common.Mvc;
+using DistributedEStore.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +41,7 @@ namespace DistributedEStore.Services.Product
                     .AsImplementedInterfaces();
             // note - removed this because of kestrel exception
             // builder.Populate(services);
-            // builder.AddRabbitMq();
+            builder.AddRabbitMq();
             builder.AddDispatchers();
         }
 
@@ -58,7 +59,7 @@ namespace DistributedEStore.Services.Product
             });
 
             // note - subscribe for commands
-            // app.UseRabbitMq();
+            app.UseRabbitMq();
             app.UseServiceId();
 
             var consulServiceId = app.UseConsul();
