@@ -30,11 +30,10 @@ namespace DistributedEStore.Common.Mvc
 
             return services
                 .AddMvcCore()
-                // Breaking change
-                // .AddJsonFormatters()
+                .AddJsonFormatters()
                 .AddDataAnnotations()
                 .AddApiExplorer()
-                // .AddDefaultJsonOptions()
+                .AddDefaultJsonOptions()
                 .AddAuthorization();
         }
 

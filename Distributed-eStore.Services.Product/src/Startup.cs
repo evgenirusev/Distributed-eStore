@@ -6,6 +6,7 @@ using DistributedEStore.Common.Dispatchers;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +16,7 @@ namespace DistributedEStore.Services.Product
 {
     public class Startup
     {
+        private static readonly string[] Headers = new[] { "X-Operation", "X-Resource", "X-Total-Count" };
         // note - remove this later on
         private IServiceCollection services;
 
@@ -27,7 +29,28 @@ namespace DistributedEStore.Services.Product
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCustomMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", cors =>
+                        cors.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials()
+                            .WithExposedHeaders(Headers));
+            });
+
+            using (var serviceProvider = services.BuildServiceProvider())
+            {
+                var configuration = serviceProvider.GetService<IConfiguration>();
+                services.Configure<AppOptions>(configuration.GetSection("app"));
+            }
+
+            services.AddSingleton<Common.Mvc.IServiceId, ServiceId>();
+            services.AddTransient<IStartupInitializer, StartupInitializer>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // note
+            //services.AddCustomMvc();
             services.AddConsul();
             services.AddControllers();
             // note - remove this later ons
