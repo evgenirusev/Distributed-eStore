@@ -18,7 +18,7 @@ namespace DistributedEStore.Services.Product.Controllers
         [HttpGet]
         public async Task<ActionResult<PagedResult<ProductDto>>> Get([FromQuery] BrowseProducts query)
         {
-            Post("https://beeceptor.com/console/hiqwer", "Hi from ProductsController");
+            Post("https://testtest.free.beeceptor.com", "Hi from ProductsController");
             var x = this.QueryAsync(query);
 
             return Ok("hi from ProductsController - Get endpoint");
