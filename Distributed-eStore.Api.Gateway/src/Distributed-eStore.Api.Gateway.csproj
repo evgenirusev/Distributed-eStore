@@ -18,4 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Distributed-eStore.Common\Distributed-eStore.Common.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="https://json.schemastore.org/lsdlschema" /></VisualStudio></ProjectExtensions>
 </Project>

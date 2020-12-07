@@ -16,10 +16,6 @@ namespace DistributedEStore.Services.Product
 {
     public class Startup
     {
-        private static readonly string[] Headers = new[] { "X-Operation", "X-Resource", "X-Total-Count" };
-        // note - remove this later on
-        private IServiceCollection services;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,8 +31,7 @@ namespace DistributedEStore.Services.Product
                         cors.AllowAnyOrigin()
                             .AllowAnyMethod()
                             .AllowAnyHeader()
-                            .AllowCredentials()
-                            .WithExposedHeaders(Headers));
+                            .AllowCredentials());
             });
 
             using (var serviceProvider = services.BuildServiceProvider())
@@ -49,21 +44,14 @@ namespace DistributedEStore.Services.Product
             services.AddTransient<IStartupInitializer, StartupInitializer>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            // note
-            //services.AddCustomMvc();
             services.AddConsul();
             services.AddControllers();
-            // note - remove this later ons
-            this.services = services;
         }
 
-        // has hidden dependency anti pattern - this.services must be set from ConfigureServices
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
-            // note - removed this because of kestrel exception
-            // builder.Populate(services);
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }
@@ -74,16 +62,14 @@ namespace DistributedEStore.Services.Product
             app.UseAllForwardedHeaders();
             app.UseHttpsRedirection();
             app.UseErrorHandler();
+            app.UseRabbitMq();
+            app.UseServiceId();
 
             app.UseRouting();
             app.UseEndpoints(routes =>
             {
                 routes.MapControllers();
             });
-
-            // note - subscribe for commands
-            app.UseRabbitMq();
-            app.UseServiceId();
 
             var consulServiceId = app.UseConsul();
             applicationLifetime.ApplicationStopped.Register(() =>

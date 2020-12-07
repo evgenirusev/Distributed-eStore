@@ -13,15 +13,13 @@ using DistributedEStore.Common;
 using Consul;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
+using System;
+using RawRabbit;
 
 namespace DistributedEStore.Api.Gateway
 {
     public class Startup
     {
-        private static readonly string[] Headers = new[] { "X-Operation", "X-Resource", "X-Total-Count" };
-        // note - remove this later on
-        private IServiceCollection services;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,16 +29,13 @@ namespace DistributedEStore.Api.Gateway
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // note - removed this because it caused some arbitrary run-time issue
-            //services.AddCustomMvc();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", cors =>
                         cors.AllowAnyOrigin()
                             .AllowAnyMethod()
                             .AllowAnyHeader()
-                            .AllowCredentials()
-                            .WithExposedHeaders(Headers));
+                            .AllowCredentials());
             });
 
             using (var serviceProvider = services.BuildServiceProvider())
@@ -57,18 +52,12 @@ namespace DistributedEStore.Api.Gateway
             services.AddControllers();
             services.AddOpenTracing();
             services.RegisterServiceForwarder<IProductsService>("products-service");
-            // note - remove this later on
-            this.services = services;
         }
         
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
-            // note - removed because kestrel exception
-            // additional note - added it and stopped receiving kestrel issue
-            // but then another issue popped up with the addcontrollers being registered exception
-            // builder.Populate(services);
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }
@@ -82,8 +71,8 @@ namespace DistributedEStore.Api.Gateway
             app.UseServiceId();
 
             var consulServiceId = app.UseConsul();
-            applicationLifetime.ApplicationStopped.Register(() => 
-            { 
+            applicationLifetime.ApplicationStopped.Register(() =>
+            {
                 client.Agent.ServiceDeregister(consulServiceId);
             });
 
