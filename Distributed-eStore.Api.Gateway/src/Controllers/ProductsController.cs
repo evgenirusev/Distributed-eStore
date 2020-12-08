@@ -1,21 +1,21 @@
-﻿using DistributedEStore.Api.Queries;
+﻿using DistributedEStore.Api.Messages.Commands.Products;
+using DistributedEStore.Api.Queries;
 using DistributedEStore.Api.Services;
+using DistributedEStore.Common.RabbitMq;
+using DistributedEStore.Services.Product.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Net;
-using System.Text;
+using OpenTracing;
 using System.Threading.Tasks;
+using DistributedEStore.Common.Mvc;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
-    // TODO: extract commonalities in one more level of abstraction - call it something like BaseController : ControllerBase
-    [Route("[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseController
     {
         private readonly IProductsService _productsService;
 
-        public ProductsController(IProductsService productsService) : base()
+        public ProductsController(IBusPublisher busPublisher, ITracer tracer, IProductsService productsService) 
+            : base(busPublisher, tracer)
         {
             _productsService = productsService;
         }
@@ -25,5 +25,10 @@ namespace DistributedEStore.Api.Gateway.Controllers
         {
             return Ok(await _productsService.BrowseAsync(query));
         }
+        
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateProduct command)
+            => await SendAsync(command.BindId(c => c.Id),
+                resourceId: command.Id, resource: "products");
     }
 }

@@ -1,17 +1,16 @@
 ﻿using DistributedEStore.Common.Dispatchers;
+using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Common.Types;
 using DistributedEStore.Services.Product.Queries;
+using DistributedEStore.Services.Products.Controllers;
 using DistributedEStore.Services.Products.Dto;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Text;
+using OpenTracing;
 using System.Threading.Tasks;
 
 namespace DistributedEStore.Services.Product.Controllers
 {
-    public class ProductsController : BaseController
+    public class ProductsController : ProductsBaseController
     {
         public ProductsController(IDispatcher dispatcher) : base(dispatcher) { }
 
