@@ -8,11 +8,11 @@ namespace DistributedEStore.Services.Products.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BaseController : ControllerBase
+    public class ProductsBaseController : ControllerBase
     {
         private readonly IDispatcher _dispatcher;
 
-        public BaseController(IDispatcher dispatcher)
+        public ProductsBaseController(IDispatcher dispatcher)
         {
             _dispatcher = dispatcher;
         }

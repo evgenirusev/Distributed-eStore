@@ -7,7 +7,6 @@ namespace DistributedEStore.Common.RabbitMq
         Guid Id { get; }
         Guid UserId { get; }
         Guid ResourceId { get; }
-        string TraceId { get; }
         string SpanContext { get; }
         string ConnectionId { get; }
         string Name { get; }

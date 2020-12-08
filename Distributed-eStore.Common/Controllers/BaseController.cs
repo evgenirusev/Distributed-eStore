@@ -91,9 +91,9 @@ namespace DistributedEStore.Services.Product.Controllers
                 resource = $"{resource}/{resourceId}";
             }
 
+
             return CorrelationContext.Create<T>(Guid.NewGuid(), UserId, resourceId ?? Guid.Empty,
-               HttpContext.TraceIdentifier, HttpContext.Connection.Id, _tracer.ActiveSpan.Context.ToString(),
-               Request.Path.ToString(), Culture, resource);
+               HttpContext.TraceIdentifier, HttpContext.Connection.Id, Request.Path.ToString(), Culture, resource);
         }
 
         protected bool IsAdmin
