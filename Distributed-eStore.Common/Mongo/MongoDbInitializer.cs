@@ -6,7 +6,7 @@ using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
-namespace DShop.Common.Mongo
+namespace DistributedEStore.Common.Mongo
 {
     public class MongoDbInitializer : IMongoDbInitializer
     {

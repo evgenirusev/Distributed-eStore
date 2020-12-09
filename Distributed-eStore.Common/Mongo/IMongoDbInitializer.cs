@@ -1,4 +1,4 @@
-namespace DShop.Common.Mongo
+namespace DistributedEStore.Common.Mongo
 {
     public interface IMongoDbInitializer : IInitializer
     {

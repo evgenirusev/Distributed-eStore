@@ -1,9 +1,9 @@
 using Autofac;
-using DShop.Common.Types;
+using DistributedEStore.Common.Types;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
-namespace DShop.Common.Mongo
+namespace DistributedEStore.Common.Mongo
 {
     public static class Extensions
     {

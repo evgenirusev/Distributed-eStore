@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using DShop.Common.Types;
+using DistributedEStore.Common.Types;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace DShop.Common.Mongo
+namespace DistributedEStore.Common.Mongo
 {
     public static class Pagination
     {
