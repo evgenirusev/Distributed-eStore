@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed-eStore.Common",
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{26A8FF05-9813-4F17-A4EB-21BC86E36CD6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed-eStore.UI", "Distributed-eStore.UI\src\Distributed-eStore.UI.csproj", "{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,26 @@ Global
 		{26A8FF05-9813-4F17-A4EB-21BC86E36CD6}.Release|x64.Build.0 = Release|Any CPU
 		{26A8FF05-9813-4F17-A4EB-21BC86E36CD6}.Release|x86.ActiveCfg = Release|Any CPU
 		{26A8FF05-9813-4F17-A4EB-21BC86E36CD6}.Release|x86.Build.0 = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|ARM.Build.0 = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|x64.Build.0 = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|ARM.Build.0 = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|ARM64.Build.0 = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|x64.ActiveCfg = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|x64.Build.0 = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
