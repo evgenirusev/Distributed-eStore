@@ -55,7 +55,7 @@ namespace DistributedEStore.Services.Product
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
             builder.AddMongo();
-            builder.AddMongoRepository<Product>("Products");
+            builder.AddMongoRepository<Products.Domain.Product>("Products");
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }
@@ -66,7 +66,7 @@ namespace DistributedEStore.Services.Product
             app.UseAllForwardedHeaders();
             app.UseHttpsRedirection();
             app.UseErrorHandler();
-            app.UseRabbitMq();
+            //app.UseRabbitMq();
             app.UseServiceId();
 
             app.UseRouting();
