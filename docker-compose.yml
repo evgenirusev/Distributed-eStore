@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  # infra
+# infra
   consul:
     image: consul
     container_name: consul
@@ -13,7 +13,6 @@ services:
     volumes:
       - consul:/consul/data
 
-  # infra
   fabio:
     image: fabiolb/fabio
     container_name: fabio
@@ -26,7 +25,6 @@ services:
     - 9998:9998
     - 9999:9999
 
-  # infra
   rabbitmq:
     image: rabbitmq:3-management
     hostname: my-rabbit
@@ -40,7 +38,19 @@ services:
     volumes: 
       - rabbitmq:/var/lib/rabbitmq
 
-# microservice
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - dshop
+    # network_mode: host
+    volumes:
+      - mongo:/data/db
+
+# microservices
   api-gateway:
     image: distributed.estore.api.gateway
     restart: always
@@ -57,7 +67,6 @@ services:
     networks:
       - distributed-estore
 
-  # microservice
   product-service:
     image: distributed.estore.services.product
     restart: always
@@ -83,4 +92,6 @@ volumes:
   consul:
     driver: local
   rabbitmq:
+    driver: local
+  mongo:
     driver: local

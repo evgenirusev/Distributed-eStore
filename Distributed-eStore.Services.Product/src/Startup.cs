@@ -3,6 +3,7 @@ using Consul;
 using DistributedEStore.Common;
 using DistributedEStore.Common.Consul;
 using DistributedEStore.Common.Dispatchers;
+using DistributedEStore.Common.Mongo;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
@@ -25,6 +26,7 @@ namespace DistributedEStore.Services.Product
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddInitializers(typeof(IMongoDbInitializer));
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", cors =>
@@ -52,6 +54,8 @@ namespace DistributedEStore.Services.Product
         {
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
+            builder.AddMongo();
+            builder.AddMongoRepository<Products.Domain.Product>("Products");
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }
@@ -62,7 +66,7 @@ namespace DistributedEStore.Services.Product
             app.UseAllForwardedHeaders();
             app.UseHttpsRedirection();
             app.UseErrorHandler();
-            app.UseRabbitMq();
+            //app.UseRabbitMq();
             app.UseServiceId();
 
             app.UseRouting();

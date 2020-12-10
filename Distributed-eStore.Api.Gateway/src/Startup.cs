@@ -13,8 +13,6 @@ using DistributedEStore.Common;
 using Consul;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
-using System;
-using RawRabbit;
 
 namespace DistributedEStore.Api.Gateway
 {
