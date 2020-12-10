@@ -6,6 +6,7 @@ using DistributedEStore.Common.Dispatchers;
 using DistributedEStore.Common.Mongo;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
+using DistributedEStore.Services.Products.Messages.Commands;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +28,7 @@ namespace DistributedEStore.Services.Product
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddInitializers(typeof(IMongoDbInitializer));
+            services.AddOpenTracing();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", cors =>
@@ -66,8 +68,8 @@ namespace DistributedEStore.Services.Product
             app.UseAllForwardedHeaders();
             app.UseHttpsRedirection();
             app.UseErrorHandler();
-            app.UseRabbitMq();
             app.UseServiceId();
+            app.UseRabbitMq().SubscribeCommand<CreateProduct>();
 
             app.UseRouting();
             app.UseEndpoints(routes =>
