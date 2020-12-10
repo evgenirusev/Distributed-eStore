@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using OpenTracing;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Mvc;
+using System;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
@@ -25,7 +26,11 @@ namespace DistributedEStore.Api.Gateway.Controllers
         {
             return Ok(await _productsService.BrowseAsync(query));
         }
-        
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+            => Single(await _productsService.GetAsync(id));
+
         [HttpPost]
         public async Task<IActionResult> Post(CreateProduct command)
             => await SendAsync(command.BindId(c => c.Id),
