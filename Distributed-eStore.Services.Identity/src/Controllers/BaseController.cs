@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DShop.Services.Identity.Controllers
+namespace DistributedEStore.Services.Identity.Controllers
 {
     public class BaseController : ControllerBase
     {

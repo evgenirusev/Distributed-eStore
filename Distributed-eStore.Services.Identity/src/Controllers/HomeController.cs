@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace DShop.Services.Identity.Controllers
+namespace DistributedEStore.Services.Identity.Controllers
 {
     [Route("")]
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get() => Ok("DShop Identity Service");
+        public IActionResult Get() => Ok("DistributedEStore Identity Service");
     }
 }

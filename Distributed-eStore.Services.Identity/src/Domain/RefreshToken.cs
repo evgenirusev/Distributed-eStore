@@ -1,8 +1,8 @@
 using System;
-using DShop.Common.Types;
+using DistributedEStore.Common.Types;
 using Microsoft.AspNetCore.Identity;
 
-namespace DShop.Services.Identity.Domain
+namespace DistributedEStore.Services.Identity.Domain
 {
     public class RefreshToken : IIdentifiable
     {
@@ -29,7 +29,7 @@ namespace DShop.Services.Identity.Domain
         {
             if (Revoked)
             {
-                throw new DShopException(Codes.RefreshTokenAlreadyRevoked, 
+                throw new DistributedEStoreException(Codes.RefreshTokenAlreadyRevoked, 
                     $"Refresh token: '{Id}' was already revoked at '{RevokedAt}'.");
             }
             RevokedAt = DateTime.UtcNow;

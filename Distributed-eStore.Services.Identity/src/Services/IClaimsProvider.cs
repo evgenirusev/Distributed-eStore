@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DShop.Services.Identity.Services
+namespace DistributedEStore.Services.Identity.Services
 {
     public interface IClaimsProvider
     {

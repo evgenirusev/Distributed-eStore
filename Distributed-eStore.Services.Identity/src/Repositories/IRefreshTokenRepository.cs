@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using DShop.Services.Identity.Domain;
+using DistributedEStore.Services.Identity.Domain;
 
-namespace DShop.Services.Identity.Repositories
+namespace DistributedEStore.Services.Identity.Repositories
 {
     public interface IRefreshTokenRepository
     {

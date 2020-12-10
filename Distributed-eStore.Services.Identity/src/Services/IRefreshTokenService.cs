@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using DShop.Common.Authentication;
+using DistributedEStore.Common.Authentication;
 
-namespace DShop.Services.Identity.Services
+namespace DistributedEStore.Services.Identity.Services
 {
     public interface IRefreshTokenService
     {

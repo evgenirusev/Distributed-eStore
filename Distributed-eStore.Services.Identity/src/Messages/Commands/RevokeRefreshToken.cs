@@ -1,8 +1,8 @@
 using System;
-using DShop.Common.Messages;
+using DistributedEStore.Common.Messages;
 using Newtonsoft.Json;
 
-namespace DShop.Services.Identity.Messages.Commands
+namespace DistributedEStore.Services.Identity.Messages.Commands
 {
     public class RevokeRefreshToken : ICommand
     {

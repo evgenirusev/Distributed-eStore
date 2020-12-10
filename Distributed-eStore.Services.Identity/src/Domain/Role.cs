@@ -1,4 +1,4 @@
-namespace DShop.Services.Identity.Domain
+namespace DistributedEStore.Services.Identity.Domain
 {
     public static class Role
     {

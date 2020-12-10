@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using DShop.Common.Authentication;
-using DShop.Services.Identity.Domain;
+using DistributedEStore.Common.Authentication;
+using DistributedEStore.Services.Identity.Domain;
 
-namespace DShop.Services.Identity.Services
+namespace DistributedEStore.Services.Identity.Services
 {
     public interface IIdentityService
     {

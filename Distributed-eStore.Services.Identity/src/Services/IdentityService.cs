@@ -1,15 +1,15 @@
 using System;
 using System.Threading.Tasks;
-using DShop.Common.Authentication;
-using DShop.Common.RabbitMq;
-using DShop.Common.Types;
-using DShop.Services.Identity.Messages.Events;
-using DShop.Services.Identity.Domain;
-using DShop.Services.Identity.Repositories;
+using DistributedEStore.Common.Authentication;
+using DistributedEStore.Common.RabbitMq;
+using DistributedEStore.Common.Types;
+using DistributedEStore.Services.Identity.Messages.Events;
+using DistributedEStore.Services.Identity.Domain;
+using DistributedEStore.Services.Identity.Repositories;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
-namespace DShop.Services.Identity.Services
+namespace DistributedEStore.Services.Identity.Services
 {
     public class IdentityService : IIdentityService
     {
@@ -40,7 +40,7 @@ namespace DShop.Services.Identity.Services
             var user = await _userRepository.GetAsync(email);
             if (user != null)
             {
-                throw new DShopException(Codes.EmailInUse,
+                throw new DistributedEStoreException(Codes.EmailInUse,
                     $"Email: '{email}' is already in use.");
             }
             if (string.IsNullOrWhiteSpace(role))
@@ -58,7 +58,7 @@ namespace DShop.Services.Identity.Services
             var user = await _userRepository.GetAsync(email);
             if (user == null || !user.ValidatePassword(password, _passwordHasher))
             {
-                throw new DShopException(Codes.InvalidCredentials,
+                throw new DistributedEStoreException(Codes.InvalidCredentials,
                     "Invalid credentials.");
             }
             var refreshToken = new RefreshToken(user, _passwordHasher);
@@ -75,12 +75,12 @@ namespace DShop.Services.Identity.Services
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
             {
-                throw new DShopException(Codes.UserNotFound, 
+                throw new DistributedEStoreException(Codes.UserNotFound, 
                     $"User with id: '{userId}' was not found.");
             }
             if (!user.ValidatePassword(currentPassword, _passwordHasher))
             {
-                throw new DShopException(Codes.InvalidCurrentPassword, 
+                throw new DistributedEStoreException(Codes.InvalidCurrentPassword, 
                     "Invalid current password.");
             }
             user.SetPassword(newPassword, _passwordHasher);

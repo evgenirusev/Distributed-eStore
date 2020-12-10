@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
-using DShop.Common.Authentication;
-using DShop.Common.Mvc;
-using DShop.Services.Identity.Messages.Commands;
-using DShop.Services.Identity.Services;
+using DistributedEStore.Common.Authentication;
+using DistributedEStore.Common.Mvc;
+using DistributedEStore.Services.Identity.Messages.Commands;
+using DistributedEStore.Services.Identity.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DShop.Services.Identity.Controllers
+namespace DistributedEStore.Services.Identity.Controllers
 {
     [Route("")]
     [ApiController]

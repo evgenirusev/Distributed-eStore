@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using DShop.Common.Mongo;
-using DShop.Services.Identity.Domain;
+using DistributedEStore.Common.Mongo;
+using DistributedEStore.Services.Identity.Domain;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace DShop.Services.Identity.Repositories
+namespace DistributedEStore.Services.Identity.Repositories
 {
     public class RefreshTokenRepository : IRefreshTokenRepository
     {

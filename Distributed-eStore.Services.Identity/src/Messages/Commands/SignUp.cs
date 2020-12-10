@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace DShop.Services.Identity.Messages.Commands
+namespace DistributedEStore.Services.Identity.Messages.Commands
 {
     public class SignUp
     {

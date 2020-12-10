@@ -1,8 +1,8 @@
 using System;
-using DShop.Common.Messages;
+using DistributedEStore.Common.Messages;
 using Newtonsoft.Json;
 
-namespace DShop.Services.Identity.Messages.Events
+namespace DistributedEStore.Services.Identity.Messages.Events
 {
     public class RevokeAccessTokenRejected : IRejectedEvent
     {

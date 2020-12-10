@@ -1,9 +1,9 @@
 using System;
 using System.Text.RegularExpressions;
-using DShop.Common.Types;
+using DistributedEStore.Common.Types;
 using Microsoft.AspNetCore.Identity;
 
-namespace DShop.Services.Identity.Domain
+namespace DistributedEStore.Services.Identity.Domain
 {
     public class User : IIdentifiable
     {
@@ -27,12 +27,12 @@ namespace DShop.Services.Identity.Domain
         {
             if (!EmailRegex.IsMatch(email))
             {
-                throw new DShopException(Codes.InvalidEmail, 
+                throw new DistributedEStoreException(Codes.InvalidEmail, 
                     $"Invalid email: '{email}'.");
             }
             if (!Domain.Role.IsValid(role))
             {
-                throw new DShopException(Codes.InvalidRole, 
+                throw new DistributedEStoreException(Codes.InvalidRole, 
                     $"Invalid role: '{role}'.");
             }        
             Id = id;
@@ -46,7 +46,7 @@ namespace DShop.Services.Identity.Domain
         {
             if (string.IsNullOrWhiteSpace(password))
             {
-                throw new DShopException(Codes.InvalidPassword, 
+                throw new DistributedEStoreException(Codes.InvalidPassword, 
                     "Password can not be empty.");
             }             
             PasswordHash = passwordHasher.HashPassword(this, password);

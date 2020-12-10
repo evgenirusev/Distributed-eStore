@@ -1,14 +1,14 @@
 using System;
 using System.Threading.Tasks;
-using DShop.Common.Authentication;
-using DShop.Common.RabbitMq;
-using DShop.Common.Types;
-using DShop.Services.Identity.Domain;
-using DShop.Services.Identity.Messages.Events;
-using DShop.Services.Identity.Repositories;
+using DistributedEStore.Common.Authentication;
+using DistributedEStore.Common.RabbitMq;
+using DistributedEStore.Common.Types;
+using DistributedEStore.Services.Identity.Domain;
+using DistributedEStore.Services.Identity.Messages.Events;
+using DistributedEStore.Services.Identity.Repositories;
 using Microsoft.AspNetCore.Identity;
 
-namespace DShop.Services.Identity.Services
+namespace DistributedEStore.Services.Identity.Services
 {
     public class RefreshTokenService : IRefreshTokenService
     {
@@ -39,7 +39,7 @@ namespace DShop.Services.Identity.Services
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
             {
-                throw new DShopException(Codes.UserNotFound, 
+                throw new DistributedEStoreException(Codes.UserNotFound, 
                     $"User: '{userId}' was not found.");
             }
             await _refreshTokenRepository.AddAsync(new RefreshToken(user, _passwordHasher));
@@ -50,18 +50,18 @@ namespace DShop.Services.Identity.Services
             var refreshToken = await _refreshTokenRepository.GetAsync(token);
             if (refreshToken == null)
             {
-                throw new DShopException(Codes.RefreshTokenNotFound, 
+                throw new DistributedEStoreException(Codes.RefreshTokenNotFound, 
                     "Refresh token was not found.");
             }
             if (refreshToken.Revoked)
             {
-                throw new DShopException(Codes.RefreshTokenAlreadyRevoked, 
+                throw new DistributedEStoreException(Codes.RefreshTokenAlreadyRevoked, 
                     $"Refresh token: '{refreshToken.Id}' was revoked.");
             }
             var user = await _userRepository.GetAsync(refreshToken.UserId);
             if (user == null)
             {
-                throw new DShopException(Codes.UserNotFound, 
+                throw new DistributedEStoreException(Codes.UserNotFound, 
                     $"User: '{refreshToken.UserId}' was not found.");
             }
             var claims = await _claimsProvider.GetAsync(user.Id);
@@ -77,7 +77,7 @@ namespace DShop.Services.Identity.Services
             var refreshToken = await _refreshTokenRepository.GetAsync(token);
             if (refreshToken == null || refreshToken.UserId != userId)
             {
-                throw new DShopException(Codes.RefreshTokenNotFound, 
+                throw new DistributedEStoreException(Codes.RefreshTokenNotFound, 
                     "Refresh token was not found.");
             }
             refreshToken.Revoke();
