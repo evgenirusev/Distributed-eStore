@@ -13,6 +13,7 @@ using DistributedEStore.Common;
 using Consul;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
+using DistributedEStore.Common.Authentication;
 
 namespace DistributedEStore.Api.Gateway
 {
@@ -45,6 +46,8 @@ namespace DistributedEStore.Api.Gateway
             services.AddSingleton<Common.Mvc.IServiceId, ServiceId>();
             services.AddTransient<IStartupInitializer, StartupInitializer>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddJwt();
+            services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
 
             services.AddConsul();
             services.AddControllers();
@@ -67,6 +70,7 @@ namespace DistributedEStore.Api.Gateway
             app.UseRabbitMq();
             app.UseAllForwardedHeaders();
             app.UseServiceId();
+            app.UseAuthentication();
 
             var consulServiceId = app.UseConsul();
             applicationLifetime.ApplicationStopped.Register(() =>
