@@ -7,19 +7,14 @@ namespace DistributedEStore.Services.Products.Domain
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
-        public string Vendor { get; private set; }
         public decimal Price { get; private set; }
-        public int Quantity { get; private set; }
 
-        public Product(Guid id, string name, string description, string vendor,
-            decimal price, int quantity)
+        public Product(Guid id, string name, string description, decimal price)
             : base(id)
         {
             SetName(name);
-            SetVendor(vendor);
             SetDescription(description);
             SetPrice(price);
-            SetQuantity(quantity);
         }
 
         public void SetName(string name)
@@ -31,18 +26,6 @@ namespace DistributedEStore.Services.Products.Domain
             }
 
             Name = name.Trim().ToLowerInvariant();
-            SetUpdatedDate();
-        }
-
-        public void SetVendor(string vendor)
-        {
-            if(string.IsNullOrEmpty(vendor))
-            {
-                throw new DistributedEStoreException("empty_product_vendor", 
-                    "Product vendor cannot be empty.");
-            }
-
-            Vendor = vendor.Trim().ToLowerInvariant();
             SetUpdatedDate();
         }
 
@@ -68,18 +51,6 @@ namespace DistributedEStore.Services.Products.Domain
             }
 
             Price = price;
-            SetUpdatedDate();
-        }
-
-        public void SetQuantity(int quantity)
-        {
-            if (quantity < 0)
-            {
-                throw new DistributedEStoreException("invalid_product_quantity",
-                    "Product quantity cannot be negative.");
-            }
-
-            Quantity = quantity;
             SetUpdatedDate();
         }
     }

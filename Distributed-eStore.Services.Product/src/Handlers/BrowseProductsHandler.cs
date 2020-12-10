@@ -2,30 +2,33 @@
 using DistributedEStore.Common.Types;
 using DistributedEStore.Services.Product.Queries;
 using DistributedEStore.Services.Products.Dto;
+using DistributedEStore.Services.Products.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DistributedEStore.Services.Products.Handlers
 {
     public sealed class BrowseProductsHandler : IQueryHandler<BrowseProducts, PagedResult<ProductDto>>
     {
-        Task<PagedResult<ProductDto>> IQueryHandler<BrowseProducts, PagedResult<ProductDto>>.HandleAsync(BrowseProducts query)
+        private readonly IProductsRepository _productsRepository;
+
+        public BrowseProductsHandler(IProductsRepository productsRepository)
+            => _productsRepository = productsRepository;
+
+        public async Task<PagedResult<ProductDto>> HandleAsync(BrowseProducts query)
         {
-            new List<ProductDto> { new ProductDto()
+            var pagedResult = await _productsRepository.BrowseAsync(query);
+            var products = pagedResult.Items.Select(p => new ProductDto
             {
-                Id = new Guid("1343fc89-c90b-41b6-985c-13080e5e0744"),
-                Name = "Product 1",
-                Description = "Description 1",
-                Price = 50
-            }, new ProductDto()
-            {
-                Id = new Guid("1343fc89-c90b-41b6-985c-13080e5e0745"),
-                Name = "Product 2",
-                Description = "Description 2",
-                Price = 100
-            }};
-            throw new NotImplementedException();
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price
+            }).ToList();
+
+            return PagedResult<ProductDto>.From(pagedResult, products);
         }
     }
 }

@@ -45,7 +45,7 @@ services:
     ports:
       - 27017:27017
     networks:
-      - dshop
+      - distributed-estore
     # network_mode: host
     volumes:
       - mongo:/data/db

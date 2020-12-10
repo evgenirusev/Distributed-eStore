@@ -66,7 +66,7 @@ namespace DistributedEStore.Services.Product
             app.UseAllForwardedHeaders();
             app.UseHttpsRedirection();
             app.UseErrorHandler();
-            //app.UseRabbitMq();
+            app.UseRabbitMq();
             app.UseServiceId();
 
             app.UseRouting();
