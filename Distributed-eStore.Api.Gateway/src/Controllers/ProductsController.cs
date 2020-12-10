@@ -8,9 +8,12 @@ using OpenTracing;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Mvc;
 using System;
+using DistributedEStore.Api.Auth;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
+    [AdminAuth]
     public class ProductsController : BaseController
     {
         private readonly IProductsService _productsService;
@@ -22,12 +25,14 @@ namespace DistributedEStore.Api.Gateway.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Get([FromQuery] BrowseProducts query)
         {
             return Ok(await _productsService.BrowseAsync(query));
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(Guid id)
             => Single(await _productsService.GetAsync(id));
 

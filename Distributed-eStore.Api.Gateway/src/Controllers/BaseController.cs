@@ -1,4 +1,4 @@
-﻿using DistributedEStore.Common.Dispatchers;
+﻿using DistributedEStore.Common.Authentication;
 using DistributedEStore.Common.Messages;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Common.Types;
@@ -12,6 +12,7 @@ namespace DistributedEStore.Services.Product.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [JwtAuth]
     public abstract class BaseController : ControllerBase
     {
         private static readonly string AcceptLanguageHeader = "accept-language";

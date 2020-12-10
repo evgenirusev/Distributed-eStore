@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
-    // TODO: extract commonalities in one more level of abstraction - call it something like BaseController : ControllerBase
-    [Route("[controller]")]
-    [ApiController]
+    [Route("")]
     public class HomeController : ControllerBase
     {
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index() => Ok("Distributed-eStore Home PAAAAAGE");
     }
