@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed-eStore.Services
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed-eStore.UI", "Distributed-eStore.UI\src\Distributed-eStore.UI.csproj", "{82BDB830-DB49-40BD-87CE-00E577522315}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed-eStore.UI", "Distributed-eStore.UI\src\Distributed-eStore.UI.csproj", "{3A8DC126-D9F9-4B4A-91EC-2D9927E7AB53}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  api-gateway:
+    image: distributed.estore.api.gateway
+    restart: always
+    ports:
+      - 5000:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - RABBIT_HOSTNAME=rabbitmq
+    depends_on:
+      - "consul"
+      - "fabio"
+      - "rabbitmq"
+    networks:
+      - distributed-estore
+
+  product-service:
+    image: distributed.estore.services.product
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - RABBIT_HOSTNAME=rabbitmq
+    ports:
+      - '5001:80'
+    depends_on:
+      - "consul"
+      - "fabio"
+      - "rabbitmq"
+    networks:
+     - distributed-estore
+
+networks:
+  distributed-estore:
+    name: distributed-estore-network
+    external: true
