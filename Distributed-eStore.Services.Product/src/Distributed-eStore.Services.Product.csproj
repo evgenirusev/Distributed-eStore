@@ -10,10 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Distributed-eStore.Common\Distributed-eStore.Common.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.6.2" />
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />

@@ -18,4 +18,7 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Distributed-eStore.Common\Distributed-eStore.Common.csproj" />
+  </ItemGroup>
 </Project>
