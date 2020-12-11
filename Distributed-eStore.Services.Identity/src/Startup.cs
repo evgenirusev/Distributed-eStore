@@ -9,7 +9,6 @@ using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Services.Identity.Domain;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +19,7 @@ namespace DistributedEStore.Services.Identity
 {
     public class Startup
     {
+        private static readonly string[] Headers = new[] { "X-Operation", "X-Resource", "X-Total-Count" };
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +29,11 @@ namespace DistributedEStore.Services.Identity
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCustomMvc();
+            services.AddConsul();
+            services.AddJwt();
+            services.AddControllers();
+            services.AddOpenTracing();
             services.AddInitializers(typeof(IMongoDbInitializer));
             services.AddCors(options =>
             {
@@ -36,21 +41,8 @@ namespace DistributedEStore.Services.Identity
                         cors.AllowAnyOrigin()
                             .AllowAnyMethod()
                             .AllowAnyHeader()
-                            .AllowCredentials());
+                            .WithExposedHeaders(Headers));
             });
-
-            using (var serviceProvider = services.BuildServiceProvider())
-            {
-                var configuration = serviceProvider.GetService<IConfiguration>();
-                services.Configure<AppOptions>(configuration.GetSection("app"));
-            }
-
-            services.AddSingleton<DistributedEStore.Common.Mvc.IServiceId, ServiceId>();
-            services.AddTransient<IStartupInitializer, StartupInitializer>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddConsul();
-            services.AddControllers();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -72,14 +64,20 @@ namespace DistributedEStore.Services.Identity
             app.UseAllForwardedHeaders();
             app.UseErrorHandler();
             app.UseAuthentication();
-            app.UseAccessTokenValidator();
             app.UseServiceId();
             app.UseRabbitMq();
+            // app.UseAccessTokenValidator();
 
             var consulServiceId = app.UseConsul();
             applicationLifetime.ApplicationStopped.Register(() =>
             {
                 client.Agent.ServiceDeregister(consulServiceId);
+            });
+
+            app.UseRouting();
+            app.UseEndpoints(routes =>
+            {
+                routes.MapControllers();
             });
 
             startupInitializer.InitializeAsync();

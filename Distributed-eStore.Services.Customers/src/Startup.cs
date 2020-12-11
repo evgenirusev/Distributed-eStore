@@ -18,7 +18,7 @@ namespace DistributedEStore.Services.Customers
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            // services.AddOpenTracing();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

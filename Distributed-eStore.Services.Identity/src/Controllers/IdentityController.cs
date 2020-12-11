@@ -1,11 +1,8 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Services.Identity.Messages.Commands;
-using DistributedEStore.Services.Identity.Messages.Events;
 using DistributedEStore.Services.Identity.Services;
-using System;
 using DistributedEStore.Common.Authentication;
 
 namespace DistributedEStore.Services.Identity.Controllers

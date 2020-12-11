@@ -17,5 +17,8 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
   </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.5.0" />
+	</ItemGroup>
 
 </Project>

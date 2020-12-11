@@ -21,4 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Distributed-eStore.Common\Distributed-eStore.Common.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.5.0" />
+	</ItemGroup>
 </Project>

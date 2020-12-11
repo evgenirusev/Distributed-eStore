@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace DistributedEStore.Services.Identity
 {
@@ -13,7 +9,16 @@ namespace DistributedEStore.Services.Identity
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            Host.CreateDefaultBuilder(args)
+                   .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                   .ConfigureWebHostDefaults(webHostBuilder => {
+                       webHostBuilder
+                        .UseContentRoot(Directory.GetCurrentDirectory())
+                        .UseIISIntegration()
+                        .UseStartup<Startup>();
+                   })
+                   .Build()
+                   .Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

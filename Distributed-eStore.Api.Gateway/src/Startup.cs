@@ -12,7 +12,6 @@ using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common;
 using Consul;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Http;
 using DistributedEStore.Common.Authentication;
 
 namespace DistributedEStore.Api.Gateway
@@ -28,6 +27,7 @@ namespace DistributedEStore.Api.Gateway
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCustomMvc();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", cors =>
@@ -36,17 +36,8 @@ namespace DistributedEStore.Api.Gateway
                             .AllowAnyHeader()
                             .AllowCredentials());
             });
-
-            using (var serviceProvider = services.BuildServiceProvider())
-            {
-                var configuration = serviceProvider.GetService<IConfiguration>();
-                services.Configure<AppOptions>(configuration.GetSection("app"));
-            }
-
-            services.AddSingleton<Common.Mvc.IServiceId, ServiceId>();
-            services.AddTransient<IStartupInitializer, StartupInitializer>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddJwt();
+            services.AddOpenTracing();
             services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
 
             services.AddConsul();
@@ -78,6 +69,7 @@ namespace DistributedEStore.Api.Gateway
             });
 
             app.UseRouting();
+            app.UseAuthorization();
             app.UseEndpoints(routes =>
             {
                 routes.MapControllers();

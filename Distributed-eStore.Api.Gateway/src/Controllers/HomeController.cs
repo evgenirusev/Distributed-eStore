@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DistributedEStore.Common.RabbitMq;
+using DistributedEStore.Services.Product.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
     [Route("")]
-    public class HomeController : ControllerBase
+    public class HomeController : BaseController
     {
+        public HomeController(IBusPublisher busPublisher) : base(busPublisher) { }
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Index() => Ok("Distributed-eStore Home PAAAAAGE");

@@ -3,7 +3,6 @@ using DistributedEStore.Common.Messages;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Common.Types;
 using Microsoft.AspNetCore.Mvc;
-using OpenTracing;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,12 +20,10 @@ namespace DistributedEStore.Services.Product.Controllers
         private static readonly string DefaultCulture = "en-us";
         private static readonly string PageLink = "page";
         private readonly IBusPublisher _busPublisher;
-        private readonly ITracer _tracer;
 
-        protected BaseController(IBusPublisher busPublisher, ITracer tracer)
+        protected BaseController(IBusPublisher busPublisher)
         {
             _busPublisher = busPublisher;
-            _tracer = tracer;
         }
 
         protected IActionResult Single<T>(T model, Func<T, bool> criteria = null)

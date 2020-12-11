@@ -18,8 +18,8 @@ namespace DistributedEStore.Api.Gateway.Controllers
     {
         private readonly IProductsService _productsService;
 
-        public ProductsController(IBusPublisher busPublisher, ITracer tracer, IProductsService productsService) 
-            : base(busPublisher, tracer)
+        public ProductsController(IBusPublisher busPublisher, IProductsService productsService) 
+            : base(busPublisher)
         {
             _productsService = productsService;
         }
