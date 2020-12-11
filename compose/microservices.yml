@@ -10,10 +10,6 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - RABBIT_HOSTNAME=rabbitmq
-#    depends_on:
-#      - "consul"
-#      - "fabio"
-#      - "rabbitmq"
     networks:
       - distributed-estore
 
@@ -26,10 +22,30 @@ services:
       - RABBIT_HOSTNAME=rabbitmq
     ports:
       - '5001:80'
-#    depends_on:
-#      - "consul"
-#      - "fabio"
-#      - "rabbitmq"
+    networks:
+     - distributed-estore
+
+  identity-service:
+    image: distributed.estore.services.identity
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - RABBIT_HOSTNAME=rabbitmq
+    ports:
+      - '5002:80'
+    networks:
+     - distributed-estore
+     
+  customers-service:
+    image: distributed.estore.services.customers
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - RABBIT_HOSTNAME=rabbitmq
+    ports:
+      - '5003:80'
     networks:
      - distributed-estore
 
