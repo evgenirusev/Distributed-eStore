@@ -1,6 +1,6 @@
 {
-  "short_name": "Distributed_eStore.UI",
-  "name": "Distributed_eStore.UI",
+  "short_name": "DistributedEStore.UI",
+  "name": "DistributedEStore.UI",
   "icons": [
     {
       "src": "favicon.ico",

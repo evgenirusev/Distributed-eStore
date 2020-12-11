@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Distributed_eStore.Services.Customers": {
+    "DistributedEStore.Services.Customers": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Distributed_eStore.UI
+namespace DistributedEStore.UI
 {
     public class Program
     {

@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace Distributed_eStore.Services.Customers
+namespace DistributedEStore.Services.Customers
 {
     public class Startup
     {
@@ -22,18 +22,17 @@ namespace Distributed_eStore.Services.Customers
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Distributed_eStore.Services.Customers", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DistributedEStore.Services.Customers", Version = "v1" });
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Distributed_eStore.Services.Customers v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DistributedEStore.Services.Customers v1"));
             }
 
             app.UseHttpsRedirection();

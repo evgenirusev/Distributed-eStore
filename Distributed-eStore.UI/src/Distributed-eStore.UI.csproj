@@ -7,7 +7,7 @@
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
-    <RootNamespace>Distributed_eStore.UI</RootNamespace>
+    <RootNamespace>DistributedEStore.UI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

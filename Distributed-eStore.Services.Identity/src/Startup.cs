@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 
-namespace Distributed_eStore.Services.Identity
+namespace DistributedEStore.Services.Identity
 {
     public class Startup
     {
@@ -30,7 +30,6 @@ namespace Distributed_eStore.Services.Identity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddInitializers(typeof(IMongoDbInitializer));
-            services.AddOpenTracing();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", cors =>

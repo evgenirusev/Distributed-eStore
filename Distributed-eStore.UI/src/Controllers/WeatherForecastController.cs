@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Distributed_eStore.UI.Controllers
+namespace DistributedEStore.UI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

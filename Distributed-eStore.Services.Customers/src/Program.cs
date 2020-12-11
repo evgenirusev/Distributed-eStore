@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Distributed_eStore.Services.Customers
+namespace DistributedEStore.Services.Customers
 {
     public class Program
     {

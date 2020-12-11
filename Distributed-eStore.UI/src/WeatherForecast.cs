@@ -1,6 +1,6 @@
 using System;
 
-namespace Distributed_eStore.UI
+namespace DistributedEStore.UI
 {
     public class WeatherForecast
     {

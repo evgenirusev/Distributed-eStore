@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Distributed_eStore.Services.Identity
+namespace DistributedEStore.Services.Identity
 {
     public class Program
     {

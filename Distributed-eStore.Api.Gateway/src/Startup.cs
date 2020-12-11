@@ -51,7 +51,6 @@ namespace DistributedEStore.Api.Gateway
 
             services.AddConsul();
             services.AddControllers();
-            services.AddOpenTracing();
             services.RegisterServiceForwarder<IProductsService>("products-service");
         }
         

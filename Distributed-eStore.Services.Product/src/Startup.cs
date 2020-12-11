@@ -28,7 +28,6 @@ namespace DistributedEStore.Services.Product
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddInitializers(typeof(IMongoDbInitializer));
-            services.AddOpenTracing();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", cors =>

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Distributed_eStore.Services.Customers</RootNamespace>
+    <RootNamespace>DistributedEStore.Services.Customers</RootNamespace>
     <UserSecretsId>49b40afe-f833-46c7-8ee2-a5824d646cf2</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
