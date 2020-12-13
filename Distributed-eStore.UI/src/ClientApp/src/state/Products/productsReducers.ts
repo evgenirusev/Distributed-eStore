@@ -1,31 +1,40 @@
-﻿import { SampleApi } from '../../api';
-import { IAppThunkAction, ReduxAction } from '../';
-import { ProductListActionTypes } from './productLIstTypes';
+﻿import { actionCreators } from './actions';
+import { FunctionReturnTypes, ReduxAction } from '../';
+import { WeatherActionType, IWeatherForecastsState } from './types';
 
-export const actionCreators = {
-    resetState: (): ReduxAction => ({
-        type: WeatherActionType.RESET_STATE
-    }),
-    requestWeatherForecasts: (startDateIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        // If param startDateIndex === state.startDateIndex, do not perform action
-        if (startDateIndex === getState().weatherForecasts.startDateIndex) {
-            return;
-        }
-
-        // Dispatch request
-        dispatch({
-            startDateIndex,
-            type: WeatherActionType.REQUEST
-        });
-
-        // Build http request and success handler in Promise<void> wrapper
-        SampleApi.getWeatherForecastsAsync(startDateIndex)
-            .then((forecasts: IWeatherForecast[]) => {
-                dispatch({
-                    forecasts,
-                    startDateIndex,
-                    type: WeatherActionType.RECEIVE
-                });
-            });
-    },
+const initialState: IWeatherForecastsState = {
+  forecasts: [],
+  isLoading: false
 };
+
+export const reducer = (
+  state: IWeatherForecastsState = initialState,
+  incomingAction: FunctionReturnTypes<typeof actionCreators>
+): IWeatherForecastsState => {
+  const action = incomingAction as ReduxAction;
+
+  switch (action.type) {
+    case WeatherActionType.REQUEST:
+      const { startDateIndex } = action;
+      return {
+        ...state,
+        startDateIndex,
+        isLoading: true
+      };
+    case WeatherActionType.RECEIVE:
+      // Only accept the incoming data if it matches the most recent request. This ensures we correctly handle out-of-order responses.
+      if (action.startDateIndex === state.startDateIndex) {
+        const { forecasts, startDateIndex } = action;
+        return {
+          forecasts,
+          startDateIndex,
+          isLoading: false
+        };
+      }
+
+      return state;
+    default:
+      return state;
+  }
+};
+
