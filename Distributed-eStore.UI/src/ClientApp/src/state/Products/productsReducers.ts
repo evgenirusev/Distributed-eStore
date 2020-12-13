@@ -1,5 +1,5 @@
 ﻿import { actionCreators } from './actions';
-import { FunctionReturnTypes, ReduxAction } from '../';
+import { FunctionReturnTypes, ReduxAction } from '..';
 import { WeatherActionType, IWeatherForecastsState } from './types';
 
 const initialState: IWeatherForecastsState = {
