@@ -28,6 +28,9 @@
   <ItemGroup>
     <None Remove="ClientApp\src\components\file.ts" />
     <None Remove="ClientApp\src\components\Test.tsx" />
+    <None Remove="ClientApp\src\Products\postsSlice.ts" />
+    <None Remove="ClientApp\src\Products\ProductsList.tsx" />
+    <None Remove="ClientApp\src\store\Products.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
