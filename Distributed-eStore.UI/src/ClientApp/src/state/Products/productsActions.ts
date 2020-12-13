@@ -1,22 +1,27 @@
 ﻿import { getAllPosts } from '../../api';
-import { IAppThunkAction, ReduxAction } from '..';
-import { ProductListActionTypes } from './productLIstTypes';
+import { Product } from '../../constants/products';
+import { AppThunkAction } from '../';
+import { ProductsActionTypes } from './productsTypes';
 
-export const actions = {
-    requestAllProducts: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        // Dispatch request
-        dispatch({
-            startDateIndex,
-            type: WeatherActionType.REQUEST
-        });
+interface RequestProductsAction {
+    type: ProductsActionTypes.REQUEST_ALL_ARRIVAL;
+    products: Readonly<Product[]>;
+}
 
-        SampleApi.getWeatherForecastsAsync(startDateIndex)
-            .then((forecasts: IWeatherForecast[]) => {
-                dispatch({
-                    forecasts,
-                    startDateIndex,
-                    type: WeatherActionType.RECEIVE
+type KnownAction = RequestProductsAction; // | Extend with other action types
+
+export const actionCreators = {
+    requestAllProducts: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        if (getState()) {
+            getAllPosts()
+                .then((products: Readonly<Product[]>) => {
+                    dispatch({
+                        type: ProductsActionTypes.REQUEST_ALL_ARRIVAL,
+                        products
+                    });
+                }).catch(error => {
+                    console.log(error);
                 });
-            });
-    },
+        }
+    }
 };

@@ -11,7 +11,6 @@ export default function configureStore(history: History, initialState?: Applicat
     ];
 
     const rootReducer = combineReducers({
-        // note - add reducers here
         ...reducers,
         router: connectRouter(history)
     });

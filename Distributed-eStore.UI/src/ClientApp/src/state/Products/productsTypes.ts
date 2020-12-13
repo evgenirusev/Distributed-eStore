@@ -1,5 +1,4 @@
-﻿export enum ProductListActionTypes {
-    REQUEST_ALL = 'REQUEST_ALL',
-    REQUEST_BY_ID = 'REQUEST_BY_ID',
-    REQUEST_ARRIVAL = 'REQUEST_ARRIVAL'
+﻿export enum ProductsActionTypes {
+    REQUEST_ALL_ARRIVAL = 'REQUEST_ALL_ARRIVAL',
+    REQUEST_BY_ID_ARRIVAL = 'REQUEST_BY_ID_ARRIVAL'
 };
