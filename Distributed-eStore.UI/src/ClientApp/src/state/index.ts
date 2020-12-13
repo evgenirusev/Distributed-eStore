@@ -20,3 +20,6 @@ export const reducers = {
 export interface AppThunkAction<TAction> {
     (dispatch: (action: TAction) => void, getState: () => ApplicationState): void;
 }
+
+// Type for all redux actions - takes the action type and then an optional, variable amount of additional key-value pairs
+export type ReduxAction = { type: string; } & { [key: string]: any; };
