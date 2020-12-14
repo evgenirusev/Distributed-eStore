@@ -2,7 +2,8 @@
 import { IProductsListState, ProductsActionTypes } from './productsTypes';
 
 const initialState: IProductsListState = {
-  products: []
+    allProducts: [],
+    currentProducts: []
 };
 
 export const reducer = (

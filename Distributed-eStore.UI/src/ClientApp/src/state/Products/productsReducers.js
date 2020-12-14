@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.reducer = void 0;
 var productsTypes_1 = require("./productsTypes");
 var initialState = {
-    products: []
+    allProducts: []
 };
 var reducer = function (state, incomingAction) {
     if (state === void 0) { state = initialState; }

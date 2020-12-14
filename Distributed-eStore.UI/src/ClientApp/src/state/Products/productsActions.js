@@ -9,8 +9,8 @@ exports.actionCreators = {
             api_1.getAllPosts()
                 .then(function (products) {
                 dispatch({
-                    type: productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL,
-                    products: products
+                    products: products,
+                    type: productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL
                 });
             }).catch(function (error) {
                 console.log(error);

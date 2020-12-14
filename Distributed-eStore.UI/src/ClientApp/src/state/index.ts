@@ -2,7 +2,7 @@ import * as WeatherForecasts from './WeatherForecasts';
 import * as Counter from './Counter';
 import * as Products from './products/'
 
-export interface ApplicationState {
+export interface IApplicationState {
     products: Products.IProductsListState | undefined;
     counter: Counter.CounterState | undefined;
     weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined;
@@ -20,7 +20,7 @@ export const reducers = {
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
 // correctly typed to match your store.
 export interface AppThunkAction<TAction> {
-    (dispatch: (action: TAction) => void, getState: () => ApplicationState): void;
+    (dispatch: (action: TAction) => void, getState: () => IApplicationState): void;
 }
 
 // Type for all redux actions - takes the action type and then an optional, variable amount of additional key-value pairs

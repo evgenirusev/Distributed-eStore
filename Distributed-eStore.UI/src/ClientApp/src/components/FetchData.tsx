@@ -11,7 +11,6 @@ type WeatherForecastProps =
   & typeof WeatherForecastsStore.actionCreators // ... plus action creators we've requested
   & RouteComponentProps<{ startDateIndex: string }>; // ... plus incoming routing parameters
 
-
 class FetchData extends React.PureComponent<WeatherForecastProps> {
   // This method is called when the component is first added to the document
   public componentDidMount() {

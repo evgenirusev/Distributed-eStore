@@ -1,14 +1,18 @@
 ﻿import { getAllPosts } from '../../api';
 import { IProduct } from '../products/';
-import { AppThunkAction } from '../';
+import { AppThunkAction, IApplicationState } from '../';
 import { ProductsActionTypes } from './productsTypes';
 
-interface RequestProductsAction {
+type IRequestAction = {
+    (dispatch: (action: KnownAction) => void, getState: () => IApplicationState): void
+}
+
+interface IRequestAllProductsAction {
     type: ProductsActionTypes.REQUEST_ALL_ARRIVAL;
     products: Readonly<IProduct[]>;
 }
 
-type KnownAction = RequestProductsAction; // Extend with other action types
+export type KnownAction = IRequestAllProductsAction;
 
 export const actionCreators = {
     requestAllProducts: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
@@ -16,8 +20,8 @@ export const actionCreators = {
             getAllPosts()
                 .then((products: Readonly<IProduct[]>) => {
                     dispatch({
-                        type: ProductsActionTypes.REQUEST_ALL_ARRIVAL,
-                        products
+                        products,
+                        type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
                     });
                 }).catch(error => {
                     console.log(error);
