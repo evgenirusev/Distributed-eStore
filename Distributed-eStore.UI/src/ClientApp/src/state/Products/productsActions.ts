@@ -1,5 +1,5 @@
 ﻿import { getAllPosts } from '../../api';
-import { Product } from '../../constants/products';
+import { Product } from '../products/';
 import { AppThunkAction } from '../';
 import { ProductsActionTypes } from './productsTypes';
 
@@ -8,7 +8,7 @@ interface RequestProductsAction {
     products: Readonly<Product[]>;
 }
 
-type KnownAction = RequestProductsAction; // | Extend with other action types
+type KnownAction = RequestProductsAction; // Extend with other action types
 
 export const actionCreators = {
     requestAllProducts: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
