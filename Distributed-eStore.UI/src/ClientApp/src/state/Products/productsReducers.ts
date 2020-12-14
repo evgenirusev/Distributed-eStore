@@ -1,14 +1,14 @@
 ﻿import { ReduxAction } from '../';
-import { IProductsState, ProductsActionTypes } from './productsTypes';
+import { IProductsListState, ProductsActionTypes } from './productsTypes';
 
-const initialState: IProductsState = {
+const initialState: IProductsListState = {
   products: []
 };
 
 export const reducer = (
-  state: IProductsState = initialState,
+  state: IProductsListState = initialState,
   incomingAction: ReduxAction
-): IProductsState => {
+): IProductsListState => {
   const action = incomingAction as ReduxAction;
 
   switch (action.type) {

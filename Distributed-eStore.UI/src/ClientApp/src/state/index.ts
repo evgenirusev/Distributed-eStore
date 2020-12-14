@@ -2,8 +2,8 @@ import * as WeatherForecasts from './WeatherForecasts';
 import * as Counter from './Counter';
 import * as Products from './products/'
 
-// The top-level state object
 export interface ApplicationState {
+    products: Products.IProductsListState | undefined;
     counter: Counter.CounterState | undefined;
     weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined;
 }

@@ -1,8 +1,10 @@
-﻿export type Product = Readonly<{
+﻿export type IProduct = Readonly<{
     id: number;
     name: string;
     description: string;
     price: number;
+    colors: string[];
+    imageURLs: string[];
 }>;
 
 export enum ProductsActionTypes {
@@ -10,6 +12,6 @@ export enum ProductsActionTypes {
     REQUEST_BY_ID_ARRIVAL = 'REQUEST_BY_ID_ARRIVAL'
 };
 
-export interface IProductsState {
-    products: Product[]
+export interface IProductsListState {
+    products: IProduct[]
 }
