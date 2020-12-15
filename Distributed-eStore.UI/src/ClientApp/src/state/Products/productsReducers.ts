@@ -6,17 +6,16 @@ const initialState: IProductsListState = {
     currentProducts: []
 };
 
-export const reducer = (
-  state: IProductsListState = initialState,
-  incomingAction: ReduxAction
-): IProductsListState => {
-  const action = incomingAction as ReduxAction;
-
-  switch (action.type) {
-    // note - check this
-    case ProductsActionTypes.REQUEST_ALL_ARRIVAL:
-      return state;
-    default:
-      return state;
+export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
+    const action = incomingAction as ReduxAction;
+    switch (action.type) {
+        case ProductsActionTypes.REQUEST_ALL_ARRIVAL:
+            const { products } = action;
+            return {
+                ...state,
+                allProducts: products
+            };
+        default:
+            return state;
   }
 };

@@ -11,10 +11,12 @@ var ProductList = function (_a) {
     }, [requestAllProducts]);
     return (React.createElement("section", { className: 'section' },
         React.createElement("div", { className: 'container' },
-            React.createElement("h3", { className: 'title is-3' }, "Fetch Data"),
+            React.createElement("h3", { className: 'title is-3' }, "Hi"),
             React.createElement("div", { className: 'box container-box' },
-                React.createElement("h3", { className: 'title is-4' }, "Weather forecast"),
-                React.createElement("h5", { className: 'subtitle is-5' }, "This component demonstrates fetching data from the server and working with URL parameters.")))));
+                React.createElement("h3", { className: 'title is-4' },
+                    "Here are the names: ",
+                    allProducts.map(function (product) { return product.name; }),
+                    " ")))));
 };
 exports.default = react_redux_1.connect(function (state) { return state.products; }, products_1.actionCreators)(ProductList);
 //# sourceMappingURL=ProductList.js.map
