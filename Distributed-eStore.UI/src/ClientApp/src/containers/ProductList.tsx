@@ -1,32 +1,34 @@
 ﻿import * as React from 'react';
 import { useEffect } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { IApplicationState } from '../state';
-import { reducer } from '../state/products/';
+import { IProductsListState, reducer } from '../state/products/';
 import { actionCreators } from '../state/products/';
 
-export type DefaultColumnProps = {
-    value: string,
-    modifier?: string
-};
+type ProductListProps = IProductsListState & typeof actionCreators;
 
-type ProductListProps = ReturnType<typeof reducer> & typeof actionCreators & { actionToUse: string };
-
-// destructure is optional { currentProducts, requestAllProducts, actionToUse }
-const ProductList: React.FC<ProductListProps> = (props: ProductListProps) => {
+const ProductList: React.FC<ProductListProps> = ({
+    allProducts,
+    currentProducts,
+    requestAllProducts
+}) => {
     useEffect(() => {
-        // todo: handle API call
-    }, []);
+        requestAllProducts()
+    }, [requestAllProducts]);
 
     return (
-        <section className='productlist'>
-            { props.currentProducts.map(product => {
-                return `<div>${product.id}</div>`;
-            })}
-        </section>
+        <section className = 'section' >
+        <div className='container'>
+            <h3 className='title is-3'>Fetch Data</h3>
+            <div className='box container-box'>
+                <h3 className='title is-4'>Weather forecast</h3>
+                <h5 className='subtitle is-5'>
+                    This component demonstrates fetching data from the server and working with URL parameters.
+          </h5>
+            </div>
+        </div>
+    </section >
     );
 };
 
-const mapStateToProps = (state: IApplicationState) => state.products?.currentProducts;
-
-export default connect(mapStateToProps, actionCreators)(ProductList);
+export default connect((state: IApplicationState) => state.products, actionCreators)(ProductList as any);
