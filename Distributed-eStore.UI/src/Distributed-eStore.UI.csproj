@@ -33,7 +33,6 @@
     <None Remove="ClientApp\src\state\ProductS\productListActions.ts" />
     <None Remove="ClientApp\src\state\ProductS\productListReducers.ts" />
     <None Remove="ClientApp\src\state\ProductS\productListtypes.ts" />
-    <None Remove="ClientApp\src\state\Products.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
