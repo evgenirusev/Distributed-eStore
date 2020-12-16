@@ -35,6 +35,10 @@
     <None Remove="ClientApp\src\state\ProductS\productListtypes.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Distributed-eStore.Common\Distributed-eStore.Common.csproj" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

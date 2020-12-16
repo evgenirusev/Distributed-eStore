@@ -1,5 +1,4 @@
 ﻿export type IProduct = Readonly<{
-    id: number;
     name: string;
     description: string;
     price: number;

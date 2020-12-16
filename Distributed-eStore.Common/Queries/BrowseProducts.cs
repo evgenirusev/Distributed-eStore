@@ -1,7 +1,10 @@
+using DistributedEStore.Api.Gateway.Models.Products;
+
 namespace DistributedEStore.Api.Queries
 {
     public class BrowseProducts
     {
+        public Categories Category { get; set; }
         public decimal PriceFrom { get; set; }
         public decimal PriceTo { get; set; }
 

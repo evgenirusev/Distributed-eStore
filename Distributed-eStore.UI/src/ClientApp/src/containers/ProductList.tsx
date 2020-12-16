@@ -21,10 +21,10 @@ const ProductList: React.FC<ProductListProps> = ({
             <div className='container'>
                 <h3 className='title is-3'>Hi</h3>
                 <div className='box container-box'>
-                    <h3 className='title is-4'>Here are the names: {allProducts.map(product => product.name)} </h3>
+                <h3 className='title is-4'>Here are the names: {allProducts.map(product => product.name)} </h3>
             </div>
         </div>
-    </section >
+    </section>
     );
 };
 

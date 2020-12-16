@@ -5,9 +5,12 @@ namespace DistributedEStore.Services.Products.Domain
 {
     public class Product : BaseEntity
     {
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public decimal Price { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Categories Category { get; set; }
+        public decimal Price { get; set; }
+        public string[] ImageURLs { get; set; }
+        public string[] Colors { get; set; }
 
         public Product(Guid id, string name, string description, decimal price)
             : base(id)
@@ -53,5 +56,12 @@ namespace DistributedEStore.Services.Products.Domain
             Price = price;
             SetUpdatedDate();
         }
+    }
+
+    public enum Categories
+    {
+        Male,
+        Female,
+        All
     }
 }

@@ -4,7 +4,6 @@ using DistributedEStore.Api.Services;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Services.Product.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using OpenTracing;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Mvc;
 using System;
