@@ -1,5 +1,4 @@
-﻿using DistributedEStore.Common.Types;
-using Microsoft.AspNetCore.Authorization;
+﻿using DistributedEStore.Api.Queries;
 using Microsoft.AspNetCore.Mvc;
 using RestEase;
 using System;
@@ -10,8 +9,11 @@ namespace DistributedEStore.Api.Services
     [SerializationMethods(Query = QuerySerializationMethod.Serialized)]
     public interface IApiGatewayService
     {
-        public async Task<IActionResult> Get([FromQuery] BrowseProducts query);
+        [AllowAnyStatusCode]
+        [Get("products")]
+        public Task<IActionResult> Get([FromQuery] BrowseProducts query);
 
-        public async Task<IActionResult> Get(Guid id);
+        [Get("products/{id}")]
+        public Task<IActionResult> Get(Guid id);
     }
 }

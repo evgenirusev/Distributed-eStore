@@ -1,9 +1,13 @@
+using DistributedEStore.Api.Services;
+using DistributedEStore.Common.Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DistributedEStore.Common.RestEase;
+using DistributedEStore.Common.Mvc;
 
 namespace DistributedEStore.UI
 {
@@ -25,9 +29,22 @@ namespace DistributedEStore.UI
             {
                 configuration.RootPath = "ClientApp/build";
             });
-        }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            services.AddCustomMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", cors =>
+                        cors.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials());
+            });
+            services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
+
+            services.AddConsul();
+            services.AddControllers();
+            services.RegisterServiceForwarder<IApiGatewayService>("api-gateway");
+        }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

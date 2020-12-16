@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DistributedEStore.Api.Gateway.Models.Products
+namespace DistributedEStore.Common.Models.Products
 {
     public class Product
     {
