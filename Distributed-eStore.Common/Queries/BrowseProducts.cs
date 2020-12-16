@@ -1,4 +1,4 @@
-using DistributedEStore.Api.Gateway.Models.Products;
+using DistributedEStore.Common.Models.Products;
 
 namespace DistributedEStore.Api.Queries
 {
@@ -8,9 +8,11 @@ namespace DistributedEStore.Api.Queries
         public decimal PriceFrom { get; set; }
         public decimal PriceTo { get; set; }
 
-        public BrowseProducts()
+        public BrowseProducts(Category category = Category.None, decimal priceFrom = 0, decimal priceTo = decimal.MaxValue)
         {
-            PriceTo = decimal.MaxValue;
+            Category = category;
+            PriceFrom = priceFrom;
+            PriceTo = priceTo;
         }
     }
 }
