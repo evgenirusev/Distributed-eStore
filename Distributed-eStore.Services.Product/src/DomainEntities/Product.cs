@@ -8,12 +8,12 @@ namespace DistributedEStore.Services.Products.Domain
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public Category Category { get; set; }
+        public string Category { get; set; }
         public string[] ImageURLs { get; set; }
         public string[] Colors { get; set; }
 
         public Product(Guid id, string name, string description, decimal price,
-            Category category, string[] urls, string[] colors)
+            string category, string[] urls, string[] colors)
             : base(id)
         {
             SetName(name);
@@ -61,7 +61,7 @@ namespace DistributedEStore.Services.Products.Domain
             SetUpdatedDate();
         }
 
-        public void SetCategory(Category category = Category.None)
+        public void SetCategory(string category = "none")
         {
             Category = category;
             SetUpdatedDate();
@@ -78,13 +78,5 @@ namespace DistributedEStore.Services.Products.Domain
             Colors = colors;
             SetUpdatedDate();
         }
-    }
-
-    public enum Category
-    {
-        Male,
-        Female,
-        All,
-        None
     }
 }

@@ -22,7 +22,9 @@ namespace DistributedEStore.Services.Products.Handlers
                 Id = product.Id,
                 Name = product.Name,
                 Description = product.Description,
-                Price = product.Price
+                Price = product.Price,
+                ImageURLs = product.ImageURLs,
+                Colors = product.Colors
             };
         }
     }

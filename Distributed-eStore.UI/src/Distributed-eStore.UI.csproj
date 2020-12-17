@@ -36,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\containers\Register.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Distributed-eStore.Common\Distributed-eStore.Common.csproj" />
   </ItemGroup>
 
