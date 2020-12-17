@@ -1,4 +1,4 @@
-﻿using DistributedEStore.Api.Queries;
+﻿using DistributedEStore.Common.Queries;
 using Microsoft.AspNetCore.Mvc;
 using RestEase;
 using System.Threading.Tasks;

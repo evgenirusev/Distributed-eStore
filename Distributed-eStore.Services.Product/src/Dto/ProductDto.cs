@@ -8,5 +8,7 @@ namespace DistributedEStore.Services.Products.Dto
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        public string[] ImageURLs { get; set; }
+        public string[] Colors { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using DistributedEStore.Api.Messages.Commands.Products;
-using DistributedEStore.Api.Queries;
+using DistributedEStore.Common.Queries;
 using DistributedEStore.Api.Services;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Common.Mvc;

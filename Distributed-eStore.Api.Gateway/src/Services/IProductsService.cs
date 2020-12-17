@@ -1,5 +1,5 @@
 ﻿using DistributedEStore.Common.Types;
-using DistributedEStore.Api.Queries;
+using DistributedEStore.Common.Queries;
 using RestEase;
 using System;
 using System.Threading.Tasks;
@@ -13,8 +13,8 @@ namespace DistributedEStore.Api.Services
         [AllowAnyStatusCode]
         [Get("products")]
         Task<PagedResult<Product>> BrowseAsync([Query] BrowseProducts query);
-        [AllowAnyStatusCode]
 
+        [AllowAnyStatusCode]
         [Get("products/{id}")]
         Task<Product> GetAsync([Path] Guid id);
     }

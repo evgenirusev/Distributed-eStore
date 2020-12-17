@@ -1,6 +1,6 @@
 ﻿using DistributedEStore.Api.Services;
 using Microsoft.AspNetCore.Mvc;
-using DistributedEStore.Api.Queries;
+using DistributedEStore.Common.Queries;
 using System.Threading.Tasks;
 
 namespace DistributedEStore.UI.Controllers
@@ -17,9 +17,11 @@ namespace DistributedEStore.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] BrowseProducts query)
         {
-            return Ok(await apiGatewayService.BrowseAsync(new BrowseProducts()));
+            var x = Ok(await apiGatewayService.BrowseAsync(query));
+            // return await apiGatewayService.BrowseAsync(query);
+            return x;
         }
     }
 }

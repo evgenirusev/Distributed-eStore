@@ -1,18 +1,18 @@
 using DistributedEStore.Common.Models.Products;
 
-namespace DistributedEStore.Api.Queries
+namespace DistributedEStore.Common.Queries
 {
     public class BrowseProducts
     {
-        public Category Category { get; set; }
+        public string Category { get; set; }
         public decimal PriceFrom { get; set; }
         public decimal PriceTo { get; set; }
 
-        public BrowseProducts(Category category = Category.None, decimal priceFrom = 0, decimal priceTo = decimal.MaxValue)
+        public BrowseProducts()
         {
-            Category = category;
-            PriceFrom = priceFrom;
-            PriceTo = priceTo;
+            Category = "none";
+            PriceFrom = 0;
+            PriceTo = decimal.MaxValue;
         }
     }
 }
