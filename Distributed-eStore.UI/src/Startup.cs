@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DistributedEStore.Common.RestEase;
 using DistributedEStore.Common.Mvc;
+using Consul;
 
 namespace DistributedEStore.UI
 {
@@ -45,7 +46,8 @@ namespace DistributedEStore.UI
             services.AddControllers();
             services.RegisterServiceForwarder<IApiGatewayService>("api-gateway");
         }
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConsulClient client,
+            IHostApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -60,8 +62,15 @@ namespace DistributedEStore.UI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseAllForwardedHeaders();
             app.UseRouting();
+            app.UseServiceId();
+
+            var consulServiceId = app.UseConsul();
+            applicationLifetime.ApplicationStopped.Register(() =>
+            {
+                client.Agent.ServiceDeregister(consulServiceId);
+            });
 
             app.UseEndpoints(endpoints =>
             {

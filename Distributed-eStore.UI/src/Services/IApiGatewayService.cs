@@ -10,7 +10,7 @@ namespace DistributedEStore.Api.Services
     {
         [AllowAnyStatusCode]
         [Get("products")]
-        public Task<IActionResult> Get([FromQuery] BrowseProducts query);
+        public Task<IActionResult> BrowseAsync([FromQuery] BrowseProducts query);
 
         //[Get("products/{id}")]
         //public Task<IActionResult> Get(Guid id);
