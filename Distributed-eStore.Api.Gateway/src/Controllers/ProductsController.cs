@@ -2,10 +2,9 @@
 using DistributedEStore.Api.Queries;
 using DistributedEStore.Api.Services;
 using DistributedEStore.Common.RabbitMq;
-using DistributedEStore.Services.Product.Controllers;
+using DistributedEStore.Common.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using DistributedEStore.Common.Mvc;
 using System;
 using DistributedEStore.Api.Auth;
 using Microsoft.AspNetCore.Authorization;

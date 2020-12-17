@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DistributedEStore.Services.Product.Controllers
+namespace DistributedEStore.Common.Mvc
 {
     [Route("[controller]")]
     [ApiController]
