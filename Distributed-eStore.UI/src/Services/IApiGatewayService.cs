@@ -1,7 +1,6 @@
 ﻿using DistributedEStore.Api.Queries;
 using Microsoft.AspNetCore.Mvc;
 using RestEase;
-using System;
 using System.Threading.Tasks;
 
 namespace DistributedEStore.Api.Services
@@ -13,7 +12,7 @@ namespace DistributedEStore.Api.Services
         [Get("products")]
         public Task<IActionResult> Get([FromQuery] BrowseProducts query);
 
-        [Get("products/{id}")]
-        public Task<IActionResult> Get(Guid id);
+        //[Get("products/{id}")]
+        //public Task<IActionResult> Get(Guid id);
     }
 }

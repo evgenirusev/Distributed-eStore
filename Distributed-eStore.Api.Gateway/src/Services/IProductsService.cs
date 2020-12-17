@@ -1,9 +1,9 @@
-﻿using DistributedEStore.Api.Gateway.Models.Products;
-using DistributedEStore.Common.Types;
+﻿using DistributedEStore.Common.Types;
 using DistributedEStore.Api.Queries;
 using RestEase;
 using System;
 using System.Threading.Tasks;
+using DistributedEStore.Common.Models.Products;
 
 namespace DistributedEStore.Api.Services
 {

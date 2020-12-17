@@ -79,7 +79,7 @@ namespace DistributedEStore.Common.RabbitMq
                         .UseContextForwarding()
                 });
             }).SingleInstance();
-            // In case of RabbitMQ.Client.Exceptions.BrokerUnreachableException - indicates that a RabbitMQ instance
+            // In case of 'BrokerUnreachableException' - this indicates that a RabbitMQ instance
             // isn't running. Please run 'docker-compose -f ./compose/infrastructure.yml up' to resolve this.
             builder.Register(context => context.Resolve<IInstanceFactory>().Create());
         }
