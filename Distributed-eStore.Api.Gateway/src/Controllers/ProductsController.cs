@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System;
 using DistributedEStore.Api.Auth;
 using Microsoft.AspNetCore.Authorization;
+using DistributedEStore.Common.Models.Products;
+using DistributedEStore.Common.Types;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
@@ -24,9 +26,9 @@ namespace DistributedEStore.Api.Gateway.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Get([FromQuery] BrowseProducts query)
+        public async Task<PagedResult<Product>> Get([FromQuery] BrowseProducts query)
         {
-            return Ok(await _productsService.BrowseAsync(query));
+            return await _productsService.BrowseAsync(query);
         }
 
         [HttpGet("{id}")]

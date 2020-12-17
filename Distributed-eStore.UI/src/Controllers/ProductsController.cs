@@ -19,9 +19,7 @@ namespace DistributedEStore.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] BrowseProducts query)
         {
-            var x = Ok(await apiGatewayService.BrowseAsync(query));
-            // return await apiGatewayService.BrowseAsync(query);
-            return x;
+            return Collection(await apiGatewayService.BrowseAsync(query));
         }
     }
 }

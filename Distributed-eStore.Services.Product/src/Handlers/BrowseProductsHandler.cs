@@ -3,8 +3,6 @@ using DistributedEStore.Common.Types;
 using DistributedEStore.Services.Product.Queries;
 using DistributedEStore.Services.Products.Dto;
 using DistributedEStore.Services.Products.Repositories;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
