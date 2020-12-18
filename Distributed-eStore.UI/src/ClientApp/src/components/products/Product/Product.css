@@ -1,3 +1,13 @@
 ﻿.product__image {
+    width: 200px;
+    height: 280px;
+}
 
+.product {
+    padding: 10px;
+}
+
+.product__description {
+    display: flex;
+    justify-content: space-between;
 }

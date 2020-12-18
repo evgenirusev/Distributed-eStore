@@ -12,10 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var react_1 = require("react");
 var react_redux_1 = require("react-redux");
-var products_1 = require("../state/products/");
-var products_2 = require("../components/products/");
+var products_1 = require("../../state/products/");
+var products_2 = require("../../components/products/");
+var react_1 = require("react");
+require("./ProductList.css");
 var ProductList = function (_a) {
     var products = _a.products, requestProducts = _a.requestProducts;
     react_1.useEffect(function () {

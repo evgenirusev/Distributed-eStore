@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route } from 'react-router';
 import Layout from './components/Layout';
-import ProductList from './containers/ProductList';
+import ProductList from './containers/ProductList/ProductList';
 import Register from './containers/Register';
 
 export default () => (
