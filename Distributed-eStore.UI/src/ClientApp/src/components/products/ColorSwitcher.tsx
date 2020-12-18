@@ -1,20 +1,16 @@
 ﻿import * as React from 'react';
-import { IApplicationState } from '../../state';
-import { connect } from 'react-redux';
-import { IProduct } from '../../state/products';
+import { ColorBox } from './ColorBox';
 
 type ColorSwitcherProps = {
-    allProducts: IProduct[];
-    switcherProductId: string;
+    colors: string[];
 }
 
 export const ColorSwitcher: React.FC<ColorSwitcherProps> = ({
-    allProducts,
-    switcherProductId
+    colors
 }) => {
     return <div className="switcher">
-
+        {colors.map(c =>
+            <ColorBox color={c} isSelected={colors.indexOf(c) === 0} />
+        )}
     </div>
 };
-
-export default connect((state: IApplicationState) => state.products.products)(ColorSwitcher);

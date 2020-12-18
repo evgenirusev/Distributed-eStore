@@ -1,7 +1,14 @@
-﻿import { IProduct } from '../../state/products/';
-import * as React from 'react';
+﻿import * as React from 'react';
+import { ColorSwitcher } from './ColorSwitcher';
 
-export const Product: React.FC<IProduct> = ({
+type ProductProps = {
+    name: string;
+    price: number;
+    colors: string[];
+    imageURLs: string[];
+};
+
+export const Product: React.FC<ProductProps> = ({
     name,
     price,
     colors,
@@ -14,7 +21,7 @@ export const Product: React.FC<IProduct> = ({
             <p className="product__price"> {price} </p>
         </a>
         <div className="product__color-switcher">
-
+            <ColorSwitcher colors={ colors } />
         </div>
     </div>
 };

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 var React = require("react");
+var ColorSwitcher_1 = require("./ColorSwitcher");
 var Product = function (_a) {
     var name = _a.name, price = _a.price, colors = _a.colors, imageURLs = _a.imageURLs;
     return React.createElement("div", { className: "product" },
@@ -15,7 +16,8 @@ var Product = function (_a) {
                 " ",
                 price,
                 " ")),
-        React.createElement("div", { className: "product__color-switcher" }));
+        React.createElement("div", { className: "product__color-switcher" },
+            React.createElement(ColorSwitcher_1.ColorSwitcher, { colors: colors })));
 };
 exports.Product = Product;
 //# sourceMappingURL=Product.js.map
