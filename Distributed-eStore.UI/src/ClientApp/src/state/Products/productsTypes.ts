@@ -4,6 +4,7 @@
     price: number;
     colors: string[];
     imageURLs: string[];
+    selectedColorIndex: number;
 }>;
 
 export enum ProductsActionTypes {
@@ -12,6 +13,5 @@ export enum ProductsActionTypes {
 };
 
 export interface IProductsListState {
-    allProducts: IProduct[],
-    currentProducts: IProduct[]
+    products: IProduct[]
 }

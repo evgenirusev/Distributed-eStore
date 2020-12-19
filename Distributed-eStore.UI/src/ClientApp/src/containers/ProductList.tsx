@@ -4,21 +4,23 @@ import { connect } from 'react-redux';
 import { IApplicationState } from '../state';
 import { reducer } from '../state/products/';
 import { actionCreators } from '../state/products/';
+import { Product } from '../components/products/';
 
 type ProductListProps = ReturnType<typeof reducer> & typeof actionCreators;
 
 const ProductList: React.FC<ProductListProps> = ({
-    allProducts,
-    currentProducts,
-    requestAllProducts
+    products,
+    requestProducts
 }) => {
     useEffect(() => {
-        requestAllProducts();
-    }, [requestAllProducts]);
+        requestProducts();
+    }, [requestProducts]);
 
     return (
         <section className = 'product-list' >
-            {allProducts.map(product => product.name)}
+            {products.map((product) => (
+                <Product { ...product } />
+            ))}
         </section>
     );
 };

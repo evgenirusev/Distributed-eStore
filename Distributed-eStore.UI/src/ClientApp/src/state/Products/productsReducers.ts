@@ -2,8 +2,7 @@
 import { IProductsListState, ProductsActionTypes } from './productsTypes';
 
 const initialState: IProductsListState = {
-    allProducts: [],
-    currentProducts: []
+    products: []
 };
 
 export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
@@ -13,7 +12,7 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
             const { products } = action;
             return {
                 ...state,
-                allProducts: products
+                products: products
             };
         default:
             return state;

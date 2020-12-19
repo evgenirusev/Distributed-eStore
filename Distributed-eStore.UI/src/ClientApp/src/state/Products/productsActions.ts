@@ -11,7 +11,7 @@ interface IRequestAllProductsAction {
 export type KnownAction = IRequestAllProductsAction;
 
 export const actionCreators = {
-    requestAllProducts: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    requestProducts: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         if (getState()) {
             getAllPosts()
                 .then((products: Readonly<IProduct[]>) => {

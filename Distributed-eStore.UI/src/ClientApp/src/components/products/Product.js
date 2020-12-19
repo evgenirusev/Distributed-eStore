@@ -1,14 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Product = void 0;
 var React = require("react");
 var Product = function (_a) {
-    var name = _a.name, description = _a.description, price = _a.price, colors = _a.colors, imageURLs = _a.imageURLs;
+    var name = _a.name, price = _a.price, colors = _a.colors, imageURLs = _a.imageURLs;
     return React.createElement("div", { className: "product" },
         React.createElement("a", { href: "route to /product?id" },
-            React.createElement("img", { sizes: "100vw", src: imageURLs[0], className: "product__image" }),
-            React.createElement("p", { className: "product__name" }),
+            React.createElement("img", { sizes: "100vw", src: "https://i.ibb.co/Bj9gQ40/F20-Accessories-173-800x.jpg", className: "product__image" }),
+            React.createElement("p", { className: "product__name" },
+                " ",
+                name,
+                " "),
             React.createElement("p", { className: "product__price" },
-                React.createElement("span", { className: "price" }, "$88"))),
+                " ",
+                price,
+                " ")),
         React.createElement("div", { className: "product__color-switcher" }));
 };
+exports.Product = Product;
 //# sourceMappingURL=Product.js.map

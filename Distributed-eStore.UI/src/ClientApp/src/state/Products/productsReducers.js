@@ -14,8 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.reducer = void 0;
 var productsTypes_1 = require("./productsTypes");
 var initialState = {
-    allProducts: [],
-    currentProducts: []
+    products: []
 };
 var reducer = function (state, incomingAction) {
     if (state === void 0) { state = initialState; }
@@ -23,7 +22,7 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL:
             var products = action.products;
-            return __assign(__assign({}, state), { allProducts: products });
+            return __assign(__assign({}, state), { products: products });
         default:
             return state;
     }

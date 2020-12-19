@@ -17,15 +17,13 @@ namespace DistributedEStore.Api.Messages.Commands.Products
 
         [JsonConstructor]
 		public CreateProduct(Guid id, string name, string description, decimal price,
-			string category/*, string[] urls, string[] colors*/)
+			string category)
 		{
 			Id = id;
 			Name = name;
 			Description = description;
 			Price = price;
 			Category = category;
-			//ImageURLs = urls;
-			//Colors = colors;
 		}
 	}
 }

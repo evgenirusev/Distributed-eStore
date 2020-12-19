@@ -4,7 +4,7 @@ exports.actionCreators = void 0;
 var api_1 = require("../../api");
 var productsTypes_1 = require("./productsTypes");
 exports.actionCreators = {
-    requestAllProducts: function () { return function (dispatch, getState) {
+    requestProducts: function () { return function (dispatch, getState) {
         if (getState()) {
             api_1.getAllPosts()
                 .then(function (products) {
