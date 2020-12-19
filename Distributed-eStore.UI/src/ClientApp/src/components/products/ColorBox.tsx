@@ -9,7 +9,10 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
     color,
     isSelected
 }) => {
-    return <div className="color-box">
+    const defaultClass = "color-box";
+    const isSelectedClass = `${defaultClass}--isSelected`;
+
+    return <div className={`${defaultClass} ${isSelected ?? isSelectedClass}`}>
         <span className="color-box__color" style={{ backgroundColor: color }}></span>
     </div>
 };
