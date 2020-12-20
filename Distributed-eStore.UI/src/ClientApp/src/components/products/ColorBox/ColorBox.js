@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ColorBox = void 0;
 var React = require("react");
+require("./ColorBox.css");
 var ColorBox = function (_a) {
     var color = _a.color, isSelected = _a.isSelected;
     var defaultClass = "color-box";

@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import './ColorBox.css';
 
 type ColorBoxProps = {
     color: string,

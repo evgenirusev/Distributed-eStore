@@ -14,7 +14,7 @@ services:
       - distributed-estore
 
   # microservice
-  #product-service:
+  # product-service:
   #  image: distributed.estore.services.product
   #  restart: always
   #  ports:

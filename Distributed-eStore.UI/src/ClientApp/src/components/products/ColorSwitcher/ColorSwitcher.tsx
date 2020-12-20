@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ColorBox } from './ColorBox';
+import { ColorBox } from '../';
 
 type ColorSwitcherProps = {
     colors: string[];

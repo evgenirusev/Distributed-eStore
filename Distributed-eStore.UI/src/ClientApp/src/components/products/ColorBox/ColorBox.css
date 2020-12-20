@@ -1,0 +1,7 @@
+﻿.color-box {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+}
