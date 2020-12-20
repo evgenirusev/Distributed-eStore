@@ -26,7 +26,7 @@ export const Product: React.FC<ProductProps> = ({
             </div>
         </a>
         <div className="product__color-switcher">
-            <ColorSwitcher colors={ colors } />
+            <ColorSwitcher colors />
         </div>
     </div>
 };

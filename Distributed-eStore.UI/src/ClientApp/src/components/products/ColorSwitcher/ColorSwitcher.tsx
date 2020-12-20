@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
 import { ColorBox } from '../';
+import { IAppThunkAction, ReduxAction } from '../../../state';
 
 type ColorSwitcherProps = {
     colors: string[];

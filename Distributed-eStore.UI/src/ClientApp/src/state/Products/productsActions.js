@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.actions = exports.actionCreators = void 0;
+exports.actionCreators = void 0;
 var api_1 = require("../../api");
 var productsTypes_1 = require("./productsTypes");
 var defaultColorIndex = 0;
@@ -18,10 +18,8 @@ exports.actionCreators = {
                 console.error(error);
             });
         }
+    }; },
+    selectProductColor: function () { return function (dispatch, getState) {
     }; }
-};
-exports.actions = {
-    selectColorIndex: function (productId, colorIndex) {
-    }
 };
 //# sourceMappingURL=productsActions.js.map
