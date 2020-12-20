@@ -27,8 +27,11 @@ export const actionCreators = {
                     console.error(error);
                 });
         }
-    },
-    selectProductColor: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        
+    }
+};
+
+export const actions = {
+    selectColorIndex(productId, colorIndex) {
+
     }
 };
