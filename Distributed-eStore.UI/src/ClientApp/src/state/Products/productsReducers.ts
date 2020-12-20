@@ -12,9 +12,9 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
             const { products } = action;
             return {
                 ...state,
-                products: products
+                products
             };
         default:
             return state;
-  }
+    }
 };
