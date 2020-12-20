@@ -15,9 +15,11 @@ exports.actionCreators = {
                     type: productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL
                 });
             }).catch(function (error) {
-                console.log(error);
+                console.error(error);
             });
         }
+    }; },
+    selectProductColor: function () { return function (dispatch, getState) {
     }; }
 };
 //# sourceMappingURL=productsActions.js.map

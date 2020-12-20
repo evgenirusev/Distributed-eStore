@@ -24,8 +24,11 @@ export const actionCreators = {
                         type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
                     });
                 }).catch(error => {
-                    console.log(error);
+                    console.error(error);
                 });
         }
+    },
+    selectProductColor: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        
     }
 };

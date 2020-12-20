@@ -1,9 +1,15 @@
 ﻿import * as React from 'react';
+import { connect } from 'react-redux';
+import { IApplicationState, IAppThunkAction, ReduxAction } from '../../../state';
 import './ColorBox.css';
+import { actionCreators } from '../../../state/products/productsActions';
+import { reducer } from '../../../state/products';
 
 type ColorBoxProps = {
-    color: string,
-    isSelected: boolean
+    selectProductColor: IAppThunkAction<ReduxAction>;
+    products: ReturnType<typeof reducer>;
+    color: string;
+    isSelected: boolean;
 };
 
 export const ColorBox: React.FC<ColorBoxProps> = ({
@@ -17,3 +23,7 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
         <span className="color-box__color" style={{ backgroundColor: color }}></span>
     </div>
 };
+
+const mapStateToProps = (state: IApplicationState) => state.products;
+
+export default connect(mapStateToProps, actionCreators.selectProductColor)(ColorBox);
