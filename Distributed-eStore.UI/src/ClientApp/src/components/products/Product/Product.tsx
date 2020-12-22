@@ -3,6 +3,7 @@ import { ColorSwitcher } from '../';
 import './Product.css';
 
 type ProductProps = {
+    id: string;
     name: string;
     price: number;
     colors: string[];
@@ -11,6 +12,7 @@ type ProductProps = {
 };
 
 export const Product: React.FC<ProductProps> = ({
+    id,
     name,
     price,
     colors,
@@ -26,7 +28,7 @@ export const Product: React.FC<ProductProps> = ({
             </div>
         </a>
         <div className="product__color-switcher">
-            <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex } />
+            <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} />
         </div>
     </div>
 };

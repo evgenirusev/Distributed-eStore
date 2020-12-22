@@ -6,22 +6,27 @@ import { actionCreators } from '../../../state/products/productsActions';
 type ColorSwitcherProps = {
     colors: string[];
     selectedColorIndex: number;
+    productId: string;
 }
 
 export const ColorSwitcher: React.FC<ColorSwitcherProps> = ({
     colors,
-    selectedColorIndex
+    selectedColorIndex,
+    productId
 }) => {
     const defaultColorBoxClass = "color-box__color";
 
     return <div className="switcher">
-        {colors.map(c => {
-            const isSelectedClass = colors.indexOf(c) === selectedColorIndex
+        {colors.map((color, index) => {
+            const isSelectedClass = index === selectedColorIndex
                 ? `${defaultColorBoxClass}--isSelected`
                 : "";
             const colorBoxCssClass = `${defaultColorBoxClass} ${isSelectedClass}`;
 
-            return <ColorBox color={c} cssClass={colorBoxCssClass} selectProductColor={() => actionCreators.selectProductColor()(store.dispatch, store.getState)} />
+            return <ColorBox color={color}
+                cssClass={colorBoxCssClass}
+                selectProductColor={() => actionCreators.selectProductColor(productId, index)(store.dispatch, store.getState)}
+            />
         })}
     </div>
 };
