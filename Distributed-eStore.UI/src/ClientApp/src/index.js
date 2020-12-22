@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.store = void 0;
-require("bootstrap/dist/css/bootstrap.css");
 var React = require("react");
 var ReactDOM = require("react-dom");
 var react_redux_1 = require("react-redux");
