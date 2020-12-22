@@ -12,7 +12,5 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
     cssClass,
     selectProductColor
 }) => {
-    return <div onClick={selectProductColor} className={cssClass}>
-        <span className="color-box__color" style={{ backgroundColor: color }}></span>
-    </div>
+    return <span onClick={selectProductColor} className={cssClass} style={{ backgroundColor: color }}></span>
 };

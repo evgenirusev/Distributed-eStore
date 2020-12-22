@@ -1,6 +1,6 @@
 ﻿.color-box__color {
     position: relative;
-    display: block;
+    display: inline-block;
     width: 18px;
     height: 18px;
     border-radius: 50%;
