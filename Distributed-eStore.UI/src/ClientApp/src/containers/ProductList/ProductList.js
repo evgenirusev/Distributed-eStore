@@ -23,7 +23,6 @@ var ProductList = function (_a) {
         requestProducts();
     }, [requestProducts]);
     return (React.createElement("section", { className: 'product-list' }, products.map(function (product) {
-        // const selectProductColor = actionCreators.selectProductColor;
         return (React.createElement(products_2.Product, __assign({}, product)));
     })));
 };

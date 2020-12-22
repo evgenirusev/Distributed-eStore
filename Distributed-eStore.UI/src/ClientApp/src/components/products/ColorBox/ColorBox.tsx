@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import './ColorBox.css';
-import { actionCreators } from '../../../state/products/';
+import { store } from '../../../index';
+import { actionCreators } from '../../../state/products/productsActions';
 
 type ColorBoxProps = {
     color: string;
@@ -14,7 +15,9 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
     const defaultClass = "color-box";
     const isSelectedClass = `${defaultClass}--isSelected`;
 
-    return <div onClick={actionCreators.selectProductColor} className={`${defaultClass} ${isSelected ?? isSelectedClass}`}>
+    return <div
+            onClick={() => actionCreators.selectProductColor()(store.dispatch, store.getState)}
+            className={`${defaultClass} ${isSelected ?? isSelectedClass}`}>
         <span className="color-box__color" style={{ backgroundColor: color }}></span>
     </div>
 };

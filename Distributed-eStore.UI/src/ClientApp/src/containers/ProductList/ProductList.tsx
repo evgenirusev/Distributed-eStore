@@ -20,8 +20,6 @@ const ProductList: React.FC<ProductListProps> = ({
     return (
         <section className = 'product-list' >
             {products.map((product) => {
-                // const selectProductColor = actionCreators.selectProductColor;
-
                 return (
                     <Product {...product } />
                 )
