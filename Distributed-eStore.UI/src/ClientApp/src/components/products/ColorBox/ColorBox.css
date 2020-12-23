@@ -1,7 +1,21 @@
-﻿.color-box__color {
+﻿.color-box__border {
+    display: inline-block;
+    cursor: pointer;
+    padding: 2px;
+    line-height: 0px;
+}
+
+.color-box__border--isSelected {
+    border: 1px solid rgba(6,34,51,0);
+    border-color: #000;
+    border-radius: 50%;
+}
+
+.color-box__color {
     position: relative;
     display: inline-block;
     width: 18px;
     height: 18px;
     border-radius: 50%;
+    margin: 2px;
 }

@@ -14,17 +14,17 @@ export const ColorSwitcher: React.FC<ColorSwitcherProps> = ({
     selectedColorIndex,
     productId
 }) => {
-    const defaultColorBoxClass = "color-box__color";
+    const defaultBorderClass = "color-box__border";
 
     return <div className="switcher">
         {colors.map((color, index) => {
-            const isSelectedClass = index === selectedColorIndex
-                ? `${defaultColorBoxClass}--isSelected`
+            const isSelectedBorderClass = index === selectedColorIndex
+                ? `${defaultBorderClass}--isSelected`
                 : "";
-            const colorBoxCssClass = `${defaultColorBoxClass} ${isSelectedClass}`;
+            const borderCssClass = `${defaultBorderClass} ${isSelectedBorderClass}`;
 
             return <ColorBox color={color}
-                cssClass={colorBoxCssClass}
+                borderClass={borderCssClass}
                 selectProductColor={() => actionCreators.selectProductColor(productId, index)(store.dispatch, store.getState)}
             />
         })}

@@ -3,14 +3,16 @@ import './ColorBox.css';
 
 type ColorBoxProps = {
     color: string;
-    cssClass: string;
+    borderClass: string;
     selectProductColor: any;
 };
 
 export const ColorBox: React.FC<ColorBoxProps> = ({
     color,
-    cssClass,
+    borderClass,
     selectProductColor
 }) => {
-    return <span onClick={selectProductColor} className={cssClass} style={{ backgroundColor: color }}></span>
+    return <div className={ borderClass }>
+        <span onClick={selectProductColor} className="color-box__color" style={{ backgroundColor: color }}></span>
+    </div>
 };
