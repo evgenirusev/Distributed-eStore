@@ -15,5 +15,5 @@ export enum ProductsActionTypes {
 };
 
 export interface IProductsListState {
-    products: IProduct[]
+    products: IProduct[];
 }
