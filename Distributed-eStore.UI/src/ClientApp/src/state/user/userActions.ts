@@ -6,8 +6,8 @@ interface TempAction {
 
 export type KnownAction = TempAction;
 
-export const actionCreators = {
-    requestProducts: (firstName: string, lastName: string, email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+export const userActionCreators = {
+    register: (firstName: string, lastName: string, email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         // template - TODO - implementation details once register form is complete.
         //return AuthService.register(firstName, lastName, email, password).then(
         //    (response) => {
@@ -43,7 +43,7 @@ export const actionCreators = {
         //    }
         //);
     },
-    selectProductColor: (email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    login: (email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         //return AuthService.login(username, password).then(
         //    (data) => {
         //        dispatch({

@@ -1,31 +1,70 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.actionCreators = void 0;
-var api_1 = require("../../api");
-var productsTypes_1 = require("./productsTypes");
-var defaultColorIndex = 0;
-exports.actionCreators = {
-    requestProducts: function () { return function (dispatch, getState) {
-        if (getState()) {
-            api_1.getAllPosts()
-                .then(function (products) {
-                products.forEach(function (p) { return p.selectedColorIndex = defaultColorIndex; });
-                dispatch({
-                    products: products,
-                    type: productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL
-                });
-            }).catch(function (error) {
-                console.error(error);
-            });
-        }
+exports.userActionCreators = void 0;
+exports.userActionCreators = {
+    register: function (firstName, lastName, email, password) { return function (dispatch, getState) {
+        // template - TODO - implementation details once register form is complete.
+        //return AuthService.register(firstName, lastName, email, password).then(
+        //    (response) => {
+        //        dispatch({
+        //            type: REGISTER_SUCCESS,
+        //        });
+        //        dispatch({
+        //            type: SET_MESSAGE,
+        //            payload: response.data.message,
+        //        });
+        //        return Promise.resolve();
+        //    },
+        //    (error) => {
+        //        const message =
+        //            (error.response &&
+        //                error.response.data &&
+        //                error.response.data.message) ||
+        //            error.message ||
+        //            error.toString();
+        //        dispatch({
+        //            type: REGISTER_FAIL,
+        //        });
+        //        dispatch({
+        //            type: SET_MESSAGE,
+        //            payload: message,
+        //        });
+        //        return Promise.reject();
+        //    }
+        //);
     }; },
-    selectProductColor: function (productId, colorIndex) { return function (dispatch, getState) {
-        dispatch({
-            state: getState(),
-            type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR,
-            productId: productId,
-            colorIndex: colorIndex
-        });
+    login: function (email, password) { return function (dispatch, getState) {
+        //return AuthService.login(username, password).then(
+        //    (data) => {
+        //        dispatch({
+        //            type: LOGIN_SUCCESS,
+        //            payload: { user: data },
+        //        });
+        //        return Promise.resolve();
+        //    },
+        //    (error) => {
+        //        const message =
+        //            (error.response &&
+        //                error.response.data &&
+        //                error.response.data.message) ||
+        //            error.message ||
+        //            error.toString();
+        //        dispatch({
+        //            type: LOGIN_FAIL,
+        //        });
+        //        dispatch({
+        //            type: SET_MESSAGE,
+        //            payload: message,
+        //        });
+        //        return Promise.reject();
+        //    }
+        //);
+    }; },
+    logout: function () { return function (dispatch, getState) {
+        // AuthService.logout();
+        //dispatch({
+        //    type: LOGOUT,
+        //});
     }; }
 };
-//# sourceMappingURL=productsActions.js.map
+//# sourceMappingURL=userActions.js.map
