@@ -6,9 +6,14 @@
     LOGOUT = "LOGOUT"
 };
 
-export interface IUserState {
+export interface IUser {
     accessToken: string;
     userId: string;
     role: string;
     claims: { [key: string]: number };
+}
+
+export interface IUserState {
+    isLoggedIn: boolean;
+    user: IUser;
 }
