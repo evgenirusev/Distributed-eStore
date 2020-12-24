@@ -9,6 +9,7 @@ var history_1 = require("history");
 var configureStore_1 = require("./state/configureStore");
 var App_1 = require("./App");
 var registerServiceWorker_1 = require("./registerServiceWorker");
+require("bootstrap/dist/css/bootstrap.css");
 // Create browser history to use in the Redux store
 var baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 var history = history_1.createBrowserHistory({ basename: baseUrl });
