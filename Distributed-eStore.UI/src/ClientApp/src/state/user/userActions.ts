@@ -6,8 +6,15 @@ interface TempAction {
 
 export type KnownAction = TempAction;
 
+export type UserRegistrationData = {
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+}
+
 export const userActionCreators = {
-    register: (firstName: string, lastName: string, email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         // template - TODO - implementation details once register form is complete.
         //return AuthService.register(firstName, lastName, email, password).then(
         //    (response) => {

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userActionCreators = void 0;
 exports.userActionCreators = {
-    register: function (firstName, lastName, email, password) { return function (dispatch, getState) {
+    register: function (userData) { return function (dispatch, getState) {
         // template - TODO - implementation details once register form is complete.
         //return AuthService.register(firstName, lastName, email, password).then(
         //    (response) => {

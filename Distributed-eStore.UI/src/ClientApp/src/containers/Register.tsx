@@ -1,19 +1,12 @@
 ﻿import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userActionCreators } from '../state/user/userActions';
+import { userActionCreators, UserRegistrationData } from '../state/user/userActions';
 
-type RegisterPageProps = typeof userActionCreators.register;
-
-type UserState = {
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string
-}
+type RegisterPageProps = typeof userActionCreators;
 
 type RegisterPageState = {
-    user: UserState,
+    user: UserRegistrationData,
     submitted: boolean
 }
 
@@ -48,6 +41,12 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
 
     handleSubmit(event) {
         event.preventDefault();
+
+        this.setState({ submitted: true });
+        const { user } = this.state;
+        if (user.firstName && user.lastName && user.email && user.password) {
+            this.props.register(user);
+        }
     }
 
     render() {
@@ -72,9 +71,9 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
                     </div>
                     <div className={'form-group' + (submitted && !user.email ? ' has-error' : '')}>
                         <label htmlFor="email">email</label>
-                        <input type="text" className="form-control" name="email" value={user.email} onChange={this.handleChange} />
+                        <input type="text" className="form-control" name="Email" value={user.email} onChange={this.handleChange} />
                         {submitted && !user.email &&
-                            <div className="help-block">email is required</div>
+                            <div className="help-block">Email is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
