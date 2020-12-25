@@ -1,5 +1,5 @@
-import { getAllPostsUrl } from "../constants"
-import { IProduct } from "../state/products/"
+import { getAllPostsUrl } from "../../constants"
+import { IProduct } from "../../state/products/"
 import axios from "axios";
 
 export const getAllPosts: () => Promise<IProduct[]> = async () => {

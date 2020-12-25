@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllPosts = void 0;
-var constants_1 = require("../constants");
+var constants_1 = require("../../constants");
 var axios_1 = require("axios");
 var getAllPosts = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
