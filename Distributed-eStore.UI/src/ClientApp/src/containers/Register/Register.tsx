@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userActionCreators, UserRegistrationData } from '../state/user/userActions';
+import { userActionCreators, UserRegistrationData } from '../../state/user/userActions';
 
 type RegisterPageProps = typeof userActionCreators;
 
