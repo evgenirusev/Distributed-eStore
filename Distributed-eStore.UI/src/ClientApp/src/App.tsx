@@ -3,10 +3,12 @@ import { Route } from 'react-router';
 import Layout from './components/Layout';
 import ProductList from './containers/ProductList/ProductList';
 import Register from './containers/Register/Register';
+import Login from './containers/Login/Login';
 
 export default () => (
     <Layout>
         <Route exact path='/' component={ProductList} />
         <Route exact path='/register' component={Register} />
+        <Route exact path='/login' component={Login} />
     </Layout>
 );
