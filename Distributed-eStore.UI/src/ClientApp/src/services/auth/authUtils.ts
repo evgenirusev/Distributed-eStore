@@ -1,4 +1,4 @@
-﻿import axios from "axios";
+﻿import axios, { AxiosResponse } from "axios";
 import { loginUrl, registerUrl } from "../../constants";
 
 export const login = (email, password) => {
@@ -16,11 +16,19 @@ export const logout = (): void => {
     localStorage.removeItem("user");
 }
 
-export const register: any = (firstName: string, lastName: string, email: string, password: string) {
-    return axios.post(registerUrl, {
+export const register = (firstName: string, lastName: string, email: string, password: string): Promise<AxiosResponse> => {
+    const x = axios.post(registerUrl, {
         firstName,
         lastName,
         email,
         password
     });
+}
+
+//export const getAllPosts: () => Promise<IProduct[]> = async () => {
+//    return (await (axios.get<Array<IProduct>>(getAllPostsUrl))).data;
+//}
+
+//export const register: () => Promise<IProduct[]> = async () => {
+//    return (await (axios.get<Array<IProduct>>(getAllPostsUrl))).data;
 }

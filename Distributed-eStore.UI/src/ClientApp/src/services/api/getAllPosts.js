@@ -41,10 +41,7 @@ var constants_1 = require("../../constants");
 var axios_1 = require("axios");
 var getAllPosts = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, (axios_1.default.get(constants_1.getAllPostsUrl))];
-            case 1: return [2 /*return*/, (_a.sent()).data];
-        }
+        return [2 /*return*/, axios_1.default.get(constants_1.getAllPostsUrl)];
     });
 }); };
 exports.getAllPosts = getAllPosts;

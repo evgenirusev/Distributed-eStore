@@ -1,4 +1,4 @@
-﻿import { getAllPosts } from '../../api';
+﻿import { getAllPosts } from '../../api/';
 import { IProduct } from '../products/';
 import { IAppThunkAction, ReduxAction } from '../';
 import { ProductsActionTypes } from './productsTypes';
@@ -15,17 +15,18 @@ const defaultColorIndex = 0;
 export const actionCreators = {
     requestProducts: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         if (getState()) {
-            getAllPosts()
-                .then((products: IProduct[]) => {
+            try {
+                getAllPosts().then((products: IProduct[]) => {
                     products.forEach(p => p.selectedColorIndex = defaultColorIndex);
 
                     dispatch({
                         products,
                         type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
                     });
-                }).catch(error => {
-                    console.error(error);
                 });
+            } catch (error) {
+                console.error(error);
+            }
         }
     },
     selectProductColor: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {

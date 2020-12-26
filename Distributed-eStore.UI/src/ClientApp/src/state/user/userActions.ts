@@ -1,4 +1,5 @@
 ﻿import { IAppThunkAction, ReduxAction } from "..";
+import { register, login} from "../../services/auth";
 
 interface TempAction {
     
@@ -15,40 +16,40 @@ export type UserRegistrationData = {
 
 export const userActionCreators = {
     register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        // template - TODO - implementation details once register form is complete.
-        //return AuthService.register(firstName, lastName, email, password).then(
-        //    (response) => {
-        //        dispatch({
-        //            type: REGISTER_SUCCESS,
-        //        });
+        const { firstName, lastName, email, password } = userData;
+        return register(firstName, lastName, email, password).then(
+            (response) => {
+                dispatch({
+                    type: REGISTER_SUCCESS,
+                });
 
-        //        dispatch({
-        //            type: SET_MESSAGE,
-        //            payload: response.data.message,
-        //        });
+                dispatch({
+                    type: SET_MESSAGE,
+                    payload: response.data.message,
+                });
 
-        //        return Promise.resolve();
-        //    },
-        //    (error) => {
-        //        const message =
-        //            (error.response &&
-        //                error.response.data &&
-        //                error.response.data.message) ||
-        //            error.message ||
-        //            error.toString();
+                return Promise.resolve();
+            },
+            (error) => {
+                const message =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
 
-        //        dispatch({
-        //            type: REGISTER_FAIL,
-        //        });
+                dispatch({
+                    type: REGISTER_FAIL,
+                });
 
-        //        dispatch({
-        //            type: SET_MESSAGE,
-        //            payload: message,
-        //        });
+                dispatch({
+                    type: SET_MESSAGE,
+                    payload: message,
+                });
 
-        //        return Promise.reject();
-        //    }
-        //);
+                return Promise.reject();
+            }
+        );
     },
     login: (email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         //return AuthService.login(username, password).then(
