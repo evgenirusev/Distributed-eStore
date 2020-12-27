@@ -101,10 +101,10 @@ exports.userActionCreators = {
         });
     }); }; },
     logout: function () { return function (dispatch, getState) {
-        // AuthService.logout();
-        //dispatch({
-        //    type: LOGOUT,
-        //});
+        auth_1.logout();
+        dispatch({
+            type: _1.UserActionTypes.LOGOUT,
+        });
     }; }
 };
 //# sourceMappingURL=userActions.js.map

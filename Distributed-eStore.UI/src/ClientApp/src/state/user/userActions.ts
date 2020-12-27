@@ -60,10 +60,10 @@ export const userActionCreators = {
         }
     },
     logout: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        // AuthService.logout();
+         logout();
 
-        //dispatch({
-        //    type: LOGOUT,
-        //});
+        dispatch({
+            type: UserActionTypes.LOGOUT,
+        });
     }
 };
