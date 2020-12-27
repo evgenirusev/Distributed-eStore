@@ -2,6 +2,7 @@
 import { IProduct } from '../products/';
 import { IAppThunkAction, ReduxAction } from '../';
 import { ProductsActionTypes } from './productsTypes';
+import { AxiosResponse } from 'axios';
 
 interface IRequestAllProductsAction {
     type: ProductsActionTypes.REQUEST_ALL_ARRIVAL;
@@ -16,9 +17,10 @@ export const actionCreators = {
     requestProducts: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         if (getState()) {
             try {
-                getAllPosts().then((products: IProduct[]) => {
+                getAllPosts().then((response: AxiosResponse<IProduct[]>) => {
+                    const products: IProduct[] = response.data;
                     products.forEach(p => p.selectedColorIndex = defaultColorIndex);
-
+                    
                     dispatch({
                         products,
                         type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
