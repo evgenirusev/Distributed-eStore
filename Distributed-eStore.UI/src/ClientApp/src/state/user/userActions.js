@@ -71,33 +71,35 @@ exports.userActionCreators = {
             }
         });
     }); }; },
-    login: function (email, password) { return function (dispatch, getState) {
-        //return AuthService.login(username, password).then(
-        //    (data) => {
-        //        dispatch({
-        //            type: LOGIN_SUCCESS,
-        //            payload: { user: data },
-        //        });
-        //        return Promise.resolve();
-        //    },
-        //    (error) => {
-        //        const message =
-        //            (error.response &&
-        //                error.response.data &&
-        //                error.response.data.message) ||
-        //            error.message ||
-        //            error.toString();
-        //        dispatch({
-        //            type: LOGIN_FAIL,
-        //        });
-        //        dispatch({
-        //            type: SET_MESSAGE,
-        //            payload: message,
-        //        });
-        //        return Promise.reject();
-        //    }
-        //);
-    }; },
+    login: function (email, password) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
+        var user, error_2, message;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, auth_1.login(email, password)];
+                case 1:
+                    user = (_a.sent()).data;
+                    dispatch({
+                        type: _1.UserActionTypes.LOGIN_SUCCESS,
+                        payload: { user: user }
+                    });
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_2 = _a.sent();
+                    message = (error_2.response && error_2.response.data && error_2.response.data.message)
+                        || error_2.message
+                        || error_2.toString();
+                    dispatch({
+                        type: _1.UserActionTypes.LOGIN_FAIL,
+                    });
+                    // TODO: implement state error message
+                    alert("Registration failed - " + message);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    }); }; },
     logout: function () { return function (dispatch, getState) {
         // AuthService.logout();
         //dispatch({

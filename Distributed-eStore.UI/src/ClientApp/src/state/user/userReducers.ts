@@ -11,12 +11,12 @@ export default function (state = initialState, incomingAction: ReduxAction): IUs
     const { type, payload } = incomingAction as ReduxAction;
 
     switch (type) {
-        case UserActionTypes.REGISTER_SUCCESS:
+        case UserActionTypes.REGISTRATION_SUCCESS:
             return {
                 ...state,
                 isLoggedIn: false,
             };
-        case UserActionTypes.REGISTER_FAIL:
+        case UserActionTypes.REGISTRATION_FAILED:
             return {
                 ...state,
                 isLoggedIn: false,

@@ -1,5 +1,6 @@
 ﻿import axios, { AxiosResponse } from "axios";
 import { loginUrl, registerUrl } from "../../constants";
+import { IUser } from "../../state/user";
 
 export const register = (firstName: string, lastName: string, email: string, password: string): Promise<AxiosResponse> => {
     return axios.post(registerUrl, {
@@ -10,7 +11,7 @@ export const register = (firstName: string, lastName: string, email: string, pas
     });
 }
 
-export const login = (email: string, password: string): Promise<AxiosResponse> => {
+export const login = (email: string, password: string): Promise<AxiosResponse<IUser>> => {
     return axios.post(loginUrl, { email, password });
 }
 

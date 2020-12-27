@@ -11,33 +11,28 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducer = void 0;
-var productsTypes_1 = require("./productsTypes");
-var initialState = {
-    products: []
-};
-var reducer = function (state, incomingAction) {
+var _1 = require("./");
+var userData = localStorage.getItem("user");
+var initialState = userData
+    ? { isLoggedIn: true, user: JSON.parse(userData) }
+    : { isLoggedIn: false, user: {} };
+function default_1(state, incomingAction) {
     if (state === void 0) { state = initialState; }
-    var action = incomingAction;
-    switch (action.type) {
-        case productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL:
-            var products = action.products;
-            return __assign(__assign({}, state), { products: products });
-        case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR:
-            var productId_1 = action.productId, colorIndex_1 = action.colorIndex;
-            var product = state.products.find(function (product) { return product.id === productId_1; });
-            if (product && product.selectedColorIndex !== colorIndex_1 && typeof product.colors[colorIndex_1] !== "undefined") {
-                var updatedProducts = state.products.map(function (product) {
-                    return product.id === productId_1
-                        ? __assign(__assign({}, product), { selectedColorIndex: colorIndex_1 }) : product;
-                });
-                return {
-                    products: updatedProducts
-                };
-            }
+    var _a = incomingAction, type = _a.type, payload = _a.payload;
+    switch (type) {
+        case _1.UserActionTypes.REGISTRATION_SUCCESS:
+            return __assign(__assign({}, state), { isLoggedIn: false });
+        case _1.UserActionTypes.REGISTRATION_FAILED:
+            return __assign(__assign({}, state), { isLoggedIn: false });
+        case _1.UserActionTypes.LOGIN_SUCCESS:
+            return __assign(__assign({}, state), { isLoggedIn: true, user: payload.user });
+        case _1.UserActionTypes.LOGIN_FAIL:
+            return __assign(__assign({}, state), { isLoggedIn: false, user: null });
+        case _1.UserActionTypes.LOGOUT:
+            return __assign(__assign({}, state), { isLoggedIn: false, user: null });
         default:
             return state;
     }
-};
-exports.reducer = reducer;
-//# sourceMappingURL=productsReducers.js.map
+}
+exports.default = default_1;
+//# sourceMappingURL=userReducers.js.map

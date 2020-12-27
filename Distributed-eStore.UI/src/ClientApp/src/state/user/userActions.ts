@@ -1,4 +1,4 @@
-﻿import { UserActionTypes } from ".";
+﻿import { IUser, UserActionTypes } from ".";
 import { IAppThunkAction, ReduxAction } from "..";
 import { register, login, logout } from "../../services/auth";
 
@@ -18,6 +18,7 @@ export type UserRegistrationData = {
 export const userActionCreators = {
     register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         const { firstName, lastName, email, password } = userData;
+
         try {
             await register(firstName, lastName, email, password);
 
@@ -37,36 +38,26 @@ export const userActionCreators = {
             alert(`Registration failed - ${message}`);
         }
     },
-    login: (email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        //return AuthService.login(username, password).then(
-        //    (data) => {
-        //        dispatch({
-        //            type: LOGIN_SUCCESS,
-        //            payload: { user: data },
-        //        });
+    login: (email: string, password: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+        try {
+            const user: IUser = (await login(email, password)).data;
 
-        //        return Promise.resolve();
-        //    },
-        //    (error) => {
-        //        const message =
-        //            (error.response &&
-        //                error.response.data &&
-        //                error.response.data.message) ||
-        //            error.message ||
-        //            error.toString();
+            dispatch({
+                type: UserActionTypes.LOGIN_SUCCESS,
+                payload: { user }
+            });
+        } catch (error) {
+            const message: string = (error.response && error.response.data && error.response.data.message)
+                || error.message
+                || error.toString();
 
-        //        dispatch({
-        //            type: LOGIN_FAIL,
-        //        });
+            dispatch({
+                type: UserActionTypes.LOGIN_FAIL,
+            });
 
-        //        dispatch({
-        //            type: SET_MESSAGE,
-        //            payload: message,
-        //        });
-
-        //        return Promise.reject();
-        //    }
-        //);
+            // TODO: implement state error message
+            alert(`Registration failed - ${message}`);
+        }
     },
     logout: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         // AuthService.logout();
