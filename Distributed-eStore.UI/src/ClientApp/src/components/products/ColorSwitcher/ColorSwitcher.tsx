@@ -22,8 +22,8 @@ export const ColorSwitcher: React.FC<ColorSwitcherProps> = ({
                 ? `${defaultBorderClass}--isSelected`
                 : "";
             const borderCssClass = `${defaultBorderClass} ${isSelectedBorderClass}`;
-
-            return <ColorBox color={color}
+            
+            return <ColorBox key={`${productId}-${index}`} color={color}
                 borderClass={borderCssClass}
                 selectProductColor={() => actionCreators.selectProductColor(productId, index)(store.dispatch, store.getState)}
             />

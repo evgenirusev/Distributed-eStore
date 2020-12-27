@@ -13,7 +13,7 @@ var ColorSwitcher = function (_a) {
             ? defaultBorderClass + "--isSelected"
             : "";
         var borderCssClass = defaultBorderClass + " " + isSelectedBorderClass;
-        return React.createElement(__1.ColorBox, { color: color, borderClass: borderCssClass, selectProductColor: function () { return productsActions_1.actionCreators.selectProductColor(productId, index)(index_1.store.dispatch, index_1.store.getState); } });
+        return React.createElement(__1.ColorBox, { key: productId + "-" + index, color: color, borderClass: borderCssClass, selectProductColor: function () { return productsActions_1.actionCreators.selectProductColor(productId, index)(index_1.store.dispatch, index_1.store.getState); } });
     }));
 };
 exports.ColorSwitcher = ColorSwitcher;

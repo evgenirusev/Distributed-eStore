@@ -2,12 +2,6 @@
 import { IAppThunkAction, ReduxAction } from "..";
 import { register, login, logout } from "../../services/auth";
 
-interface TempAction {
-
-}
-
-export type KnownAction = TempAction;
-
 export type UserRegistrationData = {
     firstName: string,
     lastName: string,
@@ -17,10 +11,8 @@ export type UserRegistrationData = {
 
 export const userActionCreators = {
     register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        const { firstName, lastName, email, password } = userData;
-
         try {
-            await register(firstName, lastName, email, password);
+            await register(userData.firstName, userData.lastName, userData.email, userData.password);
 
             dispatch({
                 type: UserActionTypes.REGISTRATION_SUCCESS,
@@ -52,11 +44,11 @@ export const userActionCreators = {
                 || error.toString();
 
             dispatch({
-                type: UserActionTypes.LOGIN_FAIL,
+                type: UserActionTypes.LOGIN_FAIL
             });
 
             // TODO: implement state error message
-            alert(`Registration failed - ${message}`);
+            alert(`Login failed - ${message}`);
         }
     },
     logout: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {

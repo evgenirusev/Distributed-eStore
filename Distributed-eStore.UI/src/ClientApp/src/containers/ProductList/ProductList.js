@@ -22,8 +22,8 @@ var ProductList = function (_a) {
     react_1.useEffect(function () {
         requestProducts();
     }, [requestProducts]);
-    return (React.createElement("section", { className: 'product-list' }, products.map(function (product) {
-        return (React.createElement(products_2.Product, __assign({}, product)));
+    return (React.createElement("section", { className: 'product-list' }, products.map(function (product, index) {
+        return (React.createElement(products_2.Product, __assign({ key: "product-" + index }, product)));
     })));
 };
 exports.default = react_redux_1.connect(function (state) { return state.products; }, products_1.actionCreators)(ProductList);

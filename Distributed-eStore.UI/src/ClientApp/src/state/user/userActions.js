@@ -41,22 +41,19 @@ var _1 = require(".");
 var auth_1 = require("../../services/auth");
 exports.userActionCreators = {
     register: function (userData) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
-        var firstName, lastName, email, password, error_1, message;
+        var error_1, message;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    firstName = userData.firstName, lastName = userData.lastName, email = userData.email, password = userData.password;
-                    _a.label = 1;
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, auth_1.register(userData.firstName, userData.lastName, userData.email, userData.password)];
                 case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, auth_1.register(firstName, lastName, email, password)];
-                case 2:
                     _a.sent();
                     dispatch({
                         type: _1.UserActionTypes.REGISTRATION_SUCCESS,
                     });
-                    return [3 /*break*/, 4];
-                case 3:
+                    return [3 /*break*/, 3];
+                case 2:
                     error_1 = _a.sent();
                     message = (error_1.response && error_1.response.data && error_1.response.data.message)
                         || error_1.message
@@ -66,8 +63,8 @@ exports.userActionCreators = {
                     });
                     // TODO: implement state error message
                     alert("Registration failed - " + message);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     }); }; },
@@ -91,10 +88,10 @@ exports.userActionCreators = {
                         || error_2.message
                         || error_2.toString();
                     dispatch({
-                        type: _1.UserActionTypes.LOGIN_FAIL,
+                        type: _1.UserActionTypes.LOGIN_FAIL
                     });
                     // TODO: implement state error message
-                    alert("Registration failed - " + message);
+                    alert("Login failed - " + message);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
