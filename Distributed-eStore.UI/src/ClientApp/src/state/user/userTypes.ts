@@ -15,5 +15,5 @@ export interface IUser {
 
 export interface IUserState {
     isLoggedIn: boolean;
-    user: IUser;
+    user: IUser | null;
 }

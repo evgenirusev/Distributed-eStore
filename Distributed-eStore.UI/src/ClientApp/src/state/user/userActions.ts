@@ -1,8 +1,8 @@
 ﻿import { IAppThunkAction, ReduxAction } from "..";
-import { register, login} from "../../services/auth";
+import { register, login } from "../../services/auth";
 
 interface TempAction {
-    
+
 }
 
 export type KnownAction = TempAction;
@@ -17,8 +17,8 @@ export type UserRegistrationData = {
 export const userActionCreators = {
     register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         const { firstName, lastName, email, password } = userData;
-        return register(firstName, lastName, email, password).then(
-            (response) => {
+        try {
+            register(firstName, lastName, email, password).then((response) => {
                 dispatch({
                     type: REGISTER_SUCCESS,
                 });
@@ -29,27 +29,23 @@ export const userActionCreators = {
                 });
 
                 return Promise.resolve();
-            },
-            (error) => {
-                const message =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
+            });
+        } catch (error) {
+            const message = (error.response && error.response.data && error.response.data.message)
+                || error.message
+                || error.toString();
 
-                dispatch({
-                    type: REGISTER_FAIL,
-                });
+            dispatch({
+                type: REGISTER_FAIL,
+            });
 
-                dispatch({
-                    type: SET_MESSAGE,
-                    payload: message,
-                });
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
 
-                return Promise.reject();
-            }
-        );
+            return Promise.reject();
+        }
     },
     login: (email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         //return AuthService.login(username, password).then(

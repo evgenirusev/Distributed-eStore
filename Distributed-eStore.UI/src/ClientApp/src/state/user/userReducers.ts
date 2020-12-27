@@ -7,14 +7,10 @@ const initialState: IUserState = userData
     ? { isLoggedIn: true, user: JSON.parse(userData) }
     : { isLoggedIn: false, user: {} as IUser };
 
-export const reducer = (state: IUserState = initialState, incomingAction: ReduxAction): IUserState => {
-    return {} as IUserState;
-};
-
 export default function (state = initialState, incomingAction: ReduxAction): IUserState {
-    const action = incomingAction as ReduxAction;
+    const { type, payload } = incomingAction as ReduxAction;
 
-    switch (action.type) {
+    switch (type) {
         case UserActionTypes.REGISTER_SUCCESS:
             return {
                 ...state,
@@ -29,19 +25,19 @@ export default function (state = initialState, incomingAction: ReduxAction): IUs
             return {
                 ...state,
                 isLoggedIn: true,
-                // user: payload.user,
+                user: payload.user,
             };
         case UserActionTypes.LOGIN_FAIL:
             return {
                 ...state,
                 isLoggedIn: false,
-                // user: null,
+                user: null,
             };
         case UserActionTypes.LOGOUT:
             return {
                 ...state,
                 isLoggedIn: false,
-                // user: null,
+                user: null,
             };
         default:
             return state;

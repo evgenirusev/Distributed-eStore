@@ -1,4 +1,4 @@
-﻿import { getAllPosts } from '../../api/';
+﻿import { getAllPosts } from '../../services/api/';
 import { IProduct } from '../products/';
 import { IAppThunkAction, ReduxAction } from '../';
 import { ProductsActionTypes } from './productsTypes';
