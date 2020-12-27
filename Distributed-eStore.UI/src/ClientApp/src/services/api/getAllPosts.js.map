@@ -1,1 +1,1 @@
-{"version":3,"file":"getAllPosts.js","sourceRoot":"","sources":["getAllPosts.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,6CAAgD;AAEhD,+BAA6C;AAEtC,IAAM,WAAW,GAA6C;;QACjE,sBAAO,eAAK,CAAC,GAAG,CAAa,0BAAc,CAAC,EAAC;;KAChD,CAAA;AAFY,QAAA,WAAW,eAEvB"}
+{"version":3,"file":"getAllPosts.js","sourceRoot":"","sources":["getAllPosts.ts"],"names":[],"mappings":";;;AAAA,6CAAgD;AAEhD,+BAA6C;AAEtC,IAAM,WAAW,GAA6C;IACjE,OAAO,eAAK,CAAC,GAAG,CAAa,0BAAc,CAAC,CAAC;AACjD,CAAC,CAAA;AAFY,QAAA,WAAW,eAEvB"}

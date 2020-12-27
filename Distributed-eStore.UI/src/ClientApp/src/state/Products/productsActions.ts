@@ -14,17 +14,15 @@ export type KnownAction = IRequestAllProductsAction;
 const defaultColorIndex = 0;
 
 export const actionCreators = {
-    requestProducts: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    requestProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         if (getState()) {
             try {
-                getAllPosts().then((response: AxiosResponse<IProduct[]>) => {
-                    const products: IProduct[] = response.data;
-                    products.forEach(p => p.selectedColorIndex = defaultColorIndex);
-                    
-                    dispatch({
-                        products,
-                        type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
-                    });
+                const products: IProduct[] = (await getAllPosts()).data;
+                products.forEach(p => p.selectedColorIndex = defaultColorIndex);
+
+                dispatch({
+                    products,
+                    type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
                 });
             } catch (error) {
                 console.error(error);
