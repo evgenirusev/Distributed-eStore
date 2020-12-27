@@ -1,5 +1,6 @@
-﻿import { IAppThunkAction, ReduxAction } from "..";
-import { register, login } from "../../services/auth";
+﻿import { UserActionTypes } from ".";
+import { IAppThunkAction, ReduxAction } from "..";
+import { register, login, logout } from "../../services/auth";
 
 interface TempAction {
 
@@ -15,36 +16,25 @@ export type UserRegistrationData = {
 }
 
 export const userActionCreators = {
-    register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         const { firstName, lastName, email, password } = userData;
         try {
-            register(firstName, lastName, email, password).then((response) => {
-                dispatch({
-                    type: REGISTER_SUCCESS,
-                });
+            await register(firstName, lastName, email, password);
 
-                dispatch({
-                    type: SET_MESSAGE,
-                    payload: response.data.message,
-                });
-
-                return Promise.resolve();
+            dispatch({
+                type: UserActionTypes.REGISTRATION_SUCCESS,
             });
         } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message)
+            const message: string = (error.response && error.response.data && error.response.data.message)
                 || error.message
                 || error.toString();
 
             dispatch({
-                type: REGISTER_FAIL,
+                type: UserActionTypes.REGISTRATION_FAILED,
             });
 
-            dispatch({
-                type: SET_MESSAGE,
-                payload: message,
-            });
-
-            return Promise.reject();
+            // TODO: implement state error message
+            alert(`Registration failed - ${message}`);
         }
     },
     login: (email: string, password: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
