@@ -2,8 +2,6 @@ using System;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Mongo;
 using DistributedEStore.Services.Identity.Domain;
-using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 
 namespace DistributedEStore.Services.Identity.Repositories
 {

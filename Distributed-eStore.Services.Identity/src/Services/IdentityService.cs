@@ -7,7 +7,6 @@ using DistributedEStore.Services.Identity.Messages.Events;
 using DistributedEStore.Services.Identity.Domain;
 using DistributedEStore.Services.Identity.Repositories;
 using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
 
 namespace DistributedEStore.Services.Identity.Services
 {
@@ -35,7 +34,7 @@ namespace DistributedEStore.Services.Identity.Services
             _busPublisher = busPublisher;
         }
 
-        public async Task SignUpAsync(Guid id, string email, string password, string role = Role.User)
+        public async Task SignUpAsync(Guid id, string email, string firstName, string lastName, string password, string role = Role.User)
         {
             var user = await _userRepository.GetAsync(email);
             if (user != null)
@@ -47,7 +46,7 @@ namespace DistributedEStore.Services.Identity.Services
             {
                 role = Role.User;
             }
-            user = new User(id, email, role);
+            user = new User(id, email, firstName, lastName, role);
             user.SetPassword(password, _passwordHasher);
             await _userRepository.AddAsync(user);
             await _busPublisher.PublishAsync(new SignedUp(id, email, role), CorrelationContext.Empty);
