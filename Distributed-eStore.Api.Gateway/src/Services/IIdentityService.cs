@@ -1,6 +1,5 @@
 ﻿using DistributedEStore.Common.Types;
-using DistributedEStore.Common.Queries;
-using DistributedEStore.Common.Commands;
+using DistributedEStore.Common.Commands.Identity;
 using RestEase;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Models.Products;

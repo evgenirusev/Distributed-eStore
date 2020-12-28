@@ -27,7 +27,7 @@ namespace DistributedEStore.Services.Identity.Controllers
         {
             command.BindId(c => c.Id);
             await _identityService.SignUpAsync(command.Id, 
-                command.Email, command.Password, command.Role);
+                command.Email, command.FirstName, command.LastName, command.Password, command.Role);
 
             return Ok();
         }
