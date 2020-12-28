@@ -29,7 +29,7 @@ namespace DistributedEStore.Services.Identity.Controllers
             await _identityService.SignUpAsync(command.Id, 
                 command.Email, command.Password, command.Role);
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpPost("sign-in")]

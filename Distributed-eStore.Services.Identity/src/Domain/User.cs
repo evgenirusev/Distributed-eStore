@@ -14,6 +14,8 @@ namespace DistributedEStore.Services.Identity.Domain
             
         public Guid Id { get; private set; }
         public string Email { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
         public string Role { get; private set; }
         public string PasswordHash { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -23,7 +25,7 @@ namespace DistributedEStore.Services.Identity.Domain
         {
         }
 
-        public User(Guid id, string email, string role)
+        public User(Guid id, string email, string firstName, string lastName, string role)
         {
             if (!EmailRegex.IsMatch(email))
             {
@@ -37,6 +39,8 @@ namespace DistributedEStore.Services.Identity.Domain
             }        
             Id = id;
             Email = email.ToLowerInvariant();
+            FirstName = firstName;
+            LastName = lastName;
             Role = role.ToLowerInvariant();
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
