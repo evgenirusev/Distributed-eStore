@@ -16,8 +16,7 @@ namespace DistributedEStore.Api.Messages.Commands.Products
         public string[] Colors { get; set; }
 
         [JsonConstructor]
-		public CreateProduct(Guid id, string name, string description, decimal price,
-			string category)
+		public CreateProduct(Guid id, string name, string description, decimal price, string category)
 		{
 			Id = id;
 			Name = name;

@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace DistributedEStore.Api.Messages.Commands.Identity
 {
     [MessageNamespace("identity")]
-    public class SignUpCommand
+    public class SignUpCommand : ICommand
     {
         public Guid Id { get; set; }
         public string Email { get; }

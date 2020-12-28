@@ -1,4 +1,5 @@
-﻿using DistributedEStore.Common.Models.Products;
+﻿using DistributedEStore.Common.Commands.Identity;
+using DistributedEStore.Common.Models.Products;
 using DistributedEStore.Common.Queries;
 using DistributedEStore.Common.Types;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,16 @@ namespace DistributedEStore.Api.Services
         [Get("products")]
         public Task<PagedResult<Product>> BrowseAsync([FromQuery] BrowseProducts query);
 
+        // TODO: implement product by id
         //[Get("products/{id}")]
         //public Task<IActionResult> Get(Guid id);
+
+        [AllowAnyStatusCode]
+        [Post("identity")]
+        public Task<IActionResult> SignUp([FromQuery] SignUpCommand command);
+
+        [AllowAnyStatusCode]
+        [Post("identity")]
+        public Task<IActionResult> SignIn([FromQuery] SignInCommand command);
     }
 }

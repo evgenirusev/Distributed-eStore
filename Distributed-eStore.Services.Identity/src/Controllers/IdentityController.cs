@@ -12,13 +12,10 @@ namespace DistributedEStore.Services.Identity.Controllers
     public class IdentityController : BaseController
     {
         private readonly IIdentityService _identityService;
-        private readonly IRefreshTokenService _refreshTokenService;
 
-        public IdentityController(IIdentityService identityService,
-            IRefreshTokenService refreshTokenService)
+        public IdentityController(IIdentityService identityService)
         {
             _identityService = identityService;
-            _refreshTokenService = refreshTokenService;
         }
 
         [HttpGet("me")]

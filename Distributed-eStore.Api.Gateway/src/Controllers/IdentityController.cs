@@ -1,21 +1,16 @@
-﻿using DistributedEStore.Common.Commands;
-using DistributedEStore.Api.Services;
-using DistributedEStore.Common.RabbitMq;
+﻿using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Common.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using DistributedEStore.Api.Messages.Commands.Identity;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
     public class IdentityController : BaseController
     {
-        private readonly IIdentityService _identityService;
-
-        public IdentityController(IBusPublisher busPublisher, IIdentityService identityService)
-            : base(busPublisher)
-        {
-            _identityService = identityService;
-        }
+        public IdentityController(IBusPublisher busPublisher)
+            : base(busPublisher) 
+        { }
 
         [HttpPost("sign-up")]
         public async Task<IActionResult> Post(SignInCommand command)

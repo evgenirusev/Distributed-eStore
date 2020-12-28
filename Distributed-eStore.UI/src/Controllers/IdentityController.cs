@@ -1,4 +1,5 @@
 ﻿using DistributedEStore.Api.Services;
+using DistributedEStore.Common.Commands.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -15,8 +16,14 @@ namespace DistributedEStore.UI.Controllers
             this.apiGatewayService = apiGatewayService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] BrowseProducts query)
+        [HttpPost("sign-up")]
+        public async Task<IActionResult> Post([FromQuery] SignUpCommand query)
+        {
+            return Collection(await apiGatewayService.BrowseAsync(query));
+        }
+
+        [HttpPost("sign-in")]
+        public async Task<IActionResult> Post([FromQuery] SignInCommand query)
         {
             return Collection(await apiGatewayService.BrowseAsync(query));
         }
