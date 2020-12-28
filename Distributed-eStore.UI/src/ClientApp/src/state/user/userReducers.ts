@@ -1,6 +1,6 @@
 ﻿import { IUser, IUserState } from "./userTypes";
-import { ReduxAction } from '../index';
-import { UserActionTypes } from "./";
+import { ReduxAction } from '../';
+import { UserActionTypes } from "./userTypes";
 
 const userData: string | null = localStorage.getItem("user");
 const initialState: IUserState = userData

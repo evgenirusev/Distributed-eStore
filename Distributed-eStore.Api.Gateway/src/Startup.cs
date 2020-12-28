@@ -43,6 +43,7 @@ namespace DistributedEStore.Api.Gateway
             services.AddConsul();
             services.AddControllers();
             services.RegisterServiceForwarder<IProductsService>("products-service");
+            services.RegisterServiceForwarder<IProductsService>("products-service");
         }
         
         public void ConfigureContainer(ContainerBuilder builder)

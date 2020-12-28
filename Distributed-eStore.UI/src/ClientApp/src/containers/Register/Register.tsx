@@ -70,8 +70,8 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.email ? ' has-error' : '')}>
-                        <label htmlFor="email">email</label>
-                        <input type="text" className="form-control" name="Email" value={user.email} onChange={this.handleChange} />
+                        <label htmlFor="email">Email</label>
+                        <input type="text" className="form-control" name="email" value={user.email} onChange={this.handleChange} />
                         {submitted && !user.email &&
                             <div className="help-block">Email is required</div>
                         }

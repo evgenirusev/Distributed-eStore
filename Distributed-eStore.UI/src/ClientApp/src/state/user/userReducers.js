@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var _1 = require("./");
+var userTypes_1 = require("./userTypes");
 var userData = localStorage.getItem("user");
 var initialState = userData
     ? { isLoggedIn: true, user: JSON.parse(userData) }
@@ -20,15 +20,15 @@ function default_1(state, incomingAction) {
     if (state === void 0) { state = initialState; }
     var _a = incomingAction, type = _a.type, payload = _a.payload;
     switch (type) {
-        case _1.UserActionTypes.REGISTRATION_SUCCESS:
+        case userTypes_1.UserActionTypes.REGISTRATION_SUCCESS:
             return __assign(__assign({}, state), { isLoggedIn: false });
-        case _1.UserActionTypes.REGISTRATION_FAILED:
+        case userTypes_1.UserActionTypes.REGISTRATION_FAILED:
             return __assign(__assign({}, state), { isLoggedIn: false });
-        case _1.UserActionTypes.LOGIN_SUCCESS:
+        case userTypes_1.UserActionTypes.LOGIN_SUCCESS:
             return __assign(__assign({}, state), { isLoggedIn: true, user: payload.user });
-        case _1.UserActionTypes.LOGIN_FAIL:
+        case userTypes_1.UserActionTypes.LOGIN_FAIL:
             return __assign(__assign({}, state), { isLoggedIn: false, user: null });
-        case _1.UserActionTypes.LOGOUT:
+        case userTypes_1.UserActionTypes.LOGOUT:
             return __assign(__assign({}, state), { isLoggedIn: false, user: null });
         default:
             return state;

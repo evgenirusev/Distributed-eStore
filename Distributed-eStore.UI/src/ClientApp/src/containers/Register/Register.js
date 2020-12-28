@@ -77,8 +77,8 @@ var RegisterPage = /** @class */ (function (_super) {
                     submitted && !user.lastName &&
                         React.createElement("div", { className: "help-block" }, "Last Name is required")),
                 React.createElement("div", { className: 'form-group' + (submitted && !user.email ? ' has-error' : '') },
-                    React.createElement("label", { htmlFor: "email" }, "email"),
-                    React.createElement("input", { type: "text", className: "form-control", name: "Email", value: user.email, onChange: this.handleChange }),
+                    React.createElement("label", { htmlFor: "email" }, "Email"),
+                    React.createElement("input", { type: "text", className: "form-control", name: "email", value: user.email, onChange: this.handleChange }),
                     submitted && !user.email &&
                         React.createElement("div", { className: "help-block" }, "Email is required")),
                 React.createElement("div", { className: 'form-group' + (submitted && !user.password ? ' has-error' : '') },

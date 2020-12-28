@@ -7,7 +7,7 @@ using DistributedEStore.Common.Authentication;
 
 namespace DistributedEStore.Services.Identity.Controllers
 {
-    [Route("")]
+    [Route("[controller]")]
     [ApiController]
     public class IdentityController : BaseController
     {
