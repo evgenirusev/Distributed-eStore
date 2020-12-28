@@ -1,7 +1,7 @@
 ﻿using DistributedEStore.Common.Types;
 using DistributedEStore.Common.Queries;
+using DistributedEStore.Common.Commands;
 using RestEase;
-using System;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Models.Products;
 
@@ -12,10 +12,10 @@ namespace DistributedEStore.Api.Services
     {
         [AllowAnyStatusCode]
         [Get("identity/sign-up")]
-        Task<PagedResult<Product>> Register([Query] BrowseProducts query);
+        Task<PagedResult<Product>> SignUp([Query] SignUpCommand signUpCommand);
 
         [AllowAnyStatusCode]
         [Get("identity/sign-in")]
-        Task<PagedResult<Product>> Login([Query] BrowseProducts query);
+        Task<PagedResult<Product>> SignIn([Query] SignInCommand signUpCommand);
     }
 }

@@ -12,6 +12,6 @@ namespace DistributedEStore.Api.Gateway.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Index() => Ok("Distributed-eStore Home PAAAAAGE");
+        public IActionResult Index() => Ok("Distributed-eStore Api-Gateway Home Page");
     }
 }
