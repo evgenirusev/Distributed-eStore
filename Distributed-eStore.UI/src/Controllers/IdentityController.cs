@@ -15,15 +15,15 @@ namespace DistributedEStore.UI.Controllers
         {
             this.apiGatewayService = apiGatewayService;
         }
-
+        
         [HttpPost("sign-up")]
-        public async Task<object> Post([FromQuery] SignUpCommand command)
+        public async Task<object> Post([FromBody] SignUpCommand command)
         {
             return await apiGatewayService.SignUp(command);
         }
 
         [HttpPost("sign-in")]
-        public async Task<object> Post([FromQuery] SignInCommand command)
+        public async Task<object> Post([FromBody] SignInCommand command)
         {
             return await apiGatewayService.SignIn(command);
         }

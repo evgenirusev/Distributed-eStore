@@ -1,11 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductsActionTypes = void 0;
-var ProductsActionTypes;
-(function (ProductsActionTypes) {
-    ProductsActionTypes["REQUEST_ALL_ARRIVAL"] = "REQUEST_ALL_ARRIVAL";
-    ProductsActionTypes["REQUEST_BY_ID_ARRIVAL"] = "REQUEST_BY_ID_ARRIVAL";
-    ProductsActionTypes["SELECT_PRODUCT_COLOR"] = "SELECT_PRODUCT_COLOR";
-})(ProductsActionTypes = exports.ProductsActionTypes || (exports.ProductsActionTypes = {}));
+exports.UserActionTypes = void 0;
+var UserActionTypes;
+(function (UserActionTypes) {
+    UserActionTypes["REGISTRATION_SUCCESS"] = "REGISTRATION_SUCCESS";
+    UserActionTypes["REGISTRATION_FAILED"] = "REGISTRATION_FAILED";
+    UserActionTypes["LOGIN_SUCCESS"] = "LOGIN_SUCCESS";
+    UserActionTypes["LOGIN_FAIL"] = "LOGIN_FAIL";
+    UserActionTypes["LOGOUT"] = "LOGOUT";
+})(UserActionTypes = exports.UserActionTypes || (exports.UserActionTypes = {}));
 ;
-//# sourceMappingURL=productsTypes.js.map
+//# sourceMappingURL=userTypes.js.map

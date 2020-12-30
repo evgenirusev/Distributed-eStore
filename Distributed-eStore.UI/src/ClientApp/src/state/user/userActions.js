@@ -46,7 +46,7 @@ exports.userActionCreators = {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, auth_1.register(userData.firstName, userData.lastName, userData.email, userData.password)];
+                    return [4 /*yield*/, auth_1.register(userData.firstName, userData.lastName, userData.email, userData.password, userData.role)];
                 case 1:
                     _a.sent();
                     dispatch({

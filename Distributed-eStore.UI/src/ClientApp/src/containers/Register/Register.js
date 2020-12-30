@@ -37,7 +37,8 @@ var RegisterPage = /** @class */ (function (_super) {
                 firstName: '',
                 lastName: '',
                 email: '',
-                password: ''
+                password: '',
+                role: 'admin'
             },
             submitted: false
         };

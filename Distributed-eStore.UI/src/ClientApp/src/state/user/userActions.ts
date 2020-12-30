@@ -6,13 +6,15 @@ export type UserRegistrationData = {
     firstName: string,
     lastName: string,
     email: string,
-    password: string
+    password: string,
+    // technical debt
+    role: string
 }
 
 export const userActionCreators = {
     register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         try {
-            await register(userData.firstName, userData.lastName, userData.email, userData.password);
+            await register(userData.firstName, userData.lastName, userData.email, userData.password, userData.role);
 
             dispatch({
                 type: UserActionTypes.REGISTRATION_SUCCESS,

@@ -19,7 +19,8 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
                 firstName: '',
                 lastName: '',
                 email: '',
-                password: ''
+                password: '',
+                role: 'admin'
             },
             submitted: false
         };

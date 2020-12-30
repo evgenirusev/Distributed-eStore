@@ -8,10 +8,14 @@
         public string Password { get; }
         public string Role { get; }
 
-        public SignUpCommand()
+        // technical debt - role = "admin"
+        public SignUpCommand(string email, string firstName, string lastName, string password, string role = "admin")
         {
-            // technical debt
-            Role = "admin";
+            Email = email;
+            FirstName = firstName;
+            LastName = lastName;
+            Password = password;
+            Role = role;
         }
     }
 }

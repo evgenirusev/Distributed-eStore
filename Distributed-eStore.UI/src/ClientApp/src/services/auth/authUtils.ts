@@ -2,12 +2,13 @@
 import { loginUrl, registerUrl } from "../../constants";
 import { IUser } from "../../state/user";
 
-export const register = (firstName: string, lastName: string, email: string, password: string): Promise<AxiosResponse> => {
+export const register = (firstName: string, lastName: string, email: string, password: string, role: string): Promise<AxiosResponse> => {
     return axios.post(registerUrl, {
         firstName,
         lastName,
         email,
-        password
+        password,
+        role
     });
 }
 
