@@ -2,7 +2,7 @@
 using DistributedEStore.Common.Commands.Identity;
 using RestEase;
 using System.Threading.Tasks;
-using DistributedEStore.Common.Models.Products;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DistributedEStore.Api.Services
 {
@@ -10,11 +10,11 @@ namespace DistributedEStore.Api.Services
     public interface IIdentityService
     {
         [AllowAnyStatusCode]
-        [Get("identity/sign-up")]
-        Task<PagedResult<Product>> SignUp([Query] SignUpCommand signUpCommand);
+        [Post("identity/sign-up")]
+        Task<IActionResult> SignUp(SignUpCommand signUpCommand);
 
         [AllowAnyStatusCode]
-        [Get("identity/sign-in")]
-        Task<PagedResult<Product>> SignIn([Query] SignInCommand signUpCommand);
+        [Post("identity/sign-in")]
+        Task<IActionResult> SignIn(SignInCommand signUpCommand);
     }
 }

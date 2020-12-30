@@ -20,11 +20,11 @@ namespace DistributedEStore.Api.Services
         //public Task<IActionResult> Get(Guid id);
 
         [AllowAnyStatusCode]
-        [Post("identity")]
-        public Task<IActionResult> SignUp([FromQuery] SignUpCommand command);
+        [Post("identity/sign-up")]
+        public Task<IActionResult> SignUp([Body] SignUpCommand command);
 
         [AllowAnyStatusCode]
-        [Post("identity")]
-        public Task<IActionResult> SignIn([FromQuery] SignInCommand command);
+        [Post("identity/sign-in")]
+        public Task<IActionResult> SignIn([Body] SignInCommand command);
     }
 }

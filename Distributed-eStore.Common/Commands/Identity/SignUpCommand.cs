@@ -1,7 +1,10 @@
-﻿namespace DistributedEStore.Common.Commands.Identity
+﻿using System;
+
+namespace DistributedEStore.Common.Commands.Identity
 {
     public class SignUpCommand
     {
+        public Guid Id { get; }
         public string Email { get; }
         public string FirstName { get; }
         public string LastName { get; }

@@ -27,9 +27,7 @@ namespace DistributedEStore.Api.Gateway.Controllers
         [HttpGet]
         [AllowAnonymous]
         public async Task<PagedResult<Product>> Get([FromQuery] BrowseProducts query)
-        {
-            return await _productsService.BrowseAsync(query);
-        }
+            => await _productsService.BrowseAsync(query);
 
         [HttpGet("{id}")]
         [AllowAnonymous]

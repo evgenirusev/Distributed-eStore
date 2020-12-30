@@ -4,6 +4,7 @@ using DistributedEStore.Common.Mvc;
 using DistributedEStore.Services.Identity.Messages.Commands;
 using DistributedEStore.Services.Identity.Services;
 using DistributedEStore.Common.Authentication;
+using DistributedEStore.Common.Commands.Identity;
 
 namespace DistributedEStore.Services.Identity.Controllers
 {
@@ -23,7 +24,7 @@ namespace DistributedEStore.Services.Identity.Controllers
         public IActionResult Get() => Content($"Your id: '{UserId:N}'.");
 
         [HttpPost("sign-up")]
-        public async Task<IActionResult> SignUp(SignUp command)
+        public async Task<IActionResult> SignUp([FromBody] SignUpCommand command)
         {
             command.BindId(c => c.Id);
             await _identityService.SignUpAsync(command.Id, 
@@ -33,7 +34,7 @@ namespace DistributedEStore.Services.Identity.Controllers
         }
 
         [HttpPost("sign-in")]
-        public async Task<IActionResult> SignIn(SignIn command)
+        public async Task<IActionResult> SignIn([FromBody] SignInCommand command)
             => Ok(await _identityService.SignInAsync(command.Email, command.Password));
 
         [HttpPut("me/password")]
