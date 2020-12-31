@@ -11,7 +11,7 @@ namespace DistributedEStore.Common.Commands.Identity
         public string Password { get; }
         public string Role { get; }
 
-        // technical debt - role = "admin"
+        // technical debt - role = "admin", todo
         public SignUpCommand(string email, string firstName, string lastName, string password, string role = "admin")
         {
             Email = email;

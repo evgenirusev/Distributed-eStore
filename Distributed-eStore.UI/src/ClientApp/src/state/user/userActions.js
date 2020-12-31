@@ -74,9 +74,12 @@ exports.userActionCreators = {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
+                    // todo
+                    console.log("logging in", email, password);
                     return [4 /*yield*/, auth_1.login(email, password)];
                 case 1:
                     user = (_a.sent()).data;
+                    console.log(user);
                     dispatch({
                         type: _1.UserActionTypes.LOGIN_SUCCESS,
                         payload: { user: user }

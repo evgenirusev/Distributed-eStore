@@ -25,7 +25,10 @@ namespace DistributedEStore.UI.Controllers
         [HttpPost("sign-in")]
         public async Task<object> Post([FromBody] SignInCommand command)
         {
-            return await apiGatewayService.SignIn(command);
+            // todo: revert
+            var x = await apiGatewayService.SignIn(command);
+            // return await apiGatewayService.SignIn(command);
+            return x;
         }
     }
 }

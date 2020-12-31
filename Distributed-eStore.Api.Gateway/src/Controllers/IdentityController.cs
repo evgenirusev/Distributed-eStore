@@ -26,6 +26,10 @@ namespace DistributedEStore.Api.Gateway.Controllers
         [AllowAnonymous]
         [HttpPost("sign-in")]
         public async Task<IActionResult> Post([FromBody] SignInCommand command)
-            => await _identityService.SignIn(command);
+        {
+            // todo: revert
+            var debug = await _identityService.SignIn(command);
+            return Ok(debug);
+        }
     }
 }

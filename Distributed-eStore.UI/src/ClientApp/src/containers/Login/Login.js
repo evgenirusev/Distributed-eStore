@@ -62,10 +62,10 @@ var LoginPage = /** @class */ (function (_super) {
             React.createElement("h2", null, "Login"),
             React.createElement("form", { name: "form", onSubmit: this.handleSubmit },
                 React.createElement("div", { className: 'form-group' + (submitted && !email ? ' has-error' : '') },
-                    React.createElement("label", { htmlFor: "username" }, "Username"),
-                    React.createElement("input", { type: "text", className: "form-control", name: "username", value: email, onChange: this.handleChange }),
+                    React.createElement("label", { htmlFor: "email" }, "Email"),
+                    React.createElement("input", { type: "text", className: "form-control", name: "email", value: email, onChange: this.handleChange }),
                     submitted && !email &&
-                        React.createElement("div", { className: "help-block" }, "Username is required")),
+                        React.createElement("div", { className: "help-block" }, "Email is required")),
                 React.createElement("div", { className: 'form-group' + (submitted && !password ? ' has-error' : '') },
                     React.createElement("label", { htmlFor: "password" }, "Password"),
                     React.createElement("input", { type: "password", className: "form-control", name: "password", value: password, onChange: this.handleChange }),

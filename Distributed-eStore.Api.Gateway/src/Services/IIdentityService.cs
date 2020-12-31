@@ -3,6 +3,7 @@ using DistributedEStore.Common.Commands.Identity;
 using RestEase;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DistributedEStore.Common.Authentication;
 
 namespace DistributedEStore.Api.Services
 {
@@ -15,6 +16,6 @@ namespace DistributedEStore.Api.Services
 
         [AllowAnyStatusCode]
         [Post("identity/sign-in")]
-        Task<IActionResult> SignIn([Body] SignInCommand signUpCommand);
+        Task<JsonWebToken> SignIn([Body] SignInCommand signInCommand);
     }
 }

@@ -34,7 +34,10 @@ export const userActionCreators = {
     },
     login: (email: string, password: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         try {
+            // todo
+            console.log("logging in", email, password);
             const user: IUser = (await login(email, password)).data;
+            console.log(user);
 
             dispatch({
                 type: UserActionTypes.LOGIN_SUCCESS,

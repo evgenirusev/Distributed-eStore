@@ -8,7 +8,8 @@
 
 export interface IUser {
     accessToken: string;
-    userId: string;
+    refreshToken: string;
+    Id: string;
     role: string;
     claims: { [key: string]: number };
 }
