@@ -11,10 +11,10 @@ namespace DistributedEStore.Api.Services
     {
         [AllowAnyStatusCode]
         [Post("identity/sign-up")]
-        Task<IActionResult> SignUp(SignUpCommand signUpCommand);
+        Task<IActionResult> SignUp([Body] SignUpCommand signUpCommand);
 
         [AllowAnyStatusCode]
         [Post("identity/sign-in")]
-        Task<IActionResult> SignIn(SignInCommand signUpCommand);
+        Task<IActionResult> SignIn([Body] SignInCommand signUpCommand);
     }
 }
