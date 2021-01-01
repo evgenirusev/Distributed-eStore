@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.actionCreators = void 0;
 var api_1 = require("../../services/api/");
 var productsTypes_1 = require("./productsTypes");
-var defaultColorIndex = 0;
+var constants_1 = require("../../constants");
 exports.actionCreators = {
     requestProducts: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         var products, error_1;
@@ -53,7 +53,7 @@ exports.actionCreators = {
                     return [4 /*yield*/, api_1.getAllPosts()];
                 case 2:
                     products = (_a.sent()).data;
-                    products.forEach(function (p) { return p.selectedColorIndex = defaultColorIndex; });
+                    products.forEach(function (p) { return p.selectedColorIndex = constants_1.DEFAULT_COLOR_INDEX; });
                     dispatch({
                         products: products,
                         type: productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL
