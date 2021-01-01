@@ -1,4 +1,5 @@
-﻿using DistributedEStore.Common.Commands.Identity;
+﻿using DistributedEStore.Common.Authentication;
+using DistributedEStore.Common.Commands.Identity;
 using DistributedEStore.Common.Models.Products;
 using DistributedEStore.Common.Queries;
 using DistributedEStore.Common.Types;
@@ -25,6 +26,6 @@ namespace DistributedEStore.Api.Services
 
         [AllowAnyStatusCode]
         [Post("identity/sign-in")]
-        public Task<IActionResult> SignIn([Body] SignInCommand command);
+        public Task<JsonWebToken> SignIn([Body] SignInCommand command);
     }
 }
