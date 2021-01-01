@@ -2,6 +2,7 @@ import * as Products from './products/'
 
 export interface IApplicationState {
     readonly products: Products.IProductsListState | undefined;
+    readonly cartProductIDs: string[] | undefined;
 }
 
 export const reducers = {

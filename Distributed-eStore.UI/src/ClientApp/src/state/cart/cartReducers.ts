@@ -2,7 +2,7 @@
 import { ReduxAction } from '../index';
 
 const initialState: ICartListState = {
-    products: []
+    cartProductIDs: []
 };
 
 export const reducer = (state: ICartListState = initialState, incomingAction: ReduxAction): ICartListState => {
@@ -10,6 +10,8 @@ export const reducer = (state: ICartListState = initialState, incomingAction: Re
     switch (action.type) {
         case CartActionTypes.ADD_TO_CART:
         case CartActionTypes.REMOVE_FROM_CART:
+        case CartActionTypes.INCREMENT_PRODUCT_QUANTITY:
+        case CartActionTypes.DECREMENT_PRODUCT_QUANTITY:
         case CartActionTypes.PLACE_ORDER:
         default:
             return state;
