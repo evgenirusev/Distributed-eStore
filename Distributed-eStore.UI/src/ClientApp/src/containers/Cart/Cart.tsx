@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
-import { reducer } from '../../state/products/';
-import { actionCreators } from '../../state/products/';
+import { reducer } from '../../state/cart/cartReducers';
+import { actionCreators } from '../../state/cart/cartActions';
 import './ProductList.css';
 
 type CartsProps = ReturnType<typeof reducer> & typeof actionCreators;
@@ -11,4 +11,4 @@ const Cart: React.FC<CartsProps> = ({ }) => {
     );
 };
 
-// export default connect((state: IApplicationState) => state.products, actionCreators)(Cart);
+export default connect((state: IApplicationState) => state.products, actionCreators)(Cart);

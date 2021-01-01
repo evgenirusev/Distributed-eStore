@@ -61,7 +61,7 @@ exports.userActionCreators = {
                     dispatch({
                         type: _1.UserActionTypes.REGISTRATION_FAILED,
                     });
-                    // TODO: implement state error message
+                    // technical debt
                     alert("Registration failed - " + message);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
@@ -74,12 +74,9 @@ exports.userActionCreators = {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    // todo
-                    console.log("logging in", email, password);
                     return [4 /*yield*/, auth_1.login(email, password)];
                 case 1:
                     user = (_a.sent()).data;
-                    console.log(user);
                     dispatch({
                         type: _1.UserActionTypes.LOGIN_SUCCESS,
                         payload: { user: user }
@@ -93,7 +90,7 @@ exports.userActionCreators = {
                     dispatch({
                         type: _1.UserActionTypes.LOGIN_FAIL
                     });
-                    // TODO: implement state error message
+                    // technical debt
                     alert("Login failed - " + message);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];

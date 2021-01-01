@@ -1,19 +1,14 @@
 ﻿import { IAppThunkAction, ReduxAction } from '../';
+import { IProduct } from '../products';
 
 export const actionCreators = {
-    requestProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        if (getState()) {
-            try {
-                const products: IProduct[] = (await getAllPosts()).data;
-                products.forEach(p => p.selectedColorIndex = defaultColorIndex);
+    addProductToCart: (product: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        
+    },
+    removeProductFromCart: (productId: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
 
-                dispatch({
-                    products,
-                    type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
+    },
+    placeOrder: (productId: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        
     }
 };

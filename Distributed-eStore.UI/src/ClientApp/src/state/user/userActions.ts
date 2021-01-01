@@ -28,16 +28,13 @@ export const userActionCreators = {
                 type: UserActionTypes.REGISTRATION_FAILED,
             });
 
-            // TODO: implement state error message
+            // technical debt
             alert(`Registration failed - ${message}`);
         }
     },
     login: (email: string, password: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         try {
-            // todo
-            console.log("logging in", email, password);
             const user: IUser = (await login(email, password)).data;
-            console.log(user);
 
             dispatch({
                 type: UserActionTypes.LOGIN_SUCCESS,
@@ -52,7 +49,7 @@ export const userActionCreators = {
                 type: UserActionTypes.LOGIN_FAIL
             });
 
-            // TODO: implement state error message
+            // technical debt
             alert(`Login failed - ${message}`);
         }
     },
