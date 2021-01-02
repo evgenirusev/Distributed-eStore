@@ -18,11 +18,11 @@ var products_2 = require("../../components/products/");
 var react_1 = require("react");
 require("./ProductList.css");
 var ProductList = function (_a) {
-    var products = _a.products, requestProducts = _a.requestProducts;
+    var productIDsToProductsMap = _a.productIDsToProductsMap, requestProducts = _a.requestProducts;
     react_1.useEffect(function () {
         requestProducts();
     }, [requestProducts]);
-    return (React.createElement("section", { className: 'product-list' }, products.map(function (product, index) {
+    return (React.createElement("section", { className: 'product-list' }, Object.values(productIDsToProductsMap).map(function (product, index) {
         return (React.createElement(products_2.Product, __assign({ key: "product-" + index }, product)));
     })));
 };

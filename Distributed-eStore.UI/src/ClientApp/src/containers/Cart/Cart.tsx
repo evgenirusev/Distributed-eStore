@@ -9,7 +9,7 @@ import { IApplicationState } from '../../state/index';
 type CartsProps = ReturnType<typeof cartReducer> & ReturnType<typeof productsReducer> & typeof actionCreators;
 
 const Cart: React.FC<CartsProps> = ({
-    products,
+    productIDsToProductsMap,
     cartProductIDs,
     addProductToCart,
     removeProductFromCart,
@@ -19,7 +19,7 @@ const Cart: React.FC<CartsProps> = ({
 }) => {
     return (
         <section className='cart'>
-            <div>{cartProductIDs.map(id => {  }) }</div>
+            <div>{cartProductIDs.map(id => { productIDsToProductsMap. }) }</div>
         </section>
     );
 };

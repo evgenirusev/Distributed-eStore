@@ -2,7 +2,7 @@
 import { IProductsListState, ProductsActionTypes } from './productsTypes';
 
 const initialState: IProductsListState = {
-    products: []
+    productIDsToProductsMap: {}
 };
 
 export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
@@ -10,23 +10,17 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
     switch (action.type) {
         case ProductsActionTypes.REQUEST_ALL_ARRIVAL:
             const { products } = action;
-            return {
-                ...state,
-                products
-            };
+            return products.reduce((acc, product) => {
+                acc[product.id] = product;
+            }, {});
         case ProductsActionTypes.SELECT_PRODUCT_COLOR:
             const { productId, colorIndex } = action;
-            const product = state.products.find(product => product.id === productId);
+            const product = state.productIDsToProductsMap[productId];
 
             if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
-                const updatedProducts = state.products.map(product => {
-                    return product.id === productId
-                        ? { ...product, selectedColorIndex: colorIndex }
-                        : product;
-                });
-
+                // todo: handle this
                 return {
-                    products: updatedProducts
+                    productIDsToProductsMap: updatedProducts
                 };
             }
         default:

@@ -10,7 +10,7 @@ import './ProductList.css';
 type ProductListProps = ReturnType<typeof reducer> & typeof actionCreators;
 
 const ProductList: React.FC<ProductListProps> = ({
-    products,
+    productIDsToProductsMap,
     requestProducts
 }) => {
     useEffect(() => {
@@ -19,7 +19,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
     return (
         <section className = 'product-list' >
-            {products.map((product, index) => {
+            {Object.values(productIDsToProductsMap).map((product, index) => {
                 return (
                     <Product key={`product-${index}`} { ...product } />
                 )
