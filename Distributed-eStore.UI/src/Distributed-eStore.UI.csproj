@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\components\cart\cartProduct\CartProduct.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Login\Login.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Register.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\state\user\index.ts" />

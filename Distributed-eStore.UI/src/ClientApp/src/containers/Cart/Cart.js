@@ -12,19 +12,25 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var react_redux_1 = require("react-redux");
-var products_1 = require("../../state/products/");
-var products_2 = require("../../components/products/");
-var react_1 = require("react");
+var cartActions_1 = require("../../state/cart/cartActions");
 require("./ProductList.css");
-var ProductList = function (_a) {
-    var products = _a.products, requestProducts = _a.requestProducts;
-    react_1.useEffect(function () {
-        requestProducts();
-    }, [requestProducts]);
-    return (React.createElement("section", { className: 'product-list' }, products.map(function (product, index) {
-        return (React.createElement(products_2.Product, __assign({ key: "product-" + index }, product)));
-    })));
+var react_redux_1 = require("react-redux");
+var CartProduct_1 = require("../../components/cart/cartProduct/CartProduct");
+var Cart = function (_a) {
+    var productIDsToProductsMap = _a.productIDsToProductsMap, cartProductIDs = _a.cartProductIDs, addProductToCart = _a.addProductToCart, removeProductFromCart = _a.removeProductFromCart, incrementProductQuantity = _a.incrementProductQuantity, decrementProductQuantity = _a.decrementProductQuantity, placeOrder = _a.placeOrder;
+    return (React.createElement("section", { className: 'cart' },
+        React.createElement("div", null, cartProductIDs.map(function (id, index) {
+            var product = productIDsToProductsMap[id];
+            var props = {
+                key: index,
+                id: product.id,
+                name: product.name,
+                color: product.imageURLs[product.selectedColorIndex],
+                price: product.price,
+                imageURL: product.imageURLs[product.selectedColorIndex]
+            };
+            return React.createElement(CartProduct_1.CartProduct, __assign({}, props));
+        }))));
 };
-exports.default = react_redux_1.connect(function (state) { return state.products; }, products_1.actionCreators)(ProductList);
-//# sourceMappingURL=ProductList.js.map
+exports.default = react_redux_1.connect(function (state) { return state; }, cartActions_1.actionCreators)(Cart);
+//# sourceMappingURL=Cart.js.map

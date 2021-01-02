@@ -1,16 +1,15 @@
 ﻿import * as React from 'react';
-import { ColorSwitcher } from '../';
 import './Product.css';
 
 type ProductProps = {
     id: string;
     name: string;
     price: number;
-    color: string[];
+    color: string;
     imageURL: string;
 };
 
-export const Product: React.FC<ProductProps> = ({
+export const CartProduct: React.FC<ProductProps> = ({
     id,
     name,
     price,

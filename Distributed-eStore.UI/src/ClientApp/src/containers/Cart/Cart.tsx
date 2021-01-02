@@ -5,6 +5,7 @@ import { actionCreators } from '../../state/cart/cartActions';
 import './ProductList.css';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state/index';
+import { CartProduct } from '../../components/cart/cartProduct/CartProduct';
 
 type CartsProps = ReturnType<typeof cartReducer> & ReturnType<typeof productsReducer> & typeof actionCreators;
 
@@ -19,9 +20,21 @@ const Cart: React.FC<CartsProps> = ({
 }) => {
     return (
         <section className='cart'>
-            <div>{cartProductIDs.map(id => { productIDsToProductsMap. }) }</div>
+            <div>{cartProductIDs.map((id, index) => {
+                const product = productIDsToProductsMap[id];
+                const props = {
+                    key: index,
+                    id: product.id,
+                    name: product.name,
+                    color: product.imageURLs[product.selectedColorIndex],
+                    price: product.price,
+                    imageURL: product.imageURLs[product.selectedColorIndex]
+                }
+
+                return <CartProduct {...props} />
+            })}</div>
         </section>
     );
 };
 
-export default connect((state: IApplicationState) => state, actionCreators)(Cart);
+export default connect((state: IApplicationState) => state, actionCreators)(Cart as any);
