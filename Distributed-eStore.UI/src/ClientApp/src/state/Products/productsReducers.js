@@ -11,10 +11,12 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL:
             var products = action.products;
-            return products.reduce(function (acc, product) {
-                acc[product.id] = product;
-                return acc;
-            }, {});
+            return {
+                productIDsToProductsMap: products.reduce(function (acc, product) {
+                    acc[product.id] = product;
+                    return acc;
+                }, {})
+            };
         case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR:
             var productId = action.productId, colorIndex = action.colorIndex;
             var product = state.productIDsToProductsMap[productId];

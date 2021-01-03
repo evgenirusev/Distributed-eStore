@@ -1,17 +1,17 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state';
-import { reducer } from '../../state/products/';
+import { IProductsListState, reducer } from '../../state/products/';
 import { actionCreators } from '../../state/products/';
 import { Product } from '../../components/products/';
 import { useEffect } from 'react';
 import './ProductList.css';
 
-type ProductListProps = ReturnType<typeof reducer> & typeof actionCreators;
+type ProductListProps = IProductsListState & typeof actionCreators;
 
 const ProductList: React.FC<ProductListProps> = ({
-    productIDsToProductsMap,
-    requestProducts
+    requestProducts,
+    productIDsToProductsMap
 }) => {
     useEffect(() => {
         requestProducts();
@@ -19,11 +19,11 @@ const ProductList: React.FC<ProductListProps> = ({
 
     return (
         <section className='product-list' >
-            {Object.values(productIDsToProductsMap).map((product, index) => {
+            {Object.keys(productIDsToProductsMap).length !== 0 ? Object.values(productIDsToProductsMap).map((product, index) => {
                 return (
                     <Product key={`product-${index}`} { ...product } />
                 )
-            })}
+            }) : 1}
         </section>
     );
 };

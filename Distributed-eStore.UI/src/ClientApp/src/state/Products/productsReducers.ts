@@ -12,10 +12,12 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
         case ProductsActionTypes.REQUEST_ALL_ARRIVAL:
             const { products } = action;
 
-            return products.reduce((acc, product) => {
-                acc[product.id] = product;
-                return acc;
-            }, {});
+            return {
+                productIDsToProductsMap: products.reduce((acc, product) => {
+                    acc[product.id] = product;
+                    return acc;
+                }, {})
+            };
         case ProductsActionTypes.SELECT_PRODUCT_COLOR:
             const { productId, colorIndex } = action;
             const product = state.productIDsToProductsMap[productId];
