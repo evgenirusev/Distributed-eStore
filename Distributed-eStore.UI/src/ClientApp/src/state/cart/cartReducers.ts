@@ -12,15 +12,17 @@ export const reducer = (state: ICartListState = initialState, incomingAction: Re
             {
                 const { productId } = action;
 
-                return {
-                    cartProductIDs: [...state.cartProductIDs, productId]
+                if (!state.cartProductIDs.includes(productId)) {
+                    return {
+                        cartProductIDs: [...state.cartProductIDs, productId]
+                    }
                 }
             }
         case CartActionTypes.REMOVE_FROM_CART:
             {
                 const { productId } = action;
                 
-                if (!state.cartProductIDs.includes(productId)) {
+                if (state.cartProductIDs.includes(productId)) {
                     const productIdIndex = state.cartProductIDs.indexOf(productId);
 
                     if (productIdIndex > -1) {

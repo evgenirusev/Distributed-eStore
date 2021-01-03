@@ -19,14 +19,16 @@ var reducer = function (state, incomingAction) {
         case cartTypes_1.CartActionTypes.ADD_TO_CART:
             {
                 var productId = action.productId;
-                return {
-                    cartProductIDs: __spreadArrays(state.cartProductIDs, [productId])
-                };
+                if (!state.cartProductIDs.includes(productId)) {
+                    return {
+                        cartProductIDs: __spreadArrays(state.cartProductIDs, [productId])
+                    };
+                }
             }
         case cartTypes_1.CartActionTypes.REMOVE_FROM_CART:
             {
                 var productId = action.productId;
-                if (!state.cartProductIDs.includes(productId)) {
+                if (state.cartProductIDs.includes(productId)) {
                     var productIdIndex = state.cartProductIDs.indexOf(productId);
                     if (productIdIndex > -1) {
                         return {
