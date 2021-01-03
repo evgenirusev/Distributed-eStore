@@ -17,11 +17,20 @@ var reducer = function (state, incomingAction) {
     var action = incomingAction;
     switch (action.type) {
         case cartTypes_1.CartActionTypes.ADD_TO_CART:
-            var productId = action.productId;
-            return {
-                cartProductIDs: __spreadArrays(state.cartProductIDs, [productId])
-            };
+            {
+                var productId = action.productId;
+                return {
+                    cartProductIDs: __spreadArrays(state.cartProductIDs, [productId])
+                };
+            }
         case cartTypes_1.CartActionTypes.REMOVE_FROM_CART:
+            {
+                var productId = action.productId;
+                var productIdIndex = state.cartProductIDs.indexOf(productId);
+                return {
+                    cartProductIDs: __spreadArrays(state.cartProductIDs.slice(0, productIdIndex), state.cartProductIDs.slice(productIdIndex))
+                };
+            }
         case cartTypes_1.CartActionTypes.INCREMENT_PRODUCT_QUANTITY:
         case cartTypes_1.CartActionTypes.DECREMENT_PRODUCT_QUANTITY:
         case cartTypes_1.CartActionTypes.PLACE_ORDER:
