@@ -9,9 +9,10 @@ export const reducer = (state: ICartListState = initialState, incomingAction: Re
     const action = incomingAction as ReduxAction;
     switch (action.type) {
         case CartActionTypes.ADD_TO_CART:
-            
+            const { productId } = action;
+
             return {
-                ...state
+                cartProductIDs: [...state.cartProductIDs, productId]
             }
         case CartActionTypes.REMOVE_FROM_CART:
         case CartActionTypes.INCREMENT_PRODUCT_QUANTITY:
