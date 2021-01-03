@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import './Product.css';
 
 type ProductProps = {
     id: string;

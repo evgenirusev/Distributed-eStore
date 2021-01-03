@@ -18,7 +18,7 @@ const ProductList: React.FC<ProductListProps> = ({
     }, [requestProducts]);
 
     return (
-        <section className = 'product-list' >
+        <section className='product-list' >
             {Object.values(productIDsToProductsMap).map((product, index) => {
                 return (
                     <Product key={`product-${index}`} { ...product } />

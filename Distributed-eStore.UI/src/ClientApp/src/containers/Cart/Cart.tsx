@@ -2,7 +2,6 @@
 import { reducer as cartReducer } from '../../state/cart/cartReducers';
 import { reducer as productsReducer } from '../../state/products/productsReducers';
 import { actionCreators } from '../../state/cart/cartActions';
-import './ProductList.css';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state/index';
 import { CartProduct } from '../../components/cart/cartProduct/CartProduct';

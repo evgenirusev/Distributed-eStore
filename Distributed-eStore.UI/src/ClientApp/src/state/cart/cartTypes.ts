@@ -1,4 +1,4 @@
-﻿import { IProduct } from "../products/productsTypes";
+﻿import { IProduct } from "../products/index";
 
 export type ICartProduct = IProduct & {
     quantity: number

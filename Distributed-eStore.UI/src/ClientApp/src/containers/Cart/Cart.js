@@ -13,7 +13,6 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var cartActions_1 = require("../../state/cart/cartActions");
-require("./ProductList.css");
 var react_redux_1 = require("react-redux");
 var CartProduct_1 = require("../../components/cart/cartProduct/CartProduct");
 var Cart = function (_a) {
