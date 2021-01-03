@@ -19,13 +19,18 @@ export const reducer = (state: ICartListState = initialState, incomingAction: Re
         case CartActionTypes.REMOVE_FROM_CART:
             {
                 const { productId } = action;
-                const productIdIndex = state.cartProductIDs.indexOf(productId);
+                
+                if (!state.cartProductIDs.includes(productId)) {
+                    const productIdIndex = state.cartProductIDs.indexOf(productId);
 
-                return {
-                    cartProductIDs: [
-                        ...state.cartProductIDs.slice(0, productIdIndex),
-                        ...state.cartProductIDs.slice(productIdIndex)
-                    ]
+                    if (productIdIndex > -1) {
+                        return {
+                            cartProductIDs: [
+                                ...state.cartProductIDs.slice(0, productIdIndex),
+                                ...state.cartProductIDs.slice(productIdIndex)
+                            ]
+                        }
+                    }
                 }
             }
         case CartActionTypes.INCREMENT_PRODUCT_QUANTITY:

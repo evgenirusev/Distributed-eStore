@@ -10,7 +10,7 @@ export enum CartActionTypes {
     INCREMENT_PRODUCT_QUANTITY = 'INCREMENT_PRODUCT_QUANTITY',
     DECREMENT_PRODUCT_QUANTITY = 'DECREMENT_PRODUCT_QUANTITY',
     PLACE_ORDER = 'PLACE_ORDER'
-};
+};  
 
 export interface ICartListState {
     cartProductIDs: string[];

@@ -26,10 +26,14 @@ var reducer = function (state, incomingAction) {
         case cartTypes_1.CartActionTypes.REMOVE_FROM_CART:
             {
                 var productId = action.productId;
-                var productIdIndex = state.cartProductIDs.indexOf(productId);
-                return {
-                    cartProductIDs: __spreadArrays(state.cartProductIDs.slice(0, productIdIndex), state.cartProductIDs.slice(productIdIndex))
-                };
+                if (!state.cartProductIDs.includes(productId)) {
+                    var productIdIndex = state.cartProductIDs.indexOf(productId);
+                    if (productIdIndex > -1) {
+                        return {
+                            cartProductIDs: __spreadArrays(state.cartProductIDs.slice(0, productIdIndex), state.cartProductIDs.slice(productIdIndex))
+                        };
+                    }
+                }
             }
         case cartTypes_1.CartActionTypes.INCREMENT_PRODUCT_QUANTITY:
         case cartTypes_1.CartActionTypes.DECREMENT_PRODUCT_QUANTITY:
