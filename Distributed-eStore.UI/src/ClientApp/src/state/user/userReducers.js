@@ -11,12 +11,13 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.reducer = void 0;
 var userTypes_1 = require("./userTypes");
 var userData = localStorage.getItem("user");
 var initialState = userData
     ? { isLoggedIn: true, user: JSON.parse(userData) }
     : { isLoggedIn: false, user: {} };
-function default_1(state, incomingAction) {
+var reducer = function (state, incomingAction) {
     if (state === void 0) { state = initialState; }
     var _a = incomingAction, type = _a.type, payload = _a.payload;
     switch (type) {
@@ -33,6 +34,6 @@ function default_1(state, incomingAction) {
         default:
             return state;
     }
-}
-exports.default = default_1;
+};
+exports.reducer = reducer;
 //# sourceMappingURL=userReducers.js.map

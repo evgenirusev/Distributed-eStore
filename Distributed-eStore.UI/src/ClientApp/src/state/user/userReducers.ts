@@ -7,7 +7,7 @@ const initialState: IUserState = userData
     ? { isLoggedIn: true, user: JSON.parse(userData) }
     : { isLoggedIn: false, user: {} as IUser };
 
-export default function (state = initialState, incomingAction: ReduxAction): IUserState {
+export const reducer = (state = initialState, incomingAction: ReduxAction): IUserState => {
     const { type, payload } = incomingAction as ReduxAction;
 
     switch (type) {

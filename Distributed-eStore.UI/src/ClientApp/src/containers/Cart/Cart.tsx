@@ -10,7 +10,7 @@ type CartsProps = ReturnType<typeof cartReducer> & ReturnType<typeof productsRed
 
 const Cart: React.FC<CartsProps> = ({
     productIDsToProductsMap,
-    cartProductIDs,
+    cartProductIDs = [],
     addProductToCart,
     removeProductFromCart,
     incrementProductQuantity,

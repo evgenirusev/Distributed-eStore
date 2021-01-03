@@ -54,7 +54,7 @@ export const userActionCreators = {
         }
     },
     logout: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-         logout();
+        logout();
 
         dispatch({
             type: UserActionTypes.LOGOUT,

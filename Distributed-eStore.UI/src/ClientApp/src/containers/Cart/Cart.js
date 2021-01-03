@@ -16,7 +16,7 @@ var cartActions_1 = require("../../state/cart/cartActions");
 var react_redux_1 = require("react-redux");
 var CartProduct_1 = require("../../components/cart/cartProduct/CartProduct");
 var Cart = function (_a) {
-    var productIDsToProductsMap = _a.productIDsToProductsMap, cartProductIDs = _a.cartProductIDs, addProductToCart = _a.addProductToCart, removeProductFromCart = _a.removeProductFromCart, incrementProductQuantity = _a.incrementProductQuantity, decrementProductQuantity = _a.decrementProductQuantity, placeOrder = _a.placeOrder;
+    var productIDsToProductsMap = _a.productIDsToProductsMap, _b = _a.cartProductIDs, cartProductIDs = _b === void 0 ? [] : _b, addProductToCart = _a.addProductToCart, removeProductFromCart = _a.removeProductFromCart, incrementProductQuantity = _a.incrementProductQuantity, decrementProductQuantity = _a.decrementProductQuantity, placeOrder = _a.placeOrder;
     return (React.createElement("section", { className: 'cart' },
         React.createElement("div", null, cartProductIDs.map(function (id, index) {
             var product = productIDsToProductsMap[id];

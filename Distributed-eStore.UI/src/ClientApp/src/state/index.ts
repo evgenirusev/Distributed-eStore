@@ -1,4 +1,6 @@
 import * as Products from './products/'
+import * as Cart from './cart/'
+import * as User from './user/'
 
 export interface IApplicationState {
     readonly products: Products.IProductsListState;
@@ -7,6 +9,8 @@ export interface IApplicationState {
 
 export const reducers = {
     products: Products.reducer,
+    user: User.reducer,
+    cart: Cart.reducer
 };
 
 export interface IAppThunkAction<TAction> {

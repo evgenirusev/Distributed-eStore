@@ -1,15 +1,34 @@
-﻿import { IAppThunkAction, ReduxAction } from '../';
-import { IProduct } from '../products';
+﻿import { CartActionTypes } from '.';
+import { IAppThunkAction, ReduxAction } from '../';
 
 export const actionCreators = {
-    addProductToCart: (product: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    addProductToCart: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        dispatch({
+            type: CartActionTypes.ADD_TO_CART,
+            productId
+        });
     },
-    removeProductFromCart: (productId: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    removeProductFromCart: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        dispatch({
+            type: CartActionTypes.REMOVE_FROM_CART,
+            productId
+        });
     },
-    incrementProductQuantity: (productId: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    incrementProductQuantity: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        dispatch({
+            type: CartActionTypes.INCREMENT_PRODUCT_QUANTITY,
+            productId
+        });
     },
-    decrementProductQuantity: (productId: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    decrementProductQuantity: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        dispatch({
+            type: CartActionTypes.DECREMENT_PRODUCT_QUANTITY,
+            productId
+        });
     },
-    placeOrder: (productId: IProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    placeOrder: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        dispatch({
+            type: CartActionTypes.PLACE_ORDER
+        });
     }
 };
