@@ -22,9 +22,9 @@ var ProductList = function (_a) {
     react_1.useEffect(function () {
         requestProducts();
     }, [requestProducts]);
-    return (React.createElement("section", { className: 'product-list' }, Object.keys(productIDsToProductsMap).length !== 0 ? Object.values(productIDsToProductsMap).map(function (product, index) {
+    return (React.createElement("section", { className: 'product-list' }, Object.values(productIDsToProductsMap).map(function (product, index) {
         return (React.createElement(products_2.Product, __assign({ key: "product-" + index }, product)));
-    }) : 1));
+    })));
 };
 exports.default = react_redux_1.connect(function (state) { return state.products; }, products_1.actionCreators)(ProductList);
 //# sourceMappingURL=ProductList.js.map

@@ -23,11 +23,17 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
             const product = state.productIDsToProductsMap[productId];
 
             if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
-                const modifiedState = Object.assign({}, state);
-                console.log(modifiedState);
-                modifiedState.productIDsToProductsMap[product.id].selectedColorIndex = colorIndex;
 
-                return modifiedState;   
+                return {
+                    ...state,
+                    productIDsToProductsMap: {
+                        ...state.productIDsToProductsMap,
+                        [productId]: {
+                            ...state.productIDsToProductsMap[productId],
+                            selectedColorIndex: colorIndex
+                        }
+                    }
+                }
             }
         default:
             return state;
