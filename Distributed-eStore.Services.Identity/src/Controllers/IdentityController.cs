@@ -29,10 +29,8 @@ namespace DistributedEStore.Services.Identity.Controllers
         public async Task<RegisterUserResponse> SignUp([Body] SignUpCommand command)
         {
             command.BindId(c => c.Id);
-            var response = await _identityService.SignUpAsync(command.Id, 
+            return await _identityService.SignUpAsync(command.Id, 
                 command.Email, command.FirstName, command.LastName, command.Password, command.Role);
-
-            return response;
         }
 
         [HttpPost("sign-in")]

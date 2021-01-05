@@ -20,8 +20,7 @@ namespace DistributedEStore.UI.Controllers
         [HttpPost("sign-up")]
         public async Task<IActionResult> Post([FromBody] SignUpCommand command)
         {
-            var debug = await apiGatewayService.SignUp(command);
-            return Ok(debug);
+            return Ok(await apiGatewayService.SignUp(command));
         }
 
         [HttpPost("sign-in")]

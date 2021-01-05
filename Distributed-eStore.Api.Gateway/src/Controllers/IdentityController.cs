@@ -24,8 +24,7 @@ namespace DistributedEStore.Api.Gateway.Controllers
         [HttpPost("sign-up")]
         public async Task<RegisterUserResponse> Post([FromBody] SignUpCommand command)
         {
-            var debug = await _identityService.SignUp(command);
-            return debug;
+            return await _identityService.SignUp(command);
         }
 
         [AllowAnonymous]
