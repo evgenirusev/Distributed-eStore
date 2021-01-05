@@ -17,6 +17,9 @@ var React = require("react");
 var reactstrap_1 = require("reactstrap");
 var react_router_dom_1 = require("react-router-dom");
 require("./NavMenu.css");
+var auth_1 = require("../services/auth");
+var index_1 = require("../index");
+var user_1 = require("../state/user");
 var NavMenu = /** @class */ (function (_super) {
     __extends(NavMenu, _super);
     function NavMenu() {
@@ -31,6 +34,11 @@ var NavMenu = /** @class */ (function (_super) {
         };
         return _this;
     }
+    NavMenu.prototype.onLogout = function () {
+        index_1.store.dispatch({
+            type: user_1.UserActionTypes.LOGOUT
+        });
+    };
     NavMenu.prototype.render = function () {
         return (React.createElement("header", null,
             React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3", light: true },
@@ -41,8 +49,14 @@ var NavMenu = /** @class */ (function (_super) {
                         React.createElement("ul", { className: "navbar-nav flex-grow" },
                             React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/" }, "Home")),
-                            React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/" }, "Home"))))))));
+                            !auth_1.isUserLoggedIn() &&
+                                React.createElement(React.Fragment, null,
+                                    React.createElement(reactstrap_1.NavItem, null,
+                                        React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/login" }, "Login")),
+                                    React.createElement(reactstrap_1.NavItem, null,
+                                        React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/register" }, "Register"))),
+                            auth_1.isUserLoggedIn() && React.createElement(reactstrap_1.NavItem, null,
+                                React.createElement(reactstrap_1.NavLink, { onClick: this.onLogout, className: "text-dark" }, "Logout"))))))));
     };
     return NavMenu;
 }(React.PureComponent));

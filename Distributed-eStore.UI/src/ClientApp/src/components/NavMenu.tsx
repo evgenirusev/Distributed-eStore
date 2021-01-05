@@ -2,11 +2,20 @@ import * as React from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+import { isUserLoggedIn } from "../services/auth";
+import { store } from "../index";
+import { UserActionTypes } from '../state/user';
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
     public state = {
         isOpen: false
     };
+
+    private onLogout() {
+        store.dispatch({
+            type: UserActionTypes.LOGOUT
+        });
+    }
 
     public render() {
         return (
@@ -20,9 +29,21 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                                </NavItem>
+
+                                { /* technical debt - abstract this */ }
+                                {!isUserLoggedIn() &&
+                                    <>
+                                        <NavItem>
+                                            <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
+                                        </NavItem> 
+                                        <NavItem>
+                                            <NavLink tag={Link} className="text-dark" to="/register">Register</NavLink>
+                                        </NavItem>
+                                    </>
+                                }
+                                { isUserLoggedIn() && <NavItem>
+                                    <NavLink onClick={ this.onLogout } className="text-dark">Logout</NavLink>
+                                </NavItem> }
                             </ul>
                         </Collapse>
                     </Container>

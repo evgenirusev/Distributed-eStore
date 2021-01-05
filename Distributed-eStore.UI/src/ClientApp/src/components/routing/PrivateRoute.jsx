@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { isUserLoggedIn } from "../../services";
+import { isUserLoggedIn } from "../../services/auth";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => {
