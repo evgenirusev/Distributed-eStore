@@ -6,6 +6,7 @@ using DistributedEStore.Services.Identity.Services;
 using DistributedEStore.Common.Authentication;
 using DistributedEStore.Common.Commands.Identity;
 using RestEase;
+using DistributedEStore.Common.Models;
 
 namespace DistributedEStore.Services.Identity.Controllers
 {
@@ -25,20 +26,18 @@ namespace DistributedEStore.Services.Identity.Controllers
         public IActionResult Get() => Content($"Your id: '{UserId:N}'.");
 
         [HttpPost("sign-up")]
-        public async Task<IActionResult> SignUp([Body] SignUpCommand command)
+        public async Task<RegisterUserResponse> SignUp([Body] SignUpCommand command)
         {
             command.BindId(c => c.Id);
-            await _identityService.SignUpAsync(command.Id, 
+            var response = await _identityService.SignUpAsync(command.Id, 
                 command.Email, command.FirstName, command.LastName, command.Password, command.Role);
 
-            return Ok();
+            return response;
         }
 
         [HttpPost("sign-in")]
         public async Task<JsonWebToken> SignIn([Body] SignInCommand command)
-        {
-            return await _identityService.SignInAsync(command.Email, command.Password);
-        }
+            => await _identityService.SignInAsync(command.Email, command.Password);
 
         [HttpPut("me/password")]
         [JwtAuth]

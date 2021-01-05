@@ -3,6 +3,7 @@ namespace DistributedEStore.Services.Identity
     public static class Codes
     {
         public static string EmailInUse => "email_in_use";
+        public static string RegistrationSuccessful => "registration_successful";
         public static string InvalidCredentials => "invalid_credentials";
         public static string InvalidCurrentPassword => "invalid_current_password";
         public static string InvalidEmail => "invalid_email";

@@ -7,6 +7,7 @@ using DistributedEStore.Services.Identity.Messages.Events;
 using DistributedEStore.Services.Identity.Domain;
 using DistributedEStore.Services.Identity.Repositories;
 using Microsoft.AspNetCore.Identity;
+using DistributedEStore.Common.Models;
 
 namespace DistributedEStore.Services.Identity.Services
 {
@@ -34,22 +35,32 @@ namespace DistributedEStore.Services.Identity.Services
             _busPublisher = busPublisher;
         }
 
-        public async Task SignUpAsync(Guid id, string email, string firstName, string lastName, string password, string role = Role.User)
+        public async Task<RegisterUserResponse> SignUpAsync(Guid id, string email, string firstName, string lastName, string password, string role = Role.User)
         {
+            var response = new RegisterUserResponse();
+
             var user = await _userRepository.GetAsync(email);
             if (user != null)
             {
-                throw new DistributedEStoreException(Codes.EmailInUse,
-                    $"Email: '{email}' is already in use.");
-            }
-            if (string.IsNullOrWhiteSpace(role))
+                response.Code = Codes.EmailInUse;
+                response. Message = $"Email: '{email}' is already in use.";
+            } 
+            else
             {
-                role = Role.User;
+                if (string.IsNullOrWhiteSpace(role))
+                {
+                    role = Role.User;
+                }
+                user = new User(id, email, firstName, lastName, role);
+                user.SetPassword(password, _passwordHasher);
+                await _userRepository.AddAsync(user);
+                await _busPublisher.PublishAsync(new SignedUp(id, email, role), CorrelationContext.Empty);
+
+                response.Code = Codes.RegistrationSuccessful;
+                response.Message = $"Registration was successful.";
             }
-            user = new User(id, email, firstName, lastName, role);
-            user.SetPassword(password, _passwordHasher);
-            await _userRepository.AddAsync(user);
-            await _busPublisher.PublishAsync(new SignedUp(id, email, role), CorrelationContext.Empty);
+
+            return response;
         }
 
         public async Task<JsonWebToken> SignInAsync(string email, string password)

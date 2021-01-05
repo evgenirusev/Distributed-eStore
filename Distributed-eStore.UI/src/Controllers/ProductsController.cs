@@ -15,7 +15,7 @@ namespace DistributedEStore.UI.Controllers
         {
             this.apiGatewayService = apiGatewayService;
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] BrowseProducts query)
         {

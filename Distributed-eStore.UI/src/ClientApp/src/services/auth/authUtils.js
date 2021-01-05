@@ -22,7 +22,7 @@ var logout = function () {
 };
 exports.logout = logout;
 var isUserLoggedIn = function () {
-    return JSON.parse(localStorage.getItem("user")) !== null;
+    return localStorage.getItem("user") !== null;
 };
 exports.isUserLoggedIn = isUserLoggedIn;
 //# sourceMappingURL=authUtils.js.map

@@ -21,5 +21,5 @@ export const logout = (): void => {
 }
 
 export const isUserLoggedIn = (): boolean => {
-    return JSON.parse(localStorage.getItem("user")) !== null;
+    return localStorage.getItem("user") !== null;   
 }

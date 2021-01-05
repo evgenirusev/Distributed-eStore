@@ -18,7 +18,7 @@ namespace DistributedEStore.Common.RabbitMq
     public class BusSubscriber : IBusSubscriber
     {
         private readonly ILogger _logger;
-        private readonly IBusClient _busClient;
+        private readonly IBusClient _busClient; 
         private readonly IServiceProvider _serviceProvider;        
         private readonly ITracer _tracer;
         private readonly int _retries;

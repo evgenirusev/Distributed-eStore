@@ -4,6 +4,7 @@ using RestEase;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DistributedEStore.Common.Authentication;
+using DistributedEStore.Common.Models;
 
 namespace DistributedEStore.Api.Services
 {
@@ -12,7 +13,7 @@ namespace DistributedEStore.Api.Services
     {
         [AllowAnyStatusCode]
         [Post("identity/sign-up")]
-        Task<IActionResult> SignUp([Body] SignUpCommand signUpCommand);
+        Task<RegisterUserResponse> SignUp([Body] SignUpCommand signUpCommand);
 
         [AllowAnyStatusCode]
         [Post("identity/sign-in")]

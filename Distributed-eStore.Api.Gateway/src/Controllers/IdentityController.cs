@@ -6,6 +6,7 @@ using DistributedEStore.Api.Services;
 using DistributedEStore.Common.Commands.Identity;
 using Microsoft.AspNetCore.Authorization;
 using DistributedEStore.Common.Authentication;
+using DistributedEStore.Common.Models;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
@@ -21,13 +22,15 @@ namespace DistributedEStore.Api.Gateway.Controllers
 
         [AllowAnonymous]
         [HttpPost("sign-up")]
-        public async Task<IActionResult> Post([FromBody] SignUpCommand command)
-            => await _identityService.SignUp(command);
+        public async Task<RegisterUserResponse> Post([FromBody] SignUpCommand command)
+        {
+            var debug = await _identityService.SignUp(command);
+            return debug;
+        }
 
         [AllowAnonymous]
         [HttpPost("sign-in")]
-        public async Task<JsonWebToken> Post([FromBody] SignInCommand command) {
-            return await _identityService.SignIn(command);
-        }
+        public async Task<JsonWebToken> Post([FromBody] SignInCommand command)
+            => await _identityService.SignIn(command);
     }
 }

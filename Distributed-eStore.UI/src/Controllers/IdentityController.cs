@@ -19,7 +19,10 @@ namespace DistributedEStore.UI.Controllers
         
         [HttpPost("sign-up")]
         public async Task<IActionResult> Post([FromBody] SignUpCommand command)
-            => await apiGatewayService.SignUp(command);
+        {
+            var debug = await apiGatewayService.SignUp(command);
+            return Ok(debug);
+        }
 
         [HttpPost("sign-in")]
         public async Task<JsonWebToken> Post([FromBody] SignInCommand command)
