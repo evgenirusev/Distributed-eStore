@@ -19,3 +19,7 @@ export const login = (email: string, password: string): Promise<AxiosResponse<IU
 export const logout = (): void => {
     localStorage.removeItem("user");
 }
+
+export const isUserLoggedIn = (): boolean => {
+    return JSON.parse(localStorage.getItem("user")) !== null;
+}

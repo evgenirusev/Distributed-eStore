@@ -1,10 +1,10 @@
-import * as Products from './products/'
-import * as Cart from './cart/'
-import * as User from './user/'
+import * as Products from './products/';
+import * as Cart from './cart/';
+import * as User from './user/';
 
 export interface IApplicationState {
     readonly products: Products.IProductsListState;
-    readonly cartProductIDs: string[] | [];
+    readonly cart: Cart.ICartListState;
 }
 
 export const reducers = {

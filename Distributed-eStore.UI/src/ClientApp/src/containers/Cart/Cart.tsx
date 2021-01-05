@@ -1,26 +1,34 @@
 ﻿import * as React from 'react';
-import { reducer as cartReducer } from '../../state/cart/cartReducers';
-import { reducer as productsReducer } from '../../state/products/productsReducers';
 import { actionCreators } from '../../state/cart/cartActions';
+import { actionCreators as productActionCreators } from '../../state/products/productsActions';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state/index';
 import { CartProduct } from '../../components/cart/cartProduct/CartProduct';
+import { useEffect } from 'react';
 
-type CartsProps = ReturnType<typeof cartReducer> & ReturnType<typeof productsReducer> & typeof actionCreators;
+// technical debt - shouldn't have product action creators here.
+type CartsProps = IApplicationState & typeof actionCreators & typeof productActionCreators;
 
 const Cart: React.FC<CartsProps> = ({
-    productIDsToProductsMap,
-    cartProductIDs = [],
     addProductToCart,
     removeProductFromCart,
     incrementProductQuantity,
     decrementProductQuantity,
-    placeOrder
+    placeOrder,
+    products,
+    cart,
+    requestProducts
 }) => {
+    // technical debt - reuse this hook 
+    useEffect(() => {
+        requestProducts();
+    }, [requestProducts]);
+
     return (
         <section className='cart'>
-            <div>{cartProductIDs.map((id, index) => {
-                const product = productIDsToProductsMap[id];
+            <div>{cart.cartProductIDs.length > 0 ? cart.cartProductIDs.map((id, index) => {
+                const product = products.productIDsToProductsMap[id];
+
                 const props = {
                     key: index,
                     id: product.id,
@@ -31,9 +39,9 @@ const Cart: React.FC<CartsProps> = ({
                 }
 
                 return <CartProduct {...props} />
-            })}</div>
+            }) : <div className="cart__message">your cart is empty</div>}</div>
         </section>
     );
 };
 
-export default connect((state: IApplicationState) => state, actionCreators)(Cart as any);
+export default connect((state: IApplicationState) => state, { ...actionCreators, ...productActionCreators })(Cart);
