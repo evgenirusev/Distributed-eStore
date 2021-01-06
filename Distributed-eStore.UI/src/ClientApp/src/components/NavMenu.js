@@ -47,8 +47,6 @@ var NavMenu = /** @class */ (function (_super) {
                     React.createElement(reactstrap_1.NavbarToggler, { onClick: this.toggle, className: "mr-2" }),
                     React.createElement(reactstrap_1.Collapse, { className: "d-sm-inline-flex flex-sm-row-reverse", isOpen: this.state.isOpen, navbar: true },
                         React.createElement("ul", { className: "navbar-nav flex-grow" },
-                            React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/" }, "Home")),
                             !auth_1.isUserLoggedIn() &&
                                 React.createElement(React.Fragment, null,
                                     React.createElement(reactstrap_1.NavItem, null,
@@ -56,7 +54,9 @@ var NavMenu = /** @class */ (function (_super) {
                                     React.createElement(reactstrap_1.NavItem, null,
                                         React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/register" }, "Register"))),
                             auth_1.isUserLoggedIn() && React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { onClick: this.onLogout, className: "text-dark" }, "Logout"))))))));
+                                React.createElement(reactstrap_1.NavLink, { onClick: this.onLogout, className: "text-dark" }, "Logout")),
+                            React.createElement(reactstrap_1.NavItem, null,
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/products/cart" }, "Cart"))))))));
     };
     return NavMenu;
 }(React.PureComponent));

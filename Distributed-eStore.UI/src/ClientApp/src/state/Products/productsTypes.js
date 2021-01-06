@@ -8,4 +8,5 @@ var ProductsActionTypes;
     ProductsActionTypes["SELECT_PRODUCT_COLOR"] = "SELECT_PRODUCT_COLOR";
 })(ProductsActionTypes = exports.ProductsActionTypes || (exports.ProductsActionTypes = {}));
 ;
+;
 //# sourceMappingURL=productsTypes.js.map

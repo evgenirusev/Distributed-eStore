@@ -6,7 +6,6 @@ import { IApplicationState } from '../../state/index';
 import { CartProduct } from '../../components/cart/cartProduct/CartProduct';
 import { useEffect } from 'react';
 
-// technical debt - shouldn't have product action creators here.
 type CartsProps = IApplicationState & typeof actionCreators & typeof productActionCreators;
 
 const Cart: React.FC<CartsProps> = ({

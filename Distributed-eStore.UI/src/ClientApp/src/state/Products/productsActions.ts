@@ -1,4 +1,4 @@
-﻿import { getAllPosts } from '../../services/api/';
+﻿import { getAllProducts, getProductById } from '../../services/api/';
 import { IProduct } from '../products/';
 import { IAppThunkAction, ReduxAction } from '../';
 import { ProductsActionTypes } from './productsTypes';
@@ -8,7 +8,7 @@ export const actionCreators = {
     requestProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         if (getState()) {
             try {
-                const products: IProduct[] = (await getAllPosts()).data;
+                const products: IProduct[] = (await getAllProducts()).data;
                 products.forEach(p => p.selectedColorIndex = DEFAULT_COLOR_INDEX);
 
                 dispatch({
@@ -16,6 +16,7 @@ export const actionCreators = {
                     type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
                 });
             } catch (error) {
+                // technical debt - handle this on client side
                 console.error(error);
             }
         }
@@ -27,5 +28,21 @@ export const actionCreators = {
             productId,
             colorIndex
         });
+    },
+    requestProductById: (productId: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+        if (getState()) {
+            try {
+                const product: IProduct = (await getProductById(productId)).data;
+                product.selectedColorIndex = DEFAULT_COLOR_INDEX;
+
+                dispatch({
+                    product,
+                    type: ProductsActionTypes.REQUEST_BY_ID_ARRIVAL
+                });
+            } catch (error) {
+                // technical debt - handle this on client side
+                console.error(error);
+            }
+        }
     }
 };

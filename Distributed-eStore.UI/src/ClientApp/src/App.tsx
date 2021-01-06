@@ -12,5 +12,6 @@ export default () => (
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/products/cart' component={Cart} />
+        <Route exact path='/products/:productId' component={ProductView} />
     </Layout>
 );

@@ -1,10 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllPosts = void 0;
+exports.getProductById = exports.getAllProducts = void 0;
 var constants_1 = require("../../constants");
 var axios_1 = require("axios");
-var getAllPosts = function () {
-    return axios_1.default.get(constants_1.getAllPostsUrl);
+var getAllProducts = function () {
+    return axios_1.default.get(constants_1.PRODUCTS_URL);
 };
-exports.getAllPosts = getAllPosts;
+exports.getAllProducts = getAllProducts;
+var getProductById = function (productId) {
+    return axios_1.default.get(constants_1.PRODUCTS_URL + "/" + productId);
+};
+exports.getProductById = getProductById;
 //# sourceMappingURL=getAllPosts.js.map

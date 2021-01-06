@@ -14,7 +14,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.reducer = void 0;
 var productsTypes_1 = require("./productsTypes");
 var initialState = {
-    productIDsToProductsMap: {}
+    productIDsToProductsMap: {},
+    selectedProduct: null
 };
 var reducer = function (state, incomingAction) {
     var _a;
@@ -23,17 +24,24 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL:
             var products = action.products;
-            return {
-                productIDsToProductsMap: products.reduce(function (acc, product) {
+            return __assign(__assign({}, state), { productIDsToProductsMap: products.reduce(function (acc, product) {
                     acc[product.id] = product;
                     return acc;
-                }, {})
-            };
+                }, {}) });
         case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR:
-            var productId = action.productId, colorIndex = action.colorIndex;
-            var product = state.productIDsToProductsMap[productId];
-            if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
-                return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_a = {}, _a[productId] = __assign(__assign({}, state.productIDsToProductsMap[productId]), { selectedColorIndex: colorIndex }), _a)) });
+            {
+                var productId = action.productId, colorIndex = action.colorIndex;
+                var product = state.productIDsToProductsMap[productId];
+                if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
+                    return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_a = {}, _a[productId] = __assign(__assign({}, state.productIDsToProductsMap[productId]), { selectedColorIndex: colorIndex }), _a)) });
+                }
+            }
+        case productsTypes_1.ProductsActionTypes.REQUEST_BY_ID_ARRIVAL:
+            {
+                var product = action.product;
+                if (product) {
+                    return __assign(__assign({}, state), { selectedProduct: product });
+                }
             }
         default:
             return state;

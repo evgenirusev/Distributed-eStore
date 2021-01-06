@@ -2,16 +2,17 @@
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state';
 import { IProductsListState } from '../../state/products/';
-import { actionCreators } from '../../state/products/';
 import { Product } from '../../components/products/';
 import { useEffect } from 'react';
 import './ProductList.css';
+import { actionCreators as cartActionCreators }  from '../../state/cart/cartActions';
 
-type ProductListProps = IProductsListState & typeof actionCreators;
+type ProductViewProps = {
+    productId: string;
+} & typeof cartActionCreators;
 
-const ProductList: React.FC<ProductListProps> = ({
-    requestProducts,
-    productIDsToProductsMap
+const ProductList: React.FC<ProductViewProps> = ({
+    
 }) => {
     useEffect(() => {
         requestProducts();
@@ -21,7 +22,7 @@ const ProductList: React.FC<ProductListProps> = ({
         <section className='product-list' >
             {Object.values(productIDsToProductsMap).map((product, index) => {
                 return (
-                    <Product key={`product-${index}`} { ...product } />
+                    <Product key={`product-${index}`} {...product} />
                 )
             })}
         </section>

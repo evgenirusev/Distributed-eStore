@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { ColorSwitcher } from '../';
 import './Product.css';
 
@@ -20,13 +21,13 @@ export const Product: React.FC<ProductProps> = ({
     selectedColorIndex
 }) => {
     return <div className="product">
-        <a className="product__link" href="#">
+        <Link className="product__link" to={`/products/${id}`}>
             <img sizes="100vw" src={imageURLs[selectedColorIndex]} className="product__image"></img>
             <div className="product__description">
                 <p className="product__name"> { name } </p>
                 <p className="product__price"> { price } </p>
             </div>
-        </a>
+        </Link>
         <div className="product__color-switcher">
             <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} />
         </div>

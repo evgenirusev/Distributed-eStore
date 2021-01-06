@@ -43,7 +43,8 @@ namespace DistributedEStore.Services.Identity.Services
             if (user != null)
             {
                 response.Code = Codes.EmailInUse;
-                response. Message = $"Email: '{email}' is already in use.";
+                response.Message = $"Email: '{email}' is already in use.";
+                response.Error = true;
             } 
             else
             {
@@ -57,7 +58,8 @@ namespace DistributedEStore.Services.Identity.Services
                 await _busPublisher.PublishAsync(new SignedUp(id, email, role), CorrelationContext.Empty);
 
                 response.Code = Codes.RegistrationSuccessful;
-                response.Message = $"Registration was successful.";
+                response.Message = $"Registration successful.";
+                response.Error = false;
             }
 
             return response;

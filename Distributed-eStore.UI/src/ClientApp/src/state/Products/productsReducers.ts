@@ -2,7 +2,8 @@
 import { IProductsListState, ProductsActionTypes } from './productsTypes';
 
 const initialState: IProductsListState = {
-    productIDsToProductsMap: {}
+    productIDsToProductsMap: {},
+    selectedProduct: null
 };
 
 export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
@@ -13,25 +14,39 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
             const { products } = action;
 
             return {
+                ...state,
                 productIDsToProductsMap: products.reduce((acc, product) => {
                     acc[product.id] = product;
                     return acc;
-                }, {})
+                }, {}),
             };
         case ProductsActionTypes.SELECT_PRODUCT_COLOR:
-            const { productId, colorIndex } = action;
-            const product = state.productIDsToProductsMap[productId];
+            {
+                const { productId, colorIndex } = action;
+                const product = state.productIDsToProductsMap[productId];
 
-            if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
+                if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
 
-                return {
-                    ...state,
-                    productIDsToProductsMap: {
-                        ...state.productIDsToProductsMap,
-                        [productId]: {
-                            ...state.productIDsToProductsMap[productId],
-                            selectedColorIndex: colorIndex
+                    return {
+                        ...state,
+                        productIDsToProductsMap: {
+                            ...state.productIDsToProductsMap,
+                            [productId]: {
+                                ...state.productIDsToProductsMap[productId],
+                                selectedColorIndex: colorIndex
+                            }
                         }
+                    }
+                }
+            }
+        case ProductsActionTypes.REQUEST_BY_ID_ARRIVAL:
+            {
+                const { product } = action;
+
+                if (product) {
+                    return {
+                        ...state,
+                        selectedProduct: product
                     }
                 }
             }

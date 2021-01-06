@@ -26,10 +26,6 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                         <NavbarToggler onClick={this.toggle} className="mr-2"/>
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={this.state.isOpen} navbar>
                             <ul className="navbar-nav flex-grow">
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                                </NavItem>
-
                                 { /* technical debt - abstract this */ }
                                 {!isUserLoggedIn() &&
                                     <>
@@ -43,7 +39,10 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                 }
                                 { isUserLoggedIn() && <NavItem>
                                     <NavLink onClick={ this.onLogout } className="text-dark">Logout</NavLink>
-                                </NavItem> }
+                                </NavItem>}
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/products/cart">Cart</NavLink>
+                                </NavItem>
                             </ul>
                         </Collapse>
                     </Container>

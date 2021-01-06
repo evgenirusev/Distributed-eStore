@@ -50,7 +50,7 @@ exports.actionCreators = {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, api_1.getAllPosts()];
+                    return [4 /*yield*/, api_1.getAllProducts()];
                 case 2:
                     products = (_a.sent()).data;
                     products.forEach(function (p) { return p.selectedColorIndex = constants_1.DEFAULT_COLOR_INDEX; });
@@ -61,6 +61,7 @@ exports.actionCreators = {
                     return [3 /*break*/, 4];
                 case 3:
                     error_1 = _a.sent();
+                    // technical debt - handle this on client side
                     console.error(error_1);
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
@@ -74,6 +75,33 @@ exports.actionCreators = {
             productId: productId,
             colorIndex: colorIndex
         });
-    }; }
+    }; },
+    requestProductById: function (productId) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
+        var product, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!getState()) return [3 /*break*/, 4];
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, api_1.getProductById(productId)];
+                case 2:
+                    product = (_a.sent()).data;
+                    product.selectedColorIndex = constants_1.DEFAULT_COLOR_INDEX;
+                    dispatch({
+                        product: product,
+                        type: productsTypes_1.ProductsActionTypes.REQUEST_BY_ID_ARRIVAL
+                    });
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_2 = _a.sent();
+                    // technical debt - handle this on client side
+                    console.error(error_2);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); }; }
 };
 //# sourceMappingURL=productsActions.js.map

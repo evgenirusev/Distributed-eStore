@@ -16,11 +16,14 @@ namespace DistributedEStore.UI.Controllers
         {
             this.apiGatewayService = apiGatewayService;
         }
-        
+
         [HttpPost("sign-up")]
-        public async Task<IActionResult> Post([FromBody] SignUpCommand command)
+        public async Task<IActionResult> Post([FromBody] SignUpCommand command) 
         {
-            return Ok(await apiGatewayService.SignUp(command));
+            var response = await apiGatewayService.SignUp(command);
+
+            // technical debt - should be abstracted in the identity microservice
+            return response.Error ? BadRequest(response) : Ok(response);
         }
 
         [HttpPost("sign-in")]
