@@ -5,6 +5,7 @@ import ProductList from './containers/ProductList/ProductList';
 import Register from './containers/Register/Register';
 import Login from './containers/Login/Login';
 import Cart from './containers/Cart/Cart';
+import ProductView from './containers/ProductView/ProductView';
 
 export default () => (
     <Layout>

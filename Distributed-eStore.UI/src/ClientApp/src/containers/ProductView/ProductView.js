@@ -5,9 +5,12 @@ var react_redux_1 = require("react-redux");
 var react_1 = require("react");
 require("./ProductList.css");
 var productsActions_1 = require("../../state/products/productsActions");
+var react_router_dom_1 = require("react-router-dom");
 var ProductView = function (_a) {
     var requestProductById = _a.requestProductById, selectedProductId = _a.selectedProductId, selectedProduct = _a.selectedProduct;
     react_1.useEffect(function () {
+        var productId = react_router_dom_1.useParams().productId;
+        console.log(productId);
         requestProductById(selectedProductId);
     }, [requestProductById, selectedProductId]);
     return (React.createElement("section", { className: 'product-view' }, selectedProduct.id));
