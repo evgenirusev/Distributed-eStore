@@ -15,7 +15,7 @@ exports.reducer = void 0;
 var productsTypes_1 = require("./productsTypes");
 var initialState = {
     productIDsToProductsMap: {},
-    selectedProduct: null
+    selectedProduct: {}
 };
 var reducer = function (state, incomingAction) {
     var _a;

@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state';
 import { useEffect } from 'react';
-import './ProductList.css';
+import './ProductView.css';
 import { actionCreators } from '../../state/products/productsActions';
 import { IProduct } from '../../state/products';
 import { useParams } from 'react-router-dom';
@@ -12,25 +12,22 @@ type ParamTypes = {
 }
 
 type ProductViewProps = {
-    selectedProductId: string;
     selectedProduct: IProduct;
 } & typeof actionCreators;
 
 const ProductView: React.FC<ProductViewProps> = ({
     requestProductById,
-    selectedProductId,
     selectedProduct
 }) => {
-    useEffect(() => {
-        let { productId } = useParams<ParamTypes>();
-        console.log(productId);
+    const { productId } = useParams<ParamTypes>();
 
-        requestProductById(selectedProductId);
-    }, [requestProductById, selectedProductId]);
+    useEffect(() => {
+        requestProductById(productId);
+    }, [requestProductById, productId]);
 
     return (
         <section className='product-view' >
-            { selectedProduct.id }
+            { selectedProduct && selectedProduct.id }
         </section>
     );
 };

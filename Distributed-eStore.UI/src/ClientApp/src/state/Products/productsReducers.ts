@@ -1,9 +1,9 @@
 ﻿import { ReduxAction } from '../';
-import { IProductsListState, ProductsActionTypes } from './productsTypes';
+import { IProduct, IProductsListState, ProductsActionTypes } from './productsTypes';
 
 const initialState: IProductsListState = {
     productIDsToProductsMap: {},
-    selectedProduct: null
+    selectedProduct: {} as IProduct
 };
 
 export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
