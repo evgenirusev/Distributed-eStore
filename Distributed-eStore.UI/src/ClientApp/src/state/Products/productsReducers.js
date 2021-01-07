@@ -31,7 +31,18 @@ var reducer = function (state, incomingAction) {
         case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR:
             {
                 var productId = action.productId, colorIndex = action.colorIndex;
-                var product = state.productIDsToProductsMap[productId];
+                var product = void 0;
+                var productFromMap = state.productIDsToProductsMap[productId];
+                if (productFromMap) {
+                    product = productFromMap;
+                }
+                else {
+                    console.log(state.selectedProduct.id);
+                    console.log(state.selectedProduct);
+                    product = state.selectedProduct.id === productId
+                        ? state.selectedProduct
+                        : null;
+                }
                 if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
                     return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_a = {}, _a[productId] = __assign(__assign({}, state.productIDsToProductsMap[productId]), { selectedColorIndex: colorIndex }), _a)) });
                 }

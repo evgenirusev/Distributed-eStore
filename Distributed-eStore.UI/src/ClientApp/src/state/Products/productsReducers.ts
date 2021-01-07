@@ -23,7 +23,19 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
         case ProductsActionTypes.SELECT_PRODUCT_COLOR:
             {
                 const { productId, colorIndex } = action;
-                const product = state.productIDsToProductsMap[productId];
+
+                let product;
+                const productFromMap = state.productIDsToProductsMap[productId];
+                
+                if (productFromMap) {
+                    product = productFromMap;
+                } else {
+                    console.log(state.selectedProduct.id);
+                    console.log(state.selectedProduct);
+                    product = state.selectedProduct.id === productId
+                        ? state.selectedProduct
+                        : null;
+                }
 
                 if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
 

@@ -1,2 +1,7 @@
-﻿body {
+﻿.product-view__name {
+    margin-bottom: 7px;
+    font-family: "abril-titling", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.42rem;
+    line-height: 1.18;
+    letter-spacing: 0.5px;
 }
