@@ -71,7 +71,7 @@ exports.actionCreators = {
     selectProductColor: function (productId, colorIndex) { return function (dispatch, getState) {
         dispatch({
             state: getState(),
-            type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR,
+            type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST,
             productId: productId,
             colorIndex: colorIndex
         });

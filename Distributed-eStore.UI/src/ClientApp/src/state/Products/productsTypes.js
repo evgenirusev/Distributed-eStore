@@ -5,7 +5,8 @@ var ProductsActionTypes;
 (function (ProductsActionTypes) {
     ProductsActionTypes["REQUEST_ALL_ARRIVAL"] = "REQUEST_ALL_ARRIVAL";
     ProductsActionTypes["REQUEST_BY_ID_ARRIVAL"] = "REQUEST_BY_ID_ARRIVAL";
-    ProductsActionTypes["SELECT_PRODUCT_COLOR"] = "SELECT_PRODUCT_COLOR";
+    ProductsActionTypes["SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST"] = "SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST";
+    ProductsActionTypes["SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW"] = "SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW";
 })(ProductsActionTypes = exports.ProductsActionTypes || (exports.ProductsActionTypes = {}));
 ;
 ;

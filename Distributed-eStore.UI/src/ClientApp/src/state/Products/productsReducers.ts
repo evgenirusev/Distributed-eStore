@@ -6,6 +6,8 @@ const initialState: IProductsListState = {
     selectedProduct: {} as IProduct
 };
 
+const shouldSelectNewColor = (product: IProduct, colorIndex: number) => product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined";
+
 export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
     const action = incomingAction as ReduxAction;
 
@@ -20,25 +22,12 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
                     return acc;
                 }, {}),
             };
-        case ProductsActionTypes.SELECT_PRODUCT_COLOR:
+        case ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST:
             {
                 const { productId, colorIndex } = action;
+                const product = state.productIDsToProductsMap[productId];
 
-                let product;
-                const productFromMap = state.productIDsToProductsMap[productId];
-                
-                if (productFromMap) {
-                    product = productFromMap;
-                } else {
-                    console.log(state.selectedProduct.id);
-                    console.log(state.selectedProduct);
-                    product = state.selectedProduct.id === productId
-                        ? state.selectedProduct
-                        : null;
-                }
-
-                if (product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined") {
-
+                if (shouldSelectNewColor(product, colorIndex)) {
                     return {
                         ...state,
                         productIDsToProductsMap: {
@@ -47,6 +36,21 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
                                 ...state.productIDsToProductsMap[productId],
                                 selectedColorIndex: colorIndex
                             }
+                        }
+                    }
+                }
+            }
+        case ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW:
+            {
+                const { productId, colorIndex } = action;
+                const product = state.selectedProduct[productId];
+
+                if (shouldSelectNewColor(product, colorIndex)) {
+                    return {
+                        ...state,
+                        selectedProduct: {
+                            ...state.selectedProduct,
+                            selectedColorIndex: colorIndex
                         }
                     }
                 }
