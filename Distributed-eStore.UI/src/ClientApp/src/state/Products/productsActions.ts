@@ -21,10 +21,18 @@ export const actionCreators = {
             }
         }
     },
-    selectProductColor: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    selectProductColorFromProductList: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             state: getState(),
             type: ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST,
+            productId,
+            colorIndex
+        });
+    },
+    selectProductColorFromProductView: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        dispatch({
+            state: getState(),
+            type: ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW,
             productId,
             colorIndex
         });

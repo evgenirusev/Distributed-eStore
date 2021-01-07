@@ -9,7 +9,7 @@ var react_router_dom_1 = require("react-router-dom");
 var products_1 = require("../../components/products");
 var isObjectEmpty = function (obj) { return Object.keys(obj).length === 0; };
 var ProductView = function (_a) {
-    var requestProductById = _a.requestProductById, selectProductColor = _a.selectProductColor, selectedProduct = _a.selectedProduct;
+    var requestProductById = _a.requestProductById, selectProductColorFromProductList = _a.selectProductColorFromProductList, selectedProduct = _a.selectedProduct;
     var id = selectedProduct.id, imageURLs = selectedProduct.imageURLs, colors = selectedProduct.colors, description = selectedProduct.description, name = selectedProduct.name, price = selectedProduct.price, selectedColorIndex = selectedProduct.selectedColorIndex;
     var productId = react_router_dom_1.useParams().productId;
     react_1.useEffect(function () {

@@ -20,7 +20,7 @@ const isObjectEmpty = (obj: Object) => Object.keys(obj).length === 0
 
 const ProductView: React.FC<ProductViewProps> = ({
     requestProductById,
-    selectProductColor,
+    selectProductColorFromProductList,
     selectedProduct
 }) => {
     const { id, imageURLs, colors, description, name, price, selectedColorIndex } = selectedProduct;

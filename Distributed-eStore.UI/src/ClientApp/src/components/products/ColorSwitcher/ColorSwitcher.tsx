@@ -1,18 +1,20 @@
 ﻿import * as React from 'react';
 import { ColorBox } from '../';
 import { store } from '../../../index';
-import { actionCreators } from '../../../state/products/productsActions';
+import { IAppThunkAction, ReduxAction } from '../../../state';
 
 type ColorSwitcherProps = {
     colors: string[];
     selectedColorIndex: number;
     productId: string;
+    selectProductColorAction: (productId: string, colorIndex: number) => IAppThunkAction<ReduxAction>;
 }
 
 export const ColorSwitcher: React.FC<ColorSwitcherProps> = ({
     colors,
     selectedColorIndex,
-    productId
+    productId,
+    selectProductColorAction
 }) => {
     const defaultBorderClass = "color-box__border";
 
@@ -25,7 +27,7 @@ export const ColorSwitcher: React.FC<ColorSwitcherProps> = ({
             
             return <ColorBox key={`${productId}-${index}`} color={color}
                 borderClass={borderCssClass}
-                selectProductColor={() => actionCreators.selectProductColor(productId, index)(store.dispatch, store.getState)}
+                selectProductColor={() => selectProductColorAction(productId, index)(store.dispatch, store.getState)}
             />
         })}
     </div>

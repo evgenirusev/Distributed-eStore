@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { ColorSwitcher } from '../';
 import './Product.css';
+import { actionCreators } from "../../../state/products/productsActions";
 
 type ProductProps = {
     id: string;
@@ -29,7 +30,7 @@ export const Product: React.FC<ProductProps> = ({
             </div>
         </Link>
         <div className="product__color-switcher">
-            <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} />
+            <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColorFromProductList} />
         </div>
     </div>
 };
