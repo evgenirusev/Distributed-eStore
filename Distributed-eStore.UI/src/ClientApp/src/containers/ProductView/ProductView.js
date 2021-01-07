@@ -12,7 +12,10 @@ var ProductView = function (_a) {
     react_1.useEffect(function () {
         requestProductById(productId);
     }, [requestProductById, productId]);
-    return (React.createElement("section", { className: 'product-view' }, selectedProduct && selectedProduct.id));
+    return (React.createElement("section", { className: 'product-view' }));
 };
-exports.default = react_redux_1.connect(function (state) { return state.products.selectedProduct; }, productsActions_1.actionCreators)(ProductView);
+var mapStateToProps = function (state) {
+    return { selectedProduct: state.products.selectedProduct };
+};
+exports.default = react_redux_1.connect(mapStateToProps, productsActions_1.actionCreators)(ProductView);
 //# sourceMappingURL=ProductView.js.map

@@ -13,5 +13,5 @@ exports.default = (function () { return (React.createElement(Layout_1.default, n
     React.createElement(react_router_1.Route, { exact: true, path: '/register', component: Register_1.default }),
     React.createElement(react_router_1.Route, { exact: true, path: '/login', component: Login_1.default }),
     React.createElement(react_router_1.Route, { exact: true, path: '/products/cart', component: Cart_1.default }),
-    React.createElement(react_router_1.Route, { exact: true, path: '/products/:productId', component: ProductView_1.default }))); });
+    React.createElement(react_router_1.Route, { exact: true, path: '/product/:productId', component: ProductView_1.default }))); });
 //# sourceMappingURL=App.js.map

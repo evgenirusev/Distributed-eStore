@@ -27,9 +27,13 @@ const ProductView: React.FC<ProductViewProps> = ({
 
     return (
         <section className='product-view' >
-            { selectedProduct && selectedProduct.id }
+            
         </section>
     );
 };
 
-export default connect((state: IApplicationState) => state.products.selectedProduct, actionCreators)(ProductView);
+const mapStateToProps = (state: IApplicationState) => {
+    return { selectedProduct: state.products.selectedProduct };
+}
+
+export default connect(mapStateToProps, actionCreators)(ProductView);

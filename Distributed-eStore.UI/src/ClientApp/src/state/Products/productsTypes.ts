@@ -16,5 +16,5 @@ export enum ProductsActionTypes {
 
 export interface IProductsListState {
     productIDsToProductsMap: { [key: string]: IProduct };
-    selectedProduct: IProduct;
+    selectedProduct: IProduct | {};
 };
