@@ -24,9 +24,7 @@ namespace DistributedEStore.UI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetProductById(Guid id)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> Get(Guid id)
+            => Single(await apiGatewayService.GetProductById(id));
     }
 }

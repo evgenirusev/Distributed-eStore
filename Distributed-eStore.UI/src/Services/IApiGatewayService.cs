@@ -20,8 +20,8 @@ namespace DistributedEStore.Api.Services
 
         [AllowAnyStatusCode]
         [Get("products/{id}")]
-        public Task<Product> GetProductById(Guid id);
-        
+        public Task<Product> GetProductById([Path] Guid id);
+
         [AllowAnyStatusCode]
         [Post("identity/sign-up")]
         public Task<RegisterUserResponse> SignUp([Body] SignUpCommand command);

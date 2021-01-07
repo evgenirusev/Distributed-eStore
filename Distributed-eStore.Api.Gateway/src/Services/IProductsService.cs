@@ -17,6 +17,6 @@ namespace DistributedEStore.Api.Services
 
         [AllowAnyStatusCode]
         [Get("products/{id}")]
-        Task<Product> GetProductById(Guid id);
+        Task<Product> GetProductById([Path] Guid id);
     }
 }

@@ -17,7 +17,7 @@ namespace DistributedEStore.Services.Products.Handlers
         {
             var product = await _productsRepository.GetAsync(query.Id);
 
-            return product == null ? null : new ProductDto
+            return new ProductDto
             {
                 Id = product.Id,
                 Name = product.Name,
