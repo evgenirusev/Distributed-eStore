@@ -4,6 +4,7 @@ using RestEase;
 using System;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Models.Products;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DistributedEStore.Api.Services
 {
@@ -16,6 +17,6 @@ namespace DistributedEStore.Api.Services
 
         [AllowAnyStatusCode]
         [Get("products/{id}")]
-        Task<Product> GetAsync([Path] Guid id);
+        Task<Product> GetProductById(Guid id);
     }
 }

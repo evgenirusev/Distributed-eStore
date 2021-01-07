@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using RestEase;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Models;
+using System;
 
 namespace DistributedEStore.Api.Services
 {
@@ -17,10 +18,10 @@ namespace DistributedEStore.Api.Services
         [Get("products")]
         public Task<PagedResult<Product>> BrowseAsync([FromQuery] BrowseProducts query);
 
-        // TODO: implement product by id
-        //[Get("products/{id}")]
-        //public Task<IActionResult> Get(Guid id);
-
+        [AllowAnyStatusCode]
+        [Get("products/{id}")]
+        public Task<Product> GetProductById(Guid id);
+        
         [AllowAnyStatusCode]
         [Post("identity/sign-up")]
         public Task<RegisterUserResponse> SignUp([Body] SignUpCommand command);

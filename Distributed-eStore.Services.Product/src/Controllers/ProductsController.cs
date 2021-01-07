@@ -14,11 +14,11 @@ namespace DistributedEStore.Services.Product.Controllers
         public ProductsController(IDispatcher dispatcher) : base(dispatcher) { }
 
         [HttpGet]
-        public async Task<ActionResult<PagedResult<ProductDto>>> Get([FromQuery] BrowseProducts query)
-            => Collection(await QueryAsync(query));
+        public async Task<PagedResult<ProductDto>> Get([FromQuery] BrowseProducts query)
+            => await QueryAsync(query);
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDto>> GetAsync([FromRoute] GetProduct query)
-            => Single(await QueryAsync(query));
+        public async Task<ProductDto> GetAsync([FromRoute] GetProduct query)
+            => await QueryAsync(query);
     }
 }

@@ -31,8 +31,8 @@ namespace DistributedEStore.Api.Gateway.Controllers
 
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> Get(Guid id)
-            => Single(await _productsService.GetAsync(id));
+        public async Task<Product> GetProductById(Guid id)
+            => await _productsService.GetProductById(id);
 
         [HttpPost]
         public async Task<IActionResult> Post(CreateProduct command)
