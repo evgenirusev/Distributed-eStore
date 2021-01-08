@@ -20,7 +20,7 @@ const isObjectEmpty = (obj: Object) => Object.keys(obj).length === 0
 
 const ProductView: React.FC<ProductViewProps> = ({
     requestProductById,
-    selectProductColorFromProductList,
+    selectProductColorFromProductView,
     selectedProduct
 }) => {
     const { id, imageURLs, colors, description, name, price, selectedColorIndex } = selectedProduct;
@@ -29,7 +29,6 @@ const ProductView: React.FC<ProductViewProps> = ({
     useEffect(() => {
         requestProductById(productId);
     }, [requestProductById, productId]);
-
 
     return (
         isObjectEmpty(selectedProduct)
@@ -43,7 +42,7 @@ const ProductView: React.FC<ProductViewProps> = ({
                     <div>${price}</div>
                 </div>
                 <div className="product__color-switcher">
-                    <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} />
+                    <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColorFromProductView} />
                 </div>
             </section>
     );

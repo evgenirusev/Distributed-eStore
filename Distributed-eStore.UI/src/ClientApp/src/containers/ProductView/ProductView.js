@@ -9,7 +9,7 @@ var react_router_dom_1 = require("react-router-dom");
 var products_1 = require("../../components/products");
 var isObjectEmpty = function (obj) { return Object.keys(obj).length === 0; };
 var ProductView = function (_a) {
-    var requestProductById = _a.requestProductById, selectProductColorFromProductList = _a.selectProductColorFromProductList, selectedProduct = _a.selectedProduct;
+    var requestProductById = _a.requestProductById, selectProductColorFromProductView = _a.selectProductColorFromProductView, selectedProduct = _a.selectedProduct;
     var id = selectedProduct.id, imageURLs = selectedProduct.imageURLs, colors = selectedProduct.colors, description = selectedProduct.description, name = selectedProduct.name, price = selectedProduct.price, selectedColorIndex = selectedProduct.selectedColorIndex;
     var productId = react_router_dom_1.useParams().productId;
     react_1.useEffect(function () {
@@ -26,7 +26,7 @@ var ProductView = function (_a) {
                     "$",
                     price)),
             React.createElement("div", { className: "product__color-switcher" },
-                React.createElement(products_1.ColorSwitcher, { colors: colors, selectedColorIndex: selectedColorIndex, productId: id }))));
+                React.createElement(products_1.ColorSwitcher, { colors: colors, selectedColorIndex: selectedColorIndex, productId: id, selectProductColorAction: productsActions_1.actionCreators.selectProductColorFromProductView }))));
 };
 var mapStateToProps = function (state) {
     return { selectedProduct: state.products.selectedProduct };

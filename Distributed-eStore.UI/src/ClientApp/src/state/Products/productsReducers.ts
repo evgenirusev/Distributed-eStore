@@ -6,7 +6,7 @@ const initialState: IProductsListState = {
     selectedProduct: {} as IProduct
 };
 
-const shouldSelectNewColor = (product: IProduct, colorIndex: number) => product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined";
+const shouldUpdateColor = (product: IProduct, colorIndex: number) => product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined";
 
 export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
     const action = incomingAction as ReduxAction;
@@ -27,7 +27,7 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
                 const { productId, colorIndex } = action;
                 const product = state.productIDsToProductsMap[productId];
 
-                if (shouldSelectNewColor(product, colorIndex)) {
+                if (shouldUpdateColor(product, colorIndex)) {
                     return {
                         ...state,
                         productIDsToProductsMap: {
@@ -43,9 +43,9 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
         case ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW:
             {
                 const { productId, colorIndex } = action;
-                const product = state.selectedProduct[productId];
+                const product = state.selectedProduct;
 
-                if (shouldSelectNewColor(product, colorIndex)) {
+                if (product.id === productId && shouldUpdateColor(product, colorIndex)) {
                     return {
                         ...state,
                         selectedProduct: {

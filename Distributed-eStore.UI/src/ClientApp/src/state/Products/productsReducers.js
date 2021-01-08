@@ -17,7 +17,7 @@ var initialState = {
     productIDsToProductsMap: {},
     selectedProduct: {}
 };
-var shouldSelectNewColor = function (product, colorIndex) { return product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined"; };
+var shouldUpdateColor = function (product, colorIndex) { return product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined"; };
 var reducer = function (state, incomingAction) {
     var _a;
     if (state === void 0) { state = initialState; }
@@ -33,15 +33,15 @@ var reducer = function (state, incomingAction) {
             {
                 var productId = action.productId, colorIndex = action.colorIndex;
                 var product = state.productIDsToProductsMap[productId];
-                if (shouldSelectNewColor(product, colorIndex)) {
+                if (shouldUpdateColor(product, colorIndex)) {
                     return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_a = {}, _a[productId] = __assign(__assign({}, state.productIDsToProductsMap[productId]), { selectedColorIndex: colorIndex }), _a)) });
                 }
             }
         case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW:
             {
                 var productId = action.productId, colorIndex = action.colorIndex;
-                var product = state.selectedProduct[productId];
-                if (shouldSelectNewColor(product, colorIndex)) {
+                var product = state.selectedProduct;
+                if (product.id === productId && shouldUpdateColor(product, colorIndex)) {
                     return __assign(__assign({}, state), { selectedProduct: __assign(__assign({}, state.selectedProduct), { selectedColorIndex: colorIndex }) });
                 }
             }
