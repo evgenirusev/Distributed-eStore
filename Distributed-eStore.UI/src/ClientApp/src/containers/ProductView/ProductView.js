@@ -1,15 +1,27 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_redux_1 = require("react-redux");
 var react_1 = require("react");
 require("./ProductView.css");
 var productsActions_1 = require("../../state/products/productsActions");
+var cartActions_1 = require("../../state/cart/cartActions");
 var react_router_dom_1 = require("react-router-dom");
 var products_1 = require("../../components/products");
 var isObjectEmpty = function (obj) { return Object.keys(obj).length === 0; };
 var ProductView = function (_a) {
-    var requestProductById = _a.requestProductById, selectedProduct = _a.selectedProduct;
+    var requestProductById = _a.requestProductById, selectedProduct = _a.selectedProduct, addProductToCart = _a.addProductToCart;
     var id = selectedProduct.id, imageURLs = selectedProduct.imageURLs, colors = selectedProduct.colors, description = selectedProduct.description, name = selectedProduct.name, price = selectedProduct.price, selectedColorIndex = selectedProduct.selectedColorIndex;
     var productId = react_router_dom_1.useParams().productId;
     var sizesList = [6, 7, 8, 9, 10];
@@ -38,7 +50,7 @@ var ProductView = function (_a) {
                     sizesList.map(function (size) {
                         return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); } }, size);
                     })),
-                React.createElement("button", { className: "product-view__add-to-cart-button" }, "ADD TO CART"),
+                React.createElement("button", { className: "product-view__add-to-cart-button", onClick: function () { addProductToCart(id); } }, "ADD TO CART"),
                 React.createElement("div", { className: "product-view__details" },
                     React.createElement("p", null, "Details"),
                     React.createElement("p", null, description)))));
@@ -46,5 +58,5 @@ var ProductView = function (_a) {
 var mapStateToProps = function (state) {
     return { selectedProduct: state.products.selectedProduct };
 };
-exports.default = react_redux_1.connect(mapStateToProps, productsActions_1.actionCreators)(ProductView);
+exports.default = react_redux_1.connect(mapStateToProps, __assign(__assign({}, productsActions_1.actionCreators), cartActions_1.actionCreators))(ProductView);
 //# sourceMappingURL=ProductView.js.map

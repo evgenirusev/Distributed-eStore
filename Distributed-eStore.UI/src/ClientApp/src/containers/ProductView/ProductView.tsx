@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { IApplicationState } from '../../state';
 import { useEffect, useState } from 'react';
 import './ProductView.css';
-import { actionCreators } from '../../state/products/productsActions';
+import { actionCreators as productsActionCreators } from '../../state/products/productsActions';
+import { actionCreators as cartActionCreators } from '../../state/cart/cartActions';
 import { IProduct } from '../../state/products';
 import { useParams } from 'react-router-dom';
 import { ColorSwitcher } from '../../components/products';
@@ -14,13 +15,14 @@ type ParamTypes = {
 
 type ProductViewProps = {
     selectedProduct: IProduct;
-} & typeof actionCreators;
+} & typeof productsActionCreators & typeof cartActionCreators;
 
 const isObjectEmpty = (obj: Object) => Object.keys(obj).length === 0
 
 const ProductView: React.FC<ProductViewProps> = ({
     requestProductById,
-    selectedProduct
+    selectedProduct,
+    addProductToCart
 }) => {
     const { id, imageURLs, colors, description, name, price, selectedColorIndex } = selectedProduct;
     const { productId } = useParams<ParamTypes>();
@@ -44,7 +46,7 @@ const ProductView: React.FC<ProductViewProps> = ({
                     <hr />
                     <div className="color-switcher">
                         <p>Color:</p>
-                        <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColorFromProductView} />
+                        <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={productsActionCreators.selectProductColorFromProductView} />
                     </div>
                     <div className="product-view__size-selector">
                         <p>Size <span className="product-view__size-tag">Just a few left</span></p>
@@ -55,7 +57,7 @@ const ProductView: React.FC<ProductViewProps> = ({
                             >{size}</button>
                         )}
                     </div>
-                    <button className="product-view__add-to-cart-button">ADD TO CART</button>
+                    <button className="product-view__add-to-cart-button" onClick={() => { addProductToCart(id) }}>ADD TO CART</button>
                     <div className="product-view__details">
                         <p>Details</p>
                         <p>{ description }</p>
@@ -69,4 +71,4 @@ const mapStateToProps = (state: IApplicationState) => {
     return { selectedProduct: state.products.selectedProduct };
 }
 
-export default connect(mapStateToProps, actionCreators)(ProductView);
+export default connect(mapStateToProps, { ...productsActionCreators, ...cartActionCreators })(ProductView);
