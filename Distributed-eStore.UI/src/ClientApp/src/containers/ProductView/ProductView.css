@@ -5,3 +5,31 @@
     line-height: 1.18;
     letter-spacing: 0.5px;
 }
+
+.product-view__size-tag {
+    color: #007B8C;
+    font-weight: normal;
+    line-height: initial;
+    opacity: 1;
+    padding-left: 4px;
+}
+
+.product-view__value-selector {
+    width: 36px;
+    height: 36px;
+    margin-right: 24px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: initial;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid #062233;
+    transition: background .2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.product-view__value-selector--selected {
+    color: #fff;
+    background: #062233;
+    transition: background .2s cubic-bezier(0.23, 1, 0.32, 1);
+}

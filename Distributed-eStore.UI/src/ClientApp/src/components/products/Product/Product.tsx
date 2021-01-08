@@ -29,7 +29,7 @@ export const Product: React.FC<ProductProps> = ({
                 <p className="product__price"> { price } </p>
             </div>
         </Link>
-        <div className="product__color-switcher">
+        <div className="color-switcher">
             <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColorFromProductList} />
         </div>
     </div>

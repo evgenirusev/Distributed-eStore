@@ -20,11 +20,12 @@ const isObjectEmpty = (obj: Object) => Object.keys(obj).length === 0
 
 const ProductView: React.FC<ProductViewProps> = ({
     requestProductById,
-    selectProductColorFromProductView,
     selectedProduct
 }) => {
     const { id, imageURLs, colors, description, name, price, selectedColorIndex } = selectedProduct;
     const { productId } = useParams<ParamTypes>();
+    const sizesList = [6, 7, 8, 9, 10];
+    const [selectedSizeIndex, selectSizeIndex] = useState(0)
 
     useEffect(() => {
         requestProductById(productId);
@@ -40,9 +41,15 @@ const ProductView: React.FC<ProductViewProps> = ({
                 <div className="product-view__description product-info col-sm-6 col-lg-5">
                     <h1 className="product-view__name">{name}</h1>
                     <div>${price}</div>
-                </div>
-                <div className="product__color-switcher">
-                    <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColorFromProductView} />
+                    <hr />
+                    <div className="color-switcher">
+                        <p>Color:</p>
+                        <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColorFromProductView} />
+                    </div>
+                    <div className="product-view__size-selector">
+                        <p>Size <span className="product-view__size-tag">Just a few left</span></p>
+                        {sizesList.map(size => <button type="button" className="product-view__value-selector">{size}</button>) }
+                    </div>
                 </div>
             </section>
     );
