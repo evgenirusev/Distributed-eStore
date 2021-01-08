@@ -13,6 +13,7 @@ var ProductView = function (_a) {
     var id = selectedProduct.id, imageURLs = selectedProduct.imageURLs, colors = selectedProduct.colors, description = selectedProduct.description, name = selectedProduct.name, price = selectedProduct.price, selectedColorIndex = selectedProduct.selectedColorIndex;
     var productId = react_router_dom_1.useParams().productId;
     var sizesList = [6, 7, 8, 9, 10];
+    var _b = react_1.useState(6), selectedSize = _b[0], selectSizeIndex = _b[1];
     react_1.useEffect(function () {
         requestProductById(productId);
     }, [requestProductById, productId]);
@@ -34,7 +35,7 @@ var ProductView = function (_a) {
                     React.createElement("p", null,
                         "Size ",
                         React.createElement("span", { className: "product-view__size-tag" }, "Just a few left")),
-                    sizesList.map(function (size) { return React.createElement("button", { type: "button", className: "product-view__value-selector" }, size); })))));
+                    sizesList.map(function (size) { return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); } }, size); })))));
 };
 var mapStateToProps = function (state) {
     return { selectedProduct: state.products.selectedProduct };
