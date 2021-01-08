@@ -25,7 +25,7 @@ const ProductView: React.FC<ProductViewProps> = ({
     const { id, imageURLs, colors, description, name, price, selectedColorIndex } = selectedProduct;
     const { productId } = useParams<ParamTypes>();
     const sizesList = [6, 7, 8, 9, 10];
-    const [selectedSize, selectSizeIndex] = useState(6);
+    const [selectedSize, selectSizeIndex] = useState(sizesList[0]);
 
     useEffect(() => {
         requestProductById(productId);
@@ -48,7 +48,17 @@ const ProductView: React.FC<ProductViewProps> = ({
                     </div>
                     <div className="product-view__size-selector">
                         <p>Size <span className="product-view__size-tag">Just a few left</span></p>
-                        {sizesList.map(size => <button type="button" className={`product-view__value-selector ${size === selectedSize && 'product-view__value-selector--selected'}`} onClick={() => { selectSizeIndex(size) }}>{size}</button>)}
+                        {sizesList.map(size =>
+                            <button type="button"
+                                className={`product-view__value-selector ${size === selectedSize && 'product-view__value-selector--selected'}`}
+                                onClick={() => { selectSizeIndex(size) }}
+                            >{size}</button>
+                        )}
+                    </div>
+                    <button className="product-view__add-to-cart-button">ADD TO CART</button>
+                    <div className="product-view__details">
+                        <p>Details</p>
+                        <p>{ description }</p>
                     </div>
                 </div>
             </section>
