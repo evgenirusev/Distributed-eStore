@@ -5,7 +5,7 @@ import './NavMenu.css';
 import { isUserLoggedIn } from "../services/auth";
 import { store } from "../index";
 import { UserActionTypes } from '../state/user';
-import { CartWidget } from './cart/cartWidget/CartWidget';
+import CartWidget from './cart/cartWidget/CartWidget';
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
     public state = {

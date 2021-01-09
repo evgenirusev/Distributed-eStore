@@ -59,7 +59,7 @@ var NavMenu = /** @class */ (function (_super) {
                                 React.createElement(reactstrap_1.NavLink, { onClick: this.onLogout, className: "text-dark" }, "Logout")),
                             React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/products/cart" },
-                                    React.createElement(CartWidget_1.CartWidget, null)))))))));
+                                    React.createElement(CartWidget_1.default, null)))))))));
     };
     return NavMenu;
 }(React.PureComponent));
