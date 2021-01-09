@@ -5,6 +5,7 @@ import './NavMenu.css';
 import { isUserLoggedIn } from "../services/auth";
 import { store } from "../index";
 import { UserActionTypes } from '../state/user';
+import { CartWidget } from './cart/cartWidget/CartWidget';
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
     public state = {
@@ -12,6 +13,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
     };
 
     private onLogout() {
+        { /* technical debt - consider connecting NavMenu to Redux */ }
         store.dispatch({
             type: UserActionTypes.LOGOUT
         });
@@ -42,13 +44,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                 </NavItem>}
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/products/cart">
-                                        { /* technical debt - craete a componet for this */}
-                                        <div className="cart-badge badge-icons pull-right">
-                                            <i className="fa fa-shopping-cart"></i>
-                                            <span className="badge badge-danger rounded-x">{store.getState().cart.cartProductIDs.length}</span>
-                                            <div className="badge-open">
-                                            </div>
-                                        </div>
+                                        <CartWidget />
                                     </NavLink>
                                 </NavItem>
                             </ul>

@@ -45,7 +45,7 @@ var ProductView = function (_a) {
                     React.createElement(products_1.ColorSwitcher, { colors: colors, selectedColorIndex: selectedColorIndex, productId: id, selectProductColorAction: productsActions_1.actionCreators.selectProductColorFromProductView })),
                 React.createElement("div", { className: "product-view__size-selector" },
                     React.createElement("p", null,
-                        "Size ",
+                        "Size",
                         React.createElement("span", { className: "product-view__size-tag" }, "Just a few left")),
                     sizesList.map(function (size) {
                         return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); } }, size);

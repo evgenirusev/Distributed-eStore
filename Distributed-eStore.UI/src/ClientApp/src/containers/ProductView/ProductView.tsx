@@ -49,7 +49,7 @@ const ProductView: React.FC<ProductViewProps> = ({
                         <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={productsActionCreators.selectProductColorFromProductView} />
                     </div>
                     <div className="product-view__size-selector">
-                        <p>Size <span className="product-view__size-tag">Just a few left</span></p>
+                        <p>Size<span className="product-view__size-tag">Just a few left</span></p>
                         {sizesList.map(size =>
                             <button type="button"
                                 className={`product-view__value-selector ${size === selectedSize && 'product-view__value-selector--selected'}`}

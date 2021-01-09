@@ -20,6 +20,7 @@ require("./NavMenu.css");
 var auth_1 = require("../services/auth");
 var index_1 = require("../index");
 var user_1 = require("../state/user");
+var CartWidget_1 = require("./cart/cartWidget/CartWidget");
 var NavMenu = /** @class */ (function (_super) {
     __extends(NavMenu, _super);
     function NavMenu() {
@@ -35,6 +36,7 @@ var NavMenu = /** @class */ (function (_super) {
         return _this;
     }
     NavMenu.prototype.onLogout = function () {
+        { /* technical debt - consider connecting NavMenu to Redux */ }
         index_1.store.dispatch({
             type: user_1.UserActionTypes.LOGOUT
         });
@@ -57,10 +59,7 @@ var NavMenu = /** @class */ (function (_super) {
                                 React.createElement(reactstrap_1.NavLink, { onClick: this.onLogout, className: "text-dark" }, "Logout")),
                             React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/products/cart" },
-                                    React.createElement("div", { className: "cart-badge badge-icons pull-right" },
-                                        React.createElement("i", { className: "fa fa-shopping-cart" }),
-                                        React.createElement("span", { className: "badge badge-danger rounded-x" }, index_1.store.getState().cart.cartProductIDs.length),
-                                        React.createElement("div", { className: "badge-open" }))))))))));
+                                    React.createElement(CartWidget_1.CartWidget, null)))))))));
     };
     return NavMenu;
 }(React.PureComponent));

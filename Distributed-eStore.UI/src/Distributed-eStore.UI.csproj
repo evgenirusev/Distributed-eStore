@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\cart\cartWidget\CartWidget.tsx" />
     <None Remove="ClientApp\src\components\file.ts" />
     <None Remove="ClientApp\src\components\Product.tsx" />
     <None Remove="ClientApp\src\components\products\ColorBox.tsx" />
