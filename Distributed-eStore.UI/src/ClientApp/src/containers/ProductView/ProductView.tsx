@@ -8,6 +8,7 @@ import { actionCreators as cartActionCreators } from '../../state/cart/cartActio
 import { IProduct } from '../../state/products';
 import { useParams } from 'react-router-dom';
 import { ColorSwitcher } from '../../components/products';
+import { useHistory } from "react-router-dom";
 
 type ParamTypes = {
     productId: string;
@@ -17,8 +18,6 @@ type ProductViewProps = {
     selectedProduct: IProduct;
 } & typeof productsActionCreators & typeof cartActionCreators;
 
-const isObjectEmpty = (obj: Object) => Object.keys(obj).length === 0
-
 const ProductView: React.FC<ProductViewProps> = ({
     requestProductById,
     selectedProduct,
@@ -26,8 +25,16 @@ const ProductView: React.FC<ProductViewProps> = ({
 }) => {
     const { id, imageURLs, colors, description, name, price, selectedColorIndex } = selectedProduct;
     const { productId } = useParams<ParamTypes>();
+    const isObjectEmpty = (obj: Object) => Object.keys(obj).length === 0
+
     const sizesList = [6, 7, 8, 9, 10];
     const [selectedSize, selectSizeIndex] = useState(sizesList[0]);
+
+    const history = useHistory();
+    const onAddToCart = (productId: string) => {
+        addProductToCart(productId);
+        history.push("/products/cart");
+    }
 
     useEffect(() => {
         requestProductById(productId);
@@ -46,7 +53,10 @@ const ProductView: React.FC<ProductViewProps> = ({
                     <hr />
                     <div className="color-switcher">
                         <p>Color:</p>
-                        <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={productsActionCreators.selectProductColorFromProductView} />
+                        <ColorSwitcher colors={colors}
+                            selectedColorIndex={selectedColorIndex}
+                            productId={id}
+                            selectProductColorAction={productsActionCreators.selectProductColorFromProductView} />
                     </div>
                     <div className="product-view__size-selector">
                         <p>Size<span className="product-view__size-tag">Just a few left</span></p>
@@ -57,7 +67,7 @@ const ProductView: React.FC<ProductViewProps> = ({
                             >{size}</button>
                         )}
                     </div>
-                    <button className="product-view__add-to-cart-button" onClick={() => { addProductToCart(id) }}>ADD TO CART</button>
+                    <button className="product-view__add-to-cart-button" onClick={() => { onAddToCart(id) }}>ADD TO CART</button>
                     <div className="product-view__details">
                         <p>Details</p>
                         <p>{ description }</p>

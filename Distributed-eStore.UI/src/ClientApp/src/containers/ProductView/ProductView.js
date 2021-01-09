@@ -19,13 +19,19 @@ var productsActions_1 = require("../../state/products/productsActions");
 var cartActions_1 = require("../../state/cart/cartActions");
 var react_router_dom_1 = require("react-router-dom");
 var products_1 = require("../../components/products");
-var isObjectEmpty = function (obj) { return Object.keys(obj).length === 0; };
+var react_router_dom_2 = require("react-router-dom");
 var ProductView = function (_a) {
     var requestProductById = _a.requestProductById, selectedProduct = _a.selectedProduct, addProductToCart = _a.addProductToCart;
     var id = selectedProduct.id, imageURLs = selectedProduct.imageURLs, colors = selectedProduct.colors, description = selectedProduct.description, name = selectedProduct.name, price = selectedProduct.price, selectedColorIndex = selectedProduct.selectedColorIndex;
     var productId = react_router_dom_1.useParams().productId;
+    var isObjectEmpty = function (obj) { return Object.keys(obj).length === 0; };
     var sizesList = [6, 7, 8, 9, 10];
     var _b = react_1.useState(sizesList[0]), selectedSize = _b[0], selectSizeIndex = _b[1];
+    var history = react_router_dom_2.useHistory();
+    var onAddToCart = function (productId) {
+        addProductToCart(productId);
+        history.push("/products/cart");
+    };
     react_1.useEffect(function () {
         requestProductById(productId);
     }, [requestProductById, productId]);
@@ -50,7 +56,7 @@ var ProductView = function (_a) {
                     sizesList.map(function (size) {
                         return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); } }, size);
                     })),
-                React.createElement("button", { className: "product-view__add-to-cart-button", onClick: function () { addProductToCart(id); } }, "ADD TO CART"),
+                React.createElement("button", { className: "product-view__add-to-cart-button", onClick: function () { onAddToCart(id); } }, "ADD TO CART"),
                 React.createElement("div", { className: "product-view__details" },
                     React.createElement("p", null, "Details"),
                     React.createElement("p", null, description)))));
