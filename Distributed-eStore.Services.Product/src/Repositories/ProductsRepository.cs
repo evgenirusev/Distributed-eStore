@@ -8,14 +8,14 @@ namespace DistributedEStore.Services.Products.Repositories
 {
     public class ProductsRepository : IProductsRepository
     {
-        private readonly IMongoRepository<Domain.Product> _repository;
+        private readonly IMongoRepository<DomainEntities.Product> _repository;
 
-        public ProductsRepository(IMongoRepository<Domain.Product> repository)
+        public ProductsRepository(IMongoRepository<DomainEntities.Product> repository)
         {
             _repository = repository;
         }
 
-        public async Task<Domain.Product> GetAsync(Guid id)
+        public async Task<DomainEntities.Product> GetAsync(Guid id)
             => await _repository.GetAsync(id);
 
         public async Task<bool> ExistsAsync(Guid id)
@@ -24,14 +24,14 @@ namespace DistributedEStore.Services.Products.Repositories
         public async Task<bool> ExistsAsync(string name)
             => await _repository.ExistsAsync(p => p.Name == name.ToLowerInvariant());
 
-        public async Task<PagedResult<Domain.Product>> BrowseAsync(BrowseProducts query)
+        public async Task<PagedResult<DomainEntities.Product>> BrowseAsync(BrowseProducts query)
             => await _repository.BrowseAsync(p =>
                 p.Price >= query.PriceFrom && p.Price <= query.PriceTo, query);
 
-        public async Task AddAsync(Domain.Product product)
+        public async Task AddAsync(DomainEntities.Product product)
             => await _repository.AddAsync(product);
 
-        public async Task UpdateAsync(Domain.Product product)
+        public async Task UpdateAsync(DomainEntities.Product product)
             => await _repository.UpdateAsync(product);
 
         public async Task DeleteAsync(Guid id)

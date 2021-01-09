@@ -18,7 +18,7 @@ const Cart: React.FC<CartsProps> = ({
     cart,
     requestProducts
 }) => {
-    // technical debt - reuse this hook 
+    // technical debt - reuse this hook
     useEffect(() => {
         requestProducts();
     }, [requestProducts]);
@@ -37,7 +37,10 @@ const Cart: React.FC<CartsProps> = ({
                     imageURL: product.imageURLs[product.selectedColorIndex]
                 }
 
-                return <CartProduct {...props} />
+                return <>
+                    <CartProduct {...props} />
+                    <hr />
+                </>
             }) : <div className="cart__message">your cart is empty</div>}</div>
         </section>
     );

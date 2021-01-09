@@ -1,5 +1,5 @@
 using DistributedEStore.Common.Messages;
-using DistributedEStore.Services.Products.Domain;
+using DistributedEStore.Services.Products.DomainEntities;
 using Newtonsoft.Json;
 using System;
 

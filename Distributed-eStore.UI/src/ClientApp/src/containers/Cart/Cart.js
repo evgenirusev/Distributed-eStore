@@ -19,7 +19,7 @@ var CartProduct_1 = require("../../components/cart/cartProduct/CartProduct");
 var react_1 = require("react");
 var Cart = function (_a) {
     var addProductToCart = _a.addProductToCart, removeProductFromCart = _a.removeProductFromCart, incrementProductQuantity = _a.incrementProductQuantity, decrementProductQuantity = _a.decrementProductQuantity, placeOrder = _a.placeOrder, products = _a.products, cart = _a.cart, requestProducts = _a.requestProducts;
-    // technical debt - reuse this hook 
+    // technical debt - reuse this hook
     react_1.useEffect(function () {
         requestProducts();
     }, [requestProducts]);
@@ -34,7 +34,9 @@ var Cart = function (_a) {
                 price: product.price,
                 imageURL: product.imageURLs[product.selectedColorIndex]
             };
-            return React.createElement(CartProduct_1.CartProduct, __assign({}, props));
+            return React.createElement(React.Fragment, null,
+                React.createElement(CartProduct_1.CartProduct, __assign({}, props)),
+                React.createElement("hr", null));
         }) : React.createElement("div", { className: "cart__message" }, "your cart is empty"))));
 };
 exports.default = react_redux_1.connect(function (state) { return state; }, __assign(__assign({}, cartActions_1.actionCreators), productsActions_1.actionCreators))(Cart);

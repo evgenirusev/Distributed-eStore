@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Autofac;
 using Consul;
 using DistributedEStore.Common;
@@ -6,14 +10,9 @@ using DistributedEStore.Common.Dispatchers;
 using DistributedEStore.Common.Mongo;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
-using DistributedEStore.Services.Products.Messages.Commands;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System.Reflection;
 
-namespace DistributedEStore.Services.Product
+namespace Distributed_eStore.Order
 {
     public class Startup
     {
@@ -45,7 +44,7 @@ namespace DistributedEStore.Services.Product
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
             builder.AddMongo();
-            builder.AddMongoRepository<Products.DomainEntities.Product>("Products");
+            builder.AddMongoRepository<Products.Domain.Product>("Products");
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }

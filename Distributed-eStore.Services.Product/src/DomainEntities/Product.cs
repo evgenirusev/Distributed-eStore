@@ -1,7 +1,7 @@
 using DistributedEStore.Common.Types;
 using System;
 
-namespace DistributedEStore.Services.Products.Domain
+namespace DistributedEStore.Services.Products.DomainEntities
 {
     public class Product : BaseEntity
     {

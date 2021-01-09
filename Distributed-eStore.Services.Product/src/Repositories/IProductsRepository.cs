@@ -7,12 +7,12 @@ namespace DistributedEStore.Services.Products.Repositories
 {
     public interface IProductsRepository
     {
-        Task<Domain.Product> GetAsync(Guid id);
+        Task<DomainEntities.Product> GetAsync(Guid id);
         Task<bool> ExistsAsync(Guid id);
         Task<bool> ExistsAsync(string name);
-        Task<PagedResult<Domain.Product>> BrowseAsync(BrowseProducts query);
-        Task AddAsync(Domain.Product product);
-        Task UpdateAsync(Domain.Product product);
+        Task<PagedResult<DomainEntities.Product>> BrowseAsync(BrowseProducts query);
+        Task AddAsync(DomainEntities.Product product);
+        Task UpdateAsync(DomainEntities.Product product);
         Task DeleteAsync(Guid id);
     }
 }

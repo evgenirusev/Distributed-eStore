@@ -24,7 +24,7 @@ namespace DistributedEStore.Services.Products.Handlers
                     $"Product: '{command.Name}' already exists.");
             }
 
-            var product = new Domain.Product(command.Id, command.Name, command.Description,
+            var product = new DomainEntities.Product(command.Id, command.Name, command.Description,
                 command.Price, command.Category, command.ImageURLs, command.Colors);
             await _productsRepository.AddAsync(product);
         }
