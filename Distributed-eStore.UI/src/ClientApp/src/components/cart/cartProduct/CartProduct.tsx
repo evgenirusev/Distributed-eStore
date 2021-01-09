@@ -9,7 +9,6 @@ type ProductProps = {
 };
 
 export const CartProduct: React.FC<ProductProps> = ({
-    id,
     name,
     price,
     color,

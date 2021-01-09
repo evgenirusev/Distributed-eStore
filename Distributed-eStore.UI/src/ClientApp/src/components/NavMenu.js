@@ -56,7 +56,11 @@ var NavMenu = /** @class */ (function (_super) {
                             auth_1.isUserLoggedIn() && React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { onClick: this.onLogout, className: "text-dark" }, "Logout")),
                             React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/products/cart" }, "Cart"))))))));
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/products/cart" },
+                                    React.createElement("div", { className: "cart-badge badge-icons pull-right" },
+                                        React.createElement("i", { className: "fa fa-shopping-cart" }),
+                                        React.createElement("span", { className: "badge badge-danger rounded-x" }, index_1.store.getState().cart.cartProductIDs.length),
+                                        React.createElement("div", { className: "badge-open" }))))))))));
     };
     return NavMenu;
 }(React.PureComponent));
