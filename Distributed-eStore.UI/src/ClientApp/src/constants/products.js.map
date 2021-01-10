@@ -1,1 +1,1 @@
-{"version":3,"file":"products.js","sourceRoot":"","sources":["products.ts"],"names":[],"mappings":";;;AAAa,QAAA,YAAY,GAAG,WAAW,CAAC;AAC3B,QAAA,mBAAmB,GAAG,CAAC,CAAC"}
+{"version":3,"file":"products.js","sourceRoot":"","sources":["products.ts"],"names":[],"mappings":";;;AAAa,QAAA,YAAY,GAAG,iBAAiB,CAAC;AACjC,QAAA,mBAAmB,GAAG,CAAC,CAAC"}

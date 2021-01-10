@@ -1,2 +1,2 @@
-﻿export const loginUrl = "/identity/sign-in";
-export const registerUrl = "/identity/sign-up";
+﻿export const loginUrl = "api/v1/identity/sign-in";
+export const registerUrl = "api/v1/identity/sign-up";
