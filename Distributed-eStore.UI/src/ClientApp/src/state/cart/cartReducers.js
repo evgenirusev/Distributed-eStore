@@ -35,10 +35,9 @@ var reducer = function (state, incomingAction) {
             {
                 var productId = action.productId;
                 if (state.productIdToCartProductMap[productId]) {
+                    delete state.productIdToCartProductMap[productId];
                 }
             }
-        case cartTypes_1.CartActionTypes.INCREMENT_PRODUCT_QUANTITY:
-        case cartTypes_1.CartActionTypes.DECREMENT_PRODUCT_QUANTITY:
         case cartTypes_1.CartActionTypes.PLACE_ORDER:
         default:
             return state;

@@ -27,13 +27,11 @@ export const reducer = (state: ICartListState = initialState, incomingAction: Re
         case CartActionTypes.REMOVE_FROM_CART:
             {
                 const { productId } = action;
-                
+
                 if (state.productIdToCartProductMap[productId]) {
                     delete state.productIdToCartProductMap[productId];
                 }
             }
-        case CartActionTypes.INCREMENT_PRODUCT_QUANTITY:
-        case CartActionTypes.DECREMENT_PRODUCT_QUANTITY:
         case CartActionTypes.PLACE_ORDER:
         default:
             return state;

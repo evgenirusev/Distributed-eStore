@@ -17,7 +17,7 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
 
             return {
                 ...state,
-                productIDsToProductsMap: products.reduce((acc, product) => {
+                productIDsToProductsMap: products.reduce((acc: { [key: string]: IProduct }, product: IProduct) => {
                     acc[product.id] = product;
                     return acc;
                 }, {}),

@@ -31,8 +31,15 @@ const ProductView: React.FC<ProductViewProps> = ({
     const [selectedSize, selectSizeIndex] = useState(sizesList[0]);
 
     const history = useHistory();
-    const onAddToCart = (productId: string) => {
-        addProductToCart(productId);
+    const onAddToCart = () => {
+        addProductToCart({
+            id,
+            name,
+            price,
+            color: colors[selectedColorIndex],
+            imageURL: imageURLs[selectedColorIndex]
+        });
+
         history.push("/products/cart");
     }
 
@@ -67,7 +74,7 @@ const ProductView: React.FC<ProductViewProps> = ({
                             >{size}</button>
                         )}
                     </div>
-                    <button className="product-view__add-to-cart-button" onClick={() => { onAddToCart(id) }}>ADD TO CART</button>
+                    <button className="product-view__add-to-cart-button" onClick={onAddToCart}>ADD TO CART</button>
                     <div className="product-view__details">
                         <p>Details</p>
                         <p>{ description }</p>

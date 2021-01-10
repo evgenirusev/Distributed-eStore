@@ -28,8 +28,14 @@ var ProductView = function (_a) {
     var sizesList = [6, 7, 8, 9, 10];
     var _b = react_1.useState(sizesList[0]), selectedSize = _b[0], selectSizeIndex = _b[1];
     var history = react_router_dom_2.useHistory();
-    var onAddToCart = function (productId) {
-        addProductToCart(productId);
+    var onAddToCart = function () {
+        addProductToCart({
+            id: id,
+            name: name,
+            price: price,
+            color: colors[selectedColorIndex],
+            imageURL: imageURLs[selectedColorIndex]
+        });
         history.push("/products/cart");
     };
     react_1.useEffect(function () {
@@ -56,7 +62,7 @@ var ProductView = function (_a) {
                     sizesList.map(function (size) {
                         return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); } }, size);
                     })),
-                React.createElement("button", { className: "product-view__add-to-cart-button", onClick: function () { onAddToCart(id); } }, "ADD TO CART"),
+                React.createElement("button", { className: "product-view__add-to-cart-button", onClick: onAddToCart }, "ADD TO CART"),
                 React.createElement("div", { className: "product-view__details" },
                     React.createElement("p", null, "Details"),
                     React.createElement("p", null, description)))));

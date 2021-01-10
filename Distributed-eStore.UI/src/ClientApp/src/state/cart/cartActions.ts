@@ -1,28 +1,17 @@
 ﻿import { CartActionTypes } from '.';
 import { IAppThunkAction, ReduxAction } from '../';
+import { ICartProduct } from './cartTypes';
 
 export const actionCreators = {
-    addProductToCart: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    addProductToCart: (cartProduct: ICartProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             type: CartActionTypes.ADD_TO_CART,
-            productId
+            cartProduct
         });
     },
     removeProductFromCart: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             type: CartActionTypes.REMOVE_FROM_CART,
-            productId
-        });
-    },
-    incrementProductQuantity: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        dispatch({
-            type: CartActionTypes.INCREMENT_PRODUCT_QUANTITY,
-            productId
-        });
-    },
-    decrementProductQuantity: (productId: string): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        dispatch({
-            type: CartActionTypes.DECREMENT_PRODUCT_QUANTITY,
             productId
         });
     },
