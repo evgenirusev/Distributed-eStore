@@ -2,7 +2,6 @@
 using DistributedEStore.Common.Queries;
 using DistributedEStore.Api.Services;
 using DistributedEStore.Common.RabbitMq;
-using DistributedEStore.Common.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;

@@ -1,5 +1,4 @@
 ﻿using DistributedEStore.Common.RabbitMq;
-using DistributedEStore.Common.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
