@@ -7,7 +7,6 @@ using System;
 namespace DistributedEStore.UI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class ProductsController : BaseController
     {
         private readonly IApiGatewayService apiGatewayService;

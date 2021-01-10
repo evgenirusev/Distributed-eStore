@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace DistributedEStore.UI.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public abstract class BaseController : ControllerBase
     {

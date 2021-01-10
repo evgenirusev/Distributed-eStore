@@ -19,7 +19,7 @@ namespace DistributedEStore.Api.Gateway.Messages.Commands.Orders
 			OrderItems = orderItems;
 		}
 	}
-	
+
 	public class OrderItem
     {
 		public Guid ProductId { get; set; }

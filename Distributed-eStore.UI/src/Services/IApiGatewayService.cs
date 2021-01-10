@@ -15,19 +15,23 @@ namespace DistributedEStore.Api.Services
     public interface IApiGatewayService
     {
         [AllowAnyStatusCode]
-        [Get("products")]
+        [Get("api/v1/products")]
         public Task<PagedResult<Product>> BrowseAsync([FromQuery] BrowseProducts query);
 
         [AllowAnyStatusCode]
-        [Get("products/{id}")]
+        [Get("api/v1/products/{id}")]
         public Task<Product> GetProductById([Path] Guid id);
 
         [AllowAnyStatusCode]
-        [Post("identity/sign-up")]
+        [Post("api/v1/identity/sign-up")]
         public Task<RegisterUserResponse> SignUp([Body] SignUpCommand command);
 
         [AllowAnyStatusCode]
-        [Post("identity/sign-in")]
+        [Post("api/v1/identity/sign-in")]
         public Task<JsonWebToken> SignIn([Body] SignInCommand command);
+
+        [AllowAnyStatusCode]
+        [Post("api/v1/orders")]
+        public Task<IActionResult> CreateOrder([Body] SignInCommand command);
     }
 }

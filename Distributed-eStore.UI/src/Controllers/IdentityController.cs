@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace DistributedEStore.UI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class IdentityController : BaseController
     {
         private readonly IApiGatewayService apiGatewayService;
