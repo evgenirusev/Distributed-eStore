@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DistributedEStore.Common.Mvc
 {
     [ApiController]
-    [Route("/api/v1/[controller]")]
+    [Route("api/v1/[controller]")]
     public class BaseController : ControllerBase
     {
         private readonly IDispatcher _dispatcher;

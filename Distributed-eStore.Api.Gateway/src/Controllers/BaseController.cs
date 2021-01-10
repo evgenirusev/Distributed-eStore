@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DistributedEStore.Api.Gateway
 {
-    [Route("/api/v1/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     [JwtAuth]
     public abstract class BaseController : ControllerBase

@@ -10,7 +10,7 @@ using DistributedEStore.Common.Models;
 
 namespace DistributedEStore.Services.Identity.Controllers
 {
-    [Route("/api/v1/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class IdentityController : BaseController
     {

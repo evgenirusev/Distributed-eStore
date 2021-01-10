@@ -46,6 +46,7 @@ namespace DistributedEStore.UI
             services.AddControllers();
             services.RegisterServiceForwarder<IApiGatewayService>("api-gateway");
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConsulClient client,
             IHostApplicationLifetime applicationLifetime)
         {

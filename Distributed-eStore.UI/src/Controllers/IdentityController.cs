@@ -22,7 +22,8 @@ namespace DistributedEStore.UI.Controllers
         {
             var response = await apiGatewayService.SignUp(command);
 
-            // technical debt - should be abstracted in the identity microservice
+            // technical debt - should be abstracted in the identity microservice,
+            // this controller must not be concerned with business logic.
             return response.Error ? BadRequest(response) : Ok(response);
         }
 
