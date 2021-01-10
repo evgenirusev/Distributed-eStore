@@ -9,6 +9,7 @@ using DistributedEStore.Api.Auth;
 using Microsoft.AspNetCore.Authorization;
 using DistributedEStore.Common.Models.Products;
 using DistributedEStore.Common.Types;
+using DistributedEStore.Common.Mvc;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
