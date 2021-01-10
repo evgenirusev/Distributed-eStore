@@ -2,7 +2,7 @@
 import { ReduxAction } from '../index';
 
 const initialState: ICartListState = {
-    cartProductIDs: []
+    productIdToCartProductMap: {}
 };
 
 export const reducer = (state: ICartListState = initialState, incomingAction: ReduxAction): ICartListState => {
@@ -10,11 +10,17 @@ export const reducer = (state: ICartListState = initialState, incomingAction: Re
     switch (action.type) {
         case CartActionTypes.ADD_TO_CART:
             {
-                const { productId } = action;
+                const { cartProduct } = action;
 
-                if (!state.cartProductIDs.includes(productId)) {
+                const productId = cartProduct.id;
+                if (!state.productIdToCartProductMap[productId]) {
                     return {
-                        cartProductIDs: [...state.cartProductIDs, productId]
+                        productIdToCartProductMap: {
+                            ...state.productIdToCartProductMap,
+                            [productId]: {
+                                ...cartProduct
+                            }
+                        }
                     }
                 }
             }
@@ -22,17 +28,8 @@ export const reducer = (state: ICartListState = initialState, incomingAction: Re
             {
                 const { productId } = action;
                 
-                if (state.cartProductIDs.includes(productId)) {
-                    const productIdIndex = state.cartProductIDs.indexOf(productId);
-
-                    if (productIdIndex > -1) {
-                        return {
-                            cartProductIDs: [
-                                ...state.cartProductIDs.slice(0, productIdIndex),
-                                ...state.cartProductIDs.slice(productIdIndex)
-                            ]
-                        }
-                    }
+                if (state.productIdToCartProductMap[productId]) {
+                    delete state.productIdToCartProductMap[productId];
                 }
             }
         case CartActionTypes.INCREMENT_PRODUCT_QUANTITY:

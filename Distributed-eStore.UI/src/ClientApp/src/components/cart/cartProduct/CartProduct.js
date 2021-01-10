@@ -7,19 +7,18 @@ var CartProduct = function (_a) {
     return React.createElement("div", { className: "cart-product" },
         React.createElement("a", { className: "cart-product__link", href: "#" },
             React.createElement("img", { sizes: "100vw", src: imageURL, className: "product__image" }),
-            React.createElement("div", { className: "cart-product__description" },
-                React.createElement("p", { className: "cart-product__name" },
-                    " ",
-                    name,
-                    " "),
-                React.createElement("p", { className: "cart-product__color" },
-                    " ",
-                    color,
-                    " "),
-                React.createElement("p", { className: "cart-product__price" },
-                    " ",
-                    price,
-                    " "))));
+            React.createElement("p", { className: "w-25 cart-product__name" },
+                " ",
+                name,
+                " "),
+            React.createElement("p", { className: "w-25 cart-product__color" },
+                " ",
+                color,
+                " "),
+            React.createElement("p", { className: "w-25 cart-product__price" },
+                " ",
+                price,
+                " ")));
 };
 exports.CartProduct = CartProduct;
 //# sourceMappingURL=CartProduct.js.map

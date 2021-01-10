@@ -17,11 +17,9 @@ export const CartProduct: React.FC<ProductProps> = ({
     return <div className="cart-product">
         <a className="cart-product__link" href="#">
             <img sizes="100vw" src={imageURL} className="product__image"></img>
-            <div className="cart-product__description">
-                <p className="cart-product__name"> { name } </p>
-                <p className="cart-product__color"> { color } </p>
-                <p className="cart-product__price"> { price } </p>
-            </div>
+            <p className="w-25 cart-product__name"> { name } </p>
+            <p className="w-25 cart-product__color"> { color } </p>
+            <p className="w-25 cart-product__price"> { price } </p>
         </a>
     </div>
 };

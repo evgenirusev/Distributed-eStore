@@ -1,10 +1,4 @@
-﻿import { IProduct } from "../products/index";
-
-export type ICartProduct = IProduct & {
-    quantity: number
-};
-
-export enum CartActionTypes {
+﻿export enum CartActionTypes {
     ADD_TO_CART = 'ADD_TO_CART',
     REMOVE_FROM_CART = 'REMOVE_FROM_CART',
     INCREMENT_PRODUCT_QUANTITY = 'INCREMENT_PRODUCT_QUANTITY',
@@ -13,5 +7,13 @@ export enum CartActionTypes {
 };  
 
 export interface ICartListState {
-    cartProductIDs: string[];
+    productIdToCartProductMap: { [key: string]: ICartProduct };
+}
+
+export interface ICartProduct {
+    id: string;
+    name: string;
+    price: number;
+    color: string;
+    imageURL: string;
 }
