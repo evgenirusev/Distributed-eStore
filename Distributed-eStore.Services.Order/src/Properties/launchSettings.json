@@ -2,37 +2,33 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Distributed-eStore.Services.Order",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:54435",
-      "sslPort": 44359
+      "applicationUrl": "http://localhost:5005/",
+      "sslPort": 0
     }
   },
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
+    "Start": {
+      "commandName": "Project",
+      "ErrorString": "After parsing a value an unexpected character was encountered: :. Path 'profiles', line 11, position 46."
+    },
+    "IIS": {
+      "commandName": "IISExpress",
+      "iisExpress": {
+        "applicationUrl": "http://localhost:5005/",
+        "sslPort": 0
+      }
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-    "Distributed_eStore.Services.Order": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": "true",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "publishAllPorts": true,
-      "useSSL": true
     }
   }
 }
