@@ -3,75 +3,32 @@ using System;
 
 namespace DistributedEStore.Services.Products.DomainEntities
 {
-    public class Product : BaseEntity
+    public class Order : BaseEntity
     {
-        public string Name { get; set; }
+        public Guid CustomerId { get; set; }
+        public OrderItem[] OrderItems { get; set; }
 
-
-        public Product(Guid id, string name, string description, decimal price,
-            string category, string[] urls, string[] colors)
+        public Order(Guid id, Guid customerId, OrderItem[] orderItems)
             : base(id)
         {
-            SetName(name);
-            SetDescription(description);
-            SetPrice(price);
-            SetCategory(category);
-            SetImageURLs(urls);
-            SetColors(colors);
+            SetCustomerId(customerId);
+            SetOrderItems(orderItems);
         }
 
-        public void SetName(string name)
+        public void SetCustomerId(Guid customerId)
         {
-            if (string.IsNullOrEmpty(name))
+            CustomerId = customerId;
+            SetUpdatedDate();
+        }
+
+        public void SetOrderItems(OrderItem[] orderItems)
+        {
+            if (orderItems.Length < 1)
             {
-                throw new DistributedEStoreException("empty_product_name",
-                    "Product name cannot be empty.");
+                throw new DistributedEStoreException("invalid_orderItems_quantity", "Order items quantity cannot be zero or negative.");
             }
 
-            Name = name.Trim().ToLowerInvariant();
-            SetUpdatedDate();
-        }
-
-        public void SetDescription(string description)
-        {
-            if (string.IsNullOrEmpty(description))
-            {
-                throw new DistributedEStoreException("empty_product_description",
-                    "Product description cannot be empty.");
-            }
-
-            Description = description.Trim();
-            SetUpdatedDate();
-        }
-
-
-        public void SetPrice(decimal price)
-        {
-            if (price <= 0)
-            {
-                throw new DistributedEStoreException("invalid_product_price",
-                    "Product price cannot be zero or negative.");
-            }
-
-            Price = price;
-            SetUpdatedDate();
-        }
-
-        public void SetCategory(string category = "none")
-        {
-            Category = category;
-            SetUpdatedDate();
-        }
-
-        public void SetImageURLs(string[] urls)
-        {
-            ImageURLs = urls;
-            SetUpdatedDate();
-        }
-
-        public void SetColors(string[] colors)
-        {
-            Colors = colors;
+            OrderItems = orderItems;
             SetUpdatedDate();
         }
     }
