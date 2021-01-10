@@ -1,5 +1,7 @@
 ﻿using DistributedEStore.Api.Services;
+using DistributedEStore.Common.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DistributedEStore.UI.Controllers
 {
@@ -12,5 +14,9 @@ namespace DistributedEStore.UI.Controllers
         {
             this.apiGatewayService = apiGatewayService;
         }
+
+        [HttpPost("sign-up")]
+        public async Task<IActionResult> Post([FromBody] CreateOrder createOrder)
+            => await apiGatewayService.CreateOrder(createOrder);
     }
 }

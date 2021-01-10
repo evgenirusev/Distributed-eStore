@@ -32,6 +32,6 @@ namespace DistributedEStore.Api.Services
 
         [AllowAnyStatusCode]
         [Post("api/v1/orders")]
-        public Task<IActionResult> CreateOrder([Body] SignInCommand command);
+        public Task<IActionResult> CreateOrder([Body] CreateOrder command);
     }
 }
