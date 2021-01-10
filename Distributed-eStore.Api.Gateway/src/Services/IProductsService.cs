@@ -12,11 +12,11 @@ namespace DistributedEStore.Api.Services
     public interface IProductsService
     {
         [AllowAnyStatusCode]
-        [Get("products")]
+        [Get("api/v1/products")]
         Task<PagedResult<Product>> BrowseAsync([Query] BrowseProducts query);
 
         [AllowAnyStatusCode]
-        [Get("products/{id}")]
+        [Get("api/v1/products/{id}")]
         Task<Product> GetProductById([Path] Guid id);
     }
 }

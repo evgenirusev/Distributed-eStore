@@ -44,6 +44,7 @@ namespace DistributedEStore.Api.Gateway
             services.AddControllers();
             services.RegisterServiceForwarder<IProductsService>("products-service");
             services.RegisterServiceForwarder<IIdentityService>("identity-service");
+            services.RegisterServiceForwarder<IOrdersService>("orders-service");
         }
         
         public void ConfigureContainer(ContainerBuilder builder)
