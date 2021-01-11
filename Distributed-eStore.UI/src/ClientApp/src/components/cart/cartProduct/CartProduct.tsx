@@ -1,14 +1,8 @@
 ﻿import * as React from 'react';
+import { ICartProduct } from '../../../state/cart';
 
-type ProductProps = {
-    id: string;
-    name: string;
-    price: number;
-    color: string;
-    imageURL: string;
-};
-
-export const CartProduct: React.FC<ProductProps> = ({
+export const CartProduct: React.FC<ICartProduct> = ({
+    id,
     name,
     price,
     color,

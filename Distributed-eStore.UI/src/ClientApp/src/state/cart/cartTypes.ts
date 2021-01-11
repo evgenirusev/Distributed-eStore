@@ -6,7 +6,7 @@
     PLACE_ORDER = 'PLACE_ORDER'
 };  
 
-export interface ICartListState {
+export interface ICartState {
     productIdToCartProductMap: { [key: string]: ICartProduct };
 }
 

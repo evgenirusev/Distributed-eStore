@@ -4,46 +4,32 @@ import { actionCreators as productActionCreators } from '../../state/products/pr
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state/index';
 import { CartProduct } from '../../components/cart/cartProduct/CartProduct';
-import { useEffect } from 'react';
+import { ICartProduct, ICartState } from '../../state/cart';
 
 type CartsProps = IApplicationState & typeof actionCreators & typeof productActionCreators;
 
 const Cart: React.FC<CartsProps> = ({
     addProductToCart,
     removeProductFromCart,
-    incrementProductQuantity,
-    decrementProductQuantity,
     placeOrder,
     products,
     cart,
     requestProducts
 }) => {
-    // technical debt - reuse this hook
-    useEffect(() => {
-        requestProducts();
-    }, [requestProducts]);
+    const isCartEmpty = (cart: ICartState) => Object.keys(cart.productIdToCartProductMap).length < 1;
 
     return (
         <section className='cart'>
-            <div>{cart.cartProductIDs.length > 0 ? cart.cartProductIDs.map((id, index) => {
-                const product = products.productIDsToProductsMap[id];
-
-                const props = {
-                    key: index,
-                    id: product.id,
-                    name: product.name,
-                    color: product.imageURLs[product.selectedColorIndex],
-                    price: product.price,
-                    imageURL: product.imageURLs[product.selectedColorIndex]
-                }
-
-                return <>
-                    <CartProduct {...props} />
-                    <hr />
-                </>
+            <div>{!isCartEmpty(cart)
+                ? Object.values(cart.productIdToCartProductMap)
+                    .map((cartProduct: ICartProduct, index: number) => {
+                        return <>
+                            <CartProduct key={`cart-product-${index}`} {...cartProduct} />
+                            <hr />
+                        </>
             }) : <div className="cart__message">your cart is empty</div>}</div>
         </section>
     );
 };
 
-export default connect((state: IApplicationState) => state, { ...actionCreators, ...productActionCreators })(Cart);
+export default connect((state: IApplicationState) => state, { ...actionCreators, ...productActionCreators })(Cart as any);

@@ -37,9 +37,9 @@
     <None Remove="ClientApp\src\containers\ProductList.tsx" />
     <None Remove="ClientApp\src\services\auth\authUtils.ts" />
     <None Remove="ClientApp\src\services\auth\index.ts" />
-    <None Remove="ClientApp\src\state\ProductS\productListActions.ts" />
-    <None Remove="ClientApp\src\state\ProductS\productListReducers.ts" />
-    <None Remove="ClientApp\src\state\ProductS\productListtypes.ts" />
+    <None Remove="ClientApp\src\state\products\productListActions.ts" />
+    <None Remove="ClientApp\src\state\products\productListReducers.ts" />
+    <None Remove="ClientApp\src\state\products\productListtypes.ts" />
   </ItemGroup>
 
   <ItemGroup>

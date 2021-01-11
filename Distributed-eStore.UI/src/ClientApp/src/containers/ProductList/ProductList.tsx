@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
-import { IApplicationState } from '../../state';
+import { IApplicationState } from '../../state/';
 import { IProductsListState } from '../../state/products/';
 import { actionCreators } from '../../state/products/';
-import { Product } from '../../components/products/';
+import { Product } from '../../components/products/Product/Product';
 import { useEffect } from 'react';
 import './ProductList.css';
 

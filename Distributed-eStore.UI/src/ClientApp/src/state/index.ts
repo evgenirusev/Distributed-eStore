@@ -4,7 +4,7 @@ import * as User from './user/';
 
 export interface IApplicationState {
     readonly products: Products.IProductsListState;
-    readonly cart: Cart.ICartListState;
+    readonly cart: Cart.ICartState;
 }
 
 export const reducers = {

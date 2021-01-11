@@ -43,7 +43,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                     <NavLink onClick={ this.onLogout } className="text-dark">Logout</NavLink>
                                 </NavItem>}
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/products/cart">
+                                    <NavLink tag={Link} className="text-dark" to="/cart">
                                         <CartWidget />
                                     </NavLink>
                                 </NavItem>

@@ -40,7 +40,7 @@ const ProductView: React.FC<ProductViewProps> = ({
             imageURL: imageURLs[selectedColorIndex]
         });
 
-        history.push("/products/cart");
+        history.push("/cart");
     }
 
     useEffect(() => {
@@ -67,10 +67,11 @@ const ProductView: React.FC<ProductViewProps> = ({
                     </div>
                     <div className="product-view__size-selector">
                         <p>Size<span className="product-view__size-tag">Just a few left</span></p>
-                        {sizesList.map(size =>
+                        {sizesList.map((size, index) =>
                             <button type="button"
                                 className={`product-view__value-selector ${size === selectedSize && 'product-view__value-selector--selected'}`}
                                 onClick={() => { selectSizeIndex(size) }}
+                                key={`size-${index}`}
                             >{size}</button>
                         )}
                     </div>

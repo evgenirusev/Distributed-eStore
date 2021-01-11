@@ -16,28 +16,17 @@ var cartActions_1 = require("../../state/cart/cartActions");
 var productsActions_1 = require("../../state/products/productsActions");
 var react_redux_1 = require("react-redux");
 var CartProduct_1 = require("../../components/cart/cartProduct/CartProduct");
-var react_1 = require("react");
 var Cart = function (_a) {
-    var addProductToCart = _a.addProductToCart, removeProductFromCart = _a.removeProductFromCart, incrementProductQuantity = _a.incrementProductQuantity, decrementProductQuantity = _a.decrementProductQuantity, placeOrder = _a.placeOrder, products = _a.products, cart = _a.cart, requestProducts = _a.requestProducts;
-    // technical debt - reuse this hook
-    react_1.useEffect(function () {
-        requestProducts();
-    }, [requestProducts]);
+    var addProductToCart = _a.addProductToCart, removeProductFromCart = _a.removeProductFromCart, placeOrder = _a.placeOrder, products = _a.products, cart = _a.cart, requestProducts = _a.requestProducts;
+    var isCartEmpty = function (cart) { return Object.keys(cart.productIdToCartProductMap).length < 1; };
     return (React.createElement("section", { className: 'cart' },
-        React.createElement("div", null, cart.cartProductIDs.length > 0 ? cart.cartProductIDs.map(function (id, index) {
-            var product = products.productIDsToProductsMap[id];
-            var props = {
-                key: index,
-                id: product.id,
-                name: product.name,
-                color: product.imageURLs[product.selectedColorIndex],
-                price: product.price,
-                imageURL: product.imageURLs[product.selectedColorIndex]
-            };
-            return React.createElement(React.Fragment, null,
-                React.createElement(CartProduct_1.CartProduct, __assign({}, props)),
-                React.createElement("hr", null));
-        }) : React.createElement("div", { className: "cart__message" }, "your cart is empty"))));
+        React.createElement("div", null, !isCartEmpty(cart)
+            ? Object.values(cart.productIdToCartProductMap)
+                .map(function (cartProduct, index) {
+                return React.createElement(React.Fragment, null,
+                    React.createElement(CartProduct_1.CartProduct, __assign({ key: "cart-product-" + index }, cartProduct)),
+                    React.createElement("hr", null));
+            }) : React.createElement("div", { className: "cart__message" }, "your cart is empty"))));
 };
 exports.default = react_redux_1.connect(function (state) { return state; }, __assign(__assign({}, cartActions_1.actionCreators), productsActions_1.actionCreators))(Cart);
 //# sourceMappingURL=Cart.js.map

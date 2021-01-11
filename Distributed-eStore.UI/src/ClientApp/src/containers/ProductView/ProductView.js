@@ -36,7 +36,7 @@ var ProductView = function (_a) {
             color: colors[selectedColorIndex],
             imageURL: imageURLs[selectedColorIndex]
         });
-        history.push("/products/cart");
+        history.push("/cart");
     };
     react_1.useEffect(function () {
         requestProductById(productId);
@@ -59,8 +59,8 @@ var ProductView = function (_a) {
                     React.createElement("p", null,
                         "Size",
                         React.createElement("span", { className: "product-view__size-tag" }, "Just a few left")),
-                    sizesList.map(function (size) {
-                        return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); } }, size);
+                    sizesList.map(function (size, index) {
+                        return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); }, key: "size-" + index }, size);
                     })),
                 React.createElement("button", { className: "product-view__add-to-cart-button", onClick: onAddToCart }, "ADD TO CART"),
                 React.createElement("div", { className: "product-view__details" },

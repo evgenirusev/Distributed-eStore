@@ -18,7 +18,7 @@ const CartWidgetComponent: React.FC<CartWidgetProps> = ({
 };
 
 const CartWidget = (connect((state: IApplicationState) => {
-    return { numberOfItems: Object.keys(state.cart.productIdToCartProductMap) }
+    return { numberOfItems: Object.keys(state.cart.productIdToCartProductMap).length }
 }, null)(CartWidgetComponent));
 
 export default CartWidget;

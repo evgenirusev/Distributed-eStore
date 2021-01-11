@@ -1,11 +1,11 @@
-﻿import { CartActionTypes, ICartListState } from "./cartTypes";
+﻿import { CartActionTypes, ICartState } from "./cartTypes";
 import { ReduxAction } from '../index';
 
-const initialState: ICartListState = {
+const initialState: ICartState = {
     productIdToCartProductMap: {}
 };
 
-export const reducer = (state: ICartListState = initialState, incomingAction: ReduxAction): ICartListState => {
+export const reducer = (state: ICartState = initialState, incomingAction: ReduxAction): ICartState => {
     const action = incomingAction as ReduxAction;
     switch (action.type) {
         case CartActionTypes.ADD_TO_CART:
