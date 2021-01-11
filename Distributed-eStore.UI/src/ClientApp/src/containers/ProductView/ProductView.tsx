@@ -88,4 +88,4 @@ const mapStateToProps = (state: IApplicationState) => {
     return { selectedProduct: state.products.selectedProduct };
 }
 
-export default connect(mapStateToProps, { ...productsActionCreators, ...cartActionCreators })(ProductView);
+export default connect(mapStateToProps, { ...productsActionCreators, ...cartActionCreators })(ProductView as any);
