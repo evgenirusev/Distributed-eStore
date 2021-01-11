@@ -22,7 +22,7 @@ export const Product: React.FC<ProductProps> = ({
     selectedColorIndex
 }) => {
     return <div className="product">
-        <Link className="product__link" to={`/product/${id}`}>
+        <Link className="product__link" to={`/products/${id}`}>
             <img sizes="100vw" src={imageURLs[selectedColorIndex]} className="product__image"></img>
             <div className="product__description">
                 <p className="product__name"> { name } </p>

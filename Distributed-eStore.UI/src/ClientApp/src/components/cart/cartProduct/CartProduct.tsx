@@ -9,11 +9,21 @@ export const CartProduct: React.FC<ICartProduct> = ({
     imageURL
 }) => {
     return <div className="cart-product">
-        <a className="cart-product__link" href="#">
-            <img sizes="100vw" src={imageURL} className="product__image"></img>
-            <p className="w-25 cart-product__name"> { name } </p>
-            <p className="w-25 cart-product__color"> { color } </p>
-            <p className="w-25 cart-product__price"> { price } </p>
+        <a href={`/products/${id}`}>
+            <div className="d-flex justify-content-between">
+                <div className="">
+                    <img sizes="100vw" src={imageURL} className="product__image"></img>
+                </div>
+                <div className="">
+                    <p className="cart-product__name"> {name} </p>
+                </div>
+                <div className="">
+                    <p className="cart-product__color"> {color} </p>
+                </div>
+                <div className="">
+                    <p className="cart-product__price"> {price} </p>
+                </div>
+            </div>
         </a>
     </div>
 };
