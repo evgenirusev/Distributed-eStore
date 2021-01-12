@@ -5,6 +5,10 @@ var React = require("react");
 var CartProduct = function (_a) {
     var cart = _a.cart, onQuantityChange = _a.onQuantityChange;
     var id = cart.id, name = cart.name, price = cart.price, color = cart.color, imageURL = cart.imageURL, size = cart.size, quantity = cart.quantity;
+    var onChange = function (event) {
+        var value = event.target.value;
+        onQuantityChange(id, value);
+    };
     return React.createElement("div", { className: "cart-product" },
         React.createElement("div", { className: "d-flex justify-content-between" },
             React.createElement("div", { className: "" },
@@ -30,7 +34,7 @@ var CartProduct = function (_a) {
                     " ")),
             React.createElement("div", null,
                 React.createElement("p", null, "Qty:"),
-                React.createElement("input", { type: "number", onChange: onQuantityChange, value: quantity }))));
+                React.createElement("input", { type: "number", onChange: onChange, value: quantity }))));
 };
 exports.CartProduct = CartProduct;
 //# sourceMappingURL=CartProduct.js.map

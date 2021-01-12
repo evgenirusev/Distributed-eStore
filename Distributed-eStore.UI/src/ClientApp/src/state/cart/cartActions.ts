@@ -18,7 +18,8 @@ export const actionCreators = {
     changeQuantity: (productId: string, quantity: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             type: CartActionTypes.CHANGE_QUANTITY,
-            productId
+            productId,
+            quantity
         });
     },
     placeOrder: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {

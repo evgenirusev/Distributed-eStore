@@ -3,7 +3,7 @@ import { ICartProduct } from '../../../state/cart';
 
 type CartProductProps = {
     cart: ICartProduct,
-    onQuantityChange: (productId: string) => void
+    onQuantityChange: (productId: string, value: number) => void
 };
 
 export const CartProduct: React.FC<CartProductProps> = ({
@@ -11,6 +11,11 @@ export const CartProduct: React.FC<CartProductProps> = ({
     onQuantityChange
 }) => {
     const { id, name, price, color, imageURL, size, quantity, } = cart;
+
+    const onChange = (event) => {
+        const { value } = event.target;
+        onQuantityChange(id, value);
+    }
 
     return <div className="cart-product">
                 <div className="d-flex justify-content-between">
@@ -28,7 +33,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
                     </div>
                     <div>
                         <p>Qty:</p>
-                        <input type="number" onChange={ onQuantityChange } value={ quantity }/>
+                        <input type="number" onChange={ onChange } value={ quantity }/>
                     </div>
                 </div>
             </div>

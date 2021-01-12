@@ -18,7 +18,8 @@ exports.actionCreators = {
     changeQuantity: function (productId, quantity) { return function (dispatch, getState) {
         dispatch({
             type: _1.CartActionTypes.CHANGE_QUANTITY,
-            productId: productId
+            productId: productId,
+            quantity: quantity
         });
     }; },
     placeOrder: function () { return function (dispatch, getState) {
