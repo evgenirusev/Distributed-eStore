@@ -11,10 +11,10 @@ var CartProduct = function (_a) {
     };
     return React.createElement("div", { className: "cart-product" },
         React.createElement("div", { className: "d-flex justify-content-between" },
-            React.createElement("div", { className: "" },
+            React.createElement("div", null,
                 React.createElement("a", { href: "/products/" + id },
-                    React.createElement("img", { sizes: "100vw", src: imageURL, className: "product__image" }))),
-            React.createElement("div", { className: "" },
+                    React.createElement("img", { src: imageURL, className: "product__image" }))),
+            React.createElement("div", null,
                 React.createElement("p", null, "Item"),
                 React.createElement("i", { className: "cart-product__name text-danger" },
                     " ",
@@ -25,15 +25,15 @@ var CartProduct = function (_a) {
                     price,
                     " "),
                 React.createElement("strong", { className: "d-block" },
-                    "Color - $",
+                    "Color - ",
                     color,
                     " "),
                 React.createElement("strong", { className: "d-block" },
-                    "Size - $",
+                    "Size - ",
                     size,
                     " ")),
             React.createElement("div", null,
-                React.createElement("p", null, "Qty:"),
+                React.createElement("p", null, "Quantity:"),
                 React.createElement("input", { type: "number", onChange: onChange, value: quantity }))));
 };
 exports.CartProduct = CartProduct;

@@ -4,10 +4,11 @@ import { ICartProduct, ICartState } from '../../state/cart';
 
 type CartProductsProps = {
     cart: ICartState,
-    onQuantityChange: (productId: string, value: number) => void
+    changeQuantity: (productId: string, value: number) => void,
+    placeOrder: () => void
 };
 
-export const CartProducts: React.FC<CartProductsProps> = ({ cart, onQuantityChange }) => {
+export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity, placeOrder }) => {
     const { productIdToCartProductMap } = cart;
 
     const totalCost = Object.values(productIdToCartProductMap).reduce((total, product) => {
@@ -18,7 +19,7 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, onQuantityChan
         <>
             {Object.values(productIdToCartProductMap).map((cartProduct: ICartProduct, index: number) => {
                 return <React.Fragment key={`cart-product-${index}`}>
-                    <CartProduct cart={cartProduct} onQuantityChange={onQuantityChange} />
+                    <CartProduct cart={cartProduct} onQuantityChange={changeQuantity} />
                     <hr />
                 </React.Fragment>
             })}
@@ -29,7 +30,7 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, onQuantityChan
             </div>
             <hr />
             <div>
-                <button>Checkout</button>
+                <button onSubmit={ placeOrder }>Checkout</button>
             </div>
         </>
     );

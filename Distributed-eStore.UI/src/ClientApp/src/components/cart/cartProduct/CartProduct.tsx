@@ -18,21 +18,21 @@ export const CartProduct: React.FC<CartProductProps> = ({
     }
 
     return <div className="cart-product">
-                <div className="d-flex justify-content-between">
-                    <div className="">
+            <div className="d-flex justify-content-between">
+                    <div>
                         <a href={`/products/${id}`}>
-                            <img sizes="100vw" src={imageURL} className="product__image"></img>
+                            <img src={imageURL} className="product__image"></img>
                         </a>
                     </div>
-                    <div className="">
+                    <div>
                         <p>Item</p>
                         <i className="cart-product__name text-danger"> {name} </i>
                         <strong className="cart-product__price d-block"> ${price} </strong>
-                        <strong className="d-block">Color - ${color} </strong>
-                        <strong className="d-block">Size - ${size} </strong>
+                        <strong className="d-block">Color - {color} </strong>
+                        <strong className="d-block">Size - {size} </strong>
                     </div>
                     <div>
-                        <p>Qty:</p>
+                        <p>Quantity:</p>
                         <input type="number" onChange={ onChange } value={ quantity }/>
                     </div>
                 </div>

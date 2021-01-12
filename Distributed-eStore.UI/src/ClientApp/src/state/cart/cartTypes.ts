@@ -18,3 +18,14 @@ export interface ICartProduct {
     size: string;
     quantity: number;
 }
+
+export interface IOrder {
+    customerId: string;
+    orderItems: IOrderItem[];
+}
+
+export interface IOrderItem  {
+    productId: string;
+    quantity: number;
+    size: string;
+}

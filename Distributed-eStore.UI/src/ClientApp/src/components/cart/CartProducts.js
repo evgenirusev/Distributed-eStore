@@ -4,7 +4,7 @@ exports.CartProducts = void 0;
 var React = require("react");
 var CartProduct_1 = require("../../components/cart/cartProduct/CartProduct");
 var CartProducts = function (_a) {
-    var cart = _a.cart, onQuantityChange = _a.onQuantityChange;
+    var cart = _a.cart, changeQuantity = _a.changeQuantity, placeOrder = _a.placeOrder;
     var productIdToCartProductMap = cart.productIdToCartProductMap;
     var totalCost = Object.values(productIdToCartProductMap).reduce(function (total, product) {
         return total + product.price;
@@ -12,7 +12,7 @@ var CartProducts = function (_a) {
     return (React.createElement(React.Fragment, null,
         Object.values(productIdToCartProductMap).map(function (cartProduct, index) {
             return React.createElement(React.Fragment, { key: "cart-product-" + index },
-                React.createElement(CartProduct_1.CartProduct, { cart: cartProduct, onQuantityChange: onQuantityChange }),
+                React.createElement(CartProduct_1.CartProduct, { cart: cartProduct, onQuantityChange: changeQuantity }),
                 React.createElement("hr", null));
         }),
         React.createElement("div", null,
@@ -23,7 +23,7 @@ var CartProducts = function (_a) {
             React.createElement("p", null, "Free Returns. Free Repairs For Life.")),
         React.createElement("hr", null),
         React.createElement("div", null,
-            React.createElement("button", null, "Checkout"))));
+            React.createElement("button", { onSubmit: placeOrder }, "Checkout"))));
 };
 exports.CartProducts = CartProducts;
 //# sourceMappingURL=CartProducts.js.map
