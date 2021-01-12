@@ -34,4 +34,4 @@ const Cart: React.FC<CartsProps> = ({
     );
 };
 
-export default connect((state: IApplicationState) => state.cart, actionCreators)(Cart as any);
+export default connect((state: IApplicationState) => state, actionCreators)(Cart as any);

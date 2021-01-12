@@ -28,9 +28,15 @@ export const reducer = (state: ICartState = initialState, incomingAction: ReduxA
             {
                 const { productId } = action;
 
-                if (state.productIdToCartProductMap[productId]) {
-                    delete state.productIdToCartProductMap[productId];
-                }
+                Object.assign({}, state, {
+                    productIdToCartProductMap: Object.keys(state.productIdToCartProductMap).reduce((result, key) => {
+                        if (key !== productId) {
+                            result[key] = state.productIdToCartProductMap[key];
+                        }
+
+                        return result;
+                    }, {})
+                });
             }
         case CartActionTypes.CHANGE_QUANTITY:
             {
@@ -38,7 +44,15 @@ export const reducer = (state: ICartState = initialState, incomingAction: ReduxA
                 const product = state.productIdToCartProductMap[productId];
 
                 if (product && quantity >= 0) {
-                    product.quantity = quantity;
+                    return {
+                        productIdToCartProductMap: {
+                            ...state.productIdToCartProductMap,
+                            [productId]: {
+                                ...state.productIdToCartProductMap[productId],
+                                quantity
+                            }
+                        }
+                    }
                 }
             }
         case CartActionTypes.PLACE_ORDER:

@@ -20,5 +20,5 @@ var Cart = function (_a) {
             ? React.createElement(CartProducts_1.CartProducts, { cart: cart, onQuantityChange: onQuantityChange })
             : React.createElement("div", { className: "cart__message" }, "your cart is empty")));
 };
-exports.default = react_redux_1.connect(function (state) { return state.cart; }, cartActions_1.actionCreators)(Cart);
+exports.default = react_redux_1.connect(function (state) { return state; }, cartActions_1.actionCreators)(Cart);
 //# sourceMappingURL=Cart.js.map

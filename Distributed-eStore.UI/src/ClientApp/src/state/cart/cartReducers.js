@@ -17,7 +17,7 @@ var initialState = {
     productIdToCartProductMap: {}
 };
 var reducer = function (state, incomingAction) {
-    var _a;
+    var _a, _b;
     if (state === void 0) { state = initialState; }
     var action = incomingAction;
     switch (action.type) {
@@ -33,17 +33,24 @@ var reducer = function (state, incomingAction) {
             }
         case cartTypes_1.CartActionTypes.REMOVE_FROM_CART:
             {
-                var productId = action.productId;
-                if (state.productIdToCartProductMap[productId]) {
-                    delete state.productIdToCartProductMap[productId];
-                }
+                var productId_1 = action.productId;
+                Object.assign({}, state, {
+                    productIdToCartProductMap: Object.keys(state.productIdToCartProductMap).reduce(function (result, key) {
+                        if (key !== productId_1) {
+                            result[key] = state.productIdToCartProductMap[key];
+                        }
+                        return result;
+                    }, {})
+                });
             }
         case cartTypes_1.CartActionTypes.CHANGE_QUANTITY:
             {
                 var productId = action.productId, quantity = action.quantity;
                 var product = state.productIdToCartProductMap[productId];
                 if (product && quantity >= 0) {
-                    product.quantity = quantity;
+                    return {
+                        productIdToCartProductMap: __assign(__assign({}, state.productIdToCartProductMap), (_b = {}, _b[productId] = __assign(__assign({}, state.productIdToCartProductMap[productId]), { quantity: quantity }), _b))
+                    };
                 }
             }
         case cartTypes_1.CartActionTypes.PLACE_ORDER:
