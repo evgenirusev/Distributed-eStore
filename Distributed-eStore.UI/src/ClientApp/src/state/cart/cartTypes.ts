@@ -24,7 +24,7 @@ export interface IOrder {
     orderItems: IOrderItem[];
 }
 
-export interface IOrderItem  {
+export interface IOrderItem {
     productId: string;
     quantity: number;
     size: string;

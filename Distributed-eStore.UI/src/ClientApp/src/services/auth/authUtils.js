@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isUserLoggedIn = exports.logout = exports.login = exports.register = void 0;
+exports.getCurrentUserId = exports.isUserLoggedIn = exports.logout = exports.login = exports.register = void 0;
 var axios_1 = require("axios");
 var constants_1 = require("../../constants");
 var register = function (firstName, lastName, email, password, role) {
@@ -25,4 +25,8 @@ var isUserLoggedIn = function () {
     return localStorage.getItem("user") !== null;
 };
 exports.isUserLoggedIn = isUserLoggedIn;
+var getCurrentUserId = function () {
+    return localStorage.getItem("user")["id"];
+};
+exports.getCurrentUserId = getCurrentUserId;
 //# sourceMappingURL=authUtils.js.map

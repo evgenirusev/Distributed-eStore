@@ -1,6 +1,6 @@
 ﻿import { CartActionTypes } from '.';
 import { IAppThunkAction, ReduxAction } from '../';
-import { ICartProduct } from './cartTypes';
+import { ICartProduct, IOrder } from './cartTypes';
 
 export const actionCreators = {
     addProductToCart: (cartProduct: ICartProduct): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
@@ -22,9 +22,10 @@ export const actionCreators = {
             quantity
         });
     },
-    placeOrder: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    placeOrder: (order: IOrder): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
-            type: CartActionTypes.PLACE_ORDER
+            type: CartActionTypes.PLACE_ORDER,
+            order
         });
     }
 };

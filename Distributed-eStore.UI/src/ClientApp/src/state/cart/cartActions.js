@@ -22,9 +22,10 @@ exports.actionCreators = {
             quantity: quantity
         });
     }; },
-    placeOrder: function () { return function (dispatch, getState) {
+    placeOrder: function (order) { return function (dispatch, getState) {
         dispatch({
-            type: _1.CartActionTypes.PLACE_ORDER
+            type: _1.CartActionTypes.PLACE_ORDER,
+            order: order
         });
     }; }
 };

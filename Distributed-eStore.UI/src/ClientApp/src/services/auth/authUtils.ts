@@ -23,3 +23,7 @@ export const logout = (): void => {
 export const isUserLoggedIn = (): boolean => {
     return localStorage.getItem("user") !== null;   
 }
+
+export const getCurrentUserId = (): string => {
+    return localStorage.getItem("user")["id"];
+}
