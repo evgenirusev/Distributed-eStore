@@ -15,6 +15,12 @@ exports.actionCreators = {
             productId: productId
         });
     }; },
+    changeQuantity: function (productId, quantity) { return function (dispatch, getState) {
+        dispatch({
+            type: _1.CartActionTypes.CHANGE_QUANTITY,
+            productId: productId
+        });
+    }; },
     placeOrder: function () { return function (dispatch, getState) {
         dispatch({
             type: _1.CartActionTypes.PLACE_ORDER

@@ -32,6 +32,15 @@ export const reducer = (state: ICartState = initialState, incomingAction: ReduxA
                     delete state.productIdToCartProductMap[productId];
                 }
             }
+        case CartActionTypes.CHANGE_QUANTITY:
+            {
+                const { productId, quantity } = action;
+                const product = state.productIdToCartProductMap[productId];
+
+                if (product && quantity >= 0) {
+                    product.quantity = quantity;
+                }
+            }
         case CartActionTypes.PLACE_ORDER:
         default:
             return state;

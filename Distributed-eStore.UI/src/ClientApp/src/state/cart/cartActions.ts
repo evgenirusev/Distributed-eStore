@@ -15,6 +15,12 @@ export const actionCreators = {
             productId
         });
     },
+    changeQuantity: (productId: string, quantity: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        dispatch({
+            type: CartActionTypes.CHANGE_QUANTITY,
+            productId
+        });
+    },
     placeOrder: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             type: CartActionTypes.PLACE_ORDER

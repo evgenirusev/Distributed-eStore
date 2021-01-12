@@ -38,6 +38,14 @@ var reducer = function (state, incomingAction) {
                     delete state.productIdToCartProductMap[productId];
                 }
             }
+        case cartTypes_1.CartActionTypes.CHANGE_QUANTITY:
+            {
+                var productId = action.productId, quantity = action.quantity;
+                var product = state.productIdToCartProductMap[productId];
+                if (product && quantity >= 0) {
+                    product.quantity = quantity;
+                }
+            }
         case cartTypes_1.CartActionTypes.PLACE_ORDER:
         default:
             return state;
