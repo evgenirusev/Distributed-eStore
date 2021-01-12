@@ -1,29 +1,35 @@
 ﻿import * as React from 'react';
 import { ICartProduct } from '../../../state/cart';
 
-export const CartProduct: React.FC<ICartProduct> = ({
-    id,
-    name,
-    price,
-    color,
-    imageURL
+type CartProductProps = {
+    cart: ICartProduct,
+    onQuantityChange: (productId: string) => void
+};
+
+export const CartProduct: React.FC<CartProductProps> = ({
+    cart,
+    onQuantityChange
 }) => {
+    const { id, name, price, color, imageURL, size, quantity, } = cart;
+
     return <div className="cart-product">
-        <a href={`/products/${id}`}>
-            <div className="d-flex justify-content-between">
-                <div className="">
-                    <img sizes="100vw" src={imageURL} className="product__image"></img>
-                </div>
-                <div className="">
-                    <p className="cart-product__name"> {name} </p>
-                </div>
-                <div className="">
-                    <p className="cart-product__color"> {color} </p>
-                </div>
-                <div className="">
-                    <p className="cart-product__price"> {price} </p>
+                <div className="d-flex justify-content-between">
+                    <div className="">
+                        <a href={`/products/${id}`}>
+                            <img sizes="100vw" src={imageURL} className="product__image"></img>
+                        </a>
+                    </div>
+                    <div className="">
+                        <p>Item</p>
+                        <i className="cart-product__name text-danger"> {name} </i>
+                        <strong className="cart-product__price d-block"> ${price} </strong>
+                        <strong className="d-block">Color - ${color} </strong>
+                        <strong className="d-block">Size - ${size} </strong>
+                    </div>
+                    <div>
+                        <p>Qty:</p>
+                        <input type="number" onChange={ onQuantityChange } value={ quantity }/>
+                    </div>
                 </div>
             </div>
-        </a>
-    </div>
 };

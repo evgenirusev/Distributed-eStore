@@ -25,7 +25,7 @@ var ProductView = function (_a) {
     var id = selectedProduct.id, imageURLs = selectedProduct.imageURLs, colors = selectedProduct.colors, description = selectedProduct.description, name = selectedProduct.name, price = selectedProduct.price, selectedColorIndex = selectedProduct.selectedColorIndex;
     var productId = react_router_dom_1.useParams().productId;
     var isObjectEmpty = function (obj) { return Object.keys(obj).length === 0; };
-    var sizesList = [6, 7, 8, 9, 10];
+    var sizesList = ["6", "7", "8", "9", "10"];
     var _b = react_1.useState(sizesList[0]), selectedSize = _b[0], selectSizeIndex = _b[1];
     var history = react_router_dom_2.useHistory();
     var onAddToCart = function () {
@@ -34,7 +34,9 @@ var ProductView = function (_a) {
             name: name,
             price: price,
             color: colors[selectedColorIndex],
-            imageURL: imageURLs[selectedColorIndex]
+            imageURL: imageURLs[selectedColorIndex],
+            quantity: 1,
+            size: selectedSize
         });
         history.push("/cart");
     };

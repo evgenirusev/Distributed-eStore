@@ -7,7 +7,14 @@ import { ICartProduct, ICartState } from '../../state/cart';
 
 type CartsProps = IApplicationState & typeof actionCreators;
 
-const CartProducts: React.FC<ICartState> = ({ productIdToCartProductMap }) => {
+type CartProductsProps = {
+    cart: ICartState,
+    onQuantityChange: (productId: string) => void
+};
+
+const CartProducts: React.FC<CartProductsProps> = ({ cart, onQuantityChange }) => {
+    const { productIdToCartProductMap } = cart;
+
     const totalCost = Object.values(productIdToCartProductMap).reduce((total, product) => {
         return total + product.price;
     }, 0);
@@ -15,10 +22,10 @@ const CartProducts: React.FC<ICartState> = ({ productIdToCartProductMap }) => {
     return (
         <>
             {Object.values(productIdToCartProductMap).map((cartProduct: ICartProduct, index: number) => {
-            return <React.Fragment key={`cart-product-${index}`}>
-                <CartProduct {...cartProduct} />
-                <hr />
-            </React.Fragment>
+                return <React.Fragment key={`cart-product-${index}`}>
+                    <CartProduct cart={ cartProduct } onQuantityChange={ onQuantityChange } />
+                    <hr />
+                </React.Fragment>
             })}
             <div>
                 <strong className="d-block">Sub-total (inc. VAT) = ${totalCost}</strong>
@@ -43,16 +50,16 @@ const Cart: React.FC<CartsProps> = ({
 
     const onCheckout = (event) => {
         event.preventDefault();
+    }
 
-        if (user.firstName && user.lastName && user.email && user.password) {
-            this.props.register(user);
-        }
+    const onQuantityChange = (productId) => {
+        
     }
 
     return (
         <section className='cart'>
             {!isCartEmpty(cart)
-                ? <CartProducts productIdToCartProductMap={cart.productIdToCartProductMap} />
+                ? <CartProducts cart={cart} onQuantityChange={ onQuantityChange } />
                 : <div className="cart__message">your cart is empty</div>}  
         </section>
     );

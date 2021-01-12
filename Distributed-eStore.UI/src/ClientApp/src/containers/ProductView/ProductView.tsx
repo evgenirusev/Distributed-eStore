@@ -27,7 +27,7 @@ const ProductView: React.FC<ProductViewProps> = ({
     const { productId } = useParams<ParamTypes>();
     const isObjectEmpty = (obj: Object) => Object.keys(obj).length === 0
 
-    const sizesList = [6, 7, 8, 9, 10];
+    const sizesList = ["6", "7", "8", "9", "10"];
     const [selectedSize, selectSizeIndex] = useState(sizesList[0]);
 
     const history = useHistory();
@@ -37,7 +37,9 @@ const ProductView: React.FC<ProductViewProps> = ({
             name,
             price,
             color: colors[selectedColorIndex],
-            imageURL: imageURLs[selectedColorIndex]
+            imageURL: imageURLs[selectedColorIndex],
+            quantity: 1,
+            size: selectedSize
         });
 
         history.push("/cart");
