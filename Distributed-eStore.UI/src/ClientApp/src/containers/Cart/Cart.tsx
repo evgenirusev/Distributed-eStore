@@ -45,7 +45,7 @@ const Cart: React.FC<CartsProps> = ({
     return (
         <section className='cart'>
             {!isCartEmpty(cart)
-                ? <CartProducts cart={cart} changeQuantity={changeQuantity} placeOrder={onPlaceOrder} />
+                ? <CartProducts cart={cart} changeQuantity={changeQuantity} onPlaceOrder={onPlaceOrder} />
                 : <div className="cart__message">Your cart is empty</div> }  
         </section>
     );

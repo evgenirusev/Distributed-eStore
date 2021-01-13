@@ -41,12 +41,13 @@ var _1 = require(".");
 var auth_1 = require("../../services/auth");
 exports.userActionCreators = {
     register: function (userData) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
-        var error_1, message;
+        var firstName, lastName, email, password, role, error_1, message;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, auth_1.register(userData.firstName, userData.lastName, userData.email, userData.password, userData.role)];
+                    firstName = userData.firstName, lastName = userData.lastName, email = userData.email, password = userData.password, role = userData.role;
+                    return [4 /*yield*/, auth_1.register(firstName, lastName, email, password, role)];
                 case 1:
                     _a.sent();
                     dispatch({

@@ -15,7 +15,7 @@ namespace DistributedEStore.UI.Controllers
             this.apiGatewayService = apiGatewayService;
         }
 
-        [HttpPost("sign-up")]
+        [HttpPost("orders")]
         public async Task<IActionResult> Post([FromBody] CreateOrder createOrder)
             => await apiGatewayService.CreateOrder(createOrder);
     }
