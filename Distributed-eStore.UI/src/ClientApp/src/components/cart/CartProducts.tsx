@@ -1,34 +1,23 @@
 ﻿import * as React from 'react';
-import { useHistory } from 'react-router';
+
 import { CartProduct } from '../../components/cart/cartProduct/CartProduct';
-import { isUserLoggedIn, getCurrentUserId } from '../../services/auth/authUtils';
-import { ICartProduct, ICartState, IOrder, IOrderItem } from '../../state/cart';
+
+import { ICartProduct, ICartState, IOrder } from '../../state/cart';
 
 type CartProductsProps = {
     cart: ICartState,
     changeQuantity: (productId: string, value: number) => void,
-    placeOrder: (order: IOrder) => void
+    onPlaceOrder: () => void
 };
 
-export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity, placeOrder }) => {
+export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity, onPlaceOrder }) => {
     const { productIdToCartProductMap } = cart;
-    const history = useHistory();
 
     const totalCost = Object.values(productIdToCartProductMap).reduce((total, product) => {
         return total + product.price;
     }, 0);
 
-    const onSubmit = (event) => {
-        if (isUserLoggedIn()) {
-            const orderItems: IOrderItem[] = ;
-            placeOrder({
-                customerId: getCurrentUserId(),
-
-            });
-        } else {
-            history.push("/login");
-        }
-    }
+    const onSubmit = event => onPlaceOrder();
 
     return (
         <>
@@ -45,7 +34,7 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity
             </div>
             <hr />
             <div>
-                <button onSubmit={ placeOrder }>Checkout</button>
+                <button onSubmit={ onSubmit }>Checkout</button>
             </div>
         </>
     );
