@@ -18,12 +18,12 @@ var reactstrap_1 = require("reactstrap");
 var react_router_dom_1 = require("react-router-dom");
 require("./NavMenu.css");
 var auth_1 = require("../services/auth");
-var index_1 = require("../index");
 var CartWidget_1 = require("./cart/cartWidget/CartWidget");
-var userActions_1 = require("../state/user/userActions");
-var NavMenu = /** @class */ (function (_super) {
-    __extends(NavMenu, _super);
-    function NavMenu() {
+var react_redux_1 = require("react-redux");
+var user_1 = require("../state/user");
+var NavMenuComponent = /** @class */ (function (_super) {
+    __extends(NavMenuComponent, _super);
+    function NavMenuComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.state = {
             isOpen: false
@@ -35,11 +35,7 @@ var NavMenu = /** @class */ (function (_super) {
         };
         return _this;
     }
-    NavMenu.prototype.onLogout = function () {
-        { /* technical debt - consider connecting NavMenu to Redux */ }
-        userActions_1.userActionCreators.logout()(index_1.store.dispatch, index_1.store.getState);
-    };
-    NavMenu.prototype.render = function () {
+    NavMenuComponent.prototype.render = function () {
         return (React.createElement("header", null,
             React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3", light: true },
                 React.createElement(reactstrap_1.Container, null,
@@ -54,12 +50,13 @@ var NavMenu = /** @class */ (function (_super) {
                                     React.createElement(reactstrap_1.NavItem, null,
                                         React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/register" }, "Register"))),
                             auth_1.isUserLoggedIn() && React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, to: "/login", onClick: this.onLogout, className: "text-dark" }, "Logout")),
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/logout" }, "Logout")),
                             React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/cart" },
-                                    React.createElement(CartWidget_1.default, null)))))))));
+                                    React.createElement(CartWidget_1.CartWidget, { numberOfItems: Object.keys(this.props.cart.productIdToCartProductMap).length })))))))));
     };
-    return NavMenu;
+    return NavMenuComponent;
 }(React.PureComponent));
+var NavMenu = react_redux_1.connect(function (state) { return state; }, user_1.userActionCreators)(NavMenuComponent);
 exports.default = NavMenu;
 //# sourceMappingURL=NavMenu.js.map

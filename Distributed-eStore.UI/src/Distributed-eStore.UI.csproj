@@ -32,6 +32,7 @@
     <None Remove="ClientApp\src\components\products\ColorBox.tsx" />
     <None Remove="ClientApp\src\components\products\ColorSwitcher.tsx" />
     <None Remove="ClientApp\src\components\products\index.ts" />
+    <None Remove="ClientApp\src\components\user\Logout.tsx" />
     <None Remove="ClientApp\src\containers\ProductView\ProductView.tsx" />
     <None Remove="ClientApp\src\constants\auth.ts" />
     <None Remove="ClientApp\src\containers\ProductList.tsx" />

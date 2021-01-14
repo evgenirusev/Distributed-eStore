@@ -6,8 +6,11 @@ var react_redux_1 = require("react-redux");
 var userActions_1 = require("../../state/user/userActions");
 var LogoutComponent = function (_a) {
     var logout = _a.logout;
+    var history = react_router_dom_1.useHistory();
     logout();
-    return (React.createElement(react_router_dom_1.Redirect, { to: "/" }));
+    history.push("/");
+    // technical debt - to save time to ship
+    return React.createElement(React.Fragment, null);
 };
 var Logout = react_redux_1.connect(null, userActions_1.userActionCreators)(LogoutComponent);
 exports.default = Logout;

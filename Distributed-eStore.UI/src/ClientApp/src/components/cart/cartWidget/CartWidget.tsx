@@ -1,12 +1,10 @@
 ﻿import * as React from 'react';
-import { connect } from 'react-redux';
-import { IApplicationState } from '../../../state';
 
 type CartWidgetProps = {
     numberOfItems: number;
 };
 
-const CartWidgetComponent: React.FC<CartWidgetProps> = ({
+export const CartWidget: React.FC<CartWidgetProps> = ({
     numberOfItems
 }) => {
     return <div className="cart-badge badge-icons pull-right">
@@ -16,9 +14,3 @@ const CartWidgetComponent: React.FC<CartWidgetProps> = ({
         </div>
     </div>
 };
-
-const CartWidget = (connect((state: IApplicationState) => {
-    return { numberOfItems: Object.keys(state.cart.productIdToCartProductMap).length }
-}, null)(CartWidgetComponent));
-
-export default CartWidget;

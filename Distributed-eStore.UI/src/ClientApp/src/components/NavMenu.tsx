@@ -3,20 +3,18 @@ import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLi
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import { isUserLoggedIn } from "../services/auth";
-import { store } from "../index";
-import CartWidget from './cart/cartWidget/CartWidget';
-import { userActionCreators } from '../state/user/userActions';
+import { CartWidget } from './cart/cartWidget/CartWidget';
+import { connect } from 'react-redux';
+import { userActionCreators } from '../state/user';
+import { IApplicationState } from '../state';
 
-export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
+type NavMenuProps = IApplicationState & typeof userActionCreators;
+
+class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boolean }> {
     public state = {
         isOpen: false
     };
-
-    private onLogout() {
-        { /* technical debt - consider connecting NavMenu to Redux */ }
-        userActionCreators.logout()(store.dispatch, store.getState);
-    }
-
+ 
     public render() {
         return (
             <header>
@@ -40,12 +38,12 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                 }
 
                                 { isUserLoggedIn() && <NavItem>
-                                    <NavLink tag={Link} to="/login" onClick={ this.onLogout } className="text-dark">Logout</NavLink>
-                                </NavItem>}
+                                    <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
+                                </NavItem> }
 
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/cart">
-                                        <CartWidget />
+                                        <CartWidget numberOfItems={Object.keys(this.props.cart.productIdToCartProductMap).length} />
                                     </NavLink>
                                 </NavItem>
                             </ul>
@@ -62,3 +60,6 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
         });
     }
 }
+
+const NavMenu = connect((state: IApplicationState) => state, userActionCreators)(NavMenuComponent as any);
+export default NavMenu;
