@@ -51,4 +51,8 @@ const Cart: React.FC<CartsProps> = ({
     );
 };
 
-export default connect((state: IApplicationState) => state, actionCreators)(Cart as any);
+const mapStateToProps = (state: IApplicationState) => {
+    return { userState: state.user };
+}
+
+export default connect(mapStateToProps, actionCreators)(Cart as any);

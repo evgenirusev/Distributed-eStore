@@ -15,8 +15,8 @@ exports.reducer = void 0;
 var userTypes_1 = require("./userTypes");
 var userData = localStorage.getItem("user");
 var initialState = userData
-    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: false }
-    : { isLoggedIn: false, user: {}, shouldRedirect: true };
+    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: true }
+    : { isLoggedIn: false, user: {}, shouldRedirect: false };
 var reducer = function (state, incomingAction) {
     if (state === void 0) { state = initialState; }
     var _a = incomingAction, type = _a.type, payload = _a.payload;

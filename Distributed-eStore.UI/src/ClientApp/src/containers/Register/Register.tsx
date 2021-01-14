@@ -2,11 +2,12 @@
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActionCreators, UserRegistrationData } from '../../state/user/userActions';
-import { reducer } from '../../state/user/userReducers';
 import { IApplicationState } from "../../state/index";
 import { IUserState } from '../../state/user/userTypes';
 
-type RegisterPageProps = typeof userActionCreators & IUserState;
+type RegisterPageProps = typeof userActionCreators & {
+    userState: IUserState
+};
 
 type RegisterPageState = {
     user: UserRegistrationData,
@@ -14,7 +15,7 @@ type RegisterPageState = {
 }
 
 class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState> {
-    constructor(props) {
+    constructor(props: RegisterPageProps) {
         super(props);
 
         this.state = {
@@ -56,12 +57,9 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
     render() {
         const { user, submitted } = this.state;
 
-        //if (this.props.shouldRedirect) {
-        //    console.log("true");
-        //}
-
-        return (
-            <div className="col-md-6 col-md-offset-3">
+        return this.props.userState.shouldRedirect
+            ? (<Redirect to="/login" />)
+            : (<div className="col-md-6 col-md-offset-3">
                 <h2>Register</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !user.firstName ? ' has-error' : '')}>
@@ -102,4 +100,4 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
     }
 }
 
-export default connect((state: IApplicationState) => { return { user: state.user } }, userActionCreators)(RegisterPage as any);
+export default connect((state: IApplicationState) => { return { userState: state.user } }, userActionCreators)(RegisterPage as any);

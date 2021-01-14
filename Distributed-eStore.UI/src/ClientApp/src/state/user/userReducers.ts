@@ -4,10 +4,10 @@ import { UserActionTypes } from "./userTypes";
 
 const userData: string | null = localStorage.getItem("user");
 const initialState: IUserState = userData
-    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: false }
-    : { isLoggedIn: false, user: {} as IUser, shouldRedirect: true };
+    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: true }
+    : { isLoggedIn: false, user: {} as IUser, shouldRedirect: false };
 
-export const reducer = (state = initialState, incomingAction: ReduxAction): IUserState => {
+export const reducer = (state: IUserState = initialState, incomingAction: ReduxAction): IUserState => {
     const { type, payload } = incomingAction as ReduxAction;
 
     switch (type) {

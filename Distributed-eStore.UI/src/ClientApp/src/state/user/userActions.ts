@@ -11,6 +11,7 @@ export type UserRegistrationData = {
     role: string
 }
 
+/* eslint-disable */
 export const userActionCreators = {
     register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         try {
