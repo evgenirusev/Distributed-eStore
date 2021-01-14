@@ -13,7 +13,8 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.reducer = void 0;
 var userTypes_1 = require("./userTypes");
-var userData = localStorage.getItem("user");
+var userKey = "user";
+var userData = localStorage.getItem(userKey);
 var initialState = userData
     ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: true }
     : { isLoggedIn: false, user: {}, shouldRedirect: false };
@@ -26,7 +27,9 @@ var reducer = function (state, incomingAction) {
         case userTypes_1.UserActionTypes.REGISTRATION_FAILED:
             return __assign(__assign({}, state), { isLoggedIn: false });
         case userTypes_1.UserActionTypes.LOGIN_SUCCESS:
-            return __assign(__assign({}, state), { isLoggedIn: true, user: payload.user });
+            var user = payload.user;
+            localStorage.setItem(userKey, JSON.stringify(user));
+            return __assign(__assign({}, state), { isLoggedIn: true, user: user });
         case userTypes_1.UserActionTypes.LOGIN_FAIL:
             return __assign(__assign({}, state), { isLoggedIn: false, user: null });
         case userTypes_1.UserActionTypes.LOGOUT:

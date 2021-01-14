@@ -2,7 +2,8 @@
 import { ReduxAction } from '../';
 import { UserActionTypes } from "./userTypes";
 
-const userData: string | null = localStorage.getItem("user");
+const userKey = "user";
+const userData: string | null = localStorage.getItem(userKey);
 const initialState: IUserState = userData
     ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: true }
     : { isLoggedIn: false, user: {} as IUser, shouldRedirect: false };
@@ -23,10 +24,13 @@ export const reducer = (state: IUserState = initialState, incomingAction: ReduxA
                 isLoggedIn: false
             };
         case UserActionTypes.LOGIN_SUCCESS:
+            const { user } = payload;
+
+            localStorage.setItem(userKey, JSON.stringify(user));
             return {
                 ...state,
                 isLoggedIn: true,
-                user: payload.user,
+                user
             };
         case UserActionTypes.LOGIN_FAIL:
             return {
