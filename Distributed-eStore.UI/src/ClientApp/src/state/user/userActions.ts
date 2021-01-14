@@ -11,6 +11,8 @@ export type UserRegistrationData = {
     role: string
 }
 
+const userKey = "user";
+
 /* eslint-disable */
 export const userActionCreators = {
     register: (userData: UserRegistrationData): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
@@ -38,6 +40,7 @@ export const userActionCreators = {
         try {
             const user: IUser = (await login(email, password)).data;
 
+            localStorage.setItem(userKey, JSON.stringify(user));
             dispatch({
                 type: UserActionTypes.LOGIN_SUCCESS,
                 payload: { user }

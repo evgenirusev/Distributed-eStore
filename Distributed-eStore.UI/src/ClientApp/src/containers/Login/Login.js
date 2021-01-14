@@ -58,24 +58,26 @@ var LoginPage = /** @class */ (function (_super) {
     };
     LoginPage.prototype.render = function () {
         var _a = this.state, email = _a.email, password = _a.password, submitted = _a.submitted;
-        return (React.createElement("div", { className: "col-md-6 col-md-offset-3" },
-            React.createElement("h2", null, "Login"),
-            React.createElement("form", { name: "form", onSubmit: this.handleSubmit },
-                React.createElement("div", { className: 'form-group' + (submitted && !email ? ' has-error' : '') },
-                    React.createElement("label", { htmlFor: "email" }, "Email"),
-                    React.createElement("input", { type: "text", className: "form-control", name: "email", value: email, onChange: this.handleChange }),
-                    submitted && !email &&
-                        React.createElement("div", { className: "help-block" }, "Email is required")),
-                React.createElement("div", { className: 'form-group' + (submitted && !password ? ' has-error' : '') },
-                    React.createElement("label", { htmlFor: "password" }, "Password"),
-                    React.createElement("input", { type: "password", className: "form-control", name: "password", value: password, onChange: this.handleChange }),
-                    submitted && !password &&
-                        React.createElement("div", { className: "help-block" }, "Password is required")),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("button", { className: "btn btn-primary" }, "Login"),
-                    React.createElement(react_router_dom_1.Link, { to: "/register", className: "btn btn-link" }, "Register")))));
+        return this.props.userState.shouldRedirect
+            ? (React.createElement(react_router_dom_1.Redirect, { to: "/" }))
+            : (React.createElement("div", { className: "col-md-6 col-md-offset-3" },
+                React.createElement("h2", null, "Login"),
+                React.createElement("form", { name: "form", onSubmit: this.handleSubmit },
+                    React.createElement("div", { className: 'form-group' + (submitted && !email ? ' has-error' : '') },
+                        React.createElement("label", { htmlFor: "email" }, "Email"),
+                        React.createElement("input", { type: "text", className: "form-control", name: "email", value: email, onChange: this.handleChange }),
+                        submitted && !email &&
+                            React.createElement("div", { className: "help-block" }, "Email is required")),
+                    React.createElement("div", { className: 'form-group' + (submitted && !password ? ' has-error' : '') },
+                        React.createElement("label", { htmlFor: "password" }, "Password"),
+                        React.createElement("input", { type: "password", className: "form-control", name: "password", value: password, onChange: this.handleChange }),
+                        submitted && !password &&
+                            React.createElement("div", { className: "help-block" }, "Password is required")),
+                    React.createElement("div", { className: "form-group" },
+                        React.createElement("button", { className: "btn btn-primary" }, "Login"),
+                        React.createElement(react_router_dom_1.Link, { to: "/register", className: "btn btn-link" }, "Register")))));
     };
     return LoginPage;
 }(React.Component));
-exports.default = react_redux_1.connect(null, userActions_1.userActionCreators)(LoginPage);
+exports.default = react_redux_1.connect(function (state) { return { userState: state.user }; }, userActions_1.userActionCreators)(LoginPage);
 //# sourceMappingURL=Login.js.map

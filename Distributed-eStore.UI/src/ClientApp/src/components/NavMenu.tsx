@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import { isUserLoggedIn } from "../services/auth";
 import { store } from "../index";
-import { UserActionTypes } from '../state/user';
 import CartWidget from './cart/cartWidget/CartWidget';
+import { userActionCreators } from '../state/user/userActions';
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
     public state = {
@@ -14,9 +14,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
 
     private onLogout() {
         { /* technical debt - consider connecting NavMenu to Redux */ }
-        store.dispatch({
-            type: UserActionTypes.LOGOUT
-        });
+        userActionCreators.logout()(store.dispatch, store.getState);
     }
 
     public render() {
@@ -28,6 +26,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                         <NavbarToggler onClick={this.toggle} className="mr-2"/>
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={this.state.isOpen} navbar>
                             <ul className="navbar-nav flex-grow">
+
                                 { /* technical debt - abstract this */ }
                                 {!isUserLoggedIn() &&
                                     <>
@@ -39,9 +38,11 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                         </NavItem>
                                     </>
                                 }
+
                                 { isUserLoggedIn() && <NavItem>
-                                    <NavLink onClick={ this.onLogout } className="text-dark">Logout</NavLink>
+                                    <NavLink tag={Link} to="/login" onClick={ this.onLogout } className="text-dark">Logout</NavLink>
                                 </NavItem>}
+
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/cart">
                                         <CartWidget />

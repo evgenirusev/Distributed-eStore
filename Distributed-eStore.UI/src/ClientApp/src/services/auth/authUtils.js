@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCurrentUserId = exports.isUserLoggedIn = exports.logout = exports.login = exports.register = void 0;
 var axios_1 = require("axios");
 var constants_1 = require("../../constants");
+var userKey = "user";
 var register = function (firstName, lastName, email, password, role) {
     return axios_1.default.post(constants_1.registerUrl, {
         firstName: firstName,
@@ -18,15 +19,15 @@ var login = function (email, password) {
 };
 exports.login = login;
 var logout = function () {
-    localStorage.removeItem("user");
+    localStorage.removeItem(userKey);
 };
 exports.logout = logout;
 var isUserLoggedIn = function () {
-    return localStorage.getItem("user") !== null;
+    return localStorage.getItem(userKey) !== null;
 };
 exports.isUserLoggedIn = isUserLoggedIn;
 var getCurrentUserId = function () {
-    return localStorage.getItem("user")["id"];
+    return localStorage.getItem(userKey)["id"];
 };
 exports.getCurrentUserId = getCurrentUserId;
 //# sourceMappingURL=authUtils.js.map

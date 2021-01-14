@@ -1,9 +1,13 @@
 ﻿import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActionCreators } from '../../state/user/userActions';
+import { IUserState } from '../../state/user';
+import { IApplicationState } from '../../state';
 
-type LoginPageProps = typeof userActionCreators;
+type LoginPageProps = typeof userActionCreators & {
+    userState: IUserState
+};
 
 type LoginPageState = {
     email: string;
@@ -45,8 +49,10 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
 
     render() {
         const { email, password, submitted } = this.state;
-        return (
-            <div className="col-md-6 col-md-offset-3">
+
+        return this.props.userState.shouldRedirect
+        ? (<Redirect to="/" />)
+        : (<div className="col-md-6 col-md-offset-3">
                 <h2>Login</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !email ? ' has-error' : '')}>
@@ -73,4 +79,4 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     }
 }
 
-export default connect(null, userActionCreators)(LoginPage);
+export default connect((state: IApplicationState) => { return { userState: state.user } }, userActionCreators)(LoginPage);

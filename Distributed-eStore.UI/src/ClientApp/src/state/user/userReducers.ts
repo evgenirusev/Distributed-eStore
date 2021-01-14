@@ -26,11 +26,11 @@ export const reducer = (state: IUserState = initialState, incomingAction: ReduxA
         case UserActionTypes.LOGIN_SUCCESS:
             const { user } = payload;
 
-            localStorage.setItem(userKey, JSON.stringify(user));
             return {
                 ...state,
                 isLoggedIn: true,
-                user
+                user,
+                shouldRedirect: true
             };
         case UserActionTypes.LOGIN_FAIL:
             return {

@@ -2,6 +2,8 @@
 import { loginUrl, registerUrl } from "../../constants";
 import { IUser } from "../../state/user";
 
+const userKey = "user";
+
 export const register = (firstName: string, lastName: string, email: string, password: string, role: string): Promise<AxiosResponse> => {
     return axios.post(registerUrl, {
         firstName,
@@ -17,13 +19,13 @@ export const login = (email: string, password: string): Promise<AxiosResponse<IU
 }
 
 export const logout = (): void => {
-    localStorage.removeItem("user");
+    localStorage.removeItem(userKey);
 }
 
 export const isUserLoggedIn = (): boolean => {
-    return localStorage.getItem("user") !== null;   
+    return localStorage.getItem(userKey) !== null;   
 }
 
 export const getCurrentUserId = (): string => {
-    return localStorage.getItem("user")["id"];
+    return localStorage.getItem(userKey)["id"];
 }

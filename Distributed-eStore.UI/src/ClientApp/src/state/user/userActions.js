@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userActionCreators = void 0;
 var _1 = require(".");
 var auth_1 = require("../../services/auth");
+var userKey = "user";
 /* eslint-disable */
 exports.userActionCreators = {
     register: function (userData) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
@@ -79,6 +80,7 @@ exports.userActionCreators = {
                     return [4 /*yield*/, auth_1.login(email, password)];
                 case 1:
                     user = (_a.sent()).data;
+                    localStorage.setItem(userKey, JSON.stringify(user));
                     dispatch({
                         type: _1.UserActionTypes.LOGIN_SUCCESS,
                         payload: { user: user }
