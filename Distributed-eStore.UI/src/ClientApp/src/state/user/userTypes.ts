@@ -17,4 +17,5 @@ export interface IUser {
 export interface IUserState {
     isLoggedIn: boolean;
     user: IUser | null;
+    shouldRedirect: boolean;
 }

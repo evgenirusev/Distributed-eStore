@@ -15,14 +15,14 @@ exports.reducer = void 0;
 var userTypes_1 = require("./userTypes");
 var userData = localStorage.getItem("user");
 var initialState = userData
-    ? { isLoggedIn: true, user: JSON.parse(userData) }
-    : { isLoggedIn: false, user: {} };
+    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: false }
+    : { isLoggedIn: false, user: {}, shouldRedirect: true };
 var reducer = function (state, incomingAction) {
     if (state === void 0) { state = initialState; }
     var _a = incomingAction, type = _a.type, payload = _a.payload;
     switch (type) {
         case userTypes_1.UserActionTypes.REGISTRATION_SUCCESS:
-            return __assign(__assign({}, state), { isLoggedIn: false });
+            return __assign(__assign({}, state), { isLoggedIn: false, shouldRedirect: true });
         case userTypes_1.UserActionTypes.REGISTRATION_FAILED:
             return __assign(__assign({}, state), { isLoggedIn: false });
         case userTypes_1.UserActionTypes.LOGIN_SUCCESS:

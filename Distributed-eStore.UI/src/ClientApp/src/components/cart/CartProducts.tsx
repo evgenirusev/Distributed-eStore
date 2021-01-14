@@ -1,7 +1,5 @@
 ﻿import * as React from 'react';
-
 import { CartProduct } from '../../components/cart/cartProduct/CartProduct';
-
 import { ICartProduct, ICartState, IOrder } from '../../state/cart';
 
 type CartProductsProps = {
@@ -17,7 +15,9 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity
         return total + product.price;
     }, 0);
 
-    const onSubmit = event => onPlaceOrder();
+    const onClick = (event) => {
+        onPlaceOrder();
+    }
 
     return (
         <>
@@ -34,7 +34,7 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity
             </div>
             <hr />
             <div>
-                <button onSubmit={ onSubmit }>Checkout</button>
+                <button onClick={ onClick }>Checkout</button>
             </div>
         </>
     );

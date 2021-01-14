@@ -1,11 +1,7 @@
-﻿import { PRODUCTS_URL } from "../../constants"
-import { IProduct } from "../../state/products/"
+﻿import { CREATE_ORDER_URL } from "../../constants";
 import axios, { AxiosResponse } from "axios";
+import { IOrder } from "../../state/cart";
 
-export const getAllProducts = (): Promise<AxiosResponse<IProduct[]>> => {
-    return axios.get<IProduct[]>(PRODUCTS_URL);
-}
-
-export const getProductById = (productId: string): Promise<AxiosResponse<IProduct>> => {
-    return axios.get<IProduct>(`${PRODUCTS_URL}/${productId}`);
+export const createOrder = (order: IOrder): Promise<AxiosResponse> => {
+    return axios.post(CREATE_ORDER_URL, order);
 }

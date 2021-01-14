@@ -9,7 +9,9 @@ var CartProducts = function (_a) {
     var totalCost = Object.values(productIdToCartProductMap).reduce(function (total, product) {
         return total + product.price;
     }, 0);
-    var onSubmit = function (event) { return onPlaceOrder(); };
+    var onClick = function (event) {
+        onPlaceOrder();
+    };
     return (React.createElement(React.Fragment, null,
         Object.values(productIdToCartProductMap).map(function (cartProduct, index) {
             return React.createElement(React.Fragment, { key: "cart-product-" + index },
@@ -24,7 +26,7 @@ var CartProducts = function (_a) {
             React.createElement("p", null, "Free Returns. Free Repairs For Life.")),
         React.createElement("hr", null),
         React.createElement("div", null,
-            React.createElement("button", { onSubmit: onSubmit }, "Checkout"))));
+            React.createElement("button", { onClick: onClick }, "Checkout"))));
 };
 exports.CartProducts = CartProducts;
 //# sourceMappingURL=CartProducts.js.map

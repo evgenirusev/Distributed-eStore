@@ -1,9 +1,12 @@
 ﻿import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActionCreators, UserRegistrationData } from '../../state/user/userActions';
+import { reducer } from '../../state/user/userReducers';
+import { IApplicationState } from "../../state/index";
+import { IUserState } from '../../state/user/userTypes';
 
-type RegisterPageProps = typeof userActionCreators;
+type RegisterPageProps = typeof userActionCreators & IUserState;
 
 type RegisterPageState = {
     user: UserRegistrationData,
@@ -52,6 +55,11 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
 
     render() {
         const { user, submitted } = this.state;
+
+        //if (this.props.shouldRedirect) {
+        //    console.log("true");
+        //}
+
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Register</h2>
@@ -94,4 +102,4 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
     }
 }
 
-export default connect(null, userActionCreators)(RegisterPage);
+export default connect((state: IApplicationState) => { return { user: state.user } }, userActionCreators)(RegisterPage as any);

@@ -4,8 +4,8 @@ import { UserActionTypes } from "./userTypes";
 
 const userData: string | null = localStorage.getItem("user");
 const initialState: IUserState = userData
-    ? { isLoggedIn: true, user: JSON.parse(userData) }
-    : { isLoggedIn: false, user: {} as IUser };
+    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: false }
+    : { isLoggedIn: false, user: {} as IUser, shouldRedirect: true };
 
 export const reducer = (state = initialState, incomingAction: ReduxAction): IUserState => {
     const { type, payload } = incomingAction as ReduxAction;
@@ -15,11 +15,12 @@ export const reducer = (state = initialState, incomingAction: ReduxAction): IUse
             return {
                 ...state,
                 isLoggedIn: false,
+                shouldRedirect: true
             };
         case UserActionTypes.REGISTRATION_FAILED:
             return {
                 ...state,
-                isLoggedIn: false,
+                isLoggedIn: false
             };
         case UserActionTypes.LOGIN_SUCCESS:
             return {

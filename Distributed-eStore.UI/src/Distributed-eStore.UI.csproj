@@ -44,9 +44,11 @@
 
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\components\cart\cartProduct\CartProduct.tsx" />
+    <TypeScriptCompile Remove="ClientApp\src\constants\orders.ts" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Cart\CartProducts.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Login\Login.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Register.tsx" />
+    <TypeScriptCompile Remove="ClientApp\src\services\api\createOrder.ts" />
     <TypeScriptCompile Remove="ClientApp\src\state\user\index.ts" />
     <TypeScriptCompile Remove="ClientApp\src\state\user\userActions.ts" />
     <TypeScriptCompile Remove="ClientApp\src\state\user\userReducers.ts" />

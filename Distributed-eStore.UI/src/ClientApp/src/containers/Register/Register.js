@@ -64,6 +64,9 @@ var RegisterPage = /** @class */ (function (_super) {
     };
     RegisterPage.prototype.render = function () {
         var _a = this.state, user = _a.user, submitted = _a.submitted;
+        //if (this.props.shouldRedirect) {
+        //    console.log("true");
+        //}
         return (React.createElement("div", { className: "col-md-6 col-md-offset-3" },
             React.createElement("h2", null, "Register"),
             React.createElement("form", { name: "form", onSubmit: this.handleSubmit },
@@ -93,5 +96,5 @@ var RegisterPage = /** @class */ (function (_super) {
     };
     return RegisterPage;
 }(React.Component));
-exports.default = react_redux_1.connect(null, userActions_1.userActionCreators)(RegisterPage);
+exports.default = react_redux_1.connect(function (state) { return { user: state.user }; }, userActions_1.userActionCreators)(RegisterPage);
 //# sourceMappingURL=Register.js.map

@@ -1,5 +1,6 @@
 ﻿import { CartActionTypes } from '.';
 import { IAppThunkAction, ReduxAction } from '../';
+import { createOrder } from '../../services/api/createOrder';
 import { ICartProduct, IOrder } from './cartTypes';
 
 export const actionCreators = {
@@ -22,29 +23,20 @@ export const actionCreators = {
             quantity
         });
     },
-    placeOrder: (order: IOrder): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    placeOrder: (order: IOrder): IAppThunkAction<ReduxAction> => async(dispatch, getState) => {
         try {
-            await register(userData.firstName, userData.lastName, userData.email, userData.password, userData.role);
+            await createOrder(order);
 
             dispatch({
-                type: UserActionTypes.REGISTRATION_SUCCESS,
+                type: CartActionTypes.CHANGE_QUANTITY,
             });
         } catch (error) {
             const message: string = (error.response && error.response.data && error.response.data.message)
                 || error.message
                 || error.toString();
 
-            dispatch({
-                type: UserActionTypes.REGISTRATION_FAILED,
-            });
-
             // technical debt
-            alert(`Registration failed - ${message}`);
+            alert(`Order creation failed - ${message}`);
         }
-
-        // todo: place order success, maybe consider processing place order or smth.
-        //dispatch({
-        //    type: CartActionTypes.PLACE_ORDER
-        //});
     }
 };
