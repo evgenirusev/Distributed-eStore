@@ -1,16 +1,13 @@
 ﻿import * as React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActionCreators } from '../../state/user/userActions';
 
 type LogoutProps = typeof userActionCreators;
 
 const LogoutComponent: React.FC<LogoutProps> = ({ logout }) => {
-    const history = useHistory();
     logout();
-    history.push("/");
-    // technical debt
-    return <></>;
+    return (<Redirect to="/" />);
 }
 
 const Logout = connect(null, userActionCreators)(LogoutComponent);

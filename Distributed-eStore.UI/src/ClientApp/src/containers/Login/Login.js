@@ -46,8 +46,8 @@ var LoginPage = /** @class */ (function (_super) {
         var _b = event.target, name = _b.name, value = _b.value;
         this.setState(__assign(__assign({}, this.state), (_a = {}, _a[name] = value, _a)));
     };
-    LoginPage.prototype.handleSubmit = function (e) {
-        e.preventDefault();
+    LoginPage.prototype.handleSubmit = function (event) {
+        event.preventDefault();
         this.setState({ submitted: true });
         var _a = this.state, email = _a.email, password = _a.password;
         if (email && password) {

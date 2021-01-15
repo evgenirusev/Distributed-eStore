@@ -2,9 +2,9 @@
 import { actionCreators } from '../../state/cart/cartActions';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state/index';
-import { ICartProduct, ICartState, IOrder, IOrderItem } from '../../state/cart';
+import { ICartState, IOrder, IOrderItem } from '../../state/cart';
 import { CartProducts } from '../../components/cart/CartProducts';
-import { isUserLoggedIn, getCurrentUserId } from '../../services/auth/authUtils';
+import { getCurrentUserId } from '../../services/auth/authUtils';
 import { useHistory } from 'react-router-dom';
 
 type CartsProps = IApplicationState & typeof actionCreators;
@@ -14,8 +14,10 @@ const Cart: React.FC<CartsProps> = ({
     placeOrder,
     cart,
     changeQuantity,
+    user
 }) => {
-    const isCartEmpty = (cart: ICartState) => Object.keys(cart.productIdToCartProductMap).length < 1;
+    console.log(cart);
+    const isCartEmpty = (shoppingCart: ICartState) => Object.keys(shoppingCart.productIdToCartProductMap).length < 1;
     const history = useHistory();
 
     const buildOrder = (): IOrder => {
@@ -35,7 +37,7 @@ const Cart: React.FC<CartsProps> = ({
     }
 
     const onPlaceOrder = () => {
-        if (isUserLoggedIn()) {
+        if (user.isLoggedIn) {
             placeOrder(buildOrder());
         } else {
             history.push("/login");
@@ -52,7 +54,7 @@ const Cart: React.FC<CartsProps> = ({
 };
 
 const mapStateToProps = (state: IApplicationState) => {
-    return { userState: state.user };
+    return { userState: state.user, cart: state.cart };
 }
 
 export default connect(mapStateToProps, actionCreators)(Cart as any);

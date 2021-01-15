@@ -16,7 +16,7 @@ type LoginPageState = {
 }
 
 class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
-    constructor(props) {
+    constructor(props: LoginPageProps) {
         super(props);
 
         this.state = {
@@ -34,8 +34,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         this.setState({ ...this.state, [name]: value });
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(event) {
+        event.preventDefault();
 
         this.setState({ submitted: true });
         const { email, password } = this.state;
