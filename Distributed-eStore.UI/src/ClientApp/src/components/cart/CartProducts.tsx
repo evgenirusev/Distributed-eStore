@@ -10,10 +10,10 @@ type CartProductsProps = {
 
 export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity, onPlaceOrder }) => {
     const { productIdToCartProductMap } = cart;
-
+    
     const totalCost = Object.values(productIdToCartProductMap).reduce((total, product) => {
-        return total + product.price;
-    }, 0);
+            return (total + product.price) * product.quantity;
+        }, 0);
 
     const onClick = (event) => {
         onPlaceOrder();
@@ -27,6 +27,7 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity
                     <hr />
                 </React.Fragment>
             })}
+
             <div>
                 <strong className="d-block">Sub-total (inc. VAT) = ${totalCost}</strong>
                 <strong>NB: VAT will be removed at checkout for Yearbook 5 purchases.</strong>

@@ -7,7 +7,7 @@ var CartProducts = function (_a) {
     var cart = _a.cart, changeQuantity = _a.changeQuantity, onPlaceOrder = _a.onPlaceOrder;
     var productIdToCartProductMap = cart.productIdToCartProductMap;
     var totalCost = Object.values(productIdToCartProductMap).reduce(function (total, product) {
-        return total + product.price;
+        return (total + product.price) * product.quantity;
     }, 0);
     var onClick = function (event) {
         onPlaceOrder();
