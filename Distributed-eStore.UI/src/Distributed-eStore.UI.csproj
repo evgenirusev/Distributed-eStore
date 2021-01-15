@@ -21,8 +21,16 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\common\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\common\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClientApp\src\common\**" />
+    <EmbeddedResource Remove="ClientApp\src\common\**" />
+    <TypeScriptCompile Remove="ClientApp\src\common\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -89,9 +97,5 @@
     <ItemGroup>
 		<PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.5.0" />
 	</ItemGroup>
-	
-    <ItemGroup>
-      <Folder Include="ClientApp\src\common\hooks\" />
-    </ItemGroup>
 
 </Project>

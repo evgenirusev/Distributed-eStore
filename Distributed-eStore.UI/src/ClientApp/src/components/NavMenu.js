@@ -17,7 +17,6 @@ var React = require("react");
 var reactstrap_1 = require("reactstrap");
 var react_router_dom_1 = require("react-router-dom");
 require("./NavMenu.css");
-var auth_1 = require("../services/auth");
 var CartWidget_1 = require("./cart/cartWidget/CartWidget");
 var react_redux_1 = require("react-redux");
 var user_1 = require("../state/user");
@@ -43,13 +42,13 @@ var NavMenuComponent = /** @class */ (function (_super) {
                     React.createElement(reactstrap_1.NavbarToggler, { onClick: this.toggle, className: "mr-2" }),
                     React.createElement(reactstrap_1.Collapse, { className: "d-sm-inline-flex flex-sm-row-reverse", isOpen: this.state.isOpen, navbar: true },
                         React.createElement("ul", { className: "navbar-nav flex-grow" },
-                            !auth_1.isUserLoggedIn() &&
+                            !this.props.user.isLoggedIn &&
                                 React.createElement(React.Fragment, null,
                                     React.createElement(reactstrap_1.NavItem, null,
                                         React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/login" }, "Login")),
                                     React.createElement(reactstrap_1.NavItem, null,
                                         React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/register" }, "Register"))),
-                            auth_1.isUserLoggedIn() && React.createElement(reactstrap_1.NavItem, null,
+                            this.props.user.isLoggedIn && React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/logout" }, "Logout")),
                             React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/cart" },

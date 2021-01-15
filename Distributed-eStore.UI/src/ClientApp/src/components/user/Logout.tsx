@@ -9,7 +9,7 @@ const LogoutComponent: React.FC<LogoutProps> = ({ logout }) => {
     const history = useHistory();
     logout();
     history.push("/");
-    // technical debt - to save time to ship
+    // technical debt
     return <></>;
 }
 

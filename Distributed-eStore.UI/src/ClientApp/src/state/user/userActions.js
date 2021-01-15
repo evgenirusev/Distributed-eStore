@@ -47,7 +47,7 @@ exports.userActionCreators = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
+                    _a.trys.push([0, 3, , 4]);
                     firstName = userData.firstName, lastName = userData.lastName, email = userData.email, password = userData.password, role = userData.role;
                     return [4 /*yield*/, auth_1.register(firstName, lastName, email, password, role)];
                 case 1:
@@ -55,8 +55,11 @@ exports.userActionCreators = {
                     dispatch({
                         type: _1.UserActionTypes.REGISTRATION_SUCCESS,
                     });
-                    return [3 /*break*/, 3];
+                    return [4 /*yield*/, exports.userActionCreators.login(email, password)(dispatch, getState)];
                 case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
                     error_1 = _a.sent();
                     message = (error_1.response && error_1.response.data && error_1.response.data.message)
                         || error_1.message
@@ -66,8 +69,8 @@ exports.userActionCreators = {
                     });
                     // technical debt
                     alert("Registration failed - " + message);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); }; },

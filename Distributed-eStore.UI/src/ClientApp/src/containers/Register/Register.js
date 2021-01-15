@@ -64,7 +64,7 @@ var RegisterPage = /** @class */ (function (_super) {
     };
     RegisterPage.prototype.render = function () {
         var _a = this.state, user = _a.user, submitted = _a.submitted;
-        return this.props.userState.shouldRedirect
+        return this.props.userState.isLoggedIn
             ? (React.createElement(react_router_dom_1.Redirect, { to: "/login" }))
             : (React.createElement("div", { className: "col-md-6 col-md-offset-3" },
                 React.createElement("h2", null, "Register"),

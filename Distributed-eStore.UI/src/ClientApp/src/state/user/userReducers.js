@@ -23,12 +23,12 @@ var reducer = function (state, incomingAction) {
     var _a = incomingAction, type = _a.type, payload = _a.payload;
     switch (type) {
         case userTypes_1.UserActionTypes.REGISTRATION_SUCCESS:
-            return __assign(__assign({}, state), { isLoggedIn: false, shouldRedirect: true });
+            return __assign(__assign({}, state), { isLoggedIn: false });
         case userTypes_1.UserActionTypes.REGISTRATION_FAILED:
             return __assign(__assign({}, state), { isLoggedIn: false });
         case userTypes_1.UserActionTypes.LOGIN_SUCCESS:
             var user = payload.user;
-            return __assign(__assign({}, state), { isLoggedIn: true, user: user, shouldRedirect: true });
+            return __assign(__assign({}, state), { isLoggedIn: true, user: user });
         case userTypes_1.UserActionTypes.LOGIN_FAIL:
             return __assign(__assign({}, state), { isLoggedIn: false, user: null });
         case userTypes_1.UserActionTypes.LOGOUT:

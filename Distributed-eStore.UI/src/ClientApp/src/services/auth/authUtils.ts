@@ -22,10 +22,6 @@ export const logout = (): void => {
     localStorage.removeItem(userKey);
 }
 
-export const isUserLoggedIn = (): boolean => {
-    return localStorage.getItem(userKey) !== null;   
-}
-
 export const getCurrentUserId = (): string => {
     return localStorage.getItem(userKey)["id"];
 }

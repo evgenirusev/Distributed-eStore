@@ -13,7 +13,7 @@ export default () => (
         <Route exact path='/' component={ProductList} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
-        <Route exact path='/logout' component={LogoIiut} />
+        <Route exact path='/logout' component={Logout} />
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/products/:productId' component={ProductView} />
     </Layout>

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
-import { isUserLoggedIn } from "../services/auth";
 import { CartWidget } from './cart/cartWidget/CartWidget';
 import { connect } from 'react-redux';
 import { userActionCreators } from '../state/user';
@@ -25,8 +24,8 @@ class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boole
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={this.state.isOpen} navbar>
                             <ul className="navbar-nav flex-grow">
 
-                                { /* technical debt - abstract this */ }
-                                {!isUserLoggedIn() &&
+                                { /* technical debt - abstract this */}
+                                { !this.props.user.isLoggedIn &&
                                     <>
                                         <NavItem>
                                             <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
@@ -37,7 +36,7 @@ class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boole
                                     </>
                                 }
 
-                                { isUserLoggedIn() && <NavItem>
+                                { this.props.user.isLoggedIn && <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
                                 </NavItem> }
 

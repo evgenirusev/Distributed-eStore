@@ -5,7 +5,7 @@ import { UserActionTypes } from "./userTypes";
 const userKey = "user";
 const userData: string | null = localStorage.getItem(userKey);
 const initialState: IUserState = userData
-    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: true }
+    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: strue }
     : { isLoggedIn: false, user: {} as IUser, shouldRedirect: false };
 
 export const reducer = (state: IUserState = initialState, incomingAction: ReduxAction): IUserState => {
@@ -15,8 +15,7 @@ export const reducer = (state: IUserState = initialState, incomingAction: ReduxA
         case UserActionTypes.REGISTRATION_SUCCESS:
             return {
                 ...state,
-                isLoggedIn: false,
-                shouldRedirect: true
+                isLoggedIn: false
             };
         case UserActionTypes.REGISTRATION_FAILED:
             return {
@@ -29,8 +28,7 @@ export const reducer = (state: IUserState = initialState, incomingAction: ReduxA
             return {
                 ...state,
                 isLoggedIn: true,
-                user,
-                shouldRedirect: true
+                user
             };
         case UserActionTypes.LOGIN_FAIL:
             return {

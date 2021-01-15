@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCurrentUserId = exports.isUserLoggedIn = exports.logout = exports.login = exports.register = void 0;
+exports.getCurrentUserId = exports.logout = exports.login = exports.register = void 0;
 var axios_1 = require("axios");
 var constants_1 = require("../../constants");
 var userKey = "user";
@@ -22,10 +22,6 @@ var logout = function () {
     localStorage.removeItem(userKey);
 };
 exports.logout = logout;
-var isUserLoggedIn = function () {
-    return localStorage.getItem(userKey) !== null;
-};
-exports.isUserLoggedIn = isUserLoggedIn;
 var getCurrentUserId = function () {
     return localStorage.getItem(userKey)["id"];
 };

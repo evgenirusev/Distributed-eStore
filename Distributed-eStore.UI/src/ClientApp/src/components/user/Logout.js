@@ -9,7 +9,7 @@ var LogoutComponent = function (_a) {
     var history = react_router_dom_1.useHistory();
     logout();
     history.push("/");
-    // technical debt - to save time to ship
+    // technical debt
     return React.createElement(React.Fragment, null);
 };
 var Logout = react_redux_1.connect(null, userActions_1.userActionCreators)(LogoutComponent);

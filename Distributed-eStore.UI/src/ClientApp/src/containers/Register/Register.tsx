@@ -57,7 +57,7 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
     render() {
         const { user, submitted } = this.state;
 
-        return this.props.userState.shouldRedirect
+        return this.props.userState.isLoggedIn
             ? (<Redirect to="/login" />)
             : (<div className="col-md-6 col-md-offset-3">
                 <h2>Register</h2>

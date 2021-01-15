@@ -23,6 +23,8 @@ export const userActionCreators = {
             dispatch({
                 type: UserActionTypes.REGISTRATION_SUCCESS,
             });
+
+            await userActionCreators.login(email, password)(dispatch, getState);
         } catch (error) {
             const message: string = (error.response && error.response.data && error.response.data.message)
                 || error.message

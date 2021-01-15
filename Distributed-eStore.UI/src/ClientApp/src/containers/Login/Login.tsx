@@ -19,9 +19,6 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     constructor(props) {
         super(props);
 
-        // reset user state
-        this.props.logout();
-
         this.state = {
             email: '',
             password: '',
@@ -50,7 +47,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     render() {
         const { email, password, submitted } = this.state;
 
-        return this.props.userState.shouldRedirect
+        return this.props.userState.isLoggedIn
         ? (<Redirect to="/" />)
         : (<div className="col-md-6 col-md-offset-3">
                 <h2>Login</h2>
