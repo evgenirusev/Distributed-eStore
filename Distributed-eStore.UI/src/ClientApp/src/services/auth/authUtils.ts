@@ -21,7 +21,3 @@ export const login = (email: string, password: string): Promise<AxiosResponse<IU
 export const logout = (): void => {
     localStorage.removeItem(userKey);
 }
-
-export const getCurrentUserId = (): string => {
-    return localStorage.getItem(userKey)["id"];
-}

@@ -9,7 +9,7 @@
 export interface IUser {
     accessToken: string;
     refreshToken: string;
-    Id: string;
+    id: string;
     role: string;
     claims: { [key: string]: number };
 }

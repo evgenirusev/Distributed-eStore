@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { IApplicationState } from '../../state/index';
 import { ICartState, IOrder, IOrderItem } from '../../state/cart';
 import { CartProducts } from '../../components/cart/CartProducts';
-import { getCurrentUserId } from '../../services/auth/authUtils';
 import { useHistory } from 'react-router-dom';
 
 type CartsProps = IApplicationState & typeof actionCreators;
@@ -16,7 +15,6 @@ const Cart: React.FC<CartsProps> = ({
     changeQuantity,
     user
 }) => {
-    console.log(cart);
     const isCartEmpty = (shoppingCart: ICartState) => Object.keys(shoppingCart.productIdToCartProductMap).length < 1;
     const history = useHistory();
 
@@ -31,7 +29,7 @@ const Cart: React.FC<CartsProps> = ({
             }, []);
 
         return {
-            customerId: getCurrentUserId(),
+            customerId: user.user.id,
             orderItems
         }
     }
@@ -54,7 +52,7 @@ const Cart: React.FC<CartsProps> = ({
 };
 
 const mapStateToProps = (state: IApplicationState) => {
-    return { userState: state.user, cart: state.cart };
+    return { user: state.user, cart: state.cart };
 }
 
 export default connect(mapStateToProps, actionCreators)(Cart as any);
