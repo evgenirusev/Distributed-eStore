@@ -1,8 +1,7 @@
 ﻿using System;
-using DistributedEStore.Common.Messages;
 using Newtonsoft.Json;
 
-namespace DistributedEStore.Api.Messages.Commands.Products
+namespace DistributedEStore.Common.Messages.Products
 {
 	[MessageNamespace("products")]
 	public class CreateProduct : ICommand

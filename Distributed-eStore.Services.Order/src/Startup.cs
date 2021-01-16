@@ -12,7 +12,7 @@ using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
 using System.Reflection;
 
-namespace Distributed_eStore.Order
+namespace DistributedEStore.Order
 {
     public class Startup
     {
@@ -57,7 +57,7 @@ namespace Distributed_eStore.Order
             app.UseHttpsRedirection();
             app.UseErrorHandler();
             app.UseServiceId();
-            app.UseRabbitMq().SubscribeCommand<CreateProduct>();
+            app.UseRabbitMq().SubscribeCommand<CreateOrder>();
 
             app.UseRouting();
             app.UseEndpoints(routes =>

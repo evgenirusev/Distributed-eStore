@@ -1,8 +1,7 @@
-﻿using DistributedEStore.Common.Messages;
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 
-namespace DistributedEStore.Api.Gateway.Messages.Commands.Orders
+namespace DistributedEStore.Common.Messages.Orders
 {
 	[MessageNamespace("orders")]
 	public class CreateOrder : ICommand

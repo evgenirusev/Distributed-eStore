@@ -2,7 +2,7 @@
 
 namespace DistributedEStore.Common.Models
 {
-	public class OrderItem
+	public class OrderItems
 	{
 		public Guid ProductId { get; set; }
 		public int Quantity { get; set; }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace DistributedEStore.UI.Controllers
 {
-    [ApiController]
     public class OrdersController : BaseController
     {
         private readonly IApiGatewayService apiGatewayService;
@@ -15,8 +14,8 @@ namespace DistributedEStore.UI.Controllers
             this.apiGatewayService = apiGatewayService;
         }
 
-        [HttpPost("orders")]
-        public async Task<IActionResult> Post([FromBody] CreateOrder createOrder)
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateOrder createOrder)
             => await apiGatewayService.CreateOrder(createOrder);
     }
 }

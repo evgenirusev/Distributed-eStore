@@ -1,6 +1,6 @@
 ﻿using DistributedEStore.Common.Handlers;
 using DistributedEStore.Common.RabbitMq;
-using DistributedEStore.Services.Products.Messages.Commands;
+using DistributedEStore.Common.Messages.Products;
 using DistributedEStore.Services.Products.Repositories;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Types;

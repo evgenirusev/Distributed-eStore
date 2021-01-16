@@ -1,4 +1,4 @@
-﻿using DistributedEStore.Api.Gateway.Messages.Commands.Orders;
+﻿using DistributedEStore.Common.Messages.Orders;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Mvc;

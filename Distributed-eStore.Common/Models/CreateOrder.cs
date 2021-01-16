@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace DistributedEStore.Common.Models
 {
     public class CreateOrder
     {
-		public Guid CustomerId { get; set; }
-		public OrderItem[] OrderItems { get; set; }
+		public string CustomerId { get; set; }
+		public OrderItems[] OrderItems { get; set; }
 
-		public CreateOrder(Guid customerId, OrderItem[] orderItems)
+		[JsonConstructor]
+		public CreateOrder(string customerId, OrderItems[] orderItems)
 		{
 			CustomerId = customerId;
 			OrderItems = orderItems;

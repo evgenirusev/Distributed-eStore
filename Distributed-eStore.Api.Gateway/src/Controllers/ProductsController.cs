@@ -1,4 +1,4 @@
-﻿using DistributedEStore.Api.Messages.Commands.Products;
+﻿using DistributedEStore.Common.Messages.Products;
 using DistributedEStore.Common.Queries;
 using DistributedEStore.Api.Services;
 using DistributedEStore.Common.RabbitMq;
