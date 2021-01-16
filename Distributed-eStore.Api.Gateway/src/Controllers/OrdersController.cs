@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
@@ -17,9 +18,14 @@ namespace DistributedEStore.Api.Gateway.Controllers
             _ordersService = ordersService;
         }
 
+        // technical debt - shouldn't be anonymous, todo - send JWT from UI to OrdersController.
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Post(CreateOrder command)
-            => await SendAsync(command.BindId(c => c.Id),
+        {
+            var x = await SendAsync(command.BindId(c => c.Id),
                 resourceId: command.Id, resource: "products");
+            return Ok();
+        }
     }
 }

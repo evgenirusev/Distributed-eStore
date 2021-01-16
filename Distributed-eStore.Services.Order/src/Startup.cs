@@ -45,7 +45,7 @@ namespace DistributedEStore.Order
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
             builder.AddMongo();
-            builder.AddMongoRepository<Services.Products.DomainEntities.Order>("Products");
+            builder.AddMongoRepository<Services.Products.DomainEntities.Order>("Orders");
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }

@@ -1,7 +1,7 @@
 ﻿using DistributedEStore.Common.Types;
 using System;
 
-namespace DistributedEStore.Services.Products.DomainEntities
+namespace DistributedEStore.Services.Orders.DomainEntities
 {
     public class Order : BaseEntity
     {

@@ -6,7 +6,7 @@ using DistributedEStore.Common.Dispatchers;
 using DistributedEStore.Common.Mongo;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
-using DistributedEStore.Services.Products.Messages.Commands;
+using DistributedEStore.Common.Messages.Products;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
