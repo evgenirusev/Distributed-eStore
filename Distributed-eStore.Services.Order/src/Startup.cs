@@ -11,6 +11,7 @@ using DistributedEStore.Common.Mongo;
 using DistributedEStore.Common.Mvc;
 using DistributedEStore.Common.RabbitMq;
 using System.Reflection;
+using DistributedEStore.Common.Messages.Orders;
 
 namespace DistributedEStore.Order
 {
@@ -44,7 +45,7 @@ namespace DistributedEStore.Order
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                     .AsImplementedInterfaces();
             builder.AddMongo();
-            builder.AddMongoRepository<Products.Domain.Product>("Products");
+            builder.AddMongoRepository<Services.Products.DomainEntities.Order>("Products");
             builder.AddRabbitMq();
             builder.AddDispatchers();
         }
