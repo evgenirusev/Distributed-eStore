@@ -9,10 +9,10 @@ namespace DistributedEStore.Services.Orders.DomainEntities
         public int Quantity { get; set; }
         public string Size { get; set; }
 
-        public OrderItem(Guid id, string productId, int quantity, string size)
+        public OrderItem(Guid id, Guid productId, int quantity, string size)
             : base(id)
         {
-            SetProductId(id);
+            SetProductId(productId);
             SetQuantity(quantity);
             SetSize(size);
         }

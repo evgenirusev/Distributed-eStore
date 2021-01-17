@@ -41,5 +41,8 @@ namespace DistributedEStore.Common.Mongo
 
 		public async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate)
 			=> await Collection.Find(predicate).AnyAsync();
-    }
+
+		public async Task<IEnumerable<TEntity>> GetAllAsync()
+			=> await Collection.Find(_ => true).ToListAsync();
+	}
 }

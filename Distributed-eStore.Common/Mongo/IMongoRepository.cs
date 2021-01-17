@@ -17,5 +17,6 @@ namespace DistributedEStore.Common.Mongo
          Task UpdateAsync(TEntity entity);
          Task DeleteAsync(Guid id); 
          Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
+         Task<IEnumerable<TEntity>> GetAllAsync();
     }
 }
