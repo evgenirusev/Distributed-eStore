@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DistributedEStore.Common.Mongo;
-using DistributedEStore.Common.Types;
-using DistributedEStore.Services.Orders.Queries;
 
 namespace DistributedEStore.Services.Orders.Repositories
 {
@@ -28,7 +26,7 @@ namespace DistributedEStore.Services.Orders.Repositories
         public async Task DeleteAsync(Guid id)
             => await _repository.DeleteAsync(id);
 
-        public async Task<IEnumerable<DomainEntities.Order>> BrowseAsync(BrowseOrders query)
+        public async Task<IEnumerable<DomainEntities.Order>> GetAllAsync()
             => await _repository.GetAllAsync();
     }
 }

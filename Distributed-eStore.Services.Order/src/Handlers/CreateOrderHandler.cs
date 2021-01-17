@@ -1,7 +1,6 @@
 ﻿using DistributedEStore.Common.Handlers;
 using DistributedEStore.Common.RabbitMq;
 using System.Threading.Tasks;
-using DistributedEStore.Common.Types;
 using DistributedEStore.Services.Orders.Repositories;
 using DistributedEStore.Common.Messages.Orders;
 using System;
@@ -19,7 +18,8 @@ namespace DistributedEStore.Services.Orders.Handlers
 
         public async Task HandleAsync(CreateOrder command, ICorrelationContext context)
         {
-            var order = new DomainEntities.Order(command.Id, command.CustomerId, MapToOraderItems(command.OrderItems));
+            var order = new DomainEntities.Order(command.Id,
+                command.CustomerId, MapToOraderItems(command.OrderItems));
             await _ordersRepository.AddAsync(order);
         }
 
