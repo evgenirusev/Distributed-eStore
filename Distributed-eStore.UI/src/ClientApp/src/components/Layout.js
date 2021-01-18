@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var reactstrap_1 = require("reactstrap");
-var NavMenu_1 = require("./NavMenu");
+var NavMenu_1 = require("../containers/NavMenu/NavMenu");
 var Layout = /** @class */ (function (_super) {
     __extends(Layout, _super);
     function Layout() {
@@ -24,7 +24,7 @@ var Layout = /** @class */ (function (_super) {
     Layout.prototype.render = function () {
         return (React.createElement(React.Fragment, null,
             React.createElement(NavMenu_1.default, null),
-            React.createElement(reactstrap_1.Container, null, this.props.children)));
+            React.createElement(reactstrap_1.Container, { fluid: true }, this.props.children)));
     };
     return Layout;
 }(React.PureComponent));

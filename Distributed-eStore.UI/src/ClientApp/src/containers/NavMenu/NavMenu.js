@@ -17,9 +17,9 @@ var React = require("react");
 var reactstrap_1 = require("reactstrap");
 var react_router_dom_1 = require("react-router-dom");
 require("./NavMenu.css");
-var CartWidget_1 = require("./cart/cartWidget/CartWidget");
+var CartWidget_1 = require("../../components/cart/cartWidget/CartWidget");
 var react_redux_1 = require("react-redux");
-var user_1 = require("../state/user");
+var userActions_1 = require("../../state/user/userActions");
 var NavMenuComponent = /** @class */ (function (_super) {
     __extends(NavMenuComponent, _super);
     function NavMenuComponent() {
@@ -36,7 +36,7 @@ var NavMenuComponent = /** @class */ (function (_super) {
     }
     NavMenuComponent.prototype.render = function () {
         return (React.createElement("header", null,
-            React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3", light: true },
+            React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow", light: true },
                 React.createElement(reactstrap_1.Container, null,
                     React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/" }, "DistributedEStore.UI"),
                     React.createElement(reactstrap_1.NavbarToggler, { onClick: this.toggle, className: "mr-2" }),
@@ -56,6 +56,6 @@ var NavMenuComponent = /** @class */ (function (_super) {
     };
     return NavMenuComponent;
 }(React.PureComponent));
-var NavMenu = react_redux_1.connect(function (state) { return state; }, user_1.userActionCreators)(NavMenuComponent);
+var NavMenu = react_redux_1.connect(function (state) { return state; }, userActions_1.userActionCreators)(NavMenuComponent);
 exports.default = NavMenu;
 //# sourceMappingURL=NavMenu.js.map

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
-import { CartWidget } from './cart/cartWidget/CartWidget';
+import { CartWidget } from '../../components/cart/cartWidget/CartWidget';
 import { connect } from 'react-redux';
-import { userActionCreators } from '../state/user';
-import { IApplicationState } from '../state';
+import { userActionCreators } from '../../state/user/userActions';
+import { IApplicationState } from '../../state';
 
 type NavMenuProps = IApplicationState & typeof userActionCreators;
 
@@ -17,7 +17,7 @@ class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boole
     public render() {
         return (
             <header>
-                <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" light>
+                <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow" light>
                     <Container>
                         <NavbarBrand tag={Link} to="/">DistributedEStore.UI</NavbarBrand>
                         <NavbarToggler onClick={this.toggle} className="mr-2"/>

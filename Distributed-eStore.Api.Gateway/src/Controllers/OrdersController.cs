@@ -18,14 +18,12 @@ namespace DistributedEStore.Api.Gateway.Controllers
             _ordersService = ordersService;
         }
 
-        // technical debt - shouldn't be anonymous, todo - send JWT from UI to OrdersController.
+        // technical debt - shouldn't be anonymous, todo - send JWT from UI.
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Post(CreateOrder command)
         {
-            var x = await SendAsync(command.BindId(c => c.Id),
-                resourceId: command.Id, resource: "products");
-            return Ok();
+            return await SendAsync(command.BindId(c => c.Id), resourceId: command.Id, resource: "products");
         }
     }
 }

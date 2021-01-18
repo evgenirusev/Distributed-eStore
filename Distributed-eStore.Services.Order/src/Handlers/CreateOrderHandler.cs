@@ -18,9 +18,11 @@ namespace DistributedEStore.Services.Orders.Handlers
 
         public async Task HandleAsync(CreateOrder command, ICorrelationContext context)
         {
-            var order = new DomainEntities.Order(command.Id,
-                command.CustomerId, MapToOraderItems(command.OrderItems));
-            await _ordersRepository.AddAsync(order);
+            await _ordersRepository.AddAsync(new DomainEntities.Order(
+                    command.Id,
+                    command.CustomerId,
+                    MapToOraderItems(command.OrderItems))
+                );
         }
 
         private DomainEntities.OrderItem[] MapToOraderItems(OrderItem[] requestOrderItems)
