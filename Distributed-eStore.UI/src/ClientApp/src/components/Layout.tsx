@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 import NavMenu from '../containers/NavMenu/NavMenu';
+import { Footer } from './Footer/Footer';
 
 export default class Layout extends React.PureComponent<{}, { children?: React.ReactNode }> {
     public render() {
@@ -9,6 +10,7 @@ export default class Layout extends React.PureComponent<{}, { children?: React.R
                 <NavMenu />
                 <Container fluid={ true }>
                     {this.props.children}
+                    <Footer/>
                 </Container>
             </React.Fragment>
         );
