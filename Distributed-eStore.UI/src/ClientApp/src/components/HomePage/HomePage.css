@@ -5,6 +5,11 @@
     height: calc(100vh - 140px);
 }
 
+.home-page__link:hover {
+    text-decoration: none;
+}
+
+/* technical debt - use sass or less to reuse this */
 .home-page__text {
     position: relative;
     width: 100%;
@@ -14,8 +19,22 @@
     font-family: "Calluna";
     font-weight: bold;
     text-transform: capitalize;
-    font-size: 2.2rem;
+    font-size: 1.9rem;
     line-height: 1.1;
     color: #FFFFFF;
-    text-shadow: 1px 1px 1px #000000;
+}
+
+.home-page__shop-now {
+    position: relative;
+    width: 100%;
+    top: -160px;
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Calluna";
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 1rem;
+    line-height: 1.1;
+    color: #FFFFFF;
+    text-decoration: underline;
 }

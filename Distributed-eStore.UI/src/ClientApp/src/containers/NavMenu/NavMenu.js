@@ -36,9 +36,10 @@ var NavMenuComponent = /** @class */ (function (_super) {
     }
     NavMenuComponent.prototype.render = function () {
         return (React.createElement("header", null,
-            React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow", light: true },
+            React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow navbar", light: true },
                 React.createElement(reactstrap_1.Container, null,
-                    React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/" }, "Distributed Store"),
+                    React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/" },
+                        React.createElement("img", { className: "navbar-image", src: "https://i.ibb.co/7zgT8qW/final.png" })),
                     React.createElement(reactstrap_1.NavbarToggler, { onClick: this.toggle, className: "mr-2" }),
                     React.createElement(reactstrap_1.Collapse, { className: "d-sm-inline-flex flex-sm-row-reverse", isOpen: this.state.isOpen, navbar: true },
                         React.createElement("ul", { className: "navbar-nav flex-grow" },

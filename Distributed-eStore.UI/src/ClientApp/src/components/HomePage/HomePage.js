@@ -7,10 +7,12 @@ var HomePage = function () {
     return React.createElement("div", { className: "home-page" },
         React.createElement("div", { className: "image-container" },
             React.createElement("img", { className: "image-container__image", src: "https://i.ibb.co/8xntqgb/Hero-Banner-Template-Reusables-Sale-8c7da083-67c2-4043-b6af-49ed3be027e8-2000x.jpg" }),
-            React.createElement("h1", { className: "home-page__text" },
-                "Just Launched ",
-                React.createElement("br", null),
-                " Summer Products")));
+            React.createElement("a", { href: "#", className: "home-page__link" },
+                React.createElement("h1", { className: "home-page__text" },
+                    "Just Launched ",
+                    React.createElement("br", null),
+                    " Summer Products"),
+                React.createElement("h3", { className: "home-page__shop-now" }, "SHOP NOW"))));
 };
 exports.HomePage = HomePage;
 //# sourceMappingURL=HomePage.js.map

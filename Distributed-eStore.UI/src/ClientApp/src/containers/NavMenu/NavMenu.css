@@ -11,3 +11,13 @@ html { font-size: 14px; }
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.navbar-image {
+    width: 200px;
+    height: 50px;
+}
+
+.navbar {
+    /* technical debt */
+    padding: 0px!important;
+}

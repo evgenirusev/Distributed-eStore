@@ -17,9 +17,9 @@ class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boole
     public render() {
         return (
             <header>
-                <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow" light>
+                <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow navbar" light>
                     <Container>
-                        <NavbarBrand tag={Link} to="/">Distributed Store</NavbarBrand>
+                        <NavbarBrand tag={Link} to="/"><img className="navbar-image" src="https://i.ibb.co/7zgT8qW/final.png"></img></NavbarBrand>
                         <NavbarToggler onClick={this.toggle} className="mr-2"/>
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={this.state.isOpen} navbar>
                             <ul className="navbar-nav flex-grow">
