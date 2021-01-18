@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
                 <div className="row">
                     <div className="col-md-3 col-sm-6">
         <div className="footer-pad">
-                            <h4>Heading 1</h4>
+                            <h4>About</h4>
                             <ul className="list-unstyled">
                                 <li><a href="#"></a></li>
                                 <li><a href="#">Payment Center</a></li>
@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
                     </div>
                     <div className="col-md-3 col-sm-6">
         <div className="footer-pad">
-                            <h4>Heading 2</h4>
+                            <h4>Contact Us</h4>
                             <ul className="list-unstyled">
                                 <li><a href="#">Website Tutorial</a></li>
                                 <li><a href="#">Accessibility</a></li>
@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
                     </div>
                     <div className="col-md-3 col-sm-6">
         <div className="footer-pad">
-                            <h4>Heading 3</h4>
+                            <h4>Stores & Grocery</h4>
                             <ul className="list-unstyled">
                                 <li><a href="#">Parks and Recreation</a></li>
                                 <li><a href="#">Public Works</a></li>

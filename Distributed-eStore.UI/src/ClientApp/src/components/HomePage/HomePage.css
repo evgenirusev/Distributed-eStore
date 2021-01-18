@@ -28,6 +28,7 @@
     position: relative;
     width: 100%;
     top: -160px;
+    margin-bottom: -92px;
     text-align: center;
     font-size: 2rem;
     font-family: "Calluna";
@@ -37,4 +38,18 @@
     line-height: 1.1;
     color: #FFFFFF;
     text-decoration: underline;
+}
+
+.return-the-tide-text-container {
+    padding-left: 90px;
+    padding-right: 90px;
+    position: relative;
+    width: 100%;
+    top: -290px;
+    margin-bottom: -73px;
+    font-family: "Calluna";
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 1.1;
+    color: #FFFFFF;
 }
