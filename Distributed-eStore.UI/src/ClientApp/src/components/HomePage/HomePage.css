@@ -1,19 +1,23 @@
-﻿.image-container__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    height: calc(100vh - 140px);
-}
-
-.home-page__link:hover {
+﻿.home-page__link:hover {
     text-decoration: none;
 }
 
-/* technical debt - use sass or less to reuse this */
-.home-page__text {
-    position: relative;
+.top-image-container {
+    background-image: url("https://i.ibb.co/8xntqgb/Hero-Banner-Template-Reusables-Sale-8c7da083-67c2-4043-b6af-49ed3be027e8-2000x.jpg");
     width: 100%;
-    top: -310px;
+    height: calc(100vh - 70px);
+}
+
+.bottom-image-container {
+    background-image: url("https://i.ibb.co/CJvn0dw/waves.jpg");
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home-page__text {
+    width: 100%;
     text-align: center;
     font-size: 3.6rem;
     font-family: "Calluna";
@@ -21,12 +25,11 @@
     text-transform: capitalize;
     line-height: 1.1;
     color: #FFFFFF;
+    padding-top: 300px;
 }
 
 .home-page__shop-now {
-    position: relative;
     width: 100%;
-    top: -250px;
     margin-bottom: -151px;
     text-align: center;
     font-size: 2rem;
@@ -42,13 +45,12 @@
 .tide-text-container {
     padding-left: 90px;
     padding-right: 90px;
-    position: relative;
+    padding-top: 90px;
     width: 100%;
-    top: -290px;
     margin-bottom: -73px;
     font-family: "abril-titling",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     text-transform: capitalize;
-    color: black;
+    color: #FFFFFF;
 }
 
 .tide-text-container__text {

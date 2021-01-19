@@ -3,20 +3,18 @@ import "./HomePage.css";
 
 export const HomePage: React.FC = () => {
     return <div className="home-page">
-        <div className="image-container">
-            <img className="image-container__image" src="https://i.ibb.co/8xntqgb/Hero-Banner-Template-Reusables-Sale-8c7da083-67c2-4043-b6af-49ed3be027e8-2000x.jpg"></img>
+        <div className="top-image-container">
             <a href="#" className="home-page__link">
                 <h1 className="home-page__text">Just Launched <br /> Summer Products</h1>
                 <h3 className="home-page__shop-now">SHOP NOW</h3>
             </a>
         </div>
-        <div className="image-container">
-            <img className="image-container__image" src="https://i.ibb.co/CJvn0dw/waves.jpg"></img>
+        <div className="bottom-image-container">
             <a href="#" className="home-page__link">
                 <div className="tide-text-container">
                     <h5 className="tide-text-container__text">
                         Every day, 38,356,164 pounds of trash are dumped into our oceans.
-                        <br/>Let’s turn the tide.
+                        <br/>Let's turn the tide.
                     </h5>
                     <div className="row">
                         <div className="col-md-4">
@@ -27,15 +25,17 @@ export const HomePage: React.FC = () => {
                         </div>
                         <div className="col-md-4">
                             <span className="tide-text-container__title">
-                            We Quit
+                            Get Dirty & Do Good
                             </span><br />
                             <span>Join us at an upcoming cleanup</span>
                         </div>
+                        
                         <div className="col-md-4">
                             <span className="tide-text-container__title">
-                            Let’s turn the tide
+                            Let's turn the tide
                             </span><br />
-                            <span>Our DIY Cleanup Kit includes all the tools you need to organize your own cleanup anytime.</span></div>
+                            <span>Our DIY Cleanup Kit includes all the tools you need to organize your own cleanup anytime.</span>
+                        </div>
                     </div>
                 </div>
             </a>
