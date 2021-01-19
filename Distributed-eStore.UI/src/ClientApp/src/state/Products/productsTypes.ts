@@ -8,6 +8,7 @@ export type IProduct = {
     colors: string[];
     imageURLs: string[];
     selectedColorIndex: number;
+    category: string;
 };
 
 export enum ProductsActionTypes {

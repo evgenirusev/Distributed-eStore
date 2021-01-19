@@ -14,15 +14,17 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
 
     switch (action.type) {
         case ProductsActionTypes.REQUEST_PRODUCTS_FEMALE:
-            const { products } = action;
-            const currentCategory = ProductCategories.FEMALE;
+            {
+                const { products } = action;
+                const currentCategory = ProductCategories.FEMALE;
 
-            return {
-                ...state,
-                currentCategory,
-                categoryToProductMaps: {
-                    ...state.categoryToProductMaps,
-                    [currentCategory]: products
+                return {
+                    ...state,
+                    currentCategory,
+                    categoryToProductMaps: {
+                        ...state.categoryToProductMaps,
+                        [currentCategory]: products
+                    }
                 }
             }
         case ProductsActionTypes.SELECT_PRODUCT_COLOR:
@@ -35,8 +37,8 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
                         ...state,
                         categoryToProductMaps: {
                             ...state.categoryToProductMaps,
-                            [currentCategory]: {
-                                products,
+                            [productCategory]: {
+                                ...state.categoryToProductMaps[productCategory],
                                 [productId]: {
                                     ...state.categoryToProductMaps[productId],
                                     selectedColorIndex: colorIndex
@@ -48,19 +50,20 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
             }
         case ProductsActionTypes.REQUEST_BY_ID_ARRIVAL:
             {
-                //const { product } = action;
+                const { product } = action;
 
-                //if (product) {
-                //    return {
-                //        ...state,
-                //        productIDsToProductsMap: {
-                //            ...state.productIDsToProductsMap,
-                //            [product.id]: {
-                //                ...product
-                //            }
-                //        }
-                //    }
-                //}
+                if (product) {
+                    return {
+                        ...state,
+                        categoryToProductMaps: {
+                            ...state.categoryToProductMaps,
+                            [product.category]: {
+                                ...state.categoryToProductMaps[product.category],
+                                [product.id]: product
+                            }
+                        }
+                    }
+                }
             }
         default:
             return state;
