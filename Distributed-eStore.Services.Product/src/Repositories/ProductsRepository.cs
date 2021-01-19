@@ -26,7 +26,7 @@ namespace DistributedEStore.Services.Products.Repositories
 
         public async Task<PagedResult<DomainEntities.Product>> BrowseAsync(BrowseProducts query)
             => await _repository.BrowseAsync(p =>
-                p.Price >= query.PriceFrom && p.Price <= query.PriceTo, query);
+                p.Price >= query.PriceFrom && p.Price <= query.PriceTo && p.Category == query.Category, query);
 
         public async Task AddAsync(DomainEntities.Product product)
             => await _repository.AddAsync(product);
