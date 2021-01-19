@@ -12,9 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.reducer = void 0;
+var constants_1 = require("../../constants");
 var productsTypes_1 = require("./productsTypes");
 var initialState = {
-    productIDsToProductsMap: {}
+    categoryToProductMaps: {},
+    currentCategory: constants_1.ProductCategories.FEMALE
 };
 var shouldUpdateColor = function (product, colorIndex) { return product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined"; };
 var reducer = function (state, incomingAction) {
@@ -22,26 +24,32 @@ var reducer = function (state, incomingAction) {
     if (state === void 0) { state = initialState; }
     var action = incomingAction;
     switch (action.type) {
-        case productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL:
+        case productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_FEMALE:
             var products = action.products;
-            return __assign(__assign({}, state), { productIDsToProductsMap: products.reduce(function (acc, product) {
-                    acc[product.id] = product;
-                    return acc;
-                }, {}) });
-        case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST:
+            var currentCategory = constants_1.ProductCategories.FEMALE;
+            return __assign(__assign({}, state), { currentCategory: currentCategory, categoryToProductMaps: __assign(__assign({}, state.categoryToProductMaps), (_a = {}, _a[currentCategory] = products, _a)) });
+        case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR:
             {
-                var productId = action.productId, colorIndex = action.colorIndex;
-                var product = state.productIDsToProductsMap[productId];
+                var productId = action.productId, colorIndex = action.colorIndex, productCategory = action.productCategory;
+                var product = state.categoryToProductMaps[productCategory][productId];
                 if (shouldUpdateColor(product, colorIndex)) {
-                    return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_a = {}, _a[productId] = __assign(__assign({}, state.productIDsToProductsMap[productId]), { selectedColorIndex: colorIndex }), _a)) });
+                    return __assign(__assign({}, state), { categoryToProductMaps: __assign(__assign({}, state.categoryToProductMaps), (_b = {}, _b[currentCategory] = products, _b)) });
                 }
             }
         case productsTypes_1.ProductsActionTypes.REQUEST_BY_ID_ARRIVAL:
             {
-                var product = action.product;
-                if (product) {
-                    return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_b = {}, _b[product.id] = __assign({}, product), _b)) });
-                }
+                //const { product } = action;
+                //if (product) {
+                //    return {
+                //        ...state,
+                //        productIDsToProductsMap: {
+                //            ...state.productIDsToProductsMap,
+                //            [product.id]: {
+                //                ...product
+                //            }
+                //        }
+                //    }
+                //}
             }
         default:
             return state;

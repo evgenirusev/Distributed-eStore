@@ -1,4 +1,6 @@
-﻿export type IProduct = {
+﻿import { ProductCategories } from "../../constants";
+
+export type IProduct = {
     id: string;
     name: string;
     description: string;
@@ -9,12 +11,14 @@
 };
 
 export enum ProductsActionTypes {
-    REQUEST_ALL_ARRIVAL = 'REQUEST_ALL_ARRIVAL',
+    REQUEST_PRODUCTS_MALE = 'REQUEST_PRODUCTS_MALE',
+    REQUEST_PRODUCTS_FEMALE = 'REQUEST_PRODUCTS_FEMALE',
+    REQUEST_PRODUCTS_ACCESSORIES = 'REQUEST_PRODUCTS_ACCESSORIES',
     REQUEST_BY_ID_ARRIVAL = 'REQUEST_BY_ID_ARRIVAL',
-    SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST = 'SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST',
-    SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW = 'SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW'
+    SELECT_PRODUCT_COLOR = 'SELECT_PRODUCT_COLOR'
 };
 
 export interface IProductsListState {
-    productIDsToProductsMap: { [key: string]: IProduct };
+    categoryToProductMaps: Record<string, Record<string, IProduct>>;
+    currentCategory: ProductCategories;
 };
