@@ -9,7 +9,7 @@ import './ProductList.css';
 
 type ProductListProps = IProductsListState & typeof actionCreators;
 
-const ProductList: React.FC<ProductListProps> = ({
+const ProductListComponent: React.FC<ProductListProps> = ({
     requestProducts,
     productIDsToProductsMap
 }) => {
@@ -28,4 +28,4 @@ const ProductList: React.FC<ProductListProps> = ({
     );
 };
 
-export default connect((state: IApplicationState) => state.products, actionCreators)(ProductList as any);
+export const ProductList = connect((state: IApplicationState) => state.products, actionCreators)(ProductListComponent);

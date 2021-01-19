@@ -76,20 +76,12 @@ exports.actionCreators = {
             colorIndex: colorIndex
         });
     }; },
-    selectProductColorFromProductView: function (productId, colorIndex) { return function (dispatch, getState) {
-        dispatch({
-            state: getState(),
-            type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW,
-            productId: productId,
-            colorIndex: colorIndex
-        });
-    }; },
     requestProductById: function (productId) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         var product, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!getState()) return [3 /*break*/, 4];
+                    if (!(getState() && !getState().products.productIDsToProductsMap[productId])) return [3 /*break*/, 4];
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);

@@ -21,42 +21,41 @@ var react_router_dom_1 = require("react-router-dom");
 var products_1 = require("../../components/products");
 var react_router_dom_2 = require("react-router-dom");
 var ProductView = function (_a) {
-    var requestProductById = _a.requestProductById, selectedProduct = _a.selectedProduct, addProductToCart = _a.addProductToCart;
-    var id = selectedProduct.id, imageURLs = selectedProduct.imageURLs, colors = selectedProduct.colors, description = selectedProduct.description, name = selectedProduct.name, price = selectedProduct.price, selectedColorIndex = selectedProduct.selectedColorIndex;
+    var requestProductById = _a.requestProductById, addProductToCart = _a.addProductToCart, products = _a.products;
+    var history = react_router_dom_2.useHistory();
     var productId = react_router_dom_1.useParams().productId;
-    var isObjectEmpty = function (obj) { return Object.keys(obj).length === 0; };
     var sizesList = ["6", "7", "8", "9", "10"];
     var _b = react_1.useState(sizesList[0]), selectedSize = _b[0], selectSizeIndex = _b[1];
-    var history = react_router_dom_2.useHistory();
-    var onAddToCart = function () {
-        addProductToCart({
-            id: id,
-            name: name,
-            price: price,
-            color: colors[selectedColorIndex],
-            imageURL: imageURLs[selectedColorIndex],
-            quantity: 1,
-            size: selectedSize
-        });
-        history.push("/cart");
-    };
     react_1.useEffect(function () {
         requestProductById(productId);
     }, [requestProductById, productId]);
-    return (isObjectEmpty(selectedProduct)
-        ? React.createElement(React.Fragment, null) // open for extension - implement loading logic here
-        : React.createElement("section", { className: 'product-view row' },
+    var product = products.productIDsToProductsMap[productId];
+    if (product) {
+        var imageURLs_1 = product.imageURLs, colors_1 = product.colors, description = product.description, name_1 = product.name, price_1 = product.price, selectedColorIndex_1 = product.selectedColorIndex;
+        var onAddToCart = function () {
+            addProductToCart({
+                id: productId,
+                name: name_1,
+                price: price_1,
+                color: colors_1[selectedColorIndex_1],
+                imageURL: imageURLs_1[selectedColorIndex_1],
+                quantity: 1,
+                size: selectedSize
+            });
+            history.push("/cart");
+        };
+        return (React.createElement("section", { className: 'product-view row' },
             React.createElement("div", { className: "product-view__image-container col-sm-6 col-lg-7" },
-                React.createElement("img", { sizes: "100vw", src: imageURLs[selectedColorIndex], className: "product-view__image w-100" })),
+                React.createElement("img", { sizes: "100vw", src: imageURLs_1[selectedColorIndex_1], className: "product-view__image w-100" })),
             React.createElement("div", { className: "product-view__description product-info col-sm-6 col-lg-5" },
-                React.createElement("h1", { className: "product-view__name" }, name),
+                React.createElement("h1", { className: "product-view__name" }, name_1),
                 React.createElement("div", null,
                     "$",
-                    price),
+                    price_1),
                 React.createElement("hr", null),
                 React.createElement("div", { className: "color-switcher" },
                     React.createElement("p", null, "Color:"),
-                    React.createElement(products_1.ColorSwitcher, { colors: colors, selectedColorIndex: selectedColorIndex, productId: id, selectProductColorAction: productsActions_1.actionCreators.selectProductColorFromProductView })),
+                    React.createElement(products_1.ColorSwitcher, { colors: colors_1, selectedColorIndex: selectedColorIndex_1, productId: productId, selectProductColorAction: productsActions_1.actionCreators.selectProductColorFromProductList })),
                 React.createElement("div", { className: "product-view__size-selector" },
                     React.createElement("p", null,
                         "Size",
@@ -68,9 +67,11 @@ var ProductView = function (_a) {
                 React.createElement("div", { className: "product-view__details" },
                     React.createElement("p", null, "Details"),
                     React.createElement("p", null, description)))));
+    }
+    return React.createElement(React.Fragment, null);
 };
 var mapStateToProps = function (state) {
-    return { selectedProduct: state.products.selectedProduct };
+    return { products: state.products };
 };
 exports.default = react_redux_1.connect(mapStateToProps, __assign(__assign({}, productsActions_1.actionCreators), cartActions_1.actionCreators))(ProductView);
 //# sourceMappingURL=ProductView.js.map

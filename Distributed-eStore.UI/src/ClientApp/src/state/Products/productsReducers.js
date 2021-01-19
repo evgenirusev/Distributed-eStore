@@ -14,12 +14,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.reducer = void 0;
 var productsTypes_1 = require("./productsTypes");
 var initialState = {
-    productIDsToProductsMap: {},
-    selectedProduct: {}
+    productIDsToProductsMap: {}
 };
 var shouldUpdateColor = function (product, colorIndex) { return product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined"; };
 var reducer = function (state, incomingAction) {
-    var _a;
+    var _a, _b;
     if (state === void 0) { state = initialState; }
     var action = incomingAction;
     switch (action.type) {
@@ -37,19 +36,11 @@ var reducer = function (state, incomingAction) {
                     return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_a = {}, _a[productId] = __assign(__assign({}, state.productIDsToProductsMap[productId]), { selectedColorIndex: colorIndex }), _a)) });
                 }
             }
-        case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW:
-            {
-                var productId = action.productId, colorIndex = action.colorIndex;
-                var product = state.selectedProduct;
-                if (product.id === productId && shouldUpdateColor(product, colorIndex)) {
-                    return __assign(__assign({}, state), { selectedProduct: __assign(__assign({}, state.selectedProduct), { selectedColorIndex: colorIndex }) });
-                }
-            }
         case productsTypes_1.ProductsActionTypes.REQUEST_BY_ID_ARRIVAL:
             {
                 var product = action.product;
                 if (product) {
-                    return __assign(__assign({}, state), { selectedProduct: product });
+                    return __assign(__assign({}, state), { productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), (_b = {}, _b[product.id] = __assign({}, product), _b)) });
                 }
             }
         default:

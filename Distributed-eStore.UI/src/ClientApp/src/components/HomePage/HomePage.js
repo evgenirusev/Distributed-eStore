@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomePage = void 0;
 var React = require("react");
+var containers_1 = require("../../containers");
 require("./HomePage.css");
 var HomePage = function () {
     return React.createElement("div", { className: "home-page" },
@@ -12,6 +13,7 @@ var HomePage = function () {
                     React.createElement("br", null),
                     " Summer Products"),
                 React.createElement("h3", { className: "home-page__shop-now" }, "SHOP NOW"))),
+        React.createElement(containers_1.ProductList, null),
         React.createElement("div", { className: "bottom-image-container" },
             React.createElement("a", { href: "#", className: "home-page__link" },
                 React.createElement("div", { className: "tide-text-container" },

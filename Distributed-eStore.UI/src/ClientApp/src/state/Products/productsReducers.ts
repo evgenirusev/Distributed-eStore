@@ -2,8 +2,7 @@
 import { IProduct, IProductsListState, ProductsActionTypes } from './productsTypes';
 
 const initialState: IProductsListState = {
-    productIDsToProductsMap: {},
-    selectedProduct: {} as IProduct
+    productIDsToProductsMap: {}
 };
 
 const shouldUpdateColor = (product: IProduct, colorIndex: number) => product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined";
@@ -40,21 +39,6 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
                     }
                 }
             }
-        case ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW:
-            {
-                const { productId, colorIndex } = action;
-                const product = state.selectedProduct;
-
-                if (product.id === productId && shouldUpdateColor(product, colorIndex)) {
-                    return {
-                        ...state,
-                        selectedProduct: {
-                            ...state.selectedProduct,
-                            selectedColorIndex: colorIndex
-                        }
-                    }
-                }
-            }
         case ProductsActionTypes.REQUEST_BY_ID_ARRIVAL:
             {
                 const { product } = action;
@@ -62,7 +46,12 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
                 if (product) {
                     return {
                         ...state,
-                        selectedProduct: product
+                        productIDsToProductsMap: {
+                            ...state.productIDsToProductsMap,
+                            [product.id]: {
+                                ...product
+                            }
+                        }
                     }
                 }
             }

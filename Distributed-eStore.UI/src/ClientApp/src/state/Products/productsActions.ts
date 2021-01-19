@@ -29,16 +29,8 @@ export const actionCreators = {
             colorIndex
         });
     },
-    selectProductColorFromProductView: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-        dispatch({
-            state: getState(),
-            type: ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_VIEW,
-            productId,
-            colorIndex
-        });
-    },
     requestProductById: (productId: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        if (getState()) {
+        if (getState() && !getState().products.productIDsToProductsMap[productId]) {
             try {
                 const product: IProduct = (await getProductById(productId)).data;
                 product.selectedColorIndex = DEFAULT_COLOR_INDEX;

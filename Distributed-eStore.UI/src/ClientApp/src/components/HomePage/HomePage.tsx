@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ProductList } from '../../containers';
 import "./HomePage.css";
 
 export const HomePage: React.FC = () => {
@@ -9,6 +10,9 @@ export const HomePage: React.FC = () => {
                 <h3 className="home-page__shop-now">SHOP NOW</h3>
             </a>
         </div>
+
+        <ProductList />
+
         <div className="bottom-image-container">
             <a href="#" className="home-page__link">
                 <div className="tide-text-container">
