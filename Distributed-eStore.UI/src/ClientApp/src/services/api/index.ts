@@ -1,1 +1,1 @@
-export * from "./getAllPosts";
+export * from "./products";

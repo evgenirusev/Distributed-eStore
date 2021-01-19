@@ -1,14 +1,32 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProductById = exports.getAllProducts = void 0;
+exports.getProductById = exports.getProductsAccessories = exports.getProductsMale = exports.getProductsFemale = exports.requestProducts = void 0;
 var constants_1 = require("../../constants");
 var axios_1 = require("axios");
-var getAllProducts = function () {
+var requestProducts = function (queryParams) {
+    var url = constants_1.PRODUCTS_URL + "?";
+    if (queryParams) {
+        Object.keys(queryParams).forEach(function (key) {
+            url.concat(key + "=" + queryParams[key]);
+        });
+    }
     return axios_1.default.get(constants_1.PRODUCTS_URL);
 };
-exports.getAllProducts = getAllProducts;
+exports.requestProducts = requestProducts;
+var getProductsFemale = function () {
+    return axios_1.default.get(constants_1.PRODUCTS_URL);
+};
+exports.getProductsFemale = getProductsFemale;
+var getProductsMale = function () {
+    return axios_1.default.get(constants_1.PRODUCTS_URL);
+};
+exports.getProductsMale = getProductsMale;
+var getProductsAccessories = function () {
+    return axios_1.default.get(constants_1.PRODUCTS_URL);
+};
+exports.getProductsAccessories = getProductsAccessories;
 var getProductById = function (productId) {
     return axios_1.default.get(constants_1.PRODUCTS_URL + "/" + productId);
 };
 exports.getProductById = getProductById;
-//# sourceMappingURL=getAllPosts.js.map
+//# sourceMappingURL=products.js.map

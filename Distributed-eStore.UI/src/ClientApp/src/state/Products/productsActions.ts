@@ -13,7 +13,7 @@ export const actionCreators = {
 
                 dispatch({
                     products,
-                    type: ProductsActionTypes.REQUEST_ALL_ARRIVAL
+                    type: ProductsActionTypes.
                 });
             } catch (error) {
                 // technical debt - handle this on client side
