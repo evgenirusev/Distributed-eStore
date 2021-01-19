@@ -5,7 +5,7 @@ import { ProductsActionTypes } from './productsTypes';
 import { DEFAULT_COLOR_INDEX } from '../../constants';
 
 export const actionCreators = {
-    requestProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+    requestFemaleProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         if (getState()) {
             try {
                 const products: IProduct[] = (await getAllProducts()).data;
@@ -20,6 +20,9 @@ export const actionCreators = {
                 console.error(error);
             }
         }
+    },
+    requestProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+        
     },
     selectProductColorFromProductList: (productId: string, productCategory: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
