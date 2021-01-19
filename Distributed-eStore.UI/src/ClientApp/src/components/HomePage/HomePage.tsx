@@ -13,15 +13,29 @@ export const HomePage: React.FC = () => {
         <div className="image-container">
             <img className="image-container__image" src="https://i.ibb.co/CJvn0dw/waves.jpg"></img>
             <a href="#" className="home-page__link">
-                <div className="return-the-tide-text-container">
-                    <h5 className="return-the-tide-text-container__text">
+                <div className="tide-text-container">
+                    <h5 className="tide-text-container__text">
                         Every day, 38,356,164 pounds of trash are dumped into our oceans.
                         <br/>Let’s turn the tide.
                     </h5>
                     <div className="row">
-                        <div className="col-md-4">fasd asdf asd fasdf</div>
-                        <div className="col-md-4">askhdgjf</div>
-                        <div className="col-md-4">sdasd</div>
+                        <div className="col-md-4">
+                            <span className="tide-text-container__title">
+                                We Quit
+                            </span><br/>
+                            <span>Our plan to remove all single-use plastics from our supply chain.</span>
+                        </div>
+                        <div className="col-md-4">
+                            <span className="tide-text-container__title">
+                            We Quit
+                            </span><br />
+                            <span>Join us at an upcoming cleanup</span>
+                        </div>
+                        <div className="col-md-4">
+                            <span className="tide-text-container__title">
+                            Let’s turn the tide
+                            </span><br />
+                            <span>Our DIY Cleanup Kit includes all the tools you need to organize your own cleanup anytime.</span></div>
                     </div>
                 </div>
             </a>

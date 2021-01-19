@@ -13,13 +13,12 @@
 .home-page__text {
     position: relative;
     width: 100%;
-    top: -200px;
+    top: -310px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 3.6rem;
     font-family: "Calluna";
     font-weight: bold;
     text-transform: capitalize;
-    font-size: 1.9rem;
     line-height: 1.1;
     color: #FFFFFF;
 }
@@ -27,8 +26,8 @@
 .home-page__shop-now {
     position: relative;
     width: 100%;
-    top: -160px;
-    margin-bottom: -92px;
+    top: -250px;
+    margin-bottom: -151px;
     text-align: center;
     font-size: 2rem;
     font-family: "Calluna";
@@ -40,16 +39,28 @@
     text-decoration: underline;
 }
 
-.return-the-tide-text-container {
+.tide-text-container {
     padding-left: 90px;
     padding-right: 90px;
     position: relative;
     width: 100%;
     top: -290px;
     margin-bottom: -73px;
-    font-family: "Calluna";
+    font-family: "abril-titling",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    text-transform: capitalize;
+    color: black;
+}
+
+.tide-text-container__text {
     font-weight: bold;
     text-transform: capitalize;
     line-height: 1.1;
-    color: #FFFFFF;
+}
+
+.tide-text-container__text {
+    font-size: 5rem;
+}
+
+.tide-text-container__title {
+    font-weight: bold;
 }
