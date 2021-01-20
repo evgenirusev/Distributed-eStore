@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace DistributedEStore.Services.Order.Dto
+﻿namespace DistributedEStore.Services.Order.Dto
 {
     public class OrderDto
     {
-        public Guid Id { get; set; }
+        public OrderItemDto[] OrderItems { get; set; }
     }
 }
