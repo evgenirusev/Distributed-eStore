@@ -6,7 +6,6 @@ export const requestProducts = (queryParams?: Record<string, string>): Promise<A
     let url = `${PRODUCTS_URL}?`;
 
     if (queryParams) {
-        console.log(Object.keys(queryParams));
         Object.keys(queryParams).forEach(key => {
             url = url.concat(`${key}=${queryParams[key]}`);
         });

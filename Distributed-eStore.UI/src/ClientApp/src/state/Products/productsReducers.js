@@ -19,9 +19,8 @@ var initialState = {
     currentCategory: constants_1.ProductCategories.FEMALE
 };
 var shouldUpdateColor = function (product, colorIndex) { return product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined"; };
-var composeProducts = function (state, currentCategory, action) {
-    var products = action.products;
-    return __assign(__assign({}, state), { productIdToProductMap: products.reduce(function (acc, product) {
+var composeProducts = function (state, currentCategory, products) {
+    return __assign(__assign({}, state), { productIDsToProductsMap: products.reduce(function (acc, product) {
             acc[product.id] = product;
             return acc;
         }, {}) });
@@ -33,15 +32,15 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_FEMALE:
             {
-                return composeProducts(state, constants_1.ProductCategories.FEMALE, action);
+                return composeProducts(state, constants_1.ProductCategories.FEMALE, action.products);
             }
         case productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_MALE:
             {
-                return composeProducts(state, constants_1.ProductCategories.MALE, action);
+                return composeProducts(state, constants_1.ProductCategories.MALE, action.products);
             }
         case productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES:
             {
-                return composeProducts(state, constants_1.ProductCategories.ACCESSORIES, action);
+                return composeProducts(state, constants_1.ProductCategories.ACCESSORIES, action.products);
             }
         case productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR:
             {

@@ -8,7 +8,7 @@ import "./HomePage.css";
 
 type HomePageProps = IProductsListState & typeof actionCreators;
 
-export const HomePage: React.FC<HomePageProps> = ({
+const HomePage: React.FC<HomePageProps> = ({
     productIDsToProductsMap
 }) => {
     return <div className="home-page">
@@ -58,7 +58,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 };
 
 const mapStateToProps = (state: IApplicationState) => {
-    return { products: state.products };
+    return { ...state.products };
 }
 
 export default connect(mapStateToProps, actionCreators)(HomePage as any);

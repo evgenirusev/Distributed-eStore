@@ -6,7 +6,7 @@ import Login from './containers/Login/Login';
 import Cart from './containers/Cart/Cart';
 import ProductView from './containers/ProductView/ProductView';
 import Logout from './components/user/Logout';
-import { HomePage } from './containers/HomePage/HomePage';
+import HomePage from './containers/HomePage/HomePage';
 
 export default () => (
     <Layout>

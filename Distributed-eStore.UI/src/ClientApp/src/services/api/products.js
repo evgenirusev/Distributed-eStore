@@ -6,7 +6,6 @@ var axios_1 = require("axios");
 var requestProducts = function (queryParams) {
     var url = constants_1.PRODUCTS_URL + "?";
     if (queryParams) {
-        console.log(Object.keys(queryParams));
         Object.keys(queryParams).forEach(function (key) {
             url = url.concat(key + "=" + queryParams[key]);
         });

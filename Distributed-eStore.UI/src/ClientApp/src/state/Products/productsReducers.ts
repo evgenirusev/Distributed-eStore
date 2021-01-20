@@ -9,12 +9,10 @@ const initialState: IProductsListState = {
 
 const shouldUpdateColor = (product: IProduct, colorIndex: number) => product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined";
 
-const composeProducts = (state: IProductsListState, currentCategory: ProductCategories, action: ReduxAction) => {
-    const { products } = action;
-
+const composeProducts = (state: IProductsListState, currentCategory: ProductCategories, products: IProduct[]) => {
     return {
         ...state,
-        productIdToProductMap: products.reduce((acc: Record<string, IProduct>, product: IProduct) => {
+        productIDsToProductsMap: products.reduce((acc: Record<string, IProduct>, product: IProduct) => {
             acc[product.id] = product;
             return acc;
         }, {})
@@ -27,15 +25,15 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
     switch (action.type) {
         case ProductsActionTypes.REQUEST_PRODUCTS_FEMALE:
             {
-                return composeProducts(state, ProductCategories.FEMALE, action);
+                return composeProducts(state, ProductCategories.FEMALE, action.products);
             }
         case ProductsActionTypes.REQUEST_PRODUCTS_MALE:
             {
-                return composeProducts(state, ProductCategories.MALE, action);
+                return composeProducts(state, ProductCategories.MALE, action.products);
             }
         case ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES:
             {
-                return composeProducts(state, ProductCategories.ACCESSORIES, action);
+                return composeProducts(state, ProductCategories.ACCESSORIES, action.products);
             }
         case ProductsActionTypes.SELECT_PRODUCT_COLOR:
             {
