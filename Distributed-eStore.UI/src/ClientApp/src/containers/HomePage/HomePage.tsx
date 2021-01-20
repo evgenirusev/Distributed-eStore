@@ -9,7 +9,8 @@ import "./HomePage.css";
 type HomePageProps = IProductsListState & typeof actionCreators;
 
 const HomePage: React.FC<HomePageProps> = ({
-    productIDsToProductsMap
+    productIDsToProductsMap,
+    currentCategory
 }) => {
     return <div className="home-page">
         <div className="top-image-container">
@@ -21,7 +22,7 @@ const HomePage: React.FC<HomePageProps> = ({
 
         <ProductFilter />
 
-        { productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap)} /> }
+        {productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap).filter(product => product.category === currentCategory)} />}
 
         <div className="bottom-image-container">
             <a href="#" className="home-page__link">

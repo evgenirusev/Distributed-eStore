@@ -18,16 +18,15 @@ export const actionCreators = {
         requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch,
             getProductsAccessories, ProductCategories.ACCESSORIES);
     },
-    selectProductColorFromProductList: (productId: string, productCategory: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    selectProductColorFromProductList: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             state: getState(),
             type: ProductsActionTypes.SELECT_PRODUCT_COLOR,
             productId,
-            productCategory,
             colorIndex
         });
     },
-    requestProductById: (productId: string, productCategory: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+    requestProductById: (productId: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         const state = getState();
         if (state && !state.products.productIDsToProductsMap[productId]) {
             try {
@@ -67,19 +66,11 @@ async function requestProductsAndDispatch(state: IApplicationState, actionType: 
 }
 
 function categoryAlreadyExists(productIDsToProductsMap: Record<string, IProduct>, category: ProductCategories): boolean {
-    console.log("8888888888888888888888888888888888888")
-    console.log(productIDsToProductsMap);
-    console.log(category);
-    console.log("-----------Start")
     Object.values(productIDsToProductsMap).forEach(product => {
-        console.log(product.category);
-        console.log(category);
-        console.log("00000000");
         if (product.category === category) {
             return true;
         }
     });
-    console.log("-----------END")
 
     return false;
 }

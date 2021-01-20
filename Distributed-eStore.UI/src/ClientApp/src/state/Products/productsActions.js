@@ -59,16 +59,15 @@ exports.actionCreators = {
             return [2 /*return*/];
         });
     }); }; },
-    selectProductColorFromProductList: function (productId, productCategory, colorIndex) { return function (dispatch, getState) {
+    selectProductColorFromProductList: function (productId, colorIndex) { return function (dispatch, getState) {
         dispatch({
             state: getState(),
             type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR,
             productId: productId,
-            productCategory: productCategory,
             colorIndex: colorIndex
         });
     }; },
-    requestProductById: function (productId, productCategory) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
+    requestProductById: function (productId) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         var state, product, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -128,19 +127,11 @@ function requestProductsAndDispatch(state, actionType, dispatch, requestProducts
     });
 }
 function categoryAlreadyExists(productIDsToProductsMap, category) {
-    console.log("8888888888888888888888888888888888888");
-    console.log(productIDsToProductsMap);
-    console.log(category);
-    console.log("-----------Start");
     Object.values(productIDsToProductsMap).forEach(function (product) {
-        console.log(product.category);
-        console.log(category);
-        console.log("00000000");
         if (product.category === category) {
             return true;
         }
     });
-    console.log("-----------END");
     return false;
 }
 //# sourceMappingURL=productsActions.js.map

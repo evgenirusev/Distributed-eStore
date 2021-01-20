@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state';
 import { actionCreators, IProductsListState } from '../../state/products';
+import "./ProductFilter.css";
 
 type ProductFilterProps = IProductsListState & typeof actionCreators;
 
@@ -15,10 +16,10 @@ export const ProductFilterComponent: React.FC<ProductFilterProps> = ({
         requestProductsFemale();
     }, []);
 
-    return <div className="product-filter row">
-        <button onClick={requestProductsFemale}>Women's Sale</button>
-        <button onClick={requestProductsMale}>Men's Sale</button>
-        <button onClick={requestProductsAccessories}>Bags & Accessories Sale</button>
+    return <div className="product-filter d-flex justify-content-center">
+        <button className="product-filter__button" onClick={requestProductsFemale}>Women's Sale</button>
+        <button className="product-filter__button" onClick={requestProductsMale}>Men's Sale</button>
+        <button className="product-filter__button" onClick={requestProductsAccessories}>Bags & Accessories Sale</button>
     </div>
 };
 

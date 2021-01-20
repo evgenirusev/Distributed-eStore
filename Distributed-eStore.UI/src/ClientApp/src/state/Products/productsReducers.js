@@ -22,10 +22,10 @@ var shouldUpdateColor = function (product, colorIndex) { return product && produ
 var composeProducts = function (state, currentCategory, products) {
     return {
         currentCategory: currentCategory,
-        productIDsToProductsMap: products.reduce(function (acc, product) {
+        productIDsToProductsMap: __assign(__assign({}, state.productIDsToProductsMap), products.reduce(function (acc, product) {
             acc[product.id] = product;
             return acc;
-        }, {})
+        }, {}))
     };
 };
 var reducer = function (state, incomingAction) {

@@ -12,10 +12,11 @@ const shouldUpdateColor = (product: IProduct, colorIndex: number) => product && 
 const composeProducts = (state: IProductsListState, currentCategory: ProductCategories, products: IProduct[]) => {
     return {
         currentCategory,
-        productIDsToProductsMap: products.reduce((acc: Record<string, IProduct>, product: IProduct) => {
+        productIDsToProductsMap: {
+            ...state.productIDsToProductsMap, ...products.reduce((acc: Record<string, IProduct>, product: IProduct) => {
             acc[product.id] = product;
             return acc;
-        }, {})
+        }, {})}
     };
 }
 
