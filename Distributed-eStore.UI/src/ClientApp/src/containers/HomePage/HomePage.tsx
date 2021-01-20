@@ -22,7 +22,8 @@ const HomePage: React.FC<HomePageProps> = ({
 
         <ProductFilter />
 
-        {productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap).filter(product => product.category === currentCategory)} />}
+        {productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap)
+            .filter(product => product.category === currentCategory)} />}
 
         <div className="bottom-image-container">
             <a href="#" className="home-page__link">

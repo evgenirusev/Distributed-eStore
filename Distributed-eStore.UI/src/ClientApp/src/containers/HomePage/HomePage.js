@@ -28,7 +28,8 @@ var HomePage = function (_a) {
                     " Summer Products"),
                 React.createElement("h3", { className: "home-page__shop-now" }, "SHOP NOW"))),
         React.createElement(ProductFilter_1.ProductFilter, null),
-        productIDsToProductsMap && React.createElement(ProductList_1.ProductList, { products: Object.values(productIDsToProductsMap).filter(function (product) { return product.category === currentCategory; }) }),
+        productIDsToProductsMap && React.createElement(ProductList_1.ProductList, { products: Object.values(productIDsToProductsMap)
+                .filter(function (product) { return product.category === currentCategory; }) }),
         React.createElement("div", { className: "bottom-image-container" },
             React.createElement("a", { href: "#", className: "home-page__link" },
                 React.createElement("div", { className: "tide-text-container" },
