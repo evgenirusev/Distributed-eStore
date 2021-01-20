@@ -2,9 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomePage = void 0;
 var React = require("react");
-var containers_1 = require("../../containers");
+var react_redux_1 = require("react-redux");
+var ProductList_1 = require("../../components/ProductList/ProductList");
 require("./HomePage.css");
-var HomePage = function () {
+var HomePage = function (_a) {
+    var products = _a.products;
     return React.createElement("div", { className: "home-page" },
         React.createElement("div", { className: "top-image-container" },
             React.createElement("a", { href: "#", className: "home-page__link" },
@@ -13,7 +15,7 @@ var HomePage = function () {
                     React.createElement("br", null),
                     " Summer Products"),
                 React.createElement("h3", { className: "home-page__shop-now" }, "SHOP NOW"))),
-        React.createElement(containers_1.ProductList, null),
+        React.createElement(ProductList_1.ProductList, { products: Object.values(products.productIDsToProductsMap) }),
         React.createElement("div", { className: "bottom-image-container" },
             React.createElement("a", { href: "#", className: "home-page__link" },
                 React.createElement("div", { className: "tide-text-container" },
@@ -36,4 +38,8 @@ var HomePage = function () {
                             React.createElement("span", null, "Our DIY Cleanup Kit includes all the tools you need to organize your own cleanup anytime.")))))));
 };
 exports.HomePage = HomePage;
+var mapStateToProps = function (state) {
+    return { products: state.products };
+};
+exports.default = react_redux_1.connect(mapStateToProps, null)(exports.HomePage);
 //# sourceMappingURL=HomePage.js.map
