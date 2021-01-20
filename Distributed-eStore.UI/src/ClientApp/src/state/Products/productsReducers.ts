@@ -4,7 +4,7 @@ import { IProduct, IProductsListState, ProductsActionTypes } from './productsTyp
 
 const initialState: IProductsListState = {
     productIDsToProductsMap: {},
-    currentCategory: ProductCategories.FEMALE
+    currentCategory: null
 };
 
 const shouldUpdateColor = (product: IProduct, colorIndex: number) => product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined";

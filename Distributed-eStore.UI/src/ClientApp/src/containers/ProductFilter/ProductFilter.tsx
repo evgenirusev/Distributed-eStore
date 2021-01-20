@@ -14,7 +14,7 @@ export const ProductFilterComponent: React.FC<ProductFilterProps> = ({
 }) => {
     useEffect(() => {
         requestProductsFemale();
-    }, []);
+    }, [requestProductsFemale]);
 
     return <div className="product-filter d-flex justify-content-center">
         <button className="product-filter__button" onClick={requestProductsFemale}>Women's Sale</button>

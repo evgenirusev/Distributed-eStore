@@ -16,7 +16,7 @@ var constants_1 = require("../../constants");
 var productsTypes_1 = require("./productsTypes");
 var initialState = {
     productIDsToProductsMap: {},
-    currentCategory: constants_1.ProductCategories.FEMALE
+    currentCategory: null
 };
 var shouldUpdateColor = function (product, colorIndex) { return product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined"; };
 var composeProducts = function (state, currentCategory, products) {
