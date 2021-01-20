@@ -22,6 +22,7 @@ var redux_1 = require("redux");
 var redux_thunk_1 = require("redux-thunk");
 var connected_react_router_1 = require("connected-react-router");
 var _1 = require("./");
+var localStorageHelpers_1 = require("./localStorage/localStorageHelpers");
 function configureStore(history, initialState) {
     var middleware = [
         redux_thunk_1.default,
@@ -33,7 +34,13 @@ function configureStore(history, initialState) {
     if (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__) {
         enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
     }
-    return redux_1.createStore(rootReducer, initialState, redux_1.compose.apply(void 0, __spreadArrays([redux_1.applyMiddleware.apply(void 0, middleware)], enhancers)));
+    var cartState = localStorageHelpers_1.loadCartState();
+    if (cartState) {
+        initialState = __assign(__assign({}, initialState), { cart: cartState });
+    }
+    var store = redux_1.createStore(rootReducer, initialState, redux_1.compose.apply(void 0, __spreadArrays([redux_1.applyMiddleware.apply(void 0, middleware)], enhancers)));
+    store.subscribe(function () { return localStorageHelpers_1.saveCartToLocalStorage(store.getState().cart); });
+    return store;
 }
 exports.default = configureStore;
 //# sourceMappingURL=configureStore.js.map

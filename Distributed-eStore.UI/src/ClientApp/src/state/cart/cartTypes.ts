@@ -3,7 +3,7 @@
     REMOVE_FROM_CART = 'REMOVE_FROM_CART',
     CHANGE_QUANTITY = 'CHANGE_QUANTITY',
     PLACE_ORDER = 'PLACE_ORDER'
-};  
+};
 
 export interface ICartState {
     productIdToCartProductMap: { [key: string]: ICartProduct };

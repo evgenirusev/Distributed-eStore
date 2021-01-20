@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
 import { IApplicationState, reducers } from './';
+import { saveCartToLocalStorage, loadCartState } from './localStorage/localStorageHelpers';
 
 export default function configureStore(history: History, initialState?: IApplicationState) {
     const middleware = [
@@ -21,9 +22,22 @@ export default function configureStore(history: History, initialState?: IApplica
         enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
     }
 
-    return createStore(
+    const cartState = loadCartState();
+
+    if (cartState) {
+        initialState = {
+            ...initialState,
+            cart: cartState
+        }
+    }
+
+    const store = createStore(
         rootReducer,
         initialState,
         compose(applyMiddleware(...middleware), ...enhancers)
     );
+    
+    store.subscribe(() => saveCartToLocalStorage(store.getState().cart));
+
+    return store;
 }
