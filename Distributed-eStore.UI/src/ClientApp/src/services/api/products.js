@@ -14,15 +14,15 @@ var requestProducts = function (queryParams) {
 };
 exports.requestProducts = requestProducts;
 var getProductsFemale = function () {
-    return axios_1.default.get(constants_1.PRODUCTS_URL);
+    return exports.requestProducts({ 'category': 'female' });
 };
 exports.getProductsFemale = getProductsFemale;
 var getProductsMale = function () {
-    return axios_1.default.get(constants_1.PRODUCTS_URL);
+    return exports.requestProducts({ 'category': 'male' });
 };
 exports.getProductsMale = getProductsMale;
 var getProductsAccessories = function () {
-    return axios_1.default.get(constants_1.PRODUCTS_URL);
+    return exports.requestProducts({ 'category': 'accessories' });
 };
 exports.getProductsAccessories = getProductsAccessories;
 var getProductById = function (productId) {

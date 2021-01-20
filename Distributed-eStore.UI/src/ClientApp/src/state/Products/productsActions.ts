@@ -1,28 +1,35 @@
-﻿import { getAllProducts, getProductById } from '../../services/api/';
+﻿import { getProductsFemale, getProductsMale, getProductsAccessories ,getProductById } from '../../services/api/';
 import { IProduct } from '../products/';
-import { IAppThunkAction, ReduxAction } from '../';
+import { IApplicationState, IAppThunkAction, ReduxAction } from '../';
 import { ProductsActionTypes } from './productsTypes';
 import { DEFAULT_COLOR_INDEX } from '../../constants';
 
-export const actionCreators = {
-    requestFemaleProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        if (getState()) {
+const requestProductsAndDispatch = async (state: IApplicationState, actionType: ProductsActionTypes, dispatch: any) => {
+        if (state) {
             try {
-                const products: IProduct[] = (await getAllProducts()).data;
+                const products: IProduct[] = (await getProductsFemale()).data
                 products.forEach(p => p.selectedColorIndex = DEFAULT_COLOR_INDEX);
 
                 dispatch({
                     products,
-                    type: ProductsActionTypes.
+                    type: actionType
                 });
             } catch (error) {
                 // technical debt - handle this on client side
                 console.error(error);
             }
         }
+    }
+
+export const actionCreators = {
+    requestProductsFemale: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_FEMALE, dispatch);
     },
-    requestProducts: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        
+    requestProductsMale: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_MALE, dispatch);
+    },
+    requestProductsAccessories: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch);
     },
     selectProductColorFromProductList: (productId: string, productCategory: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
