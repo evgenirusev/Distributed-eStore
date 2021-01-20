@@ -40,7 +40,7 @@ export const actionCreators = {
             colorIndex
         });
     },
-    requestProductById: (productId: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
+    requestProductById: (productId: string, productCategory: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
         if (getState() && !getState().products.productIDsToProductsMap[productId]) {
             try {
                 const product: IProduct = (await getProductById(productId)).data;

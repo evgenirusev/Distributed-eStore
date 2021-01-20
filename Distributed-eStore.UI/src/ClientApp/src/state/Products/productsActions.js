@@ -40,43 +40,62 @@ exports.actionCreators = void 0;
 var api_1 = require("../../services/api/");
 var productsTypes_1 = require("./productsTypes");
 var constants_1 = require("../../constants");
+var requestProductsAndDispatch = function (state, actionType, dispatch) { return __awaiter(void 0, void 0, void 0, function () {
+    var products, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!state) return [3 /*break*/, 4];
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, api_1.getProductsFemale()];
+            case 2:
+                products = (_a.sent()).data;
+                products.forEach(function (p) { return p.selectedColorIndex = constants_1.DEFAULT_COLOR_INDEX; });
+                dispatch({
+                    products: products,
+                    type: actionType
+                });
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _a.sent();
+                // technical debt - handle this on client side
+                console.error(error_1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
 exports.actionCreators = {
-    requestProducts: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
-        var products, error_1;
+    requestProductsFemale: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!getState()) return [3 /*break*/, 4];
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, api_1.getAllProducts()];
-                case 2:
-                    products = (_a.sent()).data;
-                    products.forEach(function (p) { return p.selectedColorIndex = constants_1.DEFAULT_COLOR_INDEX; });
-                    dispatch({
-                        products: products,
-                        type: productsTypes_1.ProductsActionTypes.REQUEST_ALL_ARRIVAL
-                    });
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    // technical debt - handle this on client side
-                    console.error(error_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
+            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_FEMALE, dispatch);
+            return [2 /*return*/];
         });
     }); }; },
-    selectProductColorFromProductList: function (productId, colorIndex) { return function (dispatch, getState) {
+    requestProductsMale: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_MALE, dispatch);
+            return [2 /*return*/];
+        });
+    }); }; },
+    requestProductsAccessories: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch);
+            return [2 /*return*/];
+        });
+    }); }; },
+    selectProductColorFromProductList: function (productId, productCategory, colorIndex) { return function (dispatch, getState) {
         dispatch({
             state: getState(),
-            type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR_FROM_PRODUCT_LIST,
+            type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR,
             productId: productId,
+            productCategory: productCategory,
             colorIndex: colorIndex
         });
     }; },
-    requestProductById: function (productId) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
+    requestProductById: function (productId, productCategory) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         var product, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {

@@ -3,22 +3,21 @@ import { ProductCategories } from '../../constants';
 import { IProduct, IProductsListState, ProductsActionTypes } from './productsTypes';
 
 const initialState: IProductsListState = {
-    categoryToProductMaps: {},
+    productIDsToProductsMap: {},
     currentCategory: ProductCategories.FEMALE
 };
 
 const shouldUpdateColor = (product: IProduct, colorIndex: number) => product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined";
+
 const composeProducts = (state: IProductsListState, currentCategory: ProductCategories, action: ReduxAction) => {
     const { products } = action;
 
     return {
         ...state,
-        currentCategory,
-        categoryToProductMaps: {
-            ...state.categoryToProductMaps,
-            [currentCategory]: products
-        }
-    }
+        productIdToProductMap: products.reduce((acc: Record<string, IProduct>, product: IProduct) => {
+            acc[product.id] = product;
+        }, {})
+    };
 }
 
 export const reducer = (state: IProductsListState = initialState, incomingAction: ReduxAction): IProductsListState => {
@@ -39,20 +38,17 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
             }
         case ProductsActionTypes.SELECT_PRODUCT_COLOR:
             {
-                const { productId, colorIndex, productCategory } = action;
-                const product = state.categoryToProductMaps[productCategory][productId];
+                const { productId, colorIndex } = action;
+                const product = state.productIDsToProductsMap[productId];
 
                 if (shouldUpdateColor(product, colorIndex)) {
                     return {
                         ...state,
-                        categoryToProductMaps: {
-                            ...state.categoryToProductMaps,
-                            [productCategory]: {
-                                ...state.categoryToProductMaps[productCategory],
-                                [productId]: {
-                                    ...state.categoryToProductMaps[productId],
-                                    selectedColorIndex: colorIndex
-                                }
+                        productIDsToProductsMap: {
+                            ...state.productIDsToProductsMap,
+                            [productId]: {
+                                ...state.productIDsToProductsMap[productId],
+                                selectedColorIndex: colorIndex
                             }
                         }
                     }
@@ -65,12 +61,9 @@ export const reducer = (state: IProductsListState = initialState, incomingAction
                 if (product) {
                     return {
                         ...state,
-                        categoryToProductMaps: {
-                            ...state.categoryToProductMaps,
-                            [product.category]: {
-                                ...state.categoryToProductMaps[product.category],
-                                [product.id]: product
-                            }
+                        productIDsToProductsMap: {
+                            ...state.productIDsToProductsMap,
+                            [product.id]: product
                         }
                     }
                 }

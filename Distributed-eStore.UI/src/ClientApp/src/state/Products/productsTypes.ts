@@ -20,6 +20,6 @@ export enum ProductsActionTypes {
 };
 
 export interface IProductsListState {
-    categoryToProductMaps: Record<string, Record<string, IProduct>>;
+    productIDsToProductsMap: Record<string, IProduct>;
     currentCategory: ProductCategories;
 };
