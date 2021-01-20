@@ -20,10 +20,13 @@ var initialState = {
 };
 var shouldUpdateColor = function (product, colorIndex) { return product && product.selectedColorIndex !== colorIndex && typeof product.colors[colorIndex] !== "undefined"; };
 var composeProducts = function (state, currentCategory, products) {
-    return __assign(__assign({}, state), { productIDsToProductsMap: products.reduce(function (acc, product) {
+    return {
+        currentCategory: currentCategory,
+        productIDsToProductsMap: products.reduce(function (acc, product) {
             acc[product.id] = product;
             return acc;
-        }, {}) });
+        }, {})
+    };
 };
 var reducer = function (state, incomingAction) {
     var _a, _b;

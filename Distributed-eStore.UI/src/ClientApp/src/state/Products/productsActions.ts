@@ -2,36 +2,21 @@
 import { IProduct } from '../products/';
 import { IApplicationState, IAppThunkAction, ReduxAction } from '../';
 import { ProductsActionTypes } from './productsTypes';
-import { DEFAULT_COLOR_INDEX } from '../../constants';
+import { DEFAULT_COLOR_INDEX, ProductCategories } from '../../constants';
 import { AxiosResponse } from 'axios';
-
-const requestProductsAndDispatch = async (state: IApplicationState, actionType: ProductsActionTypes,
-    dispatch: any, requestProducts: () => Promise<AxiosResponse<IProduct[]>>) => {
-        if (state) {
-            try {
-                const products: IProduct[] = (await requestProducts()).data
-                products.forEach(p => p.selectedColorIndex = DEFAULT_COLOR_INDEX);
-
-                dispatch({
-                    products,
-                    type: actionType
-                });
-            } catch (error) {
-                // technical debt - handle this on client side
-                console.error(error);
-            }
-        }
-}
 
 export const actionCreators = {
     requestProductsFemale: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_FEMALE, dispatch, getProductsFemale);
+        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_FEMALE, dispatch,
+            getProductsFemale, ProductCategories.FEMALE);
     },
     requestProductsMale: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_MALE, dispatch, getProductsMale);
+        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_MALE, dispatch,
+            getProductsMale, ProductCategories.MALE);
     },
     requestProductsAccessories: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch, getProductsAccessories);
+        requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch,
+            getProductsAccessories, ProductCategories.ACCESSORIES);
     },
     selectProductColorFromProductList: (productId: string, productCategory: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
@@ -59,3 +44,33 @@ export const actionCreators = {
         }
     }
 };
+
+async function requestProductsAndDispatch(state: IApplicationState, actionType: ProductsActionTypes,
+    dispatch: any, requestProducts: () => Promise<AxiosResponse<IProduct[]>>, category: ProductCategories) {
+    if (state && state.products.currentCategory !== category &&
+        !categoryAlreadyExists(state.products.productIDsToProductsMap, category)) {
+
+        try {
+            const products: IProduct[] = (await requestProducts()).data;
+            products.forEach(p => p.selectedColorIndex = DEFAULT_COLOR_INDEX);
+
+            dispatch({
+                products,
+                type: actionType
+            });
+        } catch (error) {
+            // technical debt - handle this on client side
+            console.error(error);
+        }
+    }
+}
+
+function categoryAlreadyExists(productIDsToProductsMap: Record<string, IProduct>, category: ProductCategories): boolean {
+    Object.values(productIDsToProductsMap).forEach(product => {
+        if (product.category === category) {
+            return true;
+        }
+    });
+
+    return false;
+}

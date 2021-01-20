@@ -9,19 +9,16 @@ type ProductFilterProps = IProductsListState & typeof actionCreators;
 export const ProductFilterComponent: React.FC<ProductFilterProps> = ({
     requestProductsFemale,
     requestProductsMale,
-    requestProductsAccessories,
-    productIDsToProductsMap
+    requestProductsAccessories
 }) => {
     useEffect(() => {
         requestProductsFemale();
     }, []);
 
-    console.log(productIDsToProductsMap);
-
     return <div className="product-filter row">
-        <button>Women's Sale</button>
-        <button>Men's Sale</button>
-        <button>Bags & Accessories Sale</button>
+        <button onClick={requestProductsFemale}>Women's Sale</button>
+        <button onClick={requestProductsMale}>Men's Sale</button>
+        <button onClick={requestProductsAccessories}>Bags & Accessories Sale</button>
     </div>
 };
 
