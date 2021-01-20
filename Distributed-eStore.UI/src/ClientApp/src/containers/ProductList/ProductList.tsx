@@ -10,8 +10,8 @@ import './ProductList.css';
 type ProductListProps = IProductsListState & typeof actionCreators;
 
 const ProductListComponent: React.FC<ProductListProps> = ({
-    requestProducts,
-    productIDsToProductsMap
+    productIDsToProductsMap,
+    requestProductsFemale
 }) => {
     useEffect(() => {
         requestProducts();
@@ -28,4 +28,4 @@ const ProductListComponent: React.FC<ProductListProps> = ({
     );
 };
 
-export const ProductList = connect((state: IApplicationState) => state.products, actionCreators)(ProductListComponent);
+export const BuildProductList = () => connect((state: IApplicationState) => state.products, actionCreators)(ProductListComponent as any);

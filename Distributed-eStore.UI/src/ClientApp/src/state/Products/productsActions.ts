@@ -19,7 +19,7 @@ const requestProductsAndDispatch = async (state: IApplicationState, actionType: 
                 console.error(error);
             }
         }
-    }
+}
 
 export const actionCreators = {
     requestProductsFemale: (): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
