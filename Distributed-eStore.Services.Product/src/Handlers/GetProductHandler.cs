@@ -24,7 +24,8 @@ namespace DistributedEStore.Services.Products.Handlers
                 Description = product.Description,
                 Price = product.Price,
                 ImageURLs = product.ImageURLs,
-                Colors = product.Colors
+                Colors = product.Colors,
+                Category = product.Category
             };
         }
     }

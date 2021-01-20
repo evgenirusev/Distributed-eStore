@@ -28,7 +28,8 @@ export const actionCreators = {
         });
     },
     requestProductById: (productId: string, productCategory: string): IAppThunkAction<ReduxAction> => async (dispatch, getState) => {
-        if (getState() && !getState().products.productIDsToProductsMap[productId]) {
+        const state = getState();
+        if (state && !state.products.productIDsToProductsMap[productId]) {
             try {
                 const product: IProduct = (await getProductById(productId)).data;
                 product.selectedColorIndex = DEFAULT_COLOR_INDEX;
@@ -66,11 +67,19 @@ async function requestProductsAndDispatch(state: IApplicationState, actionType: 
 }
 
 function categoryAlreadyExists(productIDsToProductsMap: Record<string, IProduct>, category: ProductCategories): boolean {
+    console.log("8888888888888888888888888888888888888")
+    console.log(productIDsToProductsMap);
+    console.log(category);
+    console.log("-----------Start")
     Object.values(productIDsToProductsMap).forEach(product => {
+        console.log(product.category);
+        console.log(category);
+        console.log("00000000");
         if (product.category === category) {
             return true;
         }
     });
+    console.log("-----------END")
 
     return false;
 }

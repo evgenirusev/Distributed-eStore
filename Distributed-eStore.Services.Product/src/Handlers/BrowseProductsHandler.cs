@@ -25,7 +25,8 @@ namespace DistributedEStore.Services.Products.Handlers
                 Description = p.Description,
                 Price = p.Price,
                 Colors = p.Colors,
-                ImageURLs = p.ImageURLs
+                ImageURLs = p.ImageURLs,
+                Category = p.Category
             }).ToList();
 
             return PagedResult<ProductDto>.From(pagedResult, products);

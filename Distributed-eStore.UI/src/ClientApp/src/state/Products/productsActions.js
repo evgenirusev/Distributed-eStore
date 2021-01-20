@@ -69,11 +69,12 @@ exports.actionCreators = {
         });
     }; },
     requestProductById: function (productId, productCategory) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
-        var product, error_1;
+        var state, product, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!(getState() && !getState().products.productIDsToProductsMap[productId])) return [3 /*break*/, 4];
+                    state = getState();
+                    if (!(state && !state.products.productIDsToProductsMap[productId])) return [3 /*break*/, 4];
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
@@ -127,11 +128,19 @@ function requestProductsAndDispatch(state, actionType, dispatch, requestProducts
     });
 }
 function categoryAlreadyExists(productIDsToProductsMap, category) {
+    console.log("8888888888888888888888888888888888888");
+    console.log(productIDsToProductsMap);
+    console.log(category);
+    console.log("-----------Start");
     Object.values(productIDsToProductsMap).forEach(function (product) {
+        console.log(product.category);
+        console.log(category);
+        console.log("00000000");
         if (product.category === category) {
             return true;
         }
     });
+    console.log("-----------END");
     return false;
 }
 //# sourceMappingURL=productsActions.js.map
