@@ -8,7 +8,7 @@ var Login_1 = require("./containers/Login/Login");
 var Cart_1 = require("./containers/Cart/Cart");
 var ProductView_1 = require("./containers/ProductView/ProductView");
 var Logout_1 = require("./components/user/Logout");
-var HomePage_1 = require("./components/HomePage/HomePage");
+var HomePage_1 = require("./containers/HomePage/HomePage");
 exports.default = (function () { return (React.createElement(Layout_1.default, null,
     React.createElement(react_router_1.Route, { exact: true, path: '/', component: HomePage_1.HomePage }),
     React.createElement(react_router_1.Route, { exact: true, path: '/register', component: Register_1.default }),

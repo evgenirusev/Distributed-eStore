@@ -40,7 +40,7 @@ exports.actionCreators = void 0;
 var api_1 = require("../../services/api/");
 var productsTypes_1 = require("./productsTypes");
 var constants_1 = require("../../constants");
-var requestProductsAndDispatch = function (state, actionType, dispatch) { return __awaiter(void 0, void 0, void 0, function () {
+var requestProductsAndDispatch = function (state, actionType, dispatch, requestProducts) { return __awaiter(void 0, void 0, void 0, function () {
     var products, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -49,7 +49,7 @@ var requestProductsAndDispatch = function (state, actionType, dispatch) { return
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, api_1.getProductsFemale()];
+                return [4 /*yield*/, requestProducts()];
             case 2:
                 products = (_a.sent()).data;
                 products.forEach(function (p) { return p.selectedColorIndex = constants_1.DEFAULT_COLOR_INDEX; });
@@ -70,19 +70,19 @@ var requestProductsAndDispatch = function (state, actionType, dispatch) { return
 exports.actionCreators = {
     requestProductsFemale: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_FEMALE, dispatch);
+            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_FEMALE, dispatch, api_1.getProductsFemale);
             return [2 /*return*/];
         });
     }); }; },
     requestProductsMale: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_MALE, dispatch);
+            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_MALE, dispatch, api_1.getProductsMale);
             return [2 /*return*/];
         });
     }); }; },
     requestProductsAccessories: function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch);
+            requestProductsAndDispatch(getState(), productsTypes_1.ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch, api_1.getProductsAccessories);
             return [2 /*return*/];
         });
     }); }; },

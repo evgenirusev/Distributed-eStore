@@ -1,16 +1,15 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { IApplicationState } from '../../state';
-import { IProductsListState } from '../../state/products';
+import { actionCreators, IProductsListState } from '../../state/products';
 import "./HomePage.css";
 
-type HomePageProps = {
-    products: IProductsListState;
-};
+type HomePageProps = IProductsListState & typeof actionCreators;
 
 export const HomePage: React.FC<HomePageProps> = ({
-    products
+    productIDsToProductsMap
 }) => {
     return <div className="home-page">
         <div className="top-image-container">
@@ -20,7 +19,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </a>
         </div>
 
-        <ProductList products={Object.values(products.productIDsToProductsMap)} />
+        { productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap)} /> }
 
         <div className="bottom-image-container">
             <a href="#" className="home-page__link">
@@ -60,4 +59,4 @@ const mapStateToProps = (state: IApplicationState) => {
     return { products: state.products };
 }
 
-export default connect(mapStateToProps, null)(HomePage as any);
+export default connect(mapStateToProps, actionCreators)(HomePage as any);
