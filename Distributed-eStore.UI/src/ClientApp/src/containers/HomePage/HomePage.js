@@ -5,6 +5,7 @@ var React = require("react");
 var react_redux_1 = require("react-redux");
 var ProductList_1 = require("../../components/ProductList/ProductList");
 var products_1 = require("../../state/products");
+var ProductFilter_1 = require("../ProductFilter/ProductFilter");
 require("./HomePage.css");
 var HomePage = function (_a) {
     var productIDsToProductsMap = _a.productIDsToProductsMap;
@@ -16,6 +17,7 @@ var HomePage = function (_a) {
                     React.createElement("br", null),
                     " Summer Products"),
                 React.createElement("h3", { className: "home-page__shop-now" }, "SHOP NOW"))),
+        React.createElement(ProductFilter_1.ProductFilter, null),
         productIDsToProductsMap && React.createElement(ProductList_1.ProductList, { products: Object.values(productIDsToProductsMap) }),
         React.createElement("div", { className: "bottom-image-container" },
             React.createElement("a", { href: "#", className: "home-page__link" },

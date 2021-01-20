@@ -6,11 +6,12 @@ var axios_1 = require("axios");
 var requestProducts = function (queryParams) {
     var url = constants_1.PRODUCTS_URL + "?";
     if (queryParams) {
+        console.log(Object.keys(queryParams));
         Object.keys(queryParams).forEach(function (key) {
-            url.concat(key + "=" + queryParams[key]);
+            url = url.concat(key + "=" + queryParams[key]);
         });
     }
-    return axios_1.default.get(constants_1.PRODUCTS_URL);
+    return axios_1.default.get(url);
 };
 exports.requestProducts = requestProducts;
 var getProductsFemale = function () {

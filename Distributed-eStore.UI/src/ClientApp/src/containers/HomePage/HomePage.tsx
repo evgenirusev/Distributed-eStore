@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { IApplicationState } from '../../state';
 import { actionCreators, IProductsListState } from '../../state/products';
+import { ProductFilter } from '../ProductFilter/ProductFilter';
 import "./HomePage.css";
 
 type HomePageProps = IProductsListState & typeof actionCreators;
@@ -18,6 +18,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <h3 className="home-page__shop-now">SHOP NOW</h3>
             </a>
         </div>
+
+        <ProductFilter />
 
         { productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap)} /> }
 

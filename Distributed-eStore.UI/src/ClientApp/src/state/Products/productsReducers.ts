@@ -16,6 +16,7 @@ const composeProducts = (state: IProductsListState, currentCategory: ProductCate
         ...state,
         productIdToProductMap: products.reduce((acc: Record<string, IProduct>, product: IProduct) => {
             acc[product.id] = product;
+            return acc;
         }, {})
     };
 }

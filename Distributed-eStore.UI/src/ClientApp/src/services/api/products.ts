@@ -6,12 +6,13 @@ export const requestProducts = (queryParams?: Record<string, string>): Promise<A
     let url = `${PRODUCTS_URL}?`;
 
     if (queryParams) {
+        console.log(Object.keys(queryParams));
         Object.keys(queryParams).forEach(key => {
-            url.concat(`${key}=${queryParams[key]}`);
+            url = url.concat(`${key}=${queryParams[key]}`);
         });
     }
-    
-    return axios.get<IProduct[]>(PRODUCTS_URL);
+
+    return axios.get<IProduct[]>(url);
 }
 
 export const getProductsFemale = (): Promise<AxiosResponse<IProduct[]>> => {

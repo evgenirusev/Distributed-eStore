@@ -23,6 +23,7 @@ var composeProducts = function (state, currentCategory, action) {
     var products = action.products;
     return __assign(__assign({}, state), { productIdToProductMap: products.reduce(function (acc, product) {
             acc[product.id] = product;
+            return acc;
         }, {}) });
 };
 var reducer = function (state, incomingAction) {

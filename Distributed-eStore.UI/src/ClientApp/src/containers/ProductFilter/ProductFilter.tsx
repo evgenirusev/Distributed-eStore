@@ -3,18 +3,20 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state';
 import { actionCreators, IProductsListState } from '../../state/products';
-import "./HomePage.css";
 
 type ProductFilterProps = IProductsListState & typeof actionCreators;
 
 export const ProductFilterComponent: React.FC<ProductFilterProps> = ({
-    requestProductsMale,
     requestProductsFemale,
-    requestProductsAccessories
+    requestProductsMale,
+    requestProductsAccessories,
+    productIDsToProductsMap
 }) => {
     useEffect(() => {
         requestProductsFemale();
     }, []);
+
+    console.log(productIDsToProductsMap);
 
     return <div className="product-filter row">
         <button>Women's Sale</button>
@@ -24,7 +26,7 @@ export const ProductFilterComponent: React.FC<ProductFilterProps> = ({
 };
 
 const mapStateToProps = (state: IApplicationState) => {
-    return { products: state.products };
+    return { products: state.products.productIDsToProductsMap };
 }
 
 export const ProductFilter = connect(mapStateToProps, actionCreators)(ProductFilterComponent as any);
