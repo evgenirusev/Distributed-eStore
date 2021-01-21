@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
+using DistributedEStore.Services.Product.Seed;
 
 namespace DistributedEStore.Services.Product
 {
@@ -59,6 +60,7 @@ namespace DistributedEStore.Services.Product
             app.UseErrorHandler();
             app.UseServiceId();
             app.UseRabbitMq().SubscribeCommand<CreateProduct>();
+            app.SeedProductsAsync();
 
             app.UseRouting();
             app.UseEndpoints(routes =>

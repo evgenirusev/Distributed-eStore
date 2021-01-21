@@ -32,7 +32,7 @@ namespace DistributedEStore.Services.Products.DomainEntities
                     "Product name cannot be empty.");
             }
 
-            Name = name.Trim().ToLowerInvariant();
+            Name = name.Trim();
             SetUpdatedDate();
         }
 
