@@ -30,7 +30,7 @@ export const Product: React.FC<ProductProps> = ({
             </div>
         </Link>
         <div className="color-switcher">
-            <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColorFromProductList} />
+            <ColorSwitcher colors={colors} selectedColorIndex={selectedColorIndex} productId={id} selectProductColorAction={actionCreators.selectProductColor} />
         </div>
     </div>
 };

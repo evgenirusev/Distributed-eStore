@@ -1,3 +1,20 @@
 ﻿.product-filter__button {
     margin: 10px;
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgba(6,34,51,0);
+    border: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    font-weight: normal;
+    letter-spacing: 0.05rem;
+    text-transform: capitalize;
+    font-size: 1.25rem;
+}
+
+.product-filter__button--isSelected {
+    text-decoration: underline;
 }

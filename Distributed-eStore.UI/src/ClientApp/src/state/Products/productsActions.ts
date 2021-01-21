@@ -18,7 +18,7 @@ export const actionCreators = {
         requestProductsAndDispatch(getState(), ProductsActionTypes.REQUEST_PRODUCTS_ACCESSORIES, dispatch,
             getProductsAccessories, ProductCategories.ACCESSORIES);
     },
-    selectProductColorFromProductList: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    selectProductColor: (productId: string, colorIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             state: getState(),
             type: ProductsActionTypes.SELECT_PRODUCT_COLOR,

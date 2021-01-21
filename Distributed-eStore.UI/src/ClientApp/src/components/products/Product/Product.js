@@ -21,7 +21,7 @@ var Product = function (_a) {
                     price,
                     " "))),
         React.createElement("div", { className: "color-switcher" },
-            React.createElement(__1.ColorSwitcher, { colors: colors, selectedColorIndex: selectedColorIndex, productId: id, selectProductColorAction: productsActions_1.actionCreators.selectProductColorFromProductList })));
+            React.createElement(__1.ColorSwitcher, { colors: colors, selectedColorIndex: selectedColorIndex, productId: id, selectProductColorAction: productsActions_1.actionCreators.selectProductColor })));
 };
 exports.Product = Product;
 //# sourceMappingURL=Product.js.map

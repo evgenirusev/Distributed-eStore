@@ -65,7 +65,7 @@ const ProductView: React.FC<ProductViewProps> = ({
                             <ColorSwitcher colors={colors}
                                 selectedColorIndex={selectedColorIndex}
                                 productId={productId}
-                                selectProductColorAction={productsActionCreators.selectProductColorFromProductList} />
+                                selectProductColorAction={productsActionCreators.selectProductColor} />
                         </div>
                         <div className="product-view__size-selector">
                             <p>Size<span className="product-view__size-tag">Just a few left</span></p>

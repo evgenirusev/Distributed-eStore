@@ -59,7 +59,7 @@ exports.actionCreators = {
             return [2 /*return*/];
         });
     }); }; },
-    selectProductColorFromProductList: function (productId, colorIndex) { return function (dispatch, getState) {
+    selectProductColor: function (productId, colorIndex) { return function (dispatch, getState) {
         dispatch({
             state: getState(),
             type: productsTypes_1.ProductsActionTypes.SELECT_PRODUCT_COLOR,
