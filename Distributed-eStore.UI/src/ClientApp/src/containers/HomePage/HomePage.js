@@ -38,18 +38,18 @@ var HomePage = function (_a) {
                         React.createElement("br", null),
                         "Let's turn the tide."),
                     React.createElement("div", { className: "row" },
-                        React.createElement("div", { className: "col-md-4" },
+                        React.createElement("div", { className: "col-md-4 tide-text-container__section" },
                             React.createElement("span", { className: "tide-text-container__title" }, "We Quit"),
                             React.createElement("br", null),
-                            React.createElement("span", null, "Our plan to remove all single-use plastics from our supply chain.")),
-                        React.createElement("div", { className: "col-md-4" },
+                            React.createElement("span", { className: "tide-text-container__description" }, "Our plan to remove all single-use plastics from our supply chain.")),
+                        React.createElement("div", { className: "col-md-4 tide-text-container__section" },
                             React.createElement("span", { className: "tide-text-container__title" }, "Get Dirty & Do Good"),
                             React.createElement("br", null),
-                            React.createElement("span", null, "Join us at an upcoming cleanup")),
-                        React.createElement("div", { className: "col-md-4" },
+                            React.createElement("span", { className: "tide-text-container__description" }, "Join us at an upcoming cleanup")),
+                        React.createElement("div", { className: "col-md-4 tide-text-container__section" },
                             React.createElement("span", { className: "tide-text-container__title" }, "Let's turn the tide"),
                             React.createElement("br", null),
-                            React.createElement("span", null, "Our DIY Cleanup Kit includes all the tools you need to organize your own cleanup anytime.")))))));
+                            React.createElement("span", { className: "tide-text-container__description" }, "Our DIY Cleanup Kit includes all the tools you need to organize your own cleanup anytime.")))))));
 };
 var mapStateToProps = function (state) {
     return __assign({}, state.products);

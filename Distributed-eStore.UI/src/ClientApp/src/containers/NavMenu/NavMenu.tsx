@@ -23,6 +23,16 @@ class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boole
                         <NavbarToggler onClick={this.toggle} className="mr-2"/>
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={this.state.isOpen} navbar>
                             <ul className="navbar-nav flex-grow">
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/products/womens">Womens</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/products/mens">Mens</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/products/accessories">Accessories</NavLink>
+                                </NavItem>
+
                                 { /* technical debt - abstract this */}
                                 { !this.props.user.isLoggedIn &&
                                     <>
@@ -35,9 +45,16 @@ class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boole
                                     </>
                                 }
 
-                                { this.props.user.isLoggedIn && <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
-                                </NavItem> }
+                                {this.props.user.isLoggedIn &&
+                                    <>
+                                        <NavItem>
+                                            <NavLink tag={Link} className="text-dark" to="/logout">Logout</NavLink>
+                                        </NavItem>
+                                        <NavItem>
+                                            <NavLink tag={Link} className="text-dark" to="/account">Account</NavLink>
+                                        </NavItem>
+                                    </>
+                                }
 
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/cart">

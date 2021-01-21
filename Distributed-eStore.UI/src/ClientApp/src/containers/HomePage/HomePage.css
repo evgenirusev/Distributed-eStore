@@ -60,9 +60,31 @@
 }
 
 .tide-text-container__text {
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .tide-text-container__title {
     font-weight: bold;
+}
+
+@media only screen and (max-width: 850px) {
+    .tide-text-container {
+        padding: 50px;
+    }
+}
+
+@media only screen and (max-width: 615px) {
+    .tide-text-container {
+        padding: 20px;
+        margin-bottom: -73px;
+    }
+
+    .tide-text-container__section {
+        padding-top: 30px;
+        font-size: 1rem;
+    }
+
+    .tide-text-container__text {
+        font-size: 2rem;
+    }
 }
