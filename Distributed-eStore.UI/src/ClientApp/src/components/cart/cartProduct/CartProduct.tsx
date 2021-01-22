@@ -19,7 +19,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
     }
 
     return <div className="cart-product">
-            <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between">
                     <div className="cart-product__item">
                         <a href={`/products/${id}`}>
                             <img src={imageURL} className="cart-product__image"></img>

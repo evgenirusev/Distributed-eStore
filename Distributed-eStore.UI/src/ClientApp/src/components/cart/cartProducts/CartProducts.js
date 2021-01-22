@@ -26,8 +26,9 @@ var CartProducts = function (_a) {
             React.createElement("strong", null, "NB: VAT will be removed at checkout for Yearbook 5 purchases."),
             React.createElement("p", null, "Free Returns. Free Repairs For Life.")),
         React.createElement("hr", null),
-        React.createElement("div", null,
-            React.createElement("button", { onClick: onClick }, "Checkout"))));
+        React.createElement("div", { className: "cart-products__button-container" },
+            React.createElement("button", { className: "cart-products__button", onClick: onClick },
+                React.createElement("span", { className: "cart-products__button__text" }, "Create Order")))));
 };
 exports.CartProducts = CartProducts;
 //# sourceMappingURL=CartProducts.js.map

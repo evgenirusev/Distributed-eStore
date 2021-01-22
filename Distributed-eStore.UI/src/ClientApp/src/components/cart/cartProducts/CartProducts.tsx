@@ -35,8 +35,8 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity
                 <p>Free Returns. Free Repairs For Life.</p>
             </div>
             <hr />
-            <div>
-                <button onClick={ onClick }>Checkout</button>
+            <div className="cart-products__button-container">
+                <button className="cart-products__button" onClick={onClick}><span className="cart-products__button__text">Create Order</span></button>
             </div>
         </div>
     );
