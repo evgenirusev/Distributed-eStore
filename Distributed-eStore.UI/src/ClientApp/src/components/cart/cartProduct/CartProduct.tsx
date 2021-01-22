@@ -32,7 +32,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
                         <strong className="d-block">Color - {color} </strong>
                         <strong className="d-block">Size - {size} </strong>
                     </div>
-                    <div>
+                    <div className="">
                         <p>Quantity:</p>
                         <input type="number" className="cart-product__input" onChange={ onChange } value={ quantity }/>
                     </div>

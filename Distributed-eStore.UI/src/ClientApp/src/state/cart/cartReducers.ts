@@ -28,7 +28,7 @@ export const reducer = (state: ICartState = initialState, incomingAction: ReduxA
             {
                 const { productId } = action;
 
-                Object.assign({}, state, {
+                return Object.assign({}, state, {
                     productIdToCartProductMap: Object.keys(state.productIdToCartProductMap).reduce((result, key) => {
                         if (key !== productId) {
                             result[key] = state.productIdToCartProductMap[key];
@@ -43,7 +43,7 @@ export const reducer = (state: ICartState = initialState, incomingAction: ReduxA
                 const { productId, quantity } = action;
                 const product = state.productIdToCartProductMap[productId];
 
-                if (product && quantity >= 0) {
+                if (product) {
                     return {
                         productIdToCartProductMap: {
                             ...state.productIdToCartProductMap,

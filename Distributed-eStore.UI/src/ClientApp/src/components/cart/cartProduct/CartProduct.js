@@ -33,7 +33,7 @@ var CartProduct = function (_a) {
                     "Size - ",
                     size,
                     " ")),
-            React.createElement("div", null,
+            React.createElement("div", { className: "" },
                 React.createElement("p", null, "Quantity:"),
                 React.createElement("input", { type: "number", className: "cart-product__input", onChange: onChange, value: quantity }))));
 };

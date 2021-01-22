@@ -34,7 +34,7 @@ var reducer = function (state, incomingAction) {
         case cartTypes_1.CartActionTypes.REMOVE_FROM_CART:
             {
                 var productId_1 = action.productId;
-                Object.assign({}, state, {
+                return Object.assign({}, state, {
                     productIdToCartProductMap: Object.keys(state.productIdToCartProductMap).reduce(function (result, key) {
                         if (key !== productId_1) {
                             result[key] = state.productIdToCartProductMap[key];
@@ -47,7 +47,7 @@ var reducer = function (state, incomingAction) {
             {
                 var productId = action.productId, quantity = action.quantity;
                 var product = state.productIdToCartProductMap[productId];
-                if (product && quantity >= 0) {
+                if (product) {
                     return {
                         productIdToCartProductMap: __assign(__assign({}, state.productIdToCartProductMap), (_b = {}, _b[productId] = __assign(__assign({}, state.productIdToCartProductMap[productId]), { quantity: quantity }), _b))
                     };

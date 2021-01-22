@@ -9,6 +9,24 @@ import "./Cart.css";
 
 type CartsProps = IApplicationState & typeof actionCreators;
 
+const isCartEmpty = (shoppingCart: ICartState) => Object.keys(shoppingCart.productIdToCartProductMap).length < 1;
+
+const buildOrder = (shoppingCart: ICartState, user): IOrder => {
+    const orderItems: IOrderItem[] = Object.values(shoppingCart.productIdToCartProductMap)
+        .reduce((orderItems: IOrderItem[], { id, quantity, size }) => {
+            return orderItems.concat({
+                productId: id,
+                size,
+                quantity
+            });
+        }, []);
+
+    return {
+        customerId: user.user.id,
+        orderItems
+    }
+}
+
 const Cart: React.FC<CartsProps> = ({
     removeProductFromCart,
     placeOrder,
@@ -16,37 +34,28 @@ const Cart: React.FC<CartsProps> = ({
     changeQuantity,
     user
 }) => {
-    const isCartEmpty = (shoppingCart: ICartState) => Object.keys(shoppingCart.productIdToCartProductMap).length < 1;
-    const history = useHistory();
-
-    const buildOrder = (): IOrder => {
-        const orderItems: IOrderItem[] = Object.values(cart.productIdToCartProductMap)
-            .reduce((orderItems: IOrderItem[], { id, quantity, size }) => {
-                return orderItems.concat({
-                    productId: id,
-                    size,
-                    quantity
-                });
-            }, []);
-
-        return {
-            customerId: user.user.id,
-            orderItems
-        }
-    }
+    const history = useHistory();   
 
     const onPlaceOrder = () => {
         if (user.isLoggedIn) {
-            placeOrder(buildOrder());
+            placeOrder(buildOrder(cart, user));
         } else {
             history.push("/login");
+        }
+    }
+
+    const onChangeQuantity = (productId: string, quantity: number) => {
+        if (quantity <= 0) {
+            removeProductFromCart(productId);
+        } else {
+            changeQuantity(productId, quantity);
         }
     }
 
     return (
         <section className='cart'>
             {!isCartEmpty(cart)
-                ? <CartProducts cart={cart} changeQuantity={changeQuantity} onPlaceOrder={onPlaceOrder} />
+                ? <CartProducts cart={cart} changeQuantity={onChangeQuantity} onPlaceOrder={onPlaceOrder} />
                 : <><h1 className="cart__message">Your cart is empty</h1><hr/></> }  
         </section>
     );
