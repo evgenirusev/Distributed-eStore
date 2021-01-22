@@ -2,5 +2,10 @@
     background-image: url("https://images.bloomingdalesassets.com/is/image/BcomMedia/media/OmniBMSM_LPBanner_GH_1610375752709.jpg?wid=1170&scl=1");
     width: 100%;
     height: 250px;
-    background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 960px) {
+    .accessories-products-page__top-image-container {
+        display: none;
+    }
 }

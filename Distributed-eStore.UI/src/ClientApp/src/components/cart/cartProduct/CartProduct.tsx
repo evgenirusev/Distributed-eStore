@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
 import { ICartProduct } from '../../../state/cart';
+import "./CartProduct.css"; 
 
 type CartProductProps = {
     cart: ICartProduct,
@@ -21,7 +22,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
             <div className="d-flex justify-content-between">
                     <div>
                         <a href={`/products/${id}`}>
-                            <img src={imageURL} className="product__image"></img>
+                            <img src={imageURL} className="cart-product__image"></img>
                         </a>
                     </div>
                     <div>
@@ -33,7 +34,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
                     </div>
                     <div>
                         <p>Quantity:</p>
-                        <input type="number" onChange={ onChange } value={ quantity }/>
+                        <input type="number" className="cart-product__input" onChange={ onChange } value={ quantity }/>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ var cartActions_1 = require("../../state/cart/cartActions");
 var react_redux_1 = require("react-redux");
 var CartProducts_1 = require("../../components/cart/CartProducts");
 var react_router_dom_1 = require("react-router-dom");
+require("./Cart.css");
 var Cart = function (_a) {
     var removeProductFromCart = _a.removeProductFromCart, placeOrder = _a.placeOrder, cart = _a.cart, changeQuantity = _a.changeQuantity, user = _a.user;
     var isCartEmpty = function (shoppingCart) { return Object.keys(shoppingCart.productIdToCartProductMap).length < 1; };
@@ -34,7 +35,9 @@ var Cart = function (_a) {
     };
     return (React.createElement("section", { className: 'cart' }, !isCartEmpty(cart)
         ? React.createElement(CartProducts_1.CartProducts, { cart: cart, changeQuantity: changeQuantity, onPlaceOrder: onPlaceOrder })
-        : React.createElement("div", { className: "cart__message" }, "Your cart is empty")));
+        : React.createElement(React.Fragment, null,
+            React.createElement("h1", { className: "cart__message" }, "Your cart is empty"),
+            React.createElement("hr", null))));
 };
 var mapStateToProps = function (state) {
     return { user: state.user, cart: state.cart };

@@ -5,6 +5,7 @@ import { IApplicationState } from '../../state/index';
 import { ICartState, IOrder, IOrderItem } from '../../state/cart';
 import { CartProducts } from '../../components/cart/CartProducts';
 import { useHistory } from 'react-router-dom';
+import "./Cart.css";
 
 type CartsProps = IApplicationState & typeof actionCreators;
 
@@ -46,7 +47,7 @@ const Cart: React.FC<CartsProps> = ({
         <section className='cart'>
             {!isCartEmpty(cart)
                 ? <CartProducts cart={cart} changeQuantity={changeQuantity} onPlaceOrder={onPlaceOrder} />
-                : <div className="cart__message">Your cart is empty</div> }  
+                : <><h1 className="cart__message">Your cart is empty</h1><hr/></> }  
         </section>
     );
 };
