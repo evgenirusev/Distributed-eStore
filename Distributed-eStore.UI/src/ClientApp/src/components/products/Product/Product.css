@@ -1,13 +1,15 @@
-﻿.product__image {
-    width: 200px;
-    height: 280px;
-}
-
-.product {
+﻿.product {
     padding: 10px;
+    flex: 1 0 21%;
 }
 
 .product__description {
     display: flex;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 960px) {
+    .product {
+        flex: 1 0 45%;
+    }
 }

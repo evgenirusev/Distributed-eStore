@@ -23,7 +23,7 @@ export const Product: React.FC<ProductProps> = ({
 }) => {
     return <div className="product">
         <Link className="product__link" to={`/products/${id}`}>
-            <img sizes="100vw" src={imageURLs[selectedColorIndex]} className="product__image"></img>
+            <img sizes="100vw" src={imageURLs[selectedColorIndex]} className="product__image w-100"></img>
             <div className="product__description">
                 <p className="product__name"> { name } </p>
                 <p className="product__price"> { price } </p>
