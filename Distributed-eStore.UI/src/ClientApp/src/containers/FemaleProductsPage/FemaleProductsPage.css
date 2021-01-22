@@ -1,7 +1,11 @@
-﻿.female-products-page__top-image-container {
-    background-image: url("https://media.boohoo.com/i/boohooamplience/1901_MAIN_SPLASH_TRANSCEND_DESKTOP_EN?$homesplash_desktop_full$");
+﻿.famale-products-page__top-image-container {
+    background-image: url("https://images.bloomingdalesassets.com/is/image/BcomMedia/media/OmniBMSM_LPBanner_GH_1610375752709.jpg?wid=1170&scl=1");
     width: 100%;
-    height: calc(100vh - 200px);
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 250px;
+}
+
+@media only screen and (max-width: 960px) {
+    .famale-products-page__top-image-container {
+        display: none;
+    }
 }

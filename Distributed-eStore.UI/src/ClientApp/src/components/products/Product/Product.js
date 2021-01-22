@@ -17,7 +17,7 @@ var Product = function (_a) {
                     name,
                     " "),
                 React.createElement("p", { className: "product__price" },
-                    " ",
+                    " $",
                     price,
                     " "))),
         React.createElement("div", { className: "color-switcher" },

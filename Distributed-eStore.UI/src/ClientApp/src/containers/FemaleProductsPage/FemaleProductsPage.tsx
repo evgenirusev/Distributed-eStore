@@ -18,7 +18,7 @@ const FemaleProductsPage: React.FC<FemaleProductsPageProps> = ({
     }, [requestProductsFemale]);
 
     return <div className="female-products-page">
-        <div className="female-products-page__top-image-container"></div>
+        <div className="famale-products-page__top-image-container"></div>
 
         {productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap)
             .filter(product => product.category === currentCategory)} />}

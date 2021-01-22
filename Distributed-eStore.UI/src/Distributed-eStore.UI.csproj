@@ -105,10 +105,6 @@
 	</ItemGroup>
 	
     <ItemGroup>
-      <Folder Include="ClientApp\src\containers\WomensPage\" />
-    </ItemGroup>
-	
-    <ItemGroup>
       <TypeScriptCompile Update="ClientApp\src\containers\AccessoriesProductsPage\AccessoriesProductsPage.tsx">
         <SubType>Code</SubType>
       </TypeScriptCompile>

@@ -23,7 +23,7 @@ var FemaleProductsPage = function (_a) {
         requestProductsFemale();
     }, [requestProductsFemale]);
     return React.createElement("div", { className: "female-products-page" },
-        React.createElement("div", { className: "female-products-page__top-image-container" }),
+        React.createElement("div", { className: "famale-products-page__top-image-container" }),
         productIDsToProductsMap && React.createElement(ProductList_1.ProductList, { products: Object.values(productIDsToProductsMap)
                 .filter(function (product) { return product.category === currentCategory; }) }));
 };
