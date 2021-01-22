@@ -9,6 +9,7 @@ import Logout from './components/user/Logout';
 import HomePage from './containers/HomePage/HomePage';
 import FemaleProductsPage from './containers/FemaleProductsPage/FemaleProductsPage';
 import MaleProductsPage from './containers/MaleProductsPage/MaleProductsPage';
+import AccessoriesProductsPage from './containers/AccessoriesProductsPage/AccessoriesProductsPage';
 
 export default () => (
     <Layout>
@@ -20,5 +21,6 @@ export default () => (
         <Route exact path='/products/:productId' component={ProductView} />
         <Route exact path='/products/womens' component={FemaleProductsPage} />
         <Route exact path='/products/mens' component={MaleProductsPage} />
+        <Route exact path='/products/accessories' component={AccessoriesProductsPage} />
     </Layout>
 );

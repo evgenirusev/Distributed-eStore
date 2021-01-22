@@ -11,6 +11,7 @@ var Logout_1 = require("./components/user/Logout");
 var HomePage_1 = require("./containers/HomePage/HomePage");
 var FemaleProductsPage_1 = require("./containers/FemaleProductsPage/FemaleProductsPage");
 var MaleProductsPage_1 = require("./containers/MaleProductsPage/MaleProductsPage");
+var AccessoriesProductsPage_1 = require("./containers/AccessoriesProductsPage/AccessoriesProductsPage");
 exports.default = (function () { return (React.createElement(Layout_1.default, null,
     React.createElement(react_router_1.Route, { exact: true, path: '/', component: HomePage_1.default }),
     React.createElement(react_router_1.Route, { exact: true, path: '/register', component: Register_1.default }),
@@ -19,5 +20,6 @@ exports.default = (function () { return (React.createElement(Layout_1.default, n
     React.createElement(react_router_1.Route, { exact: true, path: '/cart', component: Cart_1.default }),
     React.createElement(react_router_1.Route, { exact: true, path: '/products/:productId', component: ProductView_1.default }),
     React.createElement(react_router_1.Route, { exact: true, path: '/products/womens', component: FemaleProductsPage_1.default }),
-    React.createElement(react_router_1.Route, { exact: true, path: '/products/mens', component: MaleProductsPage_1.default }))); });
+    React.createElement(react_router_1.Route, { exact: true, path: '/products/mens', component: MaleProductsPage_1.default }),
+    React.createElement(react_router_1.Route, { exact: true, path: '/products/accessories', component: AccessoriesProductsPage_1.default }))); });
 //# sourceMappingURL=App.js.map
