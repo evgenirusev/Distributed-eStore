@@ -1,0 +1,7 @@
+﻿.female-products-page__top-image-container {
+    background-image: url("https://media.boohoo.com/i/boohooamplience/1901_MAIN_SPLASH_TRANSCEND_DESKTOP_EN?$homesplash_desktop_full$");
+    width: 100%;
+    height: calc(100vh - 200px);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

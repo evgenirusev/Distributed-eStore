@@ -13,7 +13,7 @@ const HomePage: React.FC<HomePageProps> = ({
     currentCategory
 }) => {
     return <div className="home-page">
-        <div className="top-image-container">
+        <div className="home-page__top-image-container">
             <a href="#" className="home-page__link">
                 <h1 className="home-page__text">Just Launched <br /> Summer Products</h1>
                 <h3 className="home-page__shop-now">SHOP NOW</h3>
@@ -25,7 +25,7 @@ const HomePage: React.FC<HomePageProps> = ({
         {productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap)
             .filter(product => product.category === currentCategory)} />}
 
-        <div className="bottom-image-container">
+        <div className="home-page__bottom-image-container">
             <a href="#" className="home-page__link">
                 <div className="tide-text-container">
                     <h5 className="tide-text-container__text">

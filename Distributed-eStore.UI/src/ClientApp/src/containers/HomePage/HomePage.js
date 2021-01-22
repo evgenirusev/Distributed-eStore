@@ -20,7 +20,7 @@ require("./HomePage.css");
 var HomePage = function (_a) {
     var productIDsToProductsMap = _a.productIDsToProductsMap, currentCategory = _a.currentCategory;
     return React.createElement("div", { className: "home-page" },
-        React.createElement("div", { className: "top-image-container" },
+        React.createElement("div", { className: "home-page__top-image-container" },
             React.createElement("a", { href: "#", className: "home-page__link" },
                 React.createElement("h1", { className: "home-page__text" },
                     "Just Launched ",
@@ -30,7 +30,7 @@ var HomePage = function (_a) {
         React.createElement(ProductFilter_1.ProductFilter, null),
         productIDsToProductsMap && React.createElement(ProductList_1.ProductList, { products: Object.values(productIDsToProductsMap)
                 .filter(function (product) { return product.category === currentCategory; }) }),
-        React.createElement("div", { className: "bottom-image-container" },
+        React.createElement("div", { className: "home-page__bottom-image-container" },
             React.createElement("a", { href: "#", className: "home-page__link" },
                 React.createElement("div", { className: "tide-text-container" },
                     React.createElement("h5", { className: "tide-text-container__text" },

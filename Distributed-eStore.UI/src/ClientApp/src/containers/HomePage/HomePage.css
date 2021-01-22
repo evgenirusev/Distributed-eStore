@@ -2,13 +2,13 @@
     text-decoration: none;
 }
 
-.top-image-container {
+.home-page__top-image-container {
     background-image: url("https://i.ibb.co/8xntqgb/Hero-Banner-Template-Reusables-Sale-8c7da083-67c2-4043-b6af-49ed3be027e8-2000x.jpg");
     width: 100%;
     height: calc(100vh - 70px);
 }
 
-.bottom-image-container {
+.home-page__bottom-image-container {
     background-image: url("https://i.ibb.co/CJvn0dw/waves.jpg");
     width: 100%;
     height: calc(100vh - 70px);
