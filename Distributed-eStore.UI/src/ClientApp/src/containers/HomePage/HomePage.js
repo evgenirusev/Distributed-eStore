@@ -13,6 +13,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_redux_1 = require("react-redux");
+var BottomBanner_1 = require("../../components/BottomBanner/BottomBanner");
 var ProductList_1 = require("../../components/ProductList/ProductList");
 var products_1 = require("../../state/products");
 var ProductFilter_1 = require("../ProductFilter/ProductFilter");
@@ -30,26 +31,7 @@ var HomePage = function (_a) {
         React.createElement(ProductFilter_1.ProductFilter, null),
         productIDsToProductsMap && React.createElement(ProductList_1.ProductList, { products: Object.values(productIDsToProductsMap)
                 .filter(function (product) { return product.category === currentCategory; }) }),
-        React.createElement("div", { className: "home-page__bottom-image-container" },
-            React.createElement("a", { href: "#", className: "home-page__link" },
-                React.createElement("div", { className: "tide-text-container" },
-                    React.createElement("h5", { className: "tide-text-container__text" },
-                        "Every day, 38,356,164 pounds of trash are dumped into our oceans.",
-                        React.createElement("br", null),
-                        "Let's turn the tide."),
-                    React.createElement("div", { className: "row" },
-                        React.createElement("div", { className: "col-md-4 tide-text-container__section" },
-                            React.createElement("span", { className: "tide-text-container__title" }, "We Quit"),
-                            React.createElement("br", null),
-                            React.createElement("span", { className: "tide-text-container__description" }, "Our plan to remove all single-use plastics from our supply chain.")),
-                        React.createElement("div", { className: "col-md-4 tide-text-container__section" },
-                            React.createElement("span", { className: "tide-text-container__title" }, "Get Dirty & Do Good"),
-                            React.createElement("br", null),
-                            React.createElement("span", { className: "tide-text-container__description" }, "Join us at an upcoming cleanup")),
-                        React.createElement("div", { className: "col-md-4 tide-text-container__section" },
-                            React.createElement("span", { className: "tide-text-container__title" }, "Let's turn the tide"),
-                            React.createElement("br", null),
-                            React.createElement("span", { className: "tide-text-container__description" }, "Our DIY Cleanup Kit includes all the tools you need to organize your own cleanup anytime.")))))));
+        React.createElement(BottomBanner_1.BottomBanner, null));
 };
 var mapStateToProps = function (state) {
     return __assign({}, state.products);

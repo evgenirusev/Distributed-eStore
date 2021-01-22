@@ -57,6 +57,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\components\BottomBanner\BottomBanner.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\cart\cartProduct\CartProduct.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\Footer\Footer.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\constants\orders.ts" />

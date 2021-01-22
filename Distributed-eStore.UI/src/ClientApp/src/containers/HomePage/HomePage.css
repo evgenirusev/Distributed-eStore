@@ -8,14 +8,6 @@
     height: calc(100vh - 70px);
 }
 
-.home-page__bottom-image-container {
-    background-image: url("https://i.ibb.co/CJvn0dw/waves.jpg");
-    width: 100%;
-    height: calc(100vh - 70px);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .home-page__text {
     width: 100%;
     text-align: center;
@@ -40,51 +32,4 @@
     line-height: 1.1;
     color: #FFFFFF;
     text-decoration: underline;
-}
-
-.tide-text-container {
-    padding-left: 90px;
-    padding-right: 90px;
-    padding-top: 90px;
-    width: 100%;
-    margin-bottom: -73px;
-    font-family: "abril-titling",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    text-transform: capitalize;
-    color: #FFFFFF;
-}
-
-.tide-text-container__text {
-    font-weight: bold;
-    text-transform: capitalize;
-    line-height: 1.1;
-}
-
-.tide-text-container__text {
-    font-size: 4rem;
-}
-
-.tide-text-container__title {
-    font-weight: bold;
-}
-
-@media only screen and (max-width: 850px) {
-    .tide-text-container {
-        padding: 50px;
-    }
-}
-
-@media only screen and (max-width: 615px) {
-    .tide-text-container {
-        padding: 20px;
-        margin-bottom: -73px;
-    }
-
-    .tide-text-container__section {
-        padding-top: 30px;
-        font-size: 1rem;
-    }
-
-    .tide-text-container__text {
-        font-size: 2rem;
-    }
 }
