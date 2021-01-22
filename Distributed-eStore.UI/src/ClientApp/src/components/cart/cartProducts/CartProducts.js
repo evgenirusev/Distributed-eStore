@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CartProducts = void 0;
 var React = require("react");
-var CartProduct_1 = require("../../components/cart/cartProduct/CartProduct");
+var CartProduct_1 = require("../../../components/cart/cartProduct/CartProduct");
+require("./CartProducts.css");
 var CartProducts = function (_a) {
     var cart = _a.cart, changeQuantity = _a.changeQuantity, onPlaceOrder = _a.onPlaceOrder;
     var productIdToCartProductMap = cart.productIdToCartProductMap;
@@ -12,13 +13,13 @@ var CartProducts = function (_a) {
     var onClick = function (event) {
         onPlaceOrder();
     };
-    return (React.createElement(React.Fragment, null,
+    return (React.createElement("div", { className: "cart-products" },
         Object.values(productIdToCartProductMap).map(function (cartProduct, index) {
             return React.createElement(React.Fragment, { key: "cart-product-" + index },
                 React.createElement(CartProduct_1.CartProduct, { cart: cartProduct, onQuantityChange: changeQuantity }),
                 React.createElement("hr", null));
         }),
-        React.createElement("div", null,
+        React.createElement("div", { className: "cart-products__description" },
             React.createElement("strong", { className: "d-block" },
                 "Sub-total (inc. VAT) = $",
                 totalCost),

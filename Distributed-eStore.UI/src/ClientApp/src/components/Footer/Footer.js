@@ -67,7 +67,7 @@ var Footer = function () {
                                     React.createElement("i", { className: "fa fa-linkedin" })))))),
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-12 copy" },
-                        React.createElement("p", { className: "text-center" }, "\u00A9 Copyright 2018 - Company Name.  All rights reserved."))))));
+                        React.createElement("p", { className: "text-center" }, "\u00A9 Copyright 2022 - Distributed Store.  All rights reserved."))))));
 };
 exports.Footer = Footer;
 //# sourceMappingURL=Footer.js.map

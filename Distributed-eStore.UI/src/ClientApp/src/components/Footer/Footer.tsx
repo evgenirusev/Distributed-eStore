@@ -57,11 +57,9 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-12 copy">
-                        <p className="text-center">&copy; Copyright 2018 - Company Name.  All rights reserved.</p>
+                        <p className="text-center">&copy; Copyright 2022 - Distributed Store.  All rights reserved.</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </footer>

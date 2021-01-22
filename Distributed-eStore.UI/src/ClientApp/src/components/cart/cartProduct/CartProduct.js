@@ -12,10 +12,10 @@ var CartProduct = function (_a) {
     };
     return React.createElement("div", { className: "cart-product" },
         React.createElement("div", { className: "d-flex justify-content-between" },
-            React.createElement("div", null,
+            React.createElement("div", { className: "cart-product__item" },
                 React.createElement("a", { href: "/products/" + id },
                     React.createElement("img", { src: imageURL, className: "cart-product__image" }))),
-            React.createElement("div", null,
+            React.createElement("div", { className: "cart-product__item" },
                 React.createElement("p", null, "Item"),
                 React.createElement("i", { className: "cart-product__name text-danger" },
                     " ",
@@ -33,7 +33,7 @@ var CartProduct = function (_a) {
                     "Size - ",
                     size,
                     " ")),
-            React.createElement("div", { className: "" },
+            React.createElement("div", { className: "cart-product__item" },
                 React.createElement("p", null, "Quantity:"),
                 React.createElement("input", { type: "number", className: "cart-product__input", onChange: onChange, value: quantity }))));
 };

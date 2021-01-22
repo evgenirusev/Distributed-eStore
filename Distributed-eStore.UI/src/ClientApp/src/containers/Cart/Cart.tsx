@@ -3,7 +3,7 @@ import { actionCreators } from '../../state/cart/cartActions';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../state/index';
 import { ICartState, IOrder, IOrderItem } from '../../state/cart';
-import { CartProducts } from '../../components/cart/CartProducts';
+import { CartProducts } from '../../components/cart/cartProducts/CartProducts';
 import { useHistory } from 'react-router-dom';
 import "./Cart.css";
 

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var cartActions_1 = require("../../state/cart/cartActions");
 var react_redux_1 = require("react-redux");
-var CartProducts_1 = require("../../components/cart/CartProducts");
+var CartProducts_1 = require("../../components/cart/cartProducts/CartProducts");
 var react_router_dom_1 = require("react-router-dom");
 require("./Cart.css");
 var isCartEmpty = function (shoppingCart) { return Object.keys(shoppingCart.productIdToCartProductMap).length < 1; };

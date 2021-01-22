@@ -20,19 +20,19 @@ export const CartProduct: React.FC<CartProductProps> = ({
 
     return <div className="cart-product">
             <div className="d-flex justify-content-between">
-                    <div>
+                    <div className="cart-product__item">
                         <a href={`/products/${id}`}>
                             <img src={imageURL} className="cart-product__image"></img>
                         </a>
                     </div>
-                    <div>
+                    <div className="cart-product__item">
                         <p>Item</p>
                         <i className="cart-product__name text-danger"> {name} </i>
                         <strong className="cart-product__price d-block"> ${price} </strong>
                         <strong className="d-block">Color - {color} </strong>
                         <strong className="d-block">Size - {size} </strong>
-                    </div>
-                    <div className="">
+                   </div>
+                   <div className="cart-product__item">
                         <p>Quantity:</p>
                         <input type="number" className="cart-product__input" onChange={ onChange } value={ quantity }/>
                     </div>
