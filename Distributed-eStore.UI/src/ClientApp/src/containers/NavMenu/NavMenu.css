@@ -21,3 +21,20 @@ html { font-size: 14px; }
     /* technical debt */
     padding: 0px!important;
 }
+ 
+.promo-bar {
+    background-color: #062233;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    padding: 7px;
+}
+
+.promo-bar__text {
+    font-family: "abril-titling",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.33;
+    letter-spacing: 0.7px;
+    color: #fff;
+}

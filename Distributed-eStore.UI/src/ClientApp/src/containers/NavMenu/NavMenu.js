@@ -36,6 +36,10 @@ var NavMenuComponent = /** @class */ (function (_super) {
     }
     NavMenuComponent.prototype.render = function () {
         return (React.createElement("header", null,
+            React.createElement("div", { className: "promo-bar" },
+                React.createElement("a", { href: "#" },
+                    React.createElement("span", { className: "promo-bar__text" },
+                        React.createElement("strong", null, "End-of-Season Sale up to 60% off Sitewide")))),
             React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow navbar", light: true },
                 React.createElement(reactstrap_1.Container, null,
                     React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/" },

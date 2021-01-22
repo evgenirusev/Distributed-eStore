@@ -17,6 +17,13 @@ class NavMenuComponent extends React.PureComponent<NavMenuProps, { isOpen: boole
     public render() {
         return (
             <header>
+                <div className="promo-bar">
+                    <a href="#">
+                        <span className="promo-bar__text"><
+                            strong>End-of-Season Sale up to 60% off Sitewide</strong>
+                        </span>
+                    </a>
+                </div>
                 <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow navbar" light>
                     <Container>
                         <NavbarBrand tag={Link} to="/"><img className="navbar-image" src="https://i.ibb.co/7zgT8qW/final.png"></img></NavbarBrand>
