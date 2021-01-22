@@ -1,4 +1,11 @@
-﻿.product-view__name {
+﻿.product-view {
+    max-width: 1200px;
+    /* technical debt - hack */
+    margin: auto!important;
+    padding: 50px;
+}
+
+.product-view__name {
     margin-bottom: 7px;
     font-family: "abril-titling", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1.42rem;
@@ -32,4 +39,47 @@
     color: #fff;
     background: #062233;
     transition: background .2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.product-view__button-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.product-view__button {
+    border-radius: 4px;
+    background-color: #062233;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.product-view__button__text {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.product-view__button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.product-view__button:hover span {
+    padding-right: 25px;
+}
+
+.product-view__button:hover span:after {
+    opacity: 1;
+    right: 0;
 }

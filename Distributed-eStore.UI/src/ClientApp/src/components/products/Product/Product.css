@@ -8,6 +8,21 @@
     justify-content: space-between;
 }
 
+.product__name {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 0;
+    color: black;
+}
+
+.product__price {
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    color: black;
+}
+
 @media only screen and (max-width: 960px) {
     .product {
         flex: 1 0 45%;

@@ -63,9 +63,10 @@ var ProductView = function (_a) {
                     sizesList.map(function (size, index) {
                         return React.createElement("button", { type: "button", className: "product-view__value-selector " + (size === selectedSize && 'product-view__value-selector--selected'), onClick: function () { selectSizeIndex(size); }, key: "size-" + index }, size);
                     })),
-                React.createElement("button", { className: "product-view__add-to-cart-button", onClick: onAddToCart }, "ADD TO CART"),
+                React.createElement("div", { className: "product-view__button-container" },
+                    React.createElement("button", { className: "cart-products__button", onClick: onAddToCart }, "ADD TO CART")),
                 React.createElement("div", { className: "product-view__details" },
-                    React.createElement("p", null, "Details"),
+                    React.createElement("p", null, "Details:"),
                     React.createElement("p", null, description)))));
     }
     return React.createElement(React.Fragment, null);

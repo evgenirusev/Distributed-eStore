@@ -77,9 +77,11 @@ const ProductView: React.FC<ProductViewProps> = ({
                                 >{size}</button>
                             )}
                         </div>
-                        <button className="product-view__add-to-cart-button" onClick={onAddToCart}>ADD TO CART</button>
+                        <div className="product-view__button-container">
+                            <button className="cart-products__button" onClick={onAddToCart}>ADD TO CART</button>
+                        </div>
                         <div className="product-view__details">
-                            <p>Details</p>
+                            <p>Details:</p>
                             <p>{description}</p>
                         </div>
                     </div>
