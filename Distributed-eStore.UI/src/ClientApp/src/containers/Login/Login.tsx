@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { userActionCreators } from '../../state/user/userActions';
 import { IUserState } from '../../state/user';
 import { IApplicationState } from '../../state';
+import "./Login.css";
 
 type LoginPageProps = typeof userActionCreators & {
     userState: IUserState
@@ -49,31 +50,35 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
 
         return this.props.userState.isLoggedIn
         ? (<Redirect to="/" />)
-        : (<div className="col-md-6 col-md-offset-3">
-                <h2>Login</h2>
-                <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !email ? ' has-error' : '')}>
-                        <label htmlFor="email">Email</label>
-                        <input type="text" className="form-control" name="email" value={email} onChange={this.handleChange} />
-                        {submitted && !email &&
-                            <div className="help-block">Email is required</div>
-                        }
+            : (<div className="container login">
+                <div className="row">
+                    <div className="col-md-8 login__container">
+                        <h2>Login</h2>
+                        <form name="form" onSubmit={this.handleSubmit}>
+                            <div className={'form-group' + (submitted && !email ? ' has-error' : '')}>
+                                <label htmlFor="email">Email</label>
+                                <input type="text" className="form-control" name="email" value={email} onChange={this.handleChange} />
+                                {submitted && !email &&
+                                    <div className="help-block">Email is required</div>
+                                }
+                            </div>
+                            <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
+                                <label htmlFor="password">Password</label>
+                                <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
+                                {submitted && !password &&
+                                    <div className="help-block">Password is required</div>
+                                }
+                            </div>
+                            <div className="form-group">
+                                <button className="btn btn-primary">Login</button>
+                                <Link to="/register" className="btn btn-link">Register</Link>
+                            </div>
+                        </form>
                     </div>
-                    <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
-                        {submitted && !password &&
-                            <div className="help-block">Password is required</div>
-                        }
-                    </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary">Login</button>
-                        <Link to="/register" className="btn btn-link">Register</Link>
-                    </div>
-                </form>
+                </div>
             </div>
         );
     }
 }
 
-export default connect((state: IApplicationState) => { return { userState: state.user } }, userActionCreators)(LoginPage);
+export default connect((state: IApplicationState) => { return { userState: state.user } }, userActionCreators)(LoginPage as any);

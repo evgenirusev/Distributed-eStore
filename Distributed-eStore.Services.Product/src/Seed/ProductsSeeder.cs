@@ -92,14 +92,14 @@ namespace DistributedEStore.Services.Product.Seed
                     new string[] { "https://i.ibb.co/VQBf0wz/F20lifestyle594-large.jpg", "https://i.ibb.co/Xsh82jQ/holidaylifestyle-web410-x500.jpg"},
                     new string[] { "#2D2C33", "#868588" }),
 
-                new Products.DomainEntities.Product(
-                    new System.Guid("b6665d4d-5692-48e5-b65c-010ee05cfede"),
-                    "Women's Eco-Fleece Jogger Pants",
-                    "The ultimate sweat pant for ultimate comfort (aka your daily work-from-home uniform). Made from signature Eco-Fleece, this pant features tailored pockets and a tapered leg opening.",
-                    90,
-                    "female",
-                    new string[] { "https://i.ibb.co/0jGjXJ1/F20lifestyle1082-large.jpg", "https://i.ibb.co/928cGsz/holidaylifestyle-web159-large.jpg"},
-                    new string[] { "#E40B27", "#C29681" }),
+                //new Products.DomainEntities.Product(
+                //    new System.Guid("b6665d4d-5692-48e5-b65c-010ee05cfede"),
+                //    "Women's Eco-Fleece Jogger Pants",
+                //    "The ultimate sweat pant for ultimate comfort (aka your daily work-from-home uniform). Made from signature Eco-Fleece, this pant features tailored pockets and a tapered leg opening.",
+                //    90,
+                //    "female",
+                //    new string[] { "https://i.ibb.co/0jGjXJ1/F20lifestyle1082-large.jpg", "https://i.ibb.co/928cGsz/holidaylifestyle-web159-large.jpg"},
+                //    new string[] { "#E40B27", "#C29681" }),
 
                 new Products.DomainEntities.Product(
                     new System.Guid("be143681-5563-46ed-9623-1b6a45e8898c"),

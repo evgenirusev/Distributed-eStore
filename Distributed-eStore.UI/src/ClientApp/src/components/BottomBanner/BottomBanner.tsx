@@ -3,7 +3,6 @@ import './BottomBanner.css';
 
 export const BottomBanner: React.FC = () => {
     return <div className="bottom-image-container">
-        <a href="#" className="bottom-image-container__link">
             <div className="tide-text-container">
                 <h5 className="tide-text-container__text">
                     Every day, 38,356,164 pounds of trash are dumped into our oceans.
@@ -32,6 +31,5 @@ export const BottomBanner: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </a>
     </div>
 };

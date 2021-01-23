@@ -28,6 +28,7 @@ var React = require("react");
 var react_router_dom_1 = require("react-router-dom");
 var react_redux_1 = require("react-redux");
 var userActions_1 = require("../../state/user/userActions");
+require("./Login.css");
 var LoginPage = /** @class */ (function (_super) {
     __extends(LoginPage, _super);
     function LoginPage(props) {
@@ -58,22 +59,24 @@ var LoginPage = /** @class */ (function (_super) {
         var _a = this.state, email = _a.email, password = _a.password, submitted = _a.submitted;
         return this.props.userState.isLoggedIn
             ? (React.createElement(react_router_dom_1.Redirect, { to: "/" }))
-            : (React.createElement("div", { className: "col-md-6 col-md-offset-3" },
-                React.createElement("h2", null, "Login"),
-                React.createElement("form", { name: "form", onSubmit: this.handleSubmit },
-                    React.createElement("div", { className: 'form-group' + (submitted && !email ? ' has-error' : '') },
-                        React.createElement("label", { htmlFor: "email" }, "Email"),
-                        React.createElement("input", { type: "text", className: "form-control", name: "email", value: email, onChange: this.handleChange }),
-                        submitted && !email &&
-                            React.createElement("div", { className: "help-block" }, "Email is required")),
-                    React.createElement("div", { className: 'form-group' + (submitted && !password ? ' has-error' : '') },
-                        React.createElement("label", { htmlFor: "password" }, "Password"),
-                        React.createElement("input", { type: "password", className: "form-control", name: "password", value: password, onChange: this.handleChange }),
-                        submitted && !password &&
-                            React.createElement("div", { className: "help-block" }, "Password is required")),
-                    React.createElement("div", { className: "form-group" },
-                        React.createElement("button", { className: "btn btn-primary" }, "Login"),
-                        React.createElement(react_router_dom_1.Link, { to: "/register", className: "btn btn-link" }, "Register")))));
+            : (React.createElement("div", { className: "container login" },
+                React.createElement("div", { className: "row" },
+                    React.createElement("div", { className: "col-md-8 login__container" },
+                        React.createElement("h2", null, "Login"),
+                        React.createElement("form", { name: "form", onSubmit: this.handleSubmit },
+                            React.createElement("div", { className: 'form-group' + (submitted && !email ? ' has-error' : '') },
+                                React.createElement("label", { htmlFor: "email" }, "Email"),
+                                React.createElement("input", { type: "text", className: "form-control", name: "email", value: email, onChange: this.handleChange }),
+                                submitted && !email &&
+                                    React.createElement("div", { className: "help-block" }, "Email is required")),
+                            React.createElement("div", { className: 'form-group' + (submitted && !password ? ' has-error' : '') },
+                                React.createElement("label", { htmlFor: "password" }, "Password"),
+                                React.createElement("input", { type: "password", className: "form-control", name: "password", value: password, onChange: this.handleChange }),
+                                submitted && !password &&
+                                    React.createElement("div", { className: "help-block" }, "Password is required")),
+                            React.createElement("div", { className: "form-group" },
+                                React.createElement("button", { className: "btn btn-primary" }, "Login"),
+                                React.createElement(react_router_dom_1.Link, { to: "/register", className: "btn btn-link" }, "Register")))))));
     };
     return LoginPage;
 }(React.Component));
