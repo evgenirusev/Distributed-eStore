@@ -10,6 +10,7 @@ import HomePage from './containers/HomePage/HomePage';
 import FemaleProductsPage from './containers/FemaleProductsPage/FemaleProductsPage';
 import MaleProductsPage from './containers/MaleProductsPage/MaleProductsPage';
 import AccessoriesProductsPage from './containers/AccessoriesProductsPage/AccessoriesProductsPage';
+import { OrderCreatedPage } from './components/OrderCreatedPage/OrderCreatedPage';
 
 export default () => (
     <Layout>
@@ -22,5 +23,6 @@ export default () => (
         <Route exact path='/products/womens' component={FemaleProductsPage} />
         <Route exact path='/products/mens' component={MaleProductsPage} />
         <Route exact path='/products/accessories' component={AccessoriesProductsPage} />
+        <Route exact path='/orders/success' component={OrderCreatedPage} />
     </Layout>
 );
