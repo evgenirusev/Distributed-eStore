@@ -28,6 +28,7 @@ var Cart = function (_a) {
     var onPlaceOrder = function () {
         if (user.isLoggedIn) {
             placeOrder(buildOrder(cart, user));
+            history.push("/orders/success");
         }
         else {
             history.push("/login");

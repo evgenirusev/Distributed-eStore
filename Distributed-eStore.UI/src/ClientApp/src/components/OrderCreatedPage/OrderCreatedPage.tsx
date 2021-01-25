@@ -1,14 +1,12 @@
 ﻿import * as React from 'react';
-import './OrderCreatedPage';
 
 export const OrderCreatedPage: React.FC = () => {
-    return (
-        <div className="card">
-            <div className="cart__checkmark-container">
-                <i className="checkmark">✓</i>
-            </div>
-            <h1>Success</h1>
-            <p>We received your purchase request;<br /> we'll be in touch shortly!</p>
+    return (<div className="container">
+        <div className="text-center">
+            <br /><br /> <h2 style={{ color:"#0fad00" }}>Success</h2>
+                <h4>Your order was created.</h4>
+                <a href="/" className="btn btn-success">Browse More Products</a>
         </div>
+    </div>
     );
 };

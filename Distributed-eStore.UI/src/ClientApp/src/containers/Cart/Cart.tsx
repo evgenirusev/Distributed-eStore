@@ -39,6 +39,7 @@ const Cart: React.FC<CartsProps> = ({
     const onPlaceOrder = () => {
         if (user.isLoggedIn) {
             placeOrder(buildOrder(cart, user));
+            history.push("/orders/success");
         } else {
             history.push("/login");
         }
