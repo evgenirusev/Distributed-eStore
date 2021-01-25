@@ -52,10 +52,12 @@ exports.actionCreators = {
             productId: productId
         });
     }; },
-    removeAllProductsFromCart: function (productId) { return function (dispatch, getState) {
-        dispatch({
-            type: _1.CartActionTypes.REMOVE_FROM_CART,
-            productId: productId
+    removeAllProductsFromCart: function () { return function (dispatch, getState) {
+        Object.keys(getState().cart.productIdToCartProductMap).forEach(function (productId) {
+            dispatch({
+                type: _1.CartActionTypes.REMOVE_FROM_CART,
+                productId: productId
+            });
         });
     }; },
     changeQuantity: function (productId, quantity) { return function (dispatch, getState) {

@@ -32,14 +32,15 @@ const Cart: React.FC<CartsProps> = ({
     placeOrder,
     cart,
     changeQuantity,
-    user
+    user,
+    removeAllProductsFromCart
 }) => {
     const history = useHistory();   
 
     const onPlaceOrder = () => {
         if (user.isLoggedIn) {
             placeOrder(buildOrder(cart, user));
-
+            removeAllProductsFromCart();
             history.push("/orders/success");
         } else {
             history.push("/login");
