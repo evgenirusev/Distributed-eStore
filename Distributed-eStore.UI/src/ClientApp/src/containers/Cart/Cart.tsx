@@ -11,7 +11,7 @@ type CartsProps = IApplicationState & typeof actionCreators;
 
 const isCartEmpty = (shoppingCart: ICartState) => Object.keys(shoppingCart.productIdToCartProductMap).length < 1;
 
-const buildOrder = (shoppingCart: ICartState, user): IOrder => {
+const buildOrder = (shoppingCart: ICartState, user: any): IOrder => {
     const orderItems: IOrderItem[] = Object.values(shoppingCart.productIdToCartProductMap)
         .reduce((orderItems: IOrderItem[], { id, quantity, size }) => {
             return orderItems.concat({
@@ -39,6 +39,7 @@ const Cart: React.FC<CartsProps> = ({
     const onPlaceOrder = () => {
         if (user.isLoggedIn) {
             placeOrder(buildOrder(cart, user));
+
             history.push("/orders/success");
         } else {
             history.push("/login");

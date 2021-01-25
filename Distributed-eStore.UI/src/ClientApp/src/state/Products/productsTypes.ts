@@ -21,5 +21,5 @@ export enum ProductsActionTypes {
 
 export interface IProductsListState {
     productIDsToProductsMap: Record<string, IProduct>;
-    currentCategory: ProductCategories;
+    currentCategory: ProductCategories | null;
 };

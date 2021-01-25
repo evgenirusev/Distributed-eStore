@@ -16,6 +16,14 @@ export const actionCreators = {
             productId
         });
     },
+    removeAllProductsFromCart: (): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        Object.keys(getState().cart.productIdToCartProductMap).forEach(productId => {
+            dispatch({
+                type: CartActionTypes.REMOVE_FROM_CART,
+                productId
+            });
+        });
+    },
     changeQuantity: (productId: string, quantity: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         dispatch({
             type: CartActionTypes.CHANGE_QUANTITY,
