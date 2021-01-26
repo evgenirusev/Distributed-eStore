@@ -31,7 +31,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - RABBIT_HOSTNAME=rabbitmq
     ports:
       - '5002:80'
     networks:
