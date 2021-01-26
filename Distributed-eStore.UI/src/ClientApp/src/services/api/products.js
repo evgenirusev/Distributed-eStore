@@ -4,7 +4,7 @@ exports.getProductById = exports.getProductsAccessories = exports.getProductsMal
 var constants_1 = require("../../constants");
 var axios_1 = require("axios");
 var requestProducts = function (queryParams) {
-    var url = constants_1.PRODUCTS_URL + "?";
+    var url = constants_1.localhostUrl + "/" + constants_1.PRODUCTS_URL + "?";
     if (queryParams) {
         Object.keys(queryParams).forEach(function (key) {
             url = url.concat(key + "=" + queryParams[key]);

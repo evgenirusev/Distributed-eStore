@@ -5,7 +5,7 @@ var axios_1 = require("axios");
 var constants_1 = require("../../constants");
 var userKey = "user";
 var register = function (firstName, lastName, email, password, role) {
-    return axios_1.default.post(constants_1.registerUrl, {
+    return axios_1.default.post(constants_1.localhostUrl + "/" + constants_1.registerUrl, {
         firstName: firstName,
         lastName: lastName,
         email: email,

@@ -1,11 +1,11 @@
 ﻿import axios, { AxiosResponse } from "axios";
-import { loginUrl, registerUrl } from "../../constants";
+import { loginUrl, registerUrl, localhostUrl } from "../../constants";
 import { IUser } from "../../state/user";
 
 const userKey = "user";
 
 export const register = (firstName: string, lastName: string, email: string, password: string, role: string): Promise<AxiosResponse> => {
-    return axios.post(`host.docker.internal/${registerUrl}`, {
+    return axios.post(`${localhostUrl}/${registerUrl}`, {
         firstName,
         lastName,
         email,

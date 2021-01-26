@@ -8,7 +8,7 @@ var createOrder = function (order) {
     if (userData) {
         var parsedUserData = JSON.parse(userData);
         if (parsedUserData["accessToken"]) {
-            return axios_1.default.post(constants_1.CREATE_ORDER_URL, order, {
+            return axios_1.default.post(constants_1.localhostUrl + "/" + constants_1.CREATE_ORDER_URL, order, {
                 headers: { Authorization: "Bearer " + parsedUserData["accessToken"] }
             });
         }
