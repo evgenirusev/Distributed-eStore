@@ -47,6 +47,17 @@ services:
       - '5005:80'
     networks:
      - distributed-estore
+     
+  order-service:
+    image: distributed.estore.ui
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - '44310:80'
+    networks:
+     - distributed-estore
 
 networks:
   distributed-estore:
