@@ -10,7 +10,7 @@ export const createOrder = (order: IOrder): Promise<AxiosResponse> => {
         const parsedUserData: IUser = JSON.parse(userData);
 
         if (parsedUserData["accessToken"]) {
-            return axios.post(CREATE_ORDER_URL, order, {
+            return axios.post(`host.docker.internal/${CREATE_ORDER_URL}`, order, {
                 headers: { Authorization: `Bearer ${parsedUserData["accessToken"]}` }
             });
         }

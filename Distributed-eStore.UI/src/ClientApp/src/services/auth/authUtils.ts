@@ -5,7 +5,7 @@ import { IUser } from "../../state/user";
 const userKey = "user";
 
 export const register = (firstName: string, lastName: string, email: string, password: string, role: string): Promise<AxiosResponse> => {
-    return axios.post(registerUrl, {
+    return axios.post(`host.docker.internal/${registerUrl}`, {
         firstName,
         lastName,
         email,
