@@ -6,7 +6,6 @@ using DistributedEStore.Common.Consul;
 using DistributedEStore.Common.Dispatchers;
 using DistributedEStore.Common.Mongo;
 using DistributedEStore.Common.Mvc;
-using DistributedEStore.Common.RabbitMq;
 using DistributedEStore.Services.Identity.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -52,7 +51,6 @@ namespace DistributedEStore.Services.Identity
             builder.AddMongo();
             builder.AddMongoRepository<RefreshToken>("RefreshTokens");
             builder.AddMongoRepository<User>("Users");
-            builder.AddRabbitMq();
             builder.AddDispatchers();
             builder.RegisterType<PasswordHasher<User>>().As<IPasswordHasher<User>>();
         }
@@ -65,7 +63,6 @@ namespace DistributedEStore.Services.Identity
             app.UseErrorHandler();
             app.UseAuthentication();
             app.UseServiceId();
-            app.UseRabbitMq();
             // app.UseAccessTokenValidator();
 
             var consulServiceId = app.UseConsul();
