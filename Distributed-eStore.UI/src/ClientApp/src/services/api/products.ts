@@ -3,7 +3,7 @@ import { IProduct } from "../../state/products/"
 import axios, { AxiosResponse } from "axios";
 
 export const requestProducts = (queryParams?: Record<string, string>): Promise<AxiosResponse<IProduct[]>> => {
-    let url = `${PRODUCTS_URL}?`;
+    let url = `host.docker.internal/${PRODUCTS_URL}?`;
 
     if (queryParams) {
         Object.keys(queryParams).forEach(key => {
