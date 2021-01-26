@@ -1,15 +1,20 @@
 ﻿import { CREATE_ORDER_URL } from "../../constants";
 import axios, { AxiosResponse } from "axios";
 import { IOrder } from "../../state/cart";
+import { IUser } from "../../state/user";
 
 export const createOrder = (order: IOrder): Promise<AxiosResponse> => {
-    const userData = localStorage.getItem("user");
+    const userData: string | null = localStorage.getItem("user");
 
-    if (userData && JSON.parse(userData)["accessToken"]) {
-        return axios.post(CREATE_ORDER_URL, order, {
-            headers: { Authorization: `Bearer ${userData["accessToken"]}` }
-        });
+    if (userData) {
+        const parsedUserData: IUser = JSON.parse(userData);
+
+        if (parsedUserData["accessToken"]) {
+            return axios.post(CREATE_ORDER_URL, order, {
+                headers: { Authorization: `Bearer ${parsedUserData["accessToken"]}` }
+            });
+        }
     }
 
-    console.error("user is not logged in!");
+    throw "user is not logged in!";
 }

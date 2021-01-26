@@ -10,5 +10,5 @@ const LogoutComponent: React.FC<LogoutProps> = ({ logout }) => {
     return (<Redirect to="/" />);
 }
 
-const Logout = connect(null, userActionCreators)(LogoutComponent);
+const Logout = connect(null, userActionCreators)(LogoutComponent as any);
 export default Logout;

@@ -16,7 +16,7 @@ export const CartProducts: React.FC<CartProductsProps> = ({ cart, changeQuantity
             return (total + product.price) * product.quantity;
         }, 0);
 
-    const onClick = (event) => {
+    const onClick = (event: any) => {
         onPlaceOrder();
     }
 

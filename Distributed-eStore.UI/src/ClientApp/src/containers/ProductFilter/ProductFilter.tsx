@@ -19,7 +19,7 @@ export const ProductFilterComponent: React.FC<ProductFilterProps> = ({
         requestProductsFemale();
     }, [requestProductsFemale]);
 
-    const categoriesMap = {
+    const categoriesMap: any = {
         [ProductCategories.FEMALE]: { requestProducts: requestProductsFemale, text: "Women's Sale" },
         [ProductCategories.MALE]: { requestProducts: requestProductsMale, text: "Men's Sale" },
         [ProductCategories.ACCESSORIES]: { requestProducts: requestProductsAccessories, text: "Bags & Accessories Sale" }

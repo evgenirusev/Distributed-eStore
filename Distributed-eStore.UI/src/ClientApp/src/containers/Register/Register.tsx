@@ -34,7 +34,7 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
+    handleChange(event: any) {
         const { name, value } = event.target;
         const { user } = this.state;
         this.setState({
@@ -45,7 +45,7 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         });
     }
 
-    handleSubmit(event) {
+    handleSubmit(event: any) {
         event.preventDefault();
 
         this.setState({ submitted: true });

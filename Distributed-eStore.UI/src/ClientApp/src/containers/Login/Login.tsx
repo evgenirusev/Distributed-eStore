@@ -30,12 +30,12 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
+    handleChange(event: any) {
         const { name, value } = event.target;
         this.setState({ ...this.state, [name]: value });
     }
 
-    handleSubmit(event) {
+    handleSubmit(event: any) {
         event.preventDefault();
 
         this.setState({ submitted: true });

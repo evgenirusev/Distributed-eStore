@@ -13,7 +13,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
 }) => {
     const { id, name, price, color, imageURL, size, quantity, } = cart;
 
-    const onChange = (event) => {
+    const onChange = (event: any) => {
         const { value } = event.target;
         onQuantityChange(id, value);
     }
