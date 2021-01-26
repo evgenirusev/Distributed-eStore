@@ -5,7 +5,7 @@ import { UserActionTypes } from "./userTypes";
 const userKey = "user";
 const userData: string | null = localStorage.getItem(userKey);
 const initialState: IUserState = userData
-    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: strue }
+    ? { isLoggedIn: true, user: JSON.parse(userData), shouldRedirect: true }
     : { isLoggedIn: false, user: {} as IUser, shouldRedirect: false };
 
 export const reducer = (state: IUserState = initialState, incomingAction: ReduxAction): IUserState => {

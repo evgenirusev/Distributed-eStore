@@ -24,8 +24,10 @@ export default function configureStore(history: History, initialState?: IApplica
 
     const cartState = loadCartState();
 
+    // technical debt   
+    let state: any;
     if (cartState) {
-        initialState = {
+        state = {
             ...initialState,
             cart: cartState
         }
@@ -33,7 +35,7 @@ export default function configureStore(history: History, initialState?: IApplica
 
     const store = createStore(
         rootReducer,
-        initialState,
+        state,
         compose(applyMiddleware(...middleware), ...enhancers)
     );
     

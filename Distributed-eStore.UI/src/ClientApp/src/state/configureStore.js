@@ -35,10 +35,12 @@ function configureStore(history, initialState) {
         enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
     }
     var cartState = localStorageHelpers_1.loadCartState();
+    // technical debt   
+    var state;
     if (cartState) {
-        initialState = __assign(__assign({}, initialState), { cart: cartState });
+        state = __assign(__assign({}, initialState), { cart: cartState });
     }
-    var store = redux_1.createStore(rootReducer, initialState, redux_1.compose.apply(void 0, __spreadArrays([redux_1.applyMiddleware.apply(void 0, middleware)], enhancers)));
+    var store = redux_1.createStore(rootReducer, state, redux_1.compose.apply(void 0, __spreadArrays([redux_1.applyMiddleware.apply(void 0, middleware)], enhancers)));
     store.subscribe(function () { return localStorageHelpers_1.saveCartToLocalStorage(store.getState().cart); });
     return store;
 }

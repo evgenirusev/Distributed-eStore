@@ -1,4 +1,4 @@
-﻿import { CartActionTypes, ICartState } from "./cartTypes";
+﻿import { CartActionTypes, ICartProduct, ICartState } from "./cartTypes";
 import { ReduxAction } from '../index';
 
 const initialState: ICartState = {
@@ -29,7 +29,7 @@ export const reducer = (state: ICartState = initialState, incomingAction: ReduxA
                 const { productId } = action;
 
                 return Object.assign({}, state, {
-                    productIdToCartProductMap: Object.keys(state.productIdToCartProductMap).reduce((result, key) => {
+                    productIdToCartProductMap: Object.keys(state.productIdToCartProductMap).reduce((result: { [key: string]: ICartProduct; }, key) => {
                         if (key !== productId) {
                             result[key] = state.productIdToCartProductMap[key];
                         }
