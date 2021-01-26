@@ -15,7 +15,9 @@ namespace DistributedEStore.Services.Product.Controllers
 
         [HttpGet]
         public async Task<PagedResult<ProductDto>> Get([FromQuery] BrowseProducts query)
-            => await QueryAsync(query);
+        {
+            return await QueryAsync(query);
+        }
 
         [HttpGet("{id}")]
         public async Task<ProductDto> GetAsync([FromRoute] GetProduct query)

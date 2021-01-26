@@ -18,9 +18,7 @@ namespace DistributedEStore.UI.Controllers
         
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] BrowseProducts query)
-        {
-            return Collection(await apiGatewayService.BrowseAsync(query));
-        }
+            => Collection(await apiGatewayService.BrowseAsync(query));
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)

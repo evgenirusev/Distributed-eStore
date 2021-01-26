@@ -48,7 +48,7 @@ services:
     networks:
      - distributed-estore
      
-  order-service:
+  ui:
     image: distributed.estore.ui
     restart: always
     environment:

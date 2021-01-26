@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 using DistributedEStore.Common.Models.Products;
 using DistributedEStore.Common.Types;
 using DistributedEStore.Common.Mvc;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace DistributedEStore.Api.Gateway.Controllers
 {
@@ -18,7 +20,7 @@ namespace DistributedEStore.Api.Gateway.Controllers
     {
         private readonly IProductsService _productsService;
 
-        public ProductsController(IBusPublisher busPublisher, IProductsService productsService) 
+        public ProductsController(IBusPublisher busPublisher, IProductsService productsService)
             : base(busPublisher)
         {
             _productsService = productsService;
@@ -26,8 +28,9 @@ namespace DistributedEStore.Api.Gateway.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<PagedResult<Product>> Get([FromQuery] BrowseProducts query)
-            => await _productsService.BrowseAsync(query);
+        public async Task<PagedResult<Product>> Get([FromQuery] BrowseProducts query) {
+            return await _productsService.BrowseAsync(query);
+        }
 
         [HttpGet("{id}")]
         [AllowAnonymous]
