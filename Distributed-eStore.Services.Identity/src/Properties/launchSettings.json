@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/Distributed-eStore.Services.Identity",
+      "applicationUrl": "http://host.docker.internal/Distributed-eStore.Services.Identity",
       "sslPort": 0
     },
     "iisExpress": {

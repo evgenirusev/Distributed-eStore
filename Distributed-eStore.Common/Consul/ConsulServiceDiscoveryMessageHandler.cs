@@ -68,9 +68,8 @@ namespace DistributedEStore.Common.Consul
 
             if (!_options.Value.SkipLocalhostDockerDnsReplace)
             {
-                service.Address = service.Address.Replace("docker.for.mac.localhost", "localhost")
-                    .Replace("docker.for.win.localhost", "localhost")
-                    .Replace("host.docker.internal", "localhost");
+                service.Address = service.Address.Replace("docker.for.mac.localhost", "host.docker.internal")
+                    .Replace("docker.for.win.localhost", "host.docker.internal");
             }
 
             var uriBuilder = new UriBuilder(uri)
