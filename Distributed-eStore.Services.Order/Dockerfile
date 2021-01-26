@@ -11,6 +11,6 @@ RUN dotnet publish Distributed-eStore.Services.Order.sln -c Release -o publish
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS build
 WORKDIR /app
 COPY --from=base /app/Distributed-eStore.Services.Order/publish .
-EXPOSE 5000
+EXPOSE 5006
 
 ENTRYPOINT ["dotnet", "Distributed-eStore.Services.Order.dll"]

@@ -37,15 +37,15 @@ services:
     networks:
      - distributed-estore
      
-  customers-service:
-    image: distributed.estore.services.customers
+  order-service:
+    image: distributed.estore.services.order
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - RABBIT_HOSTNAME=rabbitmq
     ports:
-      - '5003:80'
+      - '5005:80'
     networks:
      - distributed-estore
 
