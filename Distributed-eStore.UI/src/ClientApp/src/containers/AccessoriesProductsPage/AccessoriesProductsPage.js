@@ -15,7 +15,7 @@ var React = require("react");
 var react_1 = require("react");
 var react_redux_1 = require("react-redux");
 var ProductList_1 = require("../../components/ProductList/ProductList");
-var products_1 = require("../../state/products");
+var productsActions_1 = require("../../state/products/productsActions");
 require("./AccessoriesProductsPage.css");
 var AccessoriesProductsPage = function (_a) {
     var productIDsToProductsMap = _a.productIDsToProductsMap, currentCategory = _a.currentCategory, requestProductsAccessories = _a.requestProductsAccessories;
@@ -30,5 +30,5 @@ var AccessoriesProductsPage = function (_a) {
 var mapStateToProps = function (state) {
     return __assign({}, state.products);
 };
-exports.default = react_redux_1.connect(mapStateToProps, products_1.actionCreators)(AccessoriesProductsPage);
+exports.default = react_redux_1.connect(mapStateToProps, productsActions_1.actionCreators)(AccessoriesProductsPage);
 //# sourceMappingURL=AccessoriesProductsPage.js.map

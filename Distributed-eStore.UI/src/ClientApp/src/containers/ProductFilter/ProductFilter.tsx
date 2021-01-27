@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ProductCategories } from '../../constants';
 import { IApplicationState } from '../../state';
-import { actionCreators, IProductsListState } from '../../state/products';
+import { actionCreators } from '../../state/products/productsActions';
+import { IProductsListState } from '../../state/products/productsTypes';
 import "./ProductFilter.css";
 
 type ProductFilterProps = IProductsListState & typeof actionCreators;

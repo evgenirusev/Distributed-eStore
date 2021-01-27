@@ -1,14 +1,14 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
-import { IApplicationState } from '../../state';
+import { IApplicationState } from '../../state/index';
 import { useEffect, useState } from 'react';
 import './ProductView.css';
 import { actionCreators as productsActionCreators } from '../../state/products/productsActions';
 import { actionCreators as cartActionCreators } from '../../state/cart/cartActions';
 import { useParams } from 'react-router-dom';
-import { ColorSwitcher } from '../../components/products';
+import { ColorSwitcher } from '../../components/products/ColorSwitcher/ColorSwitcher';
 import { useHistory } from "react-router-dom";
-import { IProductsListState } from '../../state/products';
+import { IProductsListState } from '../../state/products/productsTypes';
 
 type ParamTypes = {
     productId: string;

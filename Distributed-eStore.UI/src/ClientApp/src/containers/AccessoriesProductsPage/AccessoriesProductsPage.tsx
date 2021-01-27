@@ -2,8 +2,9 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ProductList } from '../../components/ProductList/ProductList';
-import { IApplicationState } from '../../state';
-import { actionCreators, IProductsListState } from '../../state/products';
+import { IApplicationState } from '../../state/index';
+import { actionCreators } from '../../state/products/productsActions';
+import { IProductsListState } from '../../state/Products/productsTypes';
 import "./AccessoriesProductsPage.css";
 
 type AccessoriesProductsPageProps = IProductsListState & typeof actionCreators;
