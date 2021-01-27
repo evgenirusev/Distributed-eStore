@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { IApplicationState } from '../../state/index';
 import { actionCreators } from '../../state/products/productsActions';
-import { IProductsListState } from '../../state/Products/productsTypes';
+import { IProductsListState } from '../../state/products/productsTypes';
 import "./AccessoriesProductsPage.css";
 
 type AccessoriesProductsPageProps = IProductsListState & typeof actionCreators;

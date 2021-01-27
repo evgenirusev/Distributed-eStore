@@ -14,7 +14,7 @@ RUN apk add --update npm
 RUN dotnet restore Distributed-eStore.UI.sln
 RUN dotnet publish Distributed-eStore.UI.sln -c Release -o publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /app
 COPY --from=base /app/Distributed-eStore.UI/publish .
 EXPOSE 80
