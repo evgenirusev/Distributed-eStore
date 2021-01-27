@@ -10,8 +10,6 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - RABBIT_HOSTNAME=rabbitmq
-    networks:
-      - distributed-estore
 
   product-service:
     image: distributed.estore.services.product
@@ -22,8 +20,6 @@ services:
       - RABBIT_HOSTNAME=rabbitmq
     ports:
       - '5001:80'
-    networks:
-     - distributed-estore
 
   identity-service:
     image: distributed.estore.services.identity
@@ -33,8 +29,6 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - '5002:80'
-    networks:
-     - distributed-estore
      
   order-service:
     image: distributed.estore.services.order
@@ -45,8 +39,6 @@ services:
       - RABBIT_HOSTNAME=rabbitmq
     ports:
       - '5005:80'
-    networks:
-     - distributed-estore
      
   ui:
     image: distributed.estore.ui
@@ -56,10 +48,3 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - '44310:80'
-    networks:
-     - distributed-estore
-
-networks:
-  distributed-estore:
-    name: distributed-estore-network
-    external: true

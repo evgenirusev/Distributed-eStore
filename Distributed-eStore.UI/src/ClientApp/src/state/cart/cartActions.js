@@ -86,7 +86,7 @@ exports.actionCreators = {
                         || error_1.message
                         || error_1.toString();
                     // technical debt
-                    alert("Order creation failed - " + message);
+                    console.error("Order creation failed - " + message);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }

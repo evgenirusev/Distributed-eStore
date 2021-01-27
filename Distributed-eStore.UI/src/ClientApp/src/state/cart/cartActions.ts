@@ -44,7 +44,7 @@ export const actionCreators = {
                 || error.toString();
 
             // technical debt
-            alert(`Order creation failed - ${message}`);
+            console.error(`Order creation failed - ${message}`);
         }
     }
 };
