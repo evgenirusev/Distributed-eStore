@@ -8,7 +8,7 @@ WORKDIR /app/Distributed-eStore.Services.Identity
 RUN dotnet restore Distributed-eStore.Services.Identity.sln
 RUN dotnet publish Distributed-eStore.Services.Identity.sln -c Release -o publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS build
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine AS build
 WORKDIR /app
 COPY --from=base /app/Distributed-eStore.Services.Identity/publish .
 EXPOSE 5000
