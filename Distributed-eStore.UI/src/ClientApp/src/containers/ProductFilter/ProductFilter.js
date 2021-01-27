@@ -5,7 +5,7 @@ var React = require("react");
 var react_1 = require("react");
 var react_redux_1 = require("react-redux");
 var constants_1 = require("../../constants");
-var products_1 = require("../../state/products");
+var productsActions_1 = require("../../state/products/productsActions");
 require("./ProductFilter.css");
 var ProductFilterComponent = function (_a) {
     var _b;
@@ -29,5 +29,5 @@ exports.ProductFilterComponent = ProductFilterComponent;
 var mapStateToProps = function (state) {
     return { products: state.products.productIDsToProductsMap, currentCategory: state.products.currentCategory };
 };
-exports.ProductFilter = react_redux_1.connect(mapStateToProps, products_1.actionCreators)(exports.ProductFilterComponent);
+exports.ProductFilter = react_redux_1.connect(mapStateToProps, productsActions_1.actionCreators)(exports.ProductFilterComponent);
 //# sourceMappingURL=ProductFilter.js.map

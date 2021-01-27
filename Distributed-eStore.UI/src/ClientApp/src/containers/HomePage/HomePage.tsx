@@ -2,8 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { BottomBanner } from '../../components/BottomBanner/BottomBanner';
 import { ProductList } from '../../components/ProductList/ProductList';
-import { IApplicationState } from '../../state';
-import { actionCreators, IProductsListState } from '../../state/products';
+import { IApplicationState } from '../../state/index';
+import { actionCreators } from '../../state/products/productsActions';
+import { IProductsListState } from '../../state/products/productsTypes';
 import { ProductFilter } from '../ProductFilter/ProductFilter';
 import "./HomePage.css";
 

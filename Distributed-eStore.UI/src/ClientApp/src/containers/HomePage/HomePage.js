@@ -15,7 +15,7 @@ var React = require("react");
 var react_redux_1 = require("react-redux");
 var BottomBanner_1 = require("../../components/BottomBanner/BottomBanner");
 var ProductList_1 = require("../../components/ProductList/ProductList");
-var products_1 = require("../../state/products");
+var productsActions_1 = require("../../state/products/productsActions");
 var ProductFilter_1 = require("../ProductFilter/ProductFilter");
 require("./HomePage.css");
 var HomePage = function (_a) {
@@ -36,5 +36,5 @@ var HomePage = function (_a) {
 var mapStateToProps = function (state) {
     return __assign({}, state.products);
 };
-exports.default = react_redux_1.connect(mapStateToProps, products_1.actionCreators)(HomePage);
+exports.default = react_redux_1.connect(mapStateToProps, productsActions_1.actionCreators)(HomePage);
 //# sourceMappingURL=HomePage.js.map

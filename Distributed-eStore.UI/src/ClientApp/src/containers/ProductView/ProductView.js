@@ -18,7 +18,7 @@ require("./ProductView.css");
 var productsActions_1 = require("../../state/products/productsActions");
 var cartActions_1 = require("../../state/cart/cartActions");
 var react_router_dom_1 = require("react-router-dom");
-var products_1 = require("../../components/products");
+var ColorSwitcher_1 = require("../../components/products/ColorSwitcher/ColorSwitcher");
 var react_router_dom_2 = require("react-router-dom");
 var ProductView = function (_a) {
     var requestProductById = _a.requestProductById, addProductToCart = _a.addProductToCart, products = _a.products;
@@ -55,7 +55,7 @@ var ProductView = function (_a) {
                 React.createElement("hr", null),
                 React.createElement("div", { className: "color-switcher" },
                     React.createElement("p", null, "Color:"),
-                    React.createElement(products_1.ColorSwitcher, { colors: colors_1, selectedColorIndex: selectedColorIndex_1, productId: productId, selectProductColorAction: productsActions_1.actionCreators.selectProductColor })),
+                    React.createElement(ColorSwitcher_1.ColorSwitcher, { colors: colors_1, selectedColorIndex: selectedColorIndex_1, productId: productId, selectProductColorAction: productsActions_1.actionCreators.selectProductColor })),
                 React.createElement("div", { className: "product-view__size-selector" },
                     React.createElement("p", null,
                         "Size",
