@@ -1,11 +1,11 @@
 ﻿import axios, { AxiosResponse } from "axios";
-import { loginUrl, registerUrl, localhostUrl } from "../../constants";
+import { IDENTITY_URL } from "../../constants";
 import { IUser } from "../../state/user";
 
 const userKey = "user";
 
 export const register = (firstName: string, lastName: string, email: string, password: string, role: string): Promise<AxiosResponse> => {
-    return axios.post(`${localhostUrl}/${registerUrl}`, {
+    return axios.post(`${IDENTITY_URL}/sign-up`, {
         firstName,
         lastName,
         email,
@@ -15,7 +15,7 @@ export const register = (firstName: string, lastName: string, email: string, pas
 }
 
 export const login = (email: string, password: string): Promise<AxiosResponse<IUser>> => {
-    return axios.post(loginUrl, { email, password });
+    return axios.post(`${IDENTITY_URL}/sign-in`, { email, password });
 }
 
 export const logout = (): void => {

@@ -5,7 +5,7 @@ var axios_1 = require("axios");
 var constants_1 = require("../../constants");
 var userKey = "user";
 var register = function (firstName, lastName, email, password, role) {
-    return axios_1.default.post(constants_1.localhostUrl + "/" + constants_1.registerUrl, {
+    return axios_1.default.post(constants_1.IDENTITY_URL + "/sign-up", {
         firstName: firstName,
         lastName: lastName,
         email: email,
@@ -15,7 +15,7 @@ var register = function (firstName, lastName, email, password, role) {
 };
 exports.register = register;
 var login = function (email, password) {
-    return axios_1.default.post(constants_1.loginUrl, { email: email, password: password });
+    return axios_1.default.post(constants_1.IDENTITY_URL + "/sign-in", { email: email, password: password });
 };
 exports.login = login;
 var logout = function () {

@@ -1,1 +1,0 @@
-﻿export const localhostUrl = "host.docker.internal"; 

@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProductById = exports.getProductsAccessories = exports.getProductsMale = exports.getProductsFemale = exports.requestProducts = void 0;
-var constants_1 = require("../../constants");
+var api_1 = require("../../constants/api");
 var axios_1 = require("axios");
 var requestProducts = function (queryParams) {
-    var url = constants_1.localhostUrl + "/" + constants_1.PRODUCTS_URL + "?";
+    var url = api_1.PRODUCTS_URL + "?";
     if (queryParams) {
         Object.keys(queryParams).forEach(function (key) {
             url = url.concat(key + "=" + queryParams[key]);
@@ -26,7 +26,7 @@ var getProductsAccessories = function () {
 };
 exports.getProductsAccessories = getProductsAccessories;
 var getProductById = function (productId) {
-    return axios_1.default.get(constants_1.PRODUCTS_URL + "/" + productId);
+    return axios_1.default.get(api_1.PRODUCTS_URL + "/" + productId);
 };
 exports.getProductById = getProductById;
 //# sourceMappingURL=products.js.map

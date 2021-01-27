@@ -1,9 +1,9 @@
-import { PRODUCTS_URL, localhostUrl } from "../../constants"
-import { IProduct } from "../../state/products/"
+import { PRODUCTS_URL } from "../../constants/api";
+import { IProduct } from "../../state/products/";
 import axios, { AxiosResponse } from "axios";
 
 export const requestProducts = (queryParams?: Record<string, string>): Promise<AxiosResponse<IProduct[]>> => {
-    let url = `${localhostUrl}/${PRODUCTS_URL}?`;
+    let url = `${PRODUCTS_URL}?`;
 
     if (queryParams) {
         Object.keys(queryParams).forEach(key => {

@@ -42,12 +42,12 @@
     <None Remove="ClientApp\src\components\products\ColorSwitcher.tsx" />
     <None Remove="ClientApp\src\components\products\index.ts" />
     <None Remove="ClientApp\src\components\user\Logout.tsx" />
+    <None Remove="ClientApp\src\constants\api.ts" />
     <None Remove="ClientApp\src\containers\AccessoriesProductsPage\AccessoriesProductsPage.tsx" />
     <None Remove="ClientApp\src\containers\FemaleProductsPage\FemaleProductsPage.tsx" />
     <None Remove="ClientApp\src\containers\MaleProductsPage\MaleProductsPage.tsx" />
     <None Remove="ClientApp\src\containers\ProductFilter\ProductFilter.tsx" />
     <None Remove="ClientApp\src\containers\ProductView\ProductView.tsx" />
-    <None Remove="ClientApp\src\constants\auth.ts" />
     <None Remove="ClientApp\src\containers\ProductList.tsx" />
     <None Remove="ClientApp\src\services\auth\authUtils.ts" />
     <None Remove="ClientApp\src\services\auth\index.ts" />
@@ -61,7 +61,6 @@
     <TypeScriptCompile Remove="ClientApp\src\components\BottomBanner\BottomBanner.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\cart\cartProduct\CartProduct.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\Footer\Footer.tsx" />
-    <TypeScriptCompile Remove="ClientApp\src\constants\orders.ts" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Cart\CartProducts.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Login\Login.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\containers\Register.tsx" />

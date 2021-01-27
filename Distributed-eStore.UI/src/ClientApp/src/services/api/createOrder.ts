@@ -1,4 +1,4 @@
-﻿import { CREATE_ORDER_URL, localhostUrl } from "../../constants";
+﻿import { ORDERS_URL } from "../../constants";
 import axios, { AxiosResponse } from "axios";
 import { IOrder } from "../../state/cart";
 import { IUser } from "../../state/user";
@@ -10,7 +10,7 @@ export const createOrder = (order: IOrder): Promise<AxiosResponse> => {
         const parsedUserData: IUser = JSON.parse(userData);
 
         if (parsedUserData["accessToken"]) {
-            return axios.post(`${localhostUrl}/${CREATE_ORDER_URL}`, order, {
+            return axios.post(ORDERS_URL, order, {
                 headers: { Authorization: `Bearer ${parsedUserData["accessToken"]}` }
             });
         }

@@ -1,1 +1,0 @@
-﻿export const CREATE_ORDER_URL = "api/v1/orders";

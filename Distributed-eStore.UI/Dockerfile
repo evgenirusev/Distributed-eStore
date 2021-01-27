@@ -6,7 +6,7 @@ ADD Distributed-eStore.Common Distributed-eStore.Common
 
 WORKDIR /app/Distributed-eStore.UI
 
-ENV NODE_VERSION=12.6.0
+ENV NODE_VERSION=14.15.4
 RUN apt install -y curl
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
