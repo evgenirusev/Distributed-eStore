@@ -12,6 +12,10 @@ services:
       - RABBIT_HOSTNAME=rabbitmq
     networks:
       - distributed-estore
+    depends_on:
+      - "consul"
+      - "fabio"
+      - "rabbitmq"
 
   product-service:
     image: distributed.estore.services.product
