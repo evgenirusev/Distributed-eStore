@@ -18,3 +18,9 @@ Technologies used - RabbitMQ, .NET Core, .NET Core MVC, MongoDB, React, Redux, D
 ### Products
 ![Sorry, error loading image of diagram](products1.png)
 ![Sorry, error loading image of diagram](products2.png)
+
+### Product View
+![Sorry, error loading image of diagram](product.png)
+
+### Shopping Cart
+![Sorry, error loading image of diagram](cart.png)
