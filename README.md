@@ -24,3 +24,5 @@ Technologies used - RabbitMQ, .NET Core, .NET Core MVC, MongoDB, React, Redux, D
 
 ### Shopping Cart
 ![Sorry, error loading image of diagram](cart.png)
+
+Keywords - Docker, Consul, Fabio, RabbitMQ, .Net Core, Mediatr, CQRS, React, Redux. .NET Core Microservices template, .NET RabbitMQ, .NET Core with React and Redux, .NET Distributed, Docker, .NET Core with Docker, .NET Core with Mongo.
