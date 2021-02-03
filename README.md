@@ -5,7 +5,7 @@ Technologies used - RabbitMQ, .NET Core, .NET Core MVC, MongoDB, React, Redux, D
 1. Prerequisites:
 * - Docker
 * - A running MongoDB service (check connection string in appsettings.json)
-2. Run _docker-compose -f ./compose/compose.yml up -d_
+2. Run _docker-compose -f ./compose/compose.yml up -d_ from the root directory of the project.
 3. Open http://localhost:44310/
 ## Architecture:
 ![Sorry, error loading image of diagram](architecture.png)
