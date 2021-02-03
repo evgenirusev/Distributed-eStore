@@ -1,5 +1,5 @@
 # Distributed-eStore
-Containerized .NET Core Online Store application with a microservices architecture. Utilizing React and Redux as a frontend solution.
+Containerized .NET Core Online Store application with a microservices architecture and a React and Redux frontend solution.
 Technologies used - RabbitMQ, .NET Core, .NET Core MVC, MongoDB, React, Redux, Docker, Consul, Fabio, Swagger, Vault.
 ## Steps to run locally
 1. Prerequisites:
