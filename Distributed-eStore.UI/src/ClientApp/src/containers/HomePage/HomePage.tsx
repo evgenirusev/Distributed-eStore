@@ -6,33 +6,42 @@ import { IApplicationState } from '../../state/index';
 import { actionCreators } from '../../state/products/productsActions';
 import { IProductsListState } from '../../state/products/productsTypes';
 import { ProductFilter } from '../ProductFilter/ProductFilter';
-import "./HomePage.css";
+import './HomePage.css';
 
 type HomePageProps = IProductsListState & typeof actionCreators;
 
 const HomePage: React.FC<HomePageProps> = ({
-    productIDsToProductsMap,
-    currentCategory
+  productIDsToProductsMap,
+  currentCategory,
 }) => {
-    return <div className="home-page">
-        <div className="home-page__top-image-container">
-            <a href="#" className="home-page__link">
-                <h1 className="home-page__text">Just Launched <br /> Summer Products</h1>
-                <h3 className="home-page__shop-now">SHOP NOW</h3>
-            </a>
-        </div>
+  return (
+    <div className='home-page'>
+      <div className='home-page__top-image-container'>
+        <a href='#' className='home-page__link'>
+          <h1 className='home-page__text'>
+            Just Launched <br /> Summer Products
+          </h1>
+          <h3 className='home-page__shop-now'>SHOP NOW</h3>
+        </a>
+      </div>
 
-        <ProductFilter />
+      <ProductFilter />
 
-        {productIDsToProductsMap && <ProductList products={Object.values(productIDsToProductsMap)
-            .filter(product => product.category === currentCategory)} />}
+      {productIDsToProductsMap && (
+        <ProductList
+          products={Object.values(productIDsToProductsMap).filter(
+            (product) => product.category === currentCategory
+          )}
+        />
+      )}
 
-        <BottomBanner/>
+      <BottomBanner />
     </div>
+  );
 };
 
 const mapStateToProps = (state: IApplicationState) => {
-    return { ...state.products };
-}
+  return { ...state.products };
+};
 
 export default connect(mapStateToProps, actionCreators)(HomePage as any);
